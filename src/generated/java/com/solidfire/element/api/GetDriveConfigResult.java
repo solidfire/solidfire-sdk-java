@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetDriveConfigResult implements Serializable {
 
-    public static final long serialVersionUID = -2575844990744405221L;
+    public static final long serialVersionUID = 8230727741569534253L;
     @SerializedName("driveConfig") private DrivesConfigInfo driveConfig;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class GetDriveConfigResult implements Serializable {
      * Configuration information for the drives that are connected to the cluster
      **/
     public DrivesConfigInfo getDriveConfig() { return this.driveConfig; }
+   
     public void setDriveConfig(DrivesConfigInfo driveConfig) { 
         this.driveConfig = driveConfig;
     }
@@ -83,9 +85,10 @@ public class GetDriveConfigResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" driveConfig : ").append(driveConfig).append(",");
+        sb.append(" driveConfig : ").append(gson.toJson(driveConfig)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

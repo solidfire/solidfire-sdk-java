@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ShutdownResult implements Serializable {
 
-    public static final long serialVersionUID = -5035853688579079201L;
+    public static final long serialVersionUID = 2741035782715848783L;
     @SerializedName("failed") private Long[] failed;
     @SerializedName("successful") private Long[] successful;
     // empty constructor
@@ -56,6 +57,7 @@ public class ShutdownResult implements Serializable {
      * 
      **/
     public Long[] getFailed() { return this.failed; }
+   
     public void setFailed(Long[] failed) { 
         this.failed = failed;
     }
@@ -63,6 +65,7 @@ public class ShutdownResult implements Serializable {
      * 
      **/
     public Long[] getSuccessful() { return this.successful; }
+   
     public void setSuccessful(Long[] successful) { 
         this.successful = successful;
     }
@@ -95,10 +98,11 @@ public class ShutdownResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" failed : ").append(Arrays.toString(failed)).append(",");
-        sb.append(" successful : ").append(Arrays.toString(successful)).append(",");
+        sb.append(" failed : ").append(gson.toJson(Arrays.toString(failed))).append(",");
+        sb.append(" successful : ").append(gson.toJson(Arrays.toString(successful))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

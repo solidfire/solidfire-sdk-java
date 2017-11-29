@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetSnmpACLResult implements Serializable {
 
-    public static final long serialVersionUID = -8231738991912152691L;
+    public static final long serialVersionUID = 5085918780635082491L;
     @SerializedName("networks") private Optional<SnmpNetwork[]> networks;
     @SerializedName("usmUsers") private Optional<SnmpV3UsmUser[]> usmUsers;
     // empty constructor
@@ -56,6 +57,7 @@ public class GetSnmpACLResult implements Serializable {
      * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is disabled.
      **/
     public Optional<SnmpNetwork[]> getNetworks() { return this.networks; }
+   
     public void setNetworks(Optional<SnmpNetwork[]> networks) { 
         this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : networks;
     }
@@ -63,6 +65,7 @@ public class GetSnmpACLResult implements Serializable {
      * List of users and the type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is enabled.
      **/
     public Optional<SnmpV3UsmUser[]> getUsmUsers() { return this.usmUsers; }
+   
     public void setUsmUsers(Optional<SnmpV3UsmUser[]> usmUsers) { 
         this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : usmUsers;
     }
@@ -95,13 +98,20 @@ public class GetSnmpACLResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != networks && networks.isPresent()){
-            sb.append(" networks : ").append(networks).append(",");
+            sb.append(" networks : ").append(gson.toJson(networks)).append(",");
+        }
+        else{
+            sb.append(" networks : ").append("null").append(",");
         }
         if(null != usmUsers && usmUsers.isPresent()){
-            sb.append(" usmUsers : ").append(usmUsers).append(",");
+            sb.append(" usmUsers : ").append(gson.toJson(usmUsers)).append(",");
+        }
+        else{
+            sb.append(" usmUsers : ").append("null").append(",");
         }
         sb.append( " }" );
 

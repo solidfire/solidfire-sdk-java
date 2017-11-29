@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class DeleteStorageContainersRequest implements Serializable {
 
-    public static final long serialVersionUID = 4179208536092168472L;
+    public static final long serialVersionUID = -6842793456686063781L;
     @SerializedName("storageContainerIDs") private java.util.UUID[] storageContainerIDs;
     // empty constructor
     @Since("7.0")
@@ -55,6 +56,7 @@ public class DeleteStorageContainersRequest implements Serializable {
      * A list of IDs of the storage containers to delete. You can specify up to 2000 IDs in the list.
      **/
     public java.util.UUID[] getStorageContainerIDs() { return this.storageContainerIDs; }
+   
     public void setStorageContainerIDs(java.util.UUID[] storageContainerIDs) { 
         this.storageContainerIDs = storageContainerIDs;
     }
@@ -85,9 +87,10 @@ public class DeleteStorageContainersRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" storageContainerIDs : ").append(Arrays.toString(storageContainerIDs)).append(",");
+        sb.append(" storageContainerIDs : ").append(gson.toJson(Arrays.toString(storageContainerIDs))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

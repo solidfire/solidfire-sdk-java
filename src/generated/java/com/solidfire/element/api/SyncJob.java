@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,13 +34,13 @@ import java.util.Objects;
 
 public class SyncJob implements Serializable {
 
-    public static final long serialVersionUID = 7110925483330339216L;
+    public static final long serialVersionUID = -4209032567051207727L;
     @SerializedName("bytesPerSecond") private Double bytesPerSecond;
     @SerializedName("currentBytes") private Long currentBytes;
     @SerializedName("dstServiceID") private Long dstServiceID;
     @SerializedName("elapsedTime") private Double elapsedTime;
     @SerializedName("percentComplete") private Double percentComplete;
-    @SerializedName("remainingTime") private Double remainingTime;
+    @SerializedName("remainingTime") private Optional<Long> remainingTime;
     @SerializedName("sliceID") private Long sliceID;
     @SerializedName("srcServiceID") private Long srcServiceID;
     @SerializedName("totalBytes") private Long totalBytes;
@@ -51,6 +52,7 @@ public class SyncJob implements Serializable {
     @SerializedName("srcVolumeID") private Long srcVolumeID;
     @SerializedName("blocksPerSecond") private Double blocksPerSecond;
     @SerializedName("stage") private String stage;
+    @SerializedName("groupCloneID") private Optional<Long> groupCloneID;
     // empty constructor
     @Since("7.0")
     public SyncJob() {}
@@ -64,7 +66,7 @@ public class SyncJob implements Serializable {
         Long dstServiceID,
         Double elapsedTime,
         Double percentComplete,
-        Double remainingTime,
+        Optional<Long> remainingTime,
         Long sliceID,
         Long srcServiceID,
         Long totalBytes,
@@ -75,7 +77,8 @@ public class SyncJob implements Serializable {
         Long snapshotID,
         Long srcVolumeID,
         Double blocksPerSecond,
-        String stage
+        String stage,
+        Optional<Long> groupCloneID
     )
     {
         this.bytesPerSecond = bytesPerSecond;
@@ -83,7 +86,7 @@ public class SyncJob implements Serializable {
         this.dstServiceID = dstServiceID;
         this.elapsedTime = elapsedTime;
         this.percentComplete = percentComplete;
-        this.remainingTime = remainingTime;
+        this.remainingTime = (remainingTime == null) ? Optional.<Long>empty() : remainingTime;
         this.sliceID = sliceID;
         this.srcServiceID = srcServiceID;
         this.totalBytes = totalBytes;
@@ -95,12 +98,14 @@ public class SyncJob implements Serializable {
         this.srcVolumeID = srcVolumeID;
         this.blocksPerSecond = blocksPerSecond;
         this.stage = stage;
+        this.groupCloneID = (groupCloneID == null) ? Optional.<Long>empty() : groupCloneID;
     }
 
     /** 
      * 
      **/
     public Double getBytesPerSecond() { return this.bytesPerSecond; }
+   
     public void setBytesPerSecond(Double bytesPerSecond) { 
         this.bytesPerSecond = bytesPerSecond;
     }
@@ -108,6 +113,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Long getCurrentBytes() { return this.currentBytes; }
+   
     public void setCurrentBytes(Long currentBytes) { 
         this.currentBytes = currentBytes;
     }
@@ -115,6 +121,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Long getDstServiceID() { return this.dstServiceID; }
+   
     public void setDstServiceID(Long dstServiceID) { 
         this.dstServiceID = dstServiceID;
     }
@@ -122,6 +129,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Double getElapsedTime() { return this.elapsedTime; }
+   
     public void setElapsedTime(Double elapsedTime) { 
         this.elapsedTime = elapsedTime;
     }
@@ -129,20 +137,23 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Double getPercentComplete() { return this.percentComplete; }
+   
     public void setPercentComplete(Double percentComplete) { 
         this.percentComplete = percentComplete;
     }
     /** 
      * 
      **/
-    public Double getRemainingTime() { return this.remainingTime; }
-    public void setRemainingTime(Double remainingTime) { 
-        this.remainingTime = remainingTime;
+    public Optional<Long> getRemainingTime() { return this.remainingTime; }
+   
+    public void setRemainingTime(Optional<Long> remainingTime) { 
+        this.remainingTime = (remainingTime == null) ? Optional.<Long>empty() : remainingTime;
     }
     /** 
      * 
      **/
     public Long getSliceID() { return this.sliceID; }
+   
     public void setSliceID(Long sliceID) { 
         this.sliceID = sliceID;
     }
@@ -150,6 +161,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Long getSrcServiceID() { return this.srcServiceID; }
+   
     public void setSrcServiceID(Long srcServiceID) { 
         this.srcServiceID = srcServiceID;
     }
@@ -157,6 +169,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Long getTotalBytes() { return this.totalBytes; }
+   
     public void setTotalBytes(Long totalBytes) { 
         this.totalBytes = totalBytes;
     }
@@ -164,6 +177,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public String getType() { return this.type; }
+   
     public void setType(String type) { 
         this.type = type;
     }
@@ -171,6 +185,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Long getCloneID() { return this.cloneID; }
+   
     public void setCloneID(Long cloneID) { 
         this.cloneID = cloneID;
     }
@@ -178,6 +193,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Long getDstVolumeID() { return this.dstVolumeID; }
+   
     public void setDstVolumeID(Long dstVolumeID) { 
         this.dstVolumeID = dstVolumeID;
     }
@@ -185,6 +201,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -192,6 +209,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Long getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
@@ -199,6 +217,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Long getSrcVolumeID() { return this.srcVolumeID; }
+   
     public void setSrcVolumeID(Long srcVolumeID) { 
         this.srcVolumeID = srcVolumeID;
     }
@@ -206,6 +225,7 @@ public class SyncJob implements Serializable {
      * 
      **/
     public Double getBlocksPerSecond() { return this.blocksPerSecond; }
+   
     public void setBlocksPerSecond(Double blocksPerSecond) { 
         this.blocksPerSecond = blocksPerSecond;
     }
@@ -213,8 +233,17 @@ public class SyncJob implements Serializable {
      * 
      **/
     public String getStage() { return this.stage; }
+   
     public void setStage(String stage) { 
         this.stage = stage;
+    }
+    /** 
+     * 
+     **/
+    public Optional<Long> getGroupCloneID() { return this.groupCloneID; }
+   
+    public void setGroupCloneID(Optional<Long> groupCloneID) { 
+        this.groupCloneID = (groupCloneID == null) ? Optional.<Long>empty() : groupCloneID;
     }
 
     @Override
@@ -241,12 +270,13 @@ public class SyncJob implements Serializable {
             Objects.equals(snapshotID, that.snapshotID) && 
             Objects.equals(srcVolumeID, that.srcVolumeID) && 
             Objects.equals(blocksPerSecond, that.blocksPerSecond) && 
-            Objects.equals(stage, that.stage);
+            Objects.equals(stage, that.stage) && 
+            Objects.equals(groupCloneID, that.groupCloneID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( bytesPerSecond,currentBytes,dstServiceID,elapsedTime,percentComplete,remainingTime,sliceID,srcServiceID,totalBytes,type,cloneID,dstVolumeID,nodeID,snapshotID,srcVolumeID,blocksPerSecond,stage );
+        return Objects.hash( bytesPerSecond,currentBytes,dstServiceID,elapsedTime,percentComplete,remainingTime,sliceID,srcServiceID,totalBytes,type,cloneID,dstVolumeID,nodeID,snapshotID,srcVolumeID,blocksPerSecond,stage,groupCloneID );
     }
 
 
@@ -269,31 +299,44 @@ public class SyncJob implements Serializable {
         map.put("srcVolumeID", srcVolumeID);
         map.put("blocksPerSecond", blocksPerSecond);
         map.put("stage", stage);
+        map.put("groupCloneID", groupCloneID);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" bytesPerSecond : ").append(bytesPerSecond).append(",");
-        sb.append(" currentBytes : ").append(currentBytes).append(",");
-        sb.append(" dstServiceID : ").append(dstServiceID).append(",");
-        sb.append(" elapsedTime : ").append(elapsedTime).append(",");
-        sb.append(" percentComplete : ").append(percentComplete).append(",");
-        sb.append(" remainingTime : ").append(remainingTime).append(",");
-        sb.append(" sliceID : ").append(sliceID).append(",");
-        sb.append(" srcServiceID : ").append(srcServiceID).append(",");
-        sb.append(" totalBytes : ").append(totalBytes).append(",");
-        sb.append(" type : ").append(type).append(",");
-        sb.append(" cloneID : ").append(cloneID).append(",");
-        sb.append(" dstVolumeID : ").append(dstVolumeID).append(",");
-        sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" snapshotID : ").append(snapshotID).append(",");
-        sb.append(" srcVolumeID : ").append(srcVolumeID).append(",");
-        sb.append(" blocksPerSecond : ").append(blocksPerSecond).append(",");
-        sb.append(" stage : ").append(stage).append(",");
+        sb.append(" bytesPerSecond : ").append(gson.toJson(bytesPerSecond)).append(",");
+        sb.append(" currentBytes : ").append(gson.toJson(currentBytes)).append(",");
+        sb.append(" dstServiceID : ").append(gson.toJson(dstServiceID)).append(",");
+        sb.append(" elapsedTime : ").append(gson.toJson(elapsedTime)).append(",");
+        sb.append(" percentComplete : ").append(gson.toJson(percentComplete)).append(",");
+        if(null != remainingTime && remainingTime.isPresent()){
+            sb.append(" remainingTime : ").append(gson.toJson(remainingTime)).append(",");
+        }
+        else{
+            sb.append(" remainingTime : ").append("null").append(",");
+        }
+        sb.append(" sliceID : ").append(gson.toJson(sliceID)).append(",");
+        sb.append(" srcServiceID : ").append(gson.toJson(srcServiceID)).append(",");
+        sb.append(" totalBytes : ").append(gson.toJson(totalBytes)).append(",");
+        sb.append(" type : ").append(gson.toJson(type)).append(",");
+        sb.append(" cloneID : ").append(gson.toJson(cloneID)).append(",");
+        sb.append(" dstVolumeID : ").append(gson.toJson(dstVolumeID)).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
+        sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        sb.append(" srcVolumeID : ").append(gson.toJson(srcVolumeID)).append(",");
+        sb.append(" blocksPerSecond : ").append(gson.toJson(blocksPerSecond)).append(",");
+        sb.append(" stage : ").append(gson.toJson(stage)).append(",");
+        if(null != groupCloneID && groupCloneID.isPresent()){
+            sb.append(" groupCloneID : ").append(gson.toJson(groupCloneID)).append(",");
+        }
+        else{
+            sb.append(" groupCloneID : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -316,7 +359,7 @@ public class SyncJob implements Serializable {
         private Long dstServiceID;
         private Double elapsedTime;
         private Double percentComplete;
-        private Double remainingTime;
+        private Optional<Long> remainingTime;
         private Long sliceID;
         private Long srcServiceID;
         private Long totalBytes;
@@ -328,6 +371,7 @@ public class SyncJob implements Serializable {
         private Long srcVolumeID;
         private Double blocksPerSecond;
         private String stage;
+        private Optional<Long> groupCloneID;
 
         private Builder() { }
 
@@ -349,7 +393,8 @@ public class SyncJob implements Serializable {
                          this.snapshotID,
                          this.srcVolumeID,
                          this.blocksPerSecond,
-                         this.stage);
+                         this.stage,
+                         this.groupCloneID);
         }
 
         private SyncJob.Builder buildFrom(final SyncJob req) {
@@ -370,6 +415,7 @@ public class SyncJob implements Serializable {
             this.srcVolumeID = req.srcVolumeID;
             this.blocksPerSecond = req.blocksPerSecond;
             this.stage = req.stage;
+            this.groupCloneID = req.groupCloneID;
 
             return this;
         }
@@ -399,8 +445,8 @@ public class SyncJob implements Serializable {
             return this;
         }
 
-        public SyncJob.Builder remainingTime(final Double remainingTime) {
-            this.remainingTime = remainingTime;
+        public SyncJob.Builder optionalRemainingTime(final Long remainingTime) {
+            this.remainingTime = (remainingTime == null) ? Optional.<Long>empty() : Optional.of(remainingTime);
             return this;
         }
 
@@ -456,6 +502,11 @@ public class SyncJob implements Serializable {
 
         public SyncJob.Builder stage(final String stage) {
             this.stage = stage;
+            return this;
+        }
+
+        public SyncJob.Builder optionalGroupCloneID(final Long groupCloneID) {
+            this.groupCloneID = (groupCloneID == null) ? Optional.<Long>empty() : Optional.of(groupCloneID);
             return this;
         }
 

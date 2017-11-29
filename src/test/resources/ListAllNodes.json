@@ -1,0 +1,81 @@
+{
+  "id": null,
+  "result": {
+    "nodes": [
+      {
+        "associatedFServiceID": 0,
+        "associatedMasterServiceID": 3,
+        "attributes": {},
+        "cip": "10.117.63.101",
+        "cipi": "Bond10G",
+        "fibreChannelTargetPortGroup": null,
+        "mip": "10.117.61.101",
+        "mipi": "Bond1G",
+        "name": "node1",
+        "nodeID": 1,
+        "platformInfo": {
+          "chassisType": "SFVIRT",
+          "cpuModel": "Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz",
+          "nodeMemoryGB": 8,
+          "nodeType": "SFVIRT",
+          "platformConfigVersion": "9.2.0.43"
+        },
+        "sip": "10.117.63.101",
+        "sipi": "Bond10G",
+        "softwareVersion": "9.2.0.43",
+        "uuid": "4201AA50-C5CD-D051-F697-05B3419E8335",
+        "virtualNetworks": []
+      },
+      {
+        "associatedFServiceID": 0,
+        "associatedMasterServiceID": 2,
+        "attributes": {},
+        "cip": "10.117.63.102",
+        "cipi": "Bond10G",
+        "fibreChannelTargetPortGroup": null,
+        "mip": "10.117.61.102",
+        "mipi": "Bond1G",
+        "name": "node2",
+        "nodeID": 2,
+        "platformInfo": {
+          "chassisType": "SFVIRT",
+          "cpuModel": "Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz",
+          "nodeMemoryGB": 8,
+          "nodeType": "SFVIRT",
+          "platformConfigVersion": "9.2.0.43"
+        },
+        "sip": "10.117.63.102",
+        "sipi": "Bond10G",
+        "softwareVersion": "9.2.0.43",
+        "uuid": "4201F6DD-DBC4-F3B9-3223-4CD869696B67",
+        "virtualNetworks": []
+      },
+      {
+        "associatedFServiceID": 0,
+        "associatedMasterServiceID": 1,
+        "attributes": {},
+        "cip": "10.117.63.104",
+        "cipi": "Bond10G",
+        "fibreChannelTargetPortGroup": null,
+        "mip": "10.117.61.104",
+        "mipi": "Bond1G",
+        "name": "node4",
+        "nodeID": 3,
+        "platformInfo": {
+          "chassisType": "SFVIRT",
+          "cpuModel": "Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz",
+          "nodeMemoryGB": 8,
+          "nodeType": "SFVIRT",
+          "platformConfigVersion": "9.2.0.43"
+        },
+        "sip": "10.117.63.104",
+        "sipi": "Bond10G",
+        "softwareVersion": "9.2.0.43",
+        "uuid": "42017317-07A5-04B1-2D1E-9F0F4E65B156",
+        "virtualNetworks": []
+      }
+    ],
+    "pendingActiveNodes": [],
+    "pendingNodes": []
+  }
+}

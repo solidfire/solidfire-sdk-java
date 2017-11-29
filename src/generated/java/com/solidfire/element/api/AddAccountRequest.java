@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class AddAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = 8874962096480555118L;
+    public static final long serialVersionUID = 1204889642362951352L;
     @SerializedName("username") private String username;
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
@@ -63,6 +64,7 @@ public class AddAccountRequest implements Serializable {
      * Specifies the username for this account. (Might be 1 to 64 characters in length).
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
@@ -73,6 +75,7 @@ public class AddAccountRequest implements Serializable {
      * and cannot be the same as the target CHAP secret. If unspecified, a random secret is created.
      **/
     public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
+   
     public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
@@ -85,6 +88,7 @@ public class AddAccountRequest implements Serializable {
      * created.
      **/
     public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
+   
     public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
@@ -92,6 +96,7 @@ public class AddAccountRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -128,17 +133,27 @@ public class AddAccountRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" username : ").append(username).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+            sb.append(" initiatorSecret : ").append(gson.toJson(initiatorSecret)).append(",");
+        }
+        else{
+            sb.append(" initiatorSecret : ").append("null").append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret).append(",");
+            sb.append(" targetSecret : ").append(gson.toJson(targetSecret)).append(",");
+        }
+        else{
+            sb.append(" targetSecret : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

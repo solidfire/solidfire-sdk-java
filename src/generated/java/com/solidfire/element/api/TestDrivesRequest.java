@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,7 @@ import java.util.Objects;
 
 public class TestDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 2989024163800934077L;
+    public static final long serialVersionUID = -6204589446517192123L;
     @SerializedName("minutes") private Optional<Long> minutes;
     @SerializedName("force") private Optional<Boolean> force;
     // empty constructor
@@ -61,6 +62,7 @@ public class TestDrivesRequest implements Serializable {
      * Specifies the number of minutes to run the test.
      **/
     public Optional<Long> getMinutes() { return this.minutes; }
+   
     public void setMinutes(Optional<Long> minutes) { 
         this.minutes = (minutes == null) ? Optional.<Long>empty() : minutes;
     }
@@ -68,6 +70,7 @@ public class TestDrivesRequest implements Serializable {
      * Required parameter to successfully test the drives on the node.
      **/
     public Optional<Boolean> getForce() { return this.force; }
+   
     public void setForce(Optional<Boolean> force) { 
         this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
@@ -100,13 +103,20 @@ public class TestDrivesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != minutes && minutes.isPresent()){
-            sb.append(" minutes : ").append(minutes).append(",");
+            sb.append(" minutes : ").append(gson.toJson(minutes)).append(",");
+        }
+        else{
+            sb.append(" minutes : ").append("null").append(",");
         }
         if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force).append(",");
+            sb.append(" force : ").append(gson.toJson(force)).append(",");
+        }
+        else{
+            sb.append(" force : ").append("null").append(",");
         }
         sb.append( " }" );
 

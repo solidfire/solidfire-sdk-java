@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -52,7 +53,7 @@ import java.util.Objects;
 
 public class DeleteVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -8702971183368756605L;
+    public static final long serialVersionUID = 8467114120532745883L;
     @SerializedName("accountIDs") private Optional<Long[]> accountIDs;
     @SerializedName("volumeAccessGroupIDs") private Optional<Long[]> volumeAccessGroupIDs;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
@@ -78,6 +79,7 @@ public class DeleteVolumesRequest implements Serializable {
      * A list of account IDs. All volumes from these accounts are deleted from the system. 
      **/
     public Optional<Long[]> getAccountIDs() { return this.accountIDs; }
+   
     public void setAccountIDs(Optional<Long[]> accountIDs) { 
         this.accountIDs = (accountIDs == null) ? Optional.<Long[]>empty() : accountIDs;
     }
@@ -85,6 +87,7 @@ public class DeleteVolumesRequest implements Serializable {
      * A list of volume access group IDs. All of the volumes from all of the volume access groups you specify in this list are deleted from the system.
      **/
     public Optional<Long[]> getVolumeAccessGroupIDs() { return this.volumeAccessGroupIDs; }
+   
     public void setVolumeAccessGroupIDs(Optional<Long[]> volumeAccessGroupIDs) { 
         this.volumeAccessGroupIDs = (volumeAccessGroupIDs == null) ? Optional.<Long[]>empty() : volumeAccessGroupIDs;
     }
@@ -92,6 +95,7 @@ public class DeleteVolumesRequest implements Serializable {
      * The list of IDs of the volumes to delete from the system.
      **/
     public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
+   
     public void setVolumeIDs(Optional<Long[]> volumeIDs) { 
         this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
     }
@@ -126,16 +130,26 @@ public class DeleteVolumesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != accountIDs && accountIDs.isPresent()){
-            sb.append(" accountIDs : ").append(accountIDs).append(",");
+            sb.append(" accountIDs : ").append(gson.toJson(accountIDs)).append(",");
+        }
+        else{
+            sb.append(" accountIDs : ").append("null").append(",");
         }
         if(null != volumeAccessGroupIDs && volumeAccessGroupIDs.isPresent()){
-            sb.append(" volumeAccessGroupIDs : ").append(volumeAccessGroupIDs).append(",");
+            sb.append(" volumeAccessGroupIDs : ").append(gson.toJson(volumeAccessGroupIDs)).append(",");
+        }
+        else{
+            sb.append(" volumeAccessGroupIDs : ").append("null").append(",");
         }
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
+            sb.append(" volumeIDs : ").append(gson.toJson(volumeIDs)).append(",");
+        }
+        else{
+            sb.append(" volumeIDs : ").append("null").append(",");
         }
         sb.append( " }" );
 

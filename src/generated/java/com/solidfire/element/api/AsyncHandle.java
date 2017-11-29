@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class AsyncHandle implements Serializable {
 
-    public static final long serialVersionUID = 8645144693000386765L;
+    public static final long serialVersionUID = 6742944263515331189L;
     @SerializedName("asyncResultID") private Long asyncResultID;
     @SerializedName("completed") private Boolean completed;
     @SerializedName("createTime") private String createTime;
@@ -71,6 +72,7 @@ public class AsyncHandle implements Serializable {
      * The ID of the result.
      **/
     public Long getAsyncResultID() { return this.asyncResultID; }
+   
     public void setAsyncResultID(Long asyncResultID) { 
         this.asyncResultID = asyncResultID;
     }
@@ -78,6 +80,7 @@ public class AsyncHandle implements Serializable {
      * Returns true if it is completed and false if it isn't.
      **/
     public Boolean getCompleted() { return this.completed; }
+   
     public void setCompleted(Boolean completed) { 
         this.completed = completed;
     }
@@ -85,6 +88,7 @@ public class AsyncHandle implements Serializable {
      * The time at which the asyncronous result was created
      **/
     public String getCreateTime() { return this.createTime; }
+   
     public void setCreateTime(String createTime) { 
         this.createTime = createTime;
     }
@@ -92,6 +96,7 @@ public class AsyncHandle implements Serializable {
      * Time at which the result was last updated
      **/
     public String getLastUpdateTime() { return this.lastUpdateTime; }
+   
     public void setLastUpdateTime(String lastUpdateTime) { 
         this.lastUpdateTime = lastUpdateTime;
     }
@@ -99,6 +104,7 @@ public class AsyncHandle implements Serializable {
      * The type of result. Could be Clone, DriveAdd, etc.
      **/
     public String getResultType() { return this.resultType; }
+   
     public void setResultType(String resultType) { 
         this.resultType = resultType;
     }
@@ -106,6 +112,7 @@ public class AsyncHandle implements Serializable {
      * Returns whether the result was a success or failure.
      **/
     public Boolean getSuccess() { return this.success; }
+   
     public void setSuccess(Boolean success) { 
         this.success = success;
     }
@@ -113,6 +120,7 @@ public class AsyncHandle implements Serializable {
      * Attributes related to the result
      **/
     public Attributes getData() { return this.data; }
+   
     public void setData(Attributes data) { 
         this.data = data;
     }
@@ -155,15 +163,16 @@ public class AsyncHandle implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" asyncResultID : ").append(asyncResultID).append(",");
-        sb.append(" completed : ").append(completed).append(",");
-        sb.append(" createTime : ").append(createTime).append(",");
-        sb.append(" lastUpdateTime : ").append(lastUpdateTime).append(",");
-        sb.append(" resultType : ").append(resultType).append(",");
-        sb.append(" success : ").append(success).append(",");
-        sb.append(" data : ").append(data).append(",");
+        sb.append(" asyncResultID : ").append(gson.toJson(asyncResultID)).append(",");
+        sb.append(" completed : ").append(gson.toJson(completed)).append(",");
+        sb.append(" createTime : ").append(gson.toJson(createTime)).append(",");
+        sb.append(" lastUpdateTime : ").append(gson.toJson(lastUpdateTime)).append(",");
+        sb.append(" resultType : ").append(gson.toJson(resultType)).append(",");
+        sb.append(" success : ").append(gson.toJson(success)).append(",");
+        sb.append(" data : ").append(gson.toJson(data)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetIpmiInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 4978583129310588614L;
+    public static final long serialVersionUID = 1403269724168093299L;
     @SerializedName("nodes") private GetIpmiInfoNodesResult[] nodes;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class GetIpmiInfoResult implements Serializable {
      * Detailed information from each sensor within a node. 
      **/
     public GetIpmiInfoNodesResult[] getNodes() { return this.nodes; }
+   
     public void setNodes(GetIpmiInfoNodesResult[] nodes) { 
         this.nodes = nodes;
     }
@@ -83,9 +85,10 @@ public class GetIpmiInfoResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

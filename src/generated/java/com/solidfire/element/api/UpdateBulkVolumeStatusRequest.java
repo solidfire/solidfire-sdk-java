@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class UpdateBulkVolumeStatusRequest implements Serializable {
 
-    public static final long serialVersionUID = 1031291000391983635L;
+    public static final long serialVersionUID = -2248308967637649647L;
     @SerializedName("key") private String key;
     @SerializedName("status") private String status;
     @SerializedName("percentComplete") private Optional<String> percentComplete;
@@ -68,6 +69,7 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
      * StartBulkVolumeRead or StartBulkVolumeWrite session.
      **/
     public String getKey() { return this.key; }
+   
     public void setKey(String key) { 
         this.key = key;
     }
@@ -78,6 +80,7 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
      * failed: Jobs that failed.
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -86,6 +89,7 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
      * percentage value.
      **/
     public Optional<String> getPercentComplete() { return this.percentComplete; }
+   
     public void setPercentComplete(Optional<String> percentComplete) { 
         this.percentComplete = (percentComplete == null) ? Optional.<String>empty() : percentComplete;
     }
@@ -93,6 +97,7 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
      * The message returned indicating the status of the bulk volume job after the job is complete.
      **/
     public Optional<String> getMessage() { return this.message; }
+   
     public void setMessage(Optional<String> message) { 
         this.message = (message == null) ? Optional.<String>empty() : message;
     }
@@ -100,6 +105,7 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
      * JSON attributes; updates what is on the bulk volume job.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -138,18 +144,28 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" key : ").append(key).append(",");
-        sb.append(" status : ").append(status).append(",");
+        sb.append(" key : ").append(gson.toJson(key)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
         if(null != percentComplete && percentComplete.isPresent()){
-            sb.append(" percentComplete : ").append(percentComplete).append(",");
+            sb.append(" percentComplete : ").append(gson.toJson(percentComplete)).append(",");
+        }
+        else{
+            sb.append(" percentComplete : ").append("null").append(",");
         }
         if(null != message && message.isPresent()){
-            sb.append(" message : ").append(message).append(",");
+            sb.append(" message : ").append(gson.toJson(message)).append(",");
+        }
+        else{
+            sb.append(" message : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

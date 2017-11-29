@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -40,7 +41,7 @@ import java.util.Objects;
 
 public class ModifyVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = -8942706855853927498L;
+    public static final long serialVersionUID = 9179598987773624731L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
     @SerializedName("name") private Optional<String> name;
@@ -108,6 +109,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
      * with this API method.
      **/
     public Optional<Long> getVirtualNetworkID() { return this.virtualNetworkID; }
+   
     public void setVirtualNetworkID(Optional<Long> virtualNetworkID) { 
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
     }
@@ -118,6 +120,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
      * with this API method.
      **/
     public Optional<Long> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+   
     public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) { 
         this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
     }
@@ -125,6 +128,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
      * The new name for the virtual network.
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
@@ -140,6 +144,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
      * size: The number of IP addresses to include in the block. (Integer)
      **/
     public Optional<AddressBlockParams[]> getAddressBlocks() { return this.addressBlocks; }
+   
     public void setAddressBlocks(Optional<AddressBlockParams[]> addressBlocks) { 
         this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlockParams[]>empty() : addressBlocks;
     }
@@ -147,6 +152,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
      * New network mask for this virtual network.
      **/
     public Optional<String> getNetmask() { return this.netmask; }
+   
     public void setNetmask(Optional<String> netmask) { 
         this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
     }
@@ -156,6 +162,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
      * network to use a different svip address.
      **/
     public Optional<String> getSvip() { return this.svip; }
+   
     public void setSvip(Optional<String> svip) { 
         this.svip = (svip == null) ? Optional.<String>empty() : svip;
     }
@@ -163,6 +170,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
      * The IP address of a gateway of the virtual network. This parameter is only valid if the "namespace" parameter is set to true.
      **/
     public Optional<String> getGateway() { return this.gateway; }
+   
     public void setGateway(Optional<String> gateway) { 
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
     }
@@ -170,6 +178,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
      * When set to true, enables Routable Storage VLANs functionality by recreating the virtual network and configuring a namespace to contain it. When set to false, disables the VRF functionality for the virtual network. Changing this value disrupts traffic running through this virtual network.
      **/
     public Optional<Boolean> getNamespace() { return this.namespace; }
+   
     public void setNamespace(Optional<Boolean> namespace) { 
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
@@ -177,6 +186,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
      * A new list of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -223,34 +233,62 @@ public class ModifyVirtualNetworkRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+            sb.append(" virtualNetworkID : ").append(gson.toJson(virtualNetworkID)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkID : ").append("null").append(",");
         }
         if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
-            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+            sb.append(" virtualNetworkTag : ").append(gson.toJson(virtualNetworkTag)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkTag : ").append("null").append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != addressBlocks && addressBlocks.isPresent()){
-            sb.append(" addressBlocks : ").append(addressBlocks).append(",");
+            sb.append(" addressBlocks : ").append(gson.toJson(addressBlocks)).append(",");
+        }
+        else{
+            sb.append(" addressBlocks : ").append("null").append(",");
         }
         if(null != netmask && netmask.isPresent()){
-            sb.append(" netmask : ").append(netmask).append(",");
+            sb.append(" netmask : ").append(gson.toJson(netmask)).append(",");
+        }
+        else{
+            sb.append(" netmask : ").append("null").append(",");
         }
         if(null != svip && svip.isPresent()){
-            sb.append(" svip : ").append(svip).append(",");
+            sb.append(" svip : ").append(gson.toJson(svip)).append(",");
+        }
+        else{
+            sb.append(" svip : ").append("null").append(",");
         }
         if(null != gateway && gateway.isPresent()){
-            sb.append(" gateway : ").append(gateway).append(",");
+            sb.append(" gateway : ").append(gson.toJson(gateway)).append(",");
+        }
+        else{
+            sb.append(" gateway : ").append("null").append(",");
         }
         if(null != namespace && namespace.isPresent()){
-            sb.append(" namespace : ").append(namespace).append(",");
+            sb.append(" namespace : ").append(gson.toJson(namespace)).append(",");
+        }
+        else{
+            sb.append(" namespace : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

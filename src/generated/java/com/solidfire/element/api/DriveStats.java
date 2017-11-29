@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class DriveStats implements Serializable {
 
-    public static final long serialVersionUID = 8568246481678941404L;
+    public static final long serialVersionUID = 215354036034394227L;
     @SerializedName("activeSessions") private Optional<Long> activeSessions;
     @SerializedName("driveID") private Optional<Long> driveID;
     @SerializedName("failedDieCount") private Long failedDieCount;
@@ -101,6 +102,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Optional<Long> getActiveSessions() { return this.activeSessions; }
+   
     public void setActiveSessions(Optional<Long> activeSessions) { 
         this.activeSessions = (activeSessions == null) ? Optional.<Long>empty() : activeSessions;
     }
@@ -108,6 +110,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Optional<Long> getDriveID() { return this.driveID; }
+   
     public void setDriveID(Optional<Long> driveID) { 
         this.driveID = (driveID == null) ? Optional.<Long>empty() : driveID;
     }
@@ -115,6 +118,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getFailedDieCount() { return this.failedDieCount; }
+   
     public void setFailedDieCount(Long failedDieCount) { 
         this.failedDieCount = failedDieCount;
     }
@@ -122,6 +126,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getLifeRemainingPercent() { return this.lifeRemainingPercent; }
+   
     public void setLifeRemainingPercent(Long lifeRemainingPercent) { 
         this.lifeRemainingPercent = lifeRemainingPercent;
     }
@@ -129,6 +134,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getLifetimeReadBytes() { return this.lifetimeReadBytes; }
+   
     public void setLifetimeReadBytes(Long lifetimeReadBytes) { 
         this.lifetimeReadBytes = lifetimeReadBytes;
     }
@@ -136,6 +142,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getLifetimeWriteBytes() { return this.lifetimeWriteBytes; }
+   
     public void setLifetimeWriteBytes(Long lifetimeWriteBytes) { 
         this.lifetimeWriteBytes = lifetimeWriteBytes;
     }
@@ -143,6 +150,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getPowerOnHours() { return this.powerOnHours; }
+   
     public void setPowerOnHours(Long powerOnHours) { 
         this.powerOnHours = powerOnHours;
     }
@@ -150,6 +158,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getReadBytes() { return this.readBytes; }
+   
     public void setReadBytes(Long readBytes) { 
         this.readBytes = readBytes;
     }
@@ -157,6 +166,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getReadOps() { return this.readOps; }
+   
     public void setReadOps(Long readOps) { 
         this.readOps = readOps;
     }
@@ -164,6 +174,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getReallocatedSectors() { return this.reallocatedSectors; }
+   
     public void setReallocatedSectors(Long reallocatedSectors) { 
         this.reallocatedSectors = reallocatedSectors;
     }
@@ -171,6 +182,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getReserveCapacityPercent() { return this.reserveCapacityPercent; }
+   
     public void setReserveCapacityPercent(Long reserveCapacityPercent) { 
         this.reserveCapacityPercent = reserveCapacityPercent;
     }
@@ -178,6 +190,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public String getTimestamp() { return this.timestamp; }
+   
     public void setTimestamp(String timestamp) { 
         this.timestamp = timestamp;
     }
@@ -185,6 +198,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getTotalCapacity() { return this.totalCapacity; }
+   
     public void setTotalCapacity(Long totalCapacity) { 
         this.totalCapacity = totalCapacity;
     }
@@ -192,6 +206,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Optional<Long> getUsedCapacity() { return this.usedCapacity; }
+   
     public void setUsedCapacity(Optional<Long> usedCapacity) { 
         this.usedCapacity = (usedCapacity == null) ? Optional.<Long>empty() : usedCapacity;
     }
@@ -199,6 +214,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getUsedMemory() { return this.usedMemory; }
+   
     public void setUsedMemory(Long usedMemory) { 
         this.usedMemory = usedMemory;
     }
@@ -206,6 +222,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getWriteBytes() { return this.writeBytes; }
+   
     public void setWriteBytes(Long writeBytes) { 
         this.writeBytes = writeBytes;
     }
@@ -213,6 +230,7 @@ public class DriveStats implements Serializable {
      * 
      **/
     public Long getWriteOps() { return this.writeOps; }
+   
     public void setWriteOps(Long writeOps) { 
         this.writeOps = writeOps;
     }
@@ -275,31 +293,41 @@ public class DriveStats implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != activeSessions && activeSessions.isPresent()){
-            sb.append(" activeSessions : ").append(activeSessions).append(",");
+            sb.append(" activeSessions : ").append(gson.toJson(activeSessions)).append(",");
+        }
+        else{
+            sb.append(" activeSessions : ").append("null").append(",");
         }
         if(null != driveID && driveID.isPresent()){
-            sb.append(" driveID : ").append(driveID).append(",");
+            sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
         }
-        sb.append(" failedDieCount : ").append(failedDieCount).append(",");
-        sb.append(" lifeRemainingPercent : ").append(lifeRemainingPercent).append(",");
-        sb.append(" lifetimeReadBytes : ").append(lifetimeReadBytes).append(",");
-        sb.append(" lifetimeWriteBytes : ").append(lifetimeWriteBytes).append(",");
-        sb.append(" powerOnHours : ").append(powerOnHours).append(",");
-        sb.append(" readBytes : ").append(readBytes).append(",");
-        sb.append(" readOps : ").append(readOps).append(",");
-        sb.append(" reallocatedSectors : ").append(reallocatedSectors).append(",");
-        sb.append(" reserveCapacityPercent : ").append(reserveCapacityPercent).append(",");
-        sb.append(" timestamp : ").append(timestamp).append(",");
-        sb.append(" totalCapacity : ").append(totalCapacity).append(",");
+        else{
+            sb.append(" driveID : ").append("null").append(",");
+        }
+        sb.append(" failedDieCount : ").append(gson.toJson(failedDieCount)).append(",");
+        sb.append(" lifeRemainingPercent : ").append(gson.toJson(lifeRemainingPercent)).append(",");
+        sb.append(" lifetimeReadBytes : ").append(gson.toJson(lifetimeReadBytes)).append(",");
+        sb.append(" lifetimeWriteBytes : ").append(gson.toJson(lifetimeWriteBytes)).append(",");
+        sb.append(" powerOnHours : ").append(gson.toJson(powerOnHours)).append(",");
+        sb.append(" readBytes : ").append(gson.toJson(readBytes)).append(",");
+        sb.append(" readOps : ").append(gson.toJson(readOps)).append(",");
+        sb.append(" reallocatedSectors : ").append(gson.toJson(reallocatedSectors)).append(",");
+        sb.append(" reserveCapacityPercent : ").append(gson.toJson(reserveCapacityPercent)).append(",");
+        sb.append(" timestamp : ").append(gson.toJson(timestamp)).append(",");
+        sb.append(" totalCapacity : ").append(gson.toJson(totalCapacity)).append(",");
         if(null != usedCapacity && usedCapacity.isPresent()){
-            sb.append(" usedCapacity : ").append(usedCapacity).append(",");
+            sb.append(" usedCapacity : ").append(gson.toJson(usedCapacity)).append(",");
         }
-        sb.append(" usedMemory : ").append(usedMemory).append(",");
-        sb.append(" writeBytes : ").append(writeBytes).append(",");
-        sb.append(" writeOps : ").append(writeOps).append(",");
+        else{
+            sb.append(" usedCapacity : ").append("null").append(",");
+        }
+        sb.append(" usedMemory : ").append(gson.toJson(usedMemory)).append(",");
+        sb.append(" writeBytes : ").append(gson.toJson(writeBytes)).append(",");
+        sb.append(" writeOps : ").append(gson.toJson(writeOps)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

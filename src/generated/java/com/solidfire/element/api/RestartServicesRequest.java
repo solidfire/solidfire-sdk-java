@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class RestartServicesRequest implements Serializable {
 
-    public static final long serialVersionUID = 3698049384203964150L;
+    public static final long serialVersionUID = 1720460094482035026L;
     @SerializedName("force") private Boolean force;
     @SerializedName("service") private Optional<String> service;
     @SerializedName("action") private Optional<String> action;
@@ -62,6 +63,7 @@ public class RestartServicesRequest implements Serializable {
      * Required parameter to successfully restart services on a node.
      **/
     public Boolean getForce() { return this.force; }
+   
     public void setForce(Boolean force) { 
         this.force = force;
     }
@@ -69,6 +71,7 @@ public class RestartServicesRequest implements Serializable {
      * Service name to be restarted.
      **/
     public Optional<String> getService() { return this.service; }
+   
     public void setService(Optional<String> service) { 
         this.service = (service == null) ? Optional.<String>empty() : service;
     }
@@ -76,6 +79,7 @@ public class RestartServicesRequest implements Serializable {
      * Action to perform on the service (start, stop, restart).
      **/
     public Optional<String> getAction() { return this.action; }
+   
     public void setAction(Optional<String> action) { 
         this.action = (action == null) ? Optional.<String>empty() : action;
     }
@@ -110,14 +114,21 @@ public class RestartServicesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" force : ").append(force).append(",");
+        sb.append(" force : ").append(gson.toJson(force)).append(",");
         if(null != service && service.isPresent()){
-            sb.append(" service : ").append(service).append(",");
+            sb.append(" service : ").append(gson.toJson(service)).append(",");
+        }
+        else{
+            sb.append(" service : ").append("null").append(",");
         }
         if(null != action && action.isPresent()){
-            sb.append(" action : ").append(action).append(",");
+            sb.append(" action : ").append(gson.toJson(action)).append(",");
+        }
+        else{
+            sb.append(" action : ").append("null").append(",");
         }
         sb.append( " }" );
 

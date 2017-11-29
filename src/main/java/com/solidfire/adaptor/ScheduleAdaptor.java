@@ -79,7 +79,7 @@ public class ScheduleAdaptor {
             throw new ApiException("Invalid Request. Request or Schedule is null or missing.");
 
         }
-        if (request.getSchedule().getScheduleID().isPresent()) {
+        if (request.getSchedule().getScheduleID() != null && request.getSchedule().getScheduleID().isPresent()) {
             throw new ApiException("ScheduleID should not be present. Do not specify ScheduleID when creating a Schedule. One will be assigned upon creation.");
         }
 

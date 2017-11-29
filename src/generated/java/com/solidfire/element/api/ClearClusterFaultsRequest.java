@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class ClearClusterFaultsRequest implements Serializable {
 
-    public static final long serialVersionUID = -7716965852364914538L;
+    public static final long serialVersionUID = 8304045543083765534L;
     @SerializedName("faultTypes") private Optional<String> faultTypes;
     // empty constructor
     @Since("7.0")
@@ -62,6 +63,7 @@ public class ClearClusterFaultsRequest implements Serializable {
      * the fault object.
      **/
     public Optional<String> getFaultTypes() { return this.faultTypes; }
+   
     public void setFaultTypes(Optional<String> faultTypes) { 
         this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : faultTypes;
     }
@@ -92,10 +94,14 @@ public class ClearClusterFaultsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != faultTypes && faultTypes.isPresent()){
-            sb.append(" faultTypes : ").append(faultTypes).append(",");
+            sb.append(" faultTypes : ").append(gson.toJson(faultTypes)).append(",");
+        }
+        else{
+            sb.append(" faultTypes : ").append("null").append(",");
         }
         sb.append( " }" );
 

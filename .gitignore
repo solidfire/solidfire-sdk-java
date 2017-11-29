@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-*.iml
-.idea/
-_site
-.sass-cache
-.git/
-target/
-project/
-
-=======
 *~
 :*.swp
 *.orig
@@ -27,4 +17,3 @@ target
 .history
 
 .DS_Store
->>>>>>> release1.2

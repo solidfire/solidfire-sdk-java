@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ListBulkVolumeJobsResult implements Serializable {
 
-    public static final long serialVersionUID = -4651722099837779259L;
+    public static final long serialVersionUID = 7680581996036886373L;
     @SerializedName("bulkVolumeJobs") private BulkVolumeJob[] bulkVolumeJobs;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class ListBulkVolumeJobsResult implements Serializable {
      * An array of information for each bulk volume job.
      **/
     public BulkVolumeJob[] getBulkVolumeJobs() { return this.bulkVolumeJobs; }
+   
     public void setBulkVolumeJobs(BulkVolumeJob[] bulkVolumeJobs) { 
         this.bulkVolumeJobs = bulkVolumeJobs;
     }
@@ -83,9 +85,10 @@ public class ListBulkVolumeJobsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" bulkVolumeJobs : ").append(Arrays.toString(bulkVolumeJobs)).append(",");
+        sb.append(" bulkVolumeJobs : ").append(gson.toJson(Arrays.toString(bulkVolumeJobs))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

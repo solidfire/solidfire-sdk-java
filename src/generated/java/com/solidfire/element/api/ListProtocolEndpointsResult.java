@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ListProtocolEndpointsResult implements Serializable {
 
-    public static final long serialVersionUID = 2902859808167843132L;
+    public static final long serialVersionUID = -170373092149743734L;
     @SerializedName("protocolEndpoints") private ProtocolEndpoint[] protocolEndpoints;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class ListProtocolEndpointsResult implements Serializable {
      * 
      **/
     public ProtocolEndpoint[] getProtocolEndpoints() { return this.protocolEndpoints; }
+   
     public void setProtocolEndpoints(ProtocolEndpoint[] protocolEndpoints) { 
         this.protocolEndpoints = protocolEndpoints;
     }
@@ -83,9 +85,10 @@ public class ListProtocolEndpointsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" protocolEndpoints : ").append(Arrays.toString(protocolEndpoints)).append(",");
+        sb.append(" protocolEndpoints : ").append(gson.toJson(Arrays.toString(protocolEndpoints))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

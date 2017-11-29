@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetBootstrapConfigResult implements Serializable {
 
-    public static final long serialVersionUID = -6356786835919052454L;
+    public static final long serialVersionUID = 7635078735348945319L;
     @SerializedName("clusterName") private String clusterName;
     @SerializedName("nodeName") private String nodeName;
     @SerializedName("nodes") private NodeWaitingToJoin[] nodes;
@@ -62,6 +63,7 @@ public class GetBootstrapConfigResult implements Serializable {
      * Name of the cluster.
      **/
     public String getClusterName() { return this.clusterName; }
+   
     public void setClusterName(String clusterName) { 
         this.clusterName = clusterName;
     }
@@ -69,6 +71,7 @@ public class GetBootstrapConfigResult implements Serializable {
      * Name of the node.
      **/
     public String getNodeName() { return this.nodeName; }
+   
     public void setNodeName(String nodeName) { 
         this.nodeName = nodeName;
     }
@@ -76,6 +79,7 @@ public class GetBootstrapConfigResult implements Serializable {
      * List of descriptions for each node that is actively waiting to join this cluster: compatible - Indicates if the listed node is compatible with the node the API call was executed against. name - IP address of each node. version - version of SolidFire Element software currently installed on the node.
      **/
     public NodeWaitingToJoin[] getNodes() { return this.nodes; }
+   
     public void setNodes(NodeWaitingToJoin[] nodes) { 
         this.nodes = nodes;
     }
@@ -83,6 +87,7 @@ public class GetBootstrapConfigResult implements Serializable {
      * Version of the SolidFire Element software currently installed.
      **/
     public String getVersion() { return this.version; }
+   
     public void setVersion(String version) { 
         this.version = version;
     }
@@ -119,12 +124,13 @@ public class GetBootstrapConfigResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterName : ").append(clusterName).append(",");
-        sb.append(" nodeName : ").append(nodeName).append(",");
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
-        sb.append(" version : ").append(version).append(",");
+        sb.append(" clusterName : ").append(gson.toJson(clusterName)).append(",");
+        sb.append(" nodeName : ").append(gson.toJson(nodeName)).append(",");
+        sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
+        sb.append(" version : ").append(gson.toJson(version)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class ListAsyncResultsRequest implements Serializable {
 
-    public static final long serialVersionUID = 174631595997196829L;
+    public static final long serialVersionUID = 7953440856454813158L;
     @SerializedName("asyncResultTypes") private Optional<String[]> asyncResultTypes;
     // empty constructor
     @Since("7.0")
@@ -64,6 +65,7 @@ public class ListAsyncResultsRequest implements Serializable {
      * compatible software on a node before adding it to the cluster
      **/
     public Optional<String[]> getAsyncResultTypes() { return this.asyncResultTypes; }
+   
     public void setAsyncResultTypes(Optional<String[]> asyncResultTypes) { 
         this.asyncResultTypes = (asyncResultTypes == null) ? Optional.<String[]>empty() : asyncResultTypes;
     }
@@ -94,10 +96,14 @@ public class ListAsyncResultsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != asyncResultTypes && asyncResultTypes.isPresent()){
-            sb.append(" asyncResultTypes : ").append(asyncResultTypes).append(",");
+            sb.append(" asyncResultTypes : ").append(gson.toJson(asyncResultTypes)).append(",");
+        }
+        else{
+            sb.append(" asyncResultTypes : ").append("null").append(",");
         }
         sb.append( " }" );
 

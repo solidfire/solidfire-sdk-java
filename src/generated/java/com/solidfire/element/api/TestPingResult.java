@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class TestPingResult implements Serializable {
 
-    public static final long serialVersionUID = -5451473072591964473L;
+    public static final long serialVersionUID = -5573014009870116151L;
     @SerializedName("result") private String result;
     @SerializedName("duration") private String duration;
     @SerializedName("details") private Attributes details;
@@ -59,6 +60,7 @@ public class TestPingResult implements Serializable {
      * Result of the ping test.
      **/
     public String getResult() { return this.result; }
+   
     public void setResult(String result) { 
         this.result = result;
     }
@@ -66,6 +68,7 @@ public class TestPingResult implements Serializable {
      * The total duration of the ping test.
      **/
     public String getDuration() { return this.duration; }
+   
     public void setDuration(String duration) { 
         this.duration = duration;
     }
@@ -73,6 +76,7 @@ public class TestPingResult implements Serializable {
      * List of each IP the node was able to communicate with.
      **/
     public Attributes getDetails() { return this.details; }
+   
     public void setDetails(Attributes details) { 
         this.details = details;
     }
@@ -107,11 +111,12 @@ public class TestPingResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" result : ").append(result).append(",");
-        sb.append(" duration : ").append(duration).append(",");
-        sb.append(" details : ").append(details).append(",");
+        sb.append(" result : ").append(gson.toJson(result)).append(",");
+        sb.append(" duration : ").append(gson.toJson(duration)).append(",");
+        sb.append(" details : ").append(gson.toJson(details)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

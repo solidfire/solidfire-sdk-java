@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class VirtualVolumeBinding implements Serializable {
 
-    public static final long serialVersionUID = 4771220520397997451L;
+    public static final long serialVersionUID = 7502598809220693698L;
     @SerializedName("protocolEndpointID") private java.util.UUID protocolEndpointID;
     @SerializedName("protocolEndpointInBandID") private String protocolEndpointInBandID;
     @SerializedName("protocolEndpointType") private String protocolEndpointType;
@@ -71,6 +72,7 @@ public class VirtualVolumeBinding implements Serializable {
      * The unique ID of the protocol endpoint.
      **/
     public java.util.UUID getProtocolEndpointID() { return this.protocolEndpointID; }
+   
     public void setProtocolEndpointID(java.util.UUID protocolEndpointID) { 
         this.protocolEndpointID = protocolEndpointID;
     }
@@ -78,6 +80,7 @@ public class VirtualVolumeBinding implements Serializable {
      * The scsiNAADeviceID of the protocol endpoint. For more information, see protocolEndpoint.
      **/
     public String getProtocolEndpointInBandID() { return this.protocolEndpointInBandID; }
+   
     public void setProtocolEndpointInBandID(String protocolEndpointInBandID) { 
         this.protocolEndpointInBandID = protocolEndpointInBandID;
     }
@@ -85,6 +88,7 @@ public class VirtualVolumeBinding implements Serializable {
      * The type of protocol endpoint. SCSI is the only value returned for the protocol endpoint type.
      **/
     public String getProtocolEndpointType() { return this.protocolEndpointType; }
+   
     public void setProtocolEndpointType(String protocolEndpointType) { 
         this.protocolEndpointType = protocolEndpointType;
     }
@@ -92,6 +96,7 @@ public class VirtualVolumeBinding implements Serializable {
      * The unique ID of the virtual volume binding object.
      **/
     public Long getVirtualVolumeBindingID() { return this.virtualVolumeBindingID; }
+   
     public void setVirtualVolumeBindingID(Long virtualVolumeBindingID) { 
         this.virtualVolumeBindingID = virtualVolumeBindingID;
     }
@@ -99,6 +104,7 @@ public class VirtualVolumeBinding implements Serializable {
      * The unique ID of the virtual volume host.
      **/
     public java.util.UUID getVirtualVolumeHostID() { return this.virtualVolumeHostID; }
+   
     public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) { 
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
@@ -106,6 +112,7 @@ public class VirtualVolumeBinding implements Serializable {
      * The unique ID of the virtual volume.
      **/
     public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
+   
     public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
         this.virtualVolumeID = virtualVolumeID;
     }
@@ -113,6 +120,7 @@ public class VirtualVolumeBinding implements Serializable {
      * The secondary ID of the virtual volume.
      **/
     public String getVirtualVolumeSecondaryID() { return this.virtualVolumeSecondaryID; }
+   
     public void setVirtualVolumeSecondaryID(String virtualVolumeSecondaryID) { 
         this.virtualVolumeSecondaryID = virtualVolumeSecondaryID;
     }
@@ -155,15 +163,16 @@ public class VirtualVolumeBinding implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" protocolEndpointID : ").append(protocolEndpointID).append(",");
-        sb.append(" protocolEndpointInBandID : ").append(protocolEndpointInBandID).append(",");
-        sb.append(" protocolEndpointType : ").append(protocolEndpointType).append(",");
-        sb.append(" virtualVolumeBindingID : ").append(virtualVolumeBindingID).append(",");
-        sb.append(" virtualVolumeHostID : ").append(virtualVolumeHostID).append(",");
-        sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
-        sb.append(" virtualVolumeSecondaryID : ").append(virtualVolumeSecondaryID).append(",");
+        sb.append(" protocolEndpointID : ").append(gson.toJson(protocolEndpointID)).append(",");
+        sb.append(" protocolEndpointInBandID : ").append(gson.toJson(protocolEndpointInBandID)).append(",");
+        sb.append(" protocolEndpointType : ").append(gson.toJson(protocolEndpointType)).append(",");
+        sb.append(" virtualVolumeBindingID : ").append(gson.toJson(virtualVolumeBindingID)).append(",");
+        sb.append(" virtualVolumeHostID : ").append(gson.toJson(virtualVolumeHostID)).append(",");
+        sb.append(" virtualVolumeID : ").append(gson.toJson(virtualVolumeID)).append(",");
+        sb.append(" virtualVolumeSecondaryID : ").append(gson.toJson(virtualVolumeSecondaryID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

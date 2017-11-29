@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class CreateScheduleResult implements Serializable {
 
-    public static final long serialVersionUID = 8157387723705334288L;
+    public static final long serialVersionUID = 216274166291004236L;
     @SerializedName("scheduleID") private Long scheduleID;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class CreateScheduleResult implements Serializable {
      * 
      **/
     public Long getScheduleID() { return this.scheduleID; }
+   
     public void setScheduleID(Long scheduleID) { 
         this.scheduleID = scheduleID;
     }
@@ -83,9 +85,10 @@ public class CreateScheduleResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" scheduleID : ").append(scheduleID).append(",");
+        sb.append(" scheduleID : ").append(gson.toJson(scheduleID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

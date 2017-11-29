@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,13 +34,15 @@ import java.util.Objects;
 
 public class Network implements Serializable {
 
-    public static final long serialVersionUID = 2082631917591370748L;
+    public static final long serialVersionUID = 8968856628286036613L;
     @SerializedName("Bond10G") private Optional<NetworkConfig> bond10G;
     @SerializedName("Bond1G") private Optional<NetworkConfig> bond1G;
     @SerializedName("eth0") private Optional<NetworkConfig> eth0;
     @SerializedName("eth1") private Optional<NetworkConfig> eth1;
     @SerializedName("eth2") private Optional<NetworkConfig> eth2;
     @SerializedName("eth3") private Optional<NetworkConfig> eth3;
+    @SerializedName("eth4") private Optional<NetworkConfig> eth4;
+    @SerializedName("eth5") private Optional<NetworkConfig> eth5;
     @SerializedName("lo") private Optional<NetworkConfig> lo;
     // empty constructor
     @Since("7.0")
@@ -55,6 +58,8 @@ public class Network implements Serializable {
         Optional<NetworkConfig> eth1,
         Optional<NetworkConfig> eth2,
         Optional<NetworkConfig> eth3,
+        Optional<NetworkConfig> eth4,
+        Optional<NetworkConfig> eth5,
         Optional<NetworkConfig> lo
     )
     {
@@ -64,6 +69,8 @@ public class Network implements Serializable {
         this.eth1 = (eth1 == null) ? Optional.<NetworkConfig>empty() : eth1;
         this.eth2 = (eth2 == null) ? Optional.<NetworkConfig>empty() : eth2;
         this.eth3 = (eth3 == null) ? Optional.<NetworkConfig>empty() : eth3;
+        this.eth4 = (eth4 == null) ? Optional.<NetworkConfig>empty() : eth4;
+        this.eth5 = (eth5 == null) ? Optional.<NetworkConfig>empty() : eth5;
         this.lo = (lo == null) ? Optional.<NetworkConfig>empty() : lo;
     }
 
@@ -71,6 +78,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getBond10G() { return this.bond10G; }
+   
     public void setBond10G(Optional<NetworkConfig> bond10G) { 
         this.bond10G = (bond10G == null) ? Optional.<NetworkConfig>empty() : bond10G;
     }
@@ -78,6 +86,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getBond1G() { return this.bond1G; }
+   
     public void setBond1G(Optional<NetworkConfig> bond1G) { 
         this.bond1G = (bond1G == null) ? Optional.<NetworkConfig>empty() : bond1G;
     }
@@ -85,6 +94,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getEth0() { return this.eth0; }
+   
     public void setEth0(Optional<NetworkConfig> eth0) { 
         this.eth0 = (eth0 == null) ? Optional.<NetworkConfig>empty() : eth0;
     }
@@ -92,6 +102,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getEth1() { return this.eth1; }
+   
     public void setEth1(Optional<NetworkConfig> eth1) { 
         this.eth1 = (eth1 == null) ? Optional.<NetworkConfig>empty() : eth1;
     }
@@ -99,6 +110,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getEth2() { return this.eth2; }
+   
     public void setEth2(Optional<NetworkConfig> eth2) { 
         this.eth2 = (eth2 == null) ? Optional.<NetworkConfig>empty() : eth2;
     }
@@ -106,13 +118,31 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getEth3() { return this.eth3; }
+   
     public void setEth3(Optional<NetworkConfig> eth3) { 
         this.eth3 = (eth3 == null) ? Optional.<NetworkConfig>empty() : eth3;
     }
     /** 
      * 
      **/
+    public Optional<NetworkConfig> getEth4() { return this.eth4; }
+   
+    public void setEth4(Optional<NetworkConfig> eth4) { 
+        this.eth4 = (eth4 == null) ? Optional.<NetworkConfig>empty() : eth4;
+    }
+    /** 
+     * 
+     **/
+    public Optional<NetworkConfig> getEth5() { return this.eth5; }
+   
+    public void setEth5(Optional<NetworkConfig> eth5) { 
+        this.eth5 = (eth5 == null) ? Optional.<NetworkConfig>empty() : eth5;
+    }
+    /** 
+     * 
+     **/
     public Optional<NetworkConfig> getLo() { return this.lo; }
+   
     public void setLo(Optional<NetworkConfig> lo) { 
         this.lo = (lo == null) ? Optional.<NetworkConfig>empty() : lo;
     }
@@ -131,12 +161,14 @@ public class Network implements Serializable {
             Objects.equals(eth1, that.eth1) && 
             Objects.equals(eth2, that.eth2) && 
             Objects.equals(eth3, that.eth3) && 
+            Objects.equals(eth4, that.eth4) && 
+            Objects.equals(eth5, that.eth5) && 
             Objects.equals(lo, that.lo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( bond10G,bond1G,eth0,eth1,eth2,eth3,lo );
+        return Objects.hash( bond10G,bond1G,eth0,eth1,eth2,eth3,eth4,eth5,lo );
     }
 
 
@@ -148,6 +180,8 @@ public class Network implements Serializable {
         map.put("eth1", eth1);
         map.put("eth2", eth2);
         map.put("eth3", eth3);
+        map.put("eth4", eth4);
+        map.put("eth5", eth5);
         map.put("lo", lo);
         return map;
     }
@@ -155,28 +189,62 @@ public class Network implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != bond10G && bond10G.isPresent()){
-            sb.append(" bond10G : ").append(bond10G).append(",");
+            sb.append(" bond10G : ").append(gson.toJson(bond10G)).append(",");
+        }
+        else{
+            sb.append(" bond10G : ").append("null").append(",");
         }
         if(null != bond1G && bond1G.isPresent()){
-            sb.append(" bond1G : ").append(bond1G).append(",");
+            sb.append(" bond1G : ").append(gson.toJson(bond1G)).append(",");
+        }
+        else{
+            sb.append(" bond1G : ").append("null").append(",");
         }
         if(null != eth0 && eth0.isPresent()){
-            sb.append(" eth0 : ").append(eth0).append(",");
+            sb.append(" eth0 : ").append(gson.toJson(eth0)).append(",");
+        }
+        else{
+            sb.append(" eth0 : ").append("null").append(",");
         }
         if(null != eth1 && eth1.isPresent()){
-            sb.append(" eth1 : ").append(eth1).append(",");
+            sb.append(" eth1 : ").append(gson.toJson(eth1)).append(",");
+        }
+        else{
+            sb.append(" eth1 : ").append("null").append(",");
         }
         if(null != eth2 && eth2.isPresent()){
-            sb.append(" eth2 : ").append(eth2).append(",");
+            sb.append(" eth2 : ").append(gson.toJson(eth2)).append(",");
+        }
+        else{
+            sb.append(" eth2 : ").append("null").append(",");
         }
         if(null != eth3 && eth3.isPresent()){
-            sb.append(" eth3 : ").append(eth3).append(",");
+            sb.append(" eth3 : ").append(gson.toJson(eth3)).append(",");
+        }
+        else{
+            sb.append(" eth3 : ").append("null").append(",");
+        }
+        if(null != eth4 && eth4.isPresent()){
+            sb.append(" eth4 : ").append(gson.toJson(eth4)).append(",");
+        }
+        else{
+            sb.append(" eth4 : ").append("null").append(",");
+        }
+        if(null != eth5 && eth5.isPresent()){
+            sb.append(" eth5 : ").append(gson.toJson(eth5)).append(",");
+        }
+        else{
+            sb.append(" eth5 : ").append("null").append(",");
         }
         if(null != lo && lo.isPresent()){
-            sb.append(" lo : ").append(lo).append(",");
+            sb.append(" lo : ").append(gson.toJson(lo)).append(",");
+        }
+        else{
+            sb.append(" lo : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -201,6 +269,8 @@ public class Network implements Serializable {
         private Optional<NetworkConfig> eth1;
         private Optional<NetworkConfig> eth2;
         private Optional<NetworkConfig> eth3;
+        private Optional<NetworkConfig> eth4;
+        private Optional<NetworkConfig> eth5;
         private Optional<NetworkConfig> lo;
 
         private Builder() { }
@@ -213,6 +283,8 @@ public class Network implements Serializable {
                          this.eth1,
                          this.eth2,
                          this.eth3,
+                         this.eth4,
+                         this.eth5,
                          this.lo);
         }
 
@@ -223,6 +295,8 @@ public class Network implements Serializable {
             this.eth1 = req.eth1;
             this.eth2 = req.eth2;
             this.eth3 = req.eth3;
+            this.eth4 = req.eth4;
+            this.eth5 = req.eth5;
             this.lo = req.lo;
 
             return this;
@@ -255,6 +329,16 @@ public class Network implements Serializable {
 
         public Network.Builder optionalEth3(final NetworkConfig eth3) {
             this.eth3 = (eth3 == null) ? Optional.<NetworkConfig>empty() : Optional.of(eth3);
+            return this;
+        }
+
+        public Network.Builder optionalEth4(final NetworkConfig eth4) {
+            this.eth4 = (eth4 == null) ? Optional.<NetworkConfig>empty() : Optional.of(eth4);
+            return this;
+        }
+
+        public Network.Builder optionalEth5(final NetworkConfig eth5) {
+            this.eth5 = (eth5 == null) ? Optional.<NetworkConfig>empty() : Optional.of(eth5);
             return this;
         }
 

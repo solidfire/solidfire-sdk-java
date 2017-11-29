@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ListFibreChannelPortInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -1837140431441547256L;
+    public static final long serialVersionUID = -1066916759051365511L;
     @SerializedName("fibreChannelPortInfo") private java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
     // empty constructor
     @Since("7.0")
@@ -54,6 +55,7 @@ public class ListFibreChannelPortInfoResult implements Serializable {
      * Used to return information about the Fibre Channel ports.
      **/
     public java.util.Map<String,FibreChannelPortInfoResult> getFibreChannelPortInfo() { return this.fibreChannelPortInfo; }
+   
     public void setFibreChannelPortInfo(java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo) { 
         this.fibreChannelPortInfo = fibreChannelPortInfo;
     }
@@ -84,9 +86,10 @@ public class ListFibreChannelPortInfoResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" fibreChannelPortInfo : ").append(fibreChannelPortInfo).append(",");
+        sb.append(" fibreChannelPortInfo : ").append(gson.toJson(fibreChannelPortInfo)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

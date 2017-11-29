@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,7 @@ import java.util.Objects;
 
 public class ListDriveHardwareRequest implements Serializable {
 
-    public static final long serialVersionUID = 2114420098229603855L;
+    public static final long serialVersionUID = 8842637870193602553L;
     @SerializedName("force") private Boolean force;
     // empty constructor
     @Since("7.0")
@@ -58,6 +59,7 @@ public class ListDriveHardwareRequest implements Serializable {
      * To run this command, the force parameter must be set to true.
      **/
     public Boolean getForce() { return this.force; }
+   
     public void setForce(Boolean force) { 
         this.force = force;
     }
@@ -88,9 +90,10 @@ public class ListDriveHardwareRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" force : ").append(force).append(",");
+        sb.append(" force : ").append(gson.toJson(force)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

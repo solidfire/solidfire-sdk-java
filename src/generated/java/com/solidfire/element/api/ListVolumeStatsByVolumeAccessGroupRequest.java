@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 5191351445420153189L;
+    public static final long serialVersionUID = 5610547891603916327L;
     @SerializedName("volumeAccessGroups") private Optional<Long[]> volumeAccessGroups;
     @SerializedName("includeVirtualVolumes") private Optional<Boolean> includeVirtualVolumes;
     // empty constructor
@@ -68,6 +69,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
      * access groups are returned.
      **/
     public Optional<Long[]> getVolumeAccessGroups() { return this.volumeAccessGroups; }
+   
     public void setVolumeAccessGroups(Optional<Long[]> volumeAccessGroups) { 
         this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
     }
@@ -76,6 +78,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
      * To exclude virtual volumes, set to false.
      **/
     public Optional<Boolean> getIncludeVirtualVolumes() { return this.includeVirtualVolumes; }
+   
     public void setIncludeVirtualVolumes(Optional<Boolean> includeVirtualVolumes) { 
         this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
     }
@@ -108,13 +111,20 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != volumeAccessGroups && volumeAccessGroups.isPresent()){
-            sb.append(" volumeAccessGroups : ").append(volumeAccessGroups).append(",");
+            sb.append(" volumeAccessGroups : ").append(gson.toJson(volumeAccessGroups)).append(",");
+        }
+        else{
+            sb.append(" volumeAccessGroups : ").append("null").append(",");
         }
         if(null != includeVirtualVolumes && includeVirtualVolumes.isPresent()){
-            sb.append(" includeVirtualVolumes : ").append(includeVirtualVolumes).append(",");
+            sb.append(" includeVirtualVolumes : ").append(gson.toJson(includeVirtualVolumes)).append(",");
+        }
+        else{
+            sb.append(" includeVirtualVolumes : ").append("null").append(",");
         }
         sb.append( " }" );
 

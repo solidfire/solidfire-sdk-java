@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,7 @@ import java.util.Objects;
 
 public class ModifyAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = -5408277247074422434L;
+    public static final long serialVersionUID = -6173216453977103498L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("username") private Optional<String> username;
     @SerializedName("status") private Optional<String> status;
@@ -73,6 +74,7 @@ public class ModifyAccountRequest implements Serializable {
      * Specifies the AccountID for the account to be modified.
      **/
     public Long getAccountID() { return this.accountID; }
+   
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
@@ -81,6 +83,7 @@ public class ModifyAccountRequest implements Serializable {
      * account. (Might be 1 to 64 characters in length).
      **/
     public Optional<String> getUsername() { return this.username; }
+   
     public void setUsername(Optional<String> username) { 
         this.username = (username == null) ? Optional.<String>empty() : username;
     }
@@ -90,6 +93,7 @@ public class ModifyAccountRequest implements Serializable {
      * locked: The account is locked and connections are refused.
      **/
     public Optional<String> getStatus() { return this.status; }
+   
     public void setStatus(Optional<String> status) { 
         this.status = (status == null) ? Optional.<String>empty() : status;
     }
@@ -100,6 +104,7 @@ public class ModifyAccountRequest implements Serializable {
      * and cannot be the same as the target CHAP secret.
      **/
     public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
+   
     public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
@@ -111,6 +116,7 @@ public class ModifyAccountRequest implements Serializable {
      * initiator CHAP secret.
      **/
     public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
+   
     public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
@@ -118,6 +124,7 @@ public class ModifyAccountRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -158,23 +165,39 @@ public class ModifyAccountRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" accountID : ").append(accountID).append(",");
+        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
         if(null != username && username.isPresent()){
-            sb.append(" username : ").append(username).append(",");
+            sb.append(" username : ").append(gson.toJson(username)).append(",");
+        }
+        else{
+            sb.append(" username : ").append("null").append(",");
         }
         if(null != status && status.isPresent()){
-            sb.append(" status : ").append(status).append(",");
+            sb.append(" status : ").append(gson.toJson(status)).append(",");
+        }
+        else{
+            sb.append(" status : ").append("null").append(",");
         }
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+            sb.append(" initiatorSecret : ").append(gson.toJson(initiatorSecret)).append(",");
+        }
+        else{
+            sb.append(" initiatorSecret : ").append("null").append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret).append(",");
+            sb.append(" targetSecret : ").append(gson.toJson(targetSecret)).append(",");
+        }
+        else{
+            sb.append(" targetSecret : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

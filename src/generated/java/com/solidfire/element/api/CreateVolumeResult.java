@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class CreateVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = 7581645153324381727L;
+    public static final long serialVersionUID = 2889880193310552919L;
     @SerializedName("volume") private Optional<Volume> volume;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("curve") private java.util.Map<String,Long> curve;
@@ -59,6 +60,7 @@ public class CreateVolumeResult implements Serializable {
      * 
      **/
     public Optional<Volume> getVolume() { return this.volume; }
+   
     public void setVolume(Optional<Volume> volume) { 
         this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
     }
@@ -66,6 +68,7 @@ public class CreateVolumeResult implements Serializable {
      * VolumeID for the newly created volume.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -76,6 +79,7 @@ public class CreateVolumeResult implements Serializable {
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
     public java.util.Map<String,Long> getCurve() { return this.curve; }
+   
     public void setCurve(java.util.Map<String,Long> curve) { 
         this.curve = curve;
     }
@@ -110,13 +114,17 @@ public class CreateVolumeResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != volume && volume.isPresent()){
-            sb.append(" volume : ").append(volume).append(",");
+            sb.append(" volume : ").append(gson.toJson(volume)).append(",");
         }
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" curve : ").append(curve).append(",");
+        else{
+            sb.append(" volume : ").append("null").append(",");
+        }
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" curve : ").append(gson.toJson(curve)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

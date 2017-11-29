@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ModifySnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = -7213033289510416808L;
+    public static final long serialVersionUID = -406933401919485379L;
     @SerializedName("snapshot") private Optional<Snapshot> snapshot;
     // empty constructor
     @Since("8.0")
@@ -54,6 +55,7 @@ public class ModifySnapshotResult implements Serializable {
      * 
      **/
     public Optional<Snapshot> getSnapshot() { return this.snapshot; }
+   
     public void setSnapshot(Optional<Snapshot> snapshot) { 
         this.snapshot = (snapshot == null) ? Optional.<Snapshot>empty() : snapshot;
     }
@@ -84,10 +86,14 @@ public class ModifySnapshotResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != snapshot && snapshot.isPresent()){
-            sb.append(" snapshot : ").append(snapshot).append(",");
+            sb.append(" snapshot : ").append(gson.toJson(snapshot)).append(",");
+        }
+        else{
+            sb.append(" snapshot : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class ShutdownRequest implements Serializable {
 
-    public static final long serialVersionUID = 2277911156368195135L;
+    public static final long serialVersionUID = -4389026748679742602L;
     @SerializedName("nodes") private Long[] nodes;
     @SerializedName("option") private Optional<String> option;
     // empty constructor
@@ -58,6 +59,7 @@ public class ShutdownRequest implements Serializable {
      * List of NodeIDs for the nodes to be shutdown.
      **/
     public Long[] getNodes() { return this.nodes; }
+   
     public void setNodes(Long[] nodes) { 
         this.nodes = nodes;
     }
@@ -67,6 +69,7 @@ public class ShutdownRequest implements Serializable {
      * halt: Shuts down the node.
      **/
     public Optional<String> getOption() { return this.option; }
+   
     public void setOption(Optional<String> option) { 
         this.option = (option == null) ? Optional.<String>empty() : option;
     }
@@ -99,11 +102,15 @@ public class ShutdownRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
         if(null != option && option.isPresent()){
-            sb.append(" option : ").append(option).append(",");
+            sb.append(" option : ").append(gson.toJson(option)).append(",");
+        }
+        else{
+            sb.append(" option : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ModifyVolumeAccessGroupLunAssignmentsResult implements Serializable {
 
-    public static final long serialVersionUID = 2429872830348736818L;
+    public static final long serialVersionUID = -8667012650029922654L;
     @SerializedName("volumeAccessGroupLunAssignments") private VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsResult implements Serializable
      * 
      **/
     public VolumeAccessGroupLunAssignments getVolumeAccessGroupLunAssignments() { return this.volumeAccessGroupLunAssignments; }
+   
     public void setVolumeAccessGroupLunAssignments(VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments) { 
         this.volumeAccessGroupLunAssignments = volumeAccessGroupLunAssignments;
     }
@@ -83,9 +85,10 @@ public class ModifyVolumeAccessGroupLunAssignmentsResult implements Serializable
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupLunAssignments : ").append(volumeAccessGroupLunAssignments).append(",");
+        sb.append(" volumeAccessGroupLunAssignments : ").append(gson.toJson(volumeAccessGroupLunAssignments)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

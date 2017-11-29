@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,10 +35,10 @@ import java.util.Objects;
 
 public class GroupSnapshotMembers implements Serializable {
 
-    public static final long serialVersionUID = 480532995752584194L;
+    public static final long serialVersionUID = 4785362642461122102L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Long snapshotID;
-    @SerializedName("snapshotUUID") private String snapshotUUID;
+    @SerializedName("snapshotUUID") private java.util.UUID snapshotUUID;
     @SerializedName("checksum") private String checksum;
     @SerializedName("attributes") private Optional<Attributes> attributes;
     @SerializedName("createTime") private Optional<String> createTime;
@@ -103,7 +104,7 @@ public class GroupSnapshotMembers implements Serializable {
     public GroupSnapshotMembers(
         Long volumeID,
         Long snapshotID,
-        String snapshotUUID,
+        java.util.UUID snapshotUUID,
         String checksum,
         Optional<Attributes> attributes,
         Optional<String> createTime,
@@ -145,6 +146,7 @@ public class GroupSnapshotMembers implements Serializable {
      * The source volume ID for the snapshot.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -153,14 +155,16 @@ public class GroupSnapshotMembers implements Serializable {
      * The snapshotID passed must be a snapshot on the given volume.
      **/
     public Long getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
      * Universal Unique ID of an existing snapshot.
      **/
-    public String getSnapshotUUID() { return this.snapshotUUID; }
-    public void setSnapshotUUID(String snapshotUUID) { 
+    public java.util.UUID getSnapshotUUID() { return this.snapshotUUID; }
+   
+    public void setSnapshotUUID(java.util.UUID snapshotUUID) { 
         this.snapshotUUID = snapshotUUID;
     }
     /** 
@@ -168,6 +172,7 @@ public class GroupSnapshotMembers implements Serializable {
      * This checksum can be used later to compare other snapshots to detect errors in the data.
      **/
     public String getChecksum() { return this.checksum; }
+   
     public void setChecksum(String checksum) { 
         this.checksum = checksum;
     }
@@ -175,6 +180,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -182,6 +188,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<String> getCreateTime() { return this.createTime; }
+   
     public void setCreateTime(Optional<String> createTime) { 
         this.createTime = (createTime == null) ? Optional.<String>empty() : createTime;
     }
@@ -189,6 +196,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
+   
     public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
@@ -196,6 +204,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<String> getExpirationReason() { return this.expirationReason; }
+   
     public void setExpirationReason(Optional<String> expirationReason) { 
         this.expirationReason = (expirationReason == null) ? Optional.<String>empty() : expirationReason;
     }
@@ -203,6 +212,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<String> getExpirationTime() { return this.expirationTime; }
+   
     public void setExpirationTime(Optional<String> expirationTime) { 
         this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
     }
@@ -210,6 +220,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<Long> getGroupID() { return this.groupID; }
+   
     public void setGroupID(Optional<Long> groupID) { 
         this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
     }
@@ -217,6 +228,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<java.util.UUID> getGroupSnapshotUUID() { return this.groupSnapshotUUID; }
+   
     public void setGroupSnapshotUUID(Optional<java.util.UUID> groupSnapshotUUID) { 
         this.groupSnapshotUUID = (groupSnapshotUUID == null) ? Optional.<java.util.UUID>empty() : groupSnapshotUUID;
     }
@@ -224,6 +236,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
@@ -231,6 +244,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<String> getRemoteStatus() { return this.remoteStatus; }
+   
     public void setRemoteStatus(Optional<String> remoteStatus) { 
         this.remoteStatus = (remoteStatus == null) ? Optional.<String>empty() : remoteStatus;
     }
@@ -238,6 +252,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<Attributes[]> getRemoteStatuses() { return this.remoteStatuses; }
+   
     public void setRemoteStatuses(Optional<Attributes[]> remoteStatuses) { 
         this.remoteStatuses = (remoteStatuses == null) ? Optional.<Attributes[]>empty() : remoteStatuses;
     }
@@ -245,6 +260,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<String> getStatus() { return this.status; }
+   
     public void setStatus(Optional<String> status) { 
         this.status = (status == null) ? Optional.<String>empty() : status;
     }
@@ -252,6 +268,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<Long> getTotalSize() { return this.totalSize; }
+   
     public void setTotalSize(Optional<Long> totalSize) { 
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
@@ -259,6 +276,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<Long> getVirtualVolumeID() { return this.virtualVolumeID; }
+   
     public void setVirtualVolumeID(Optional<Long> virtualVolumeID) { 
         this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<Long>empty() : virtualVolumeID;
     }
@@ -266,6 +284,7 @@ public class GroupSnapshotMembers implements Serializable {
      * 
      **/
     public Optional<java.util.UUID> getVolumePairUUID() { return this.volumePairUUID; }
+   
     public void setVolumePairUUID(Optional<java.util.UUID> volumePairUUID) { 
         this.volumePairUUID = (volumePairUUID == null) ? Optional.<java.util.UUID>empty() : volumePairUUID;
     }
@@ -330,53 +349,96 @@ public class GroupSnapshotMembers implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" snapshotID : ").append(snapshotID).append(",");
-        sb.append(" snapshotUUID : ").append(snapshotUUID).append(",");
-        sb.append(" checksum : ").append(checksum).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        sb.append(" snapshotUUID : ").append(gson.toJson(snapshotUUID)).append(",");
+        sb.append(" checksum : ").append(gson.toJson(checksum)).append(",");
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         if(null != createTime && createTime.isPresent()){
-            sb.append(" createTime : ").append(createTime).append(",");
+            sb.append(" createTime : ").append(gson.toJson(createTime)).append(",");
+        }
+        else{
+            sb.append(" createTime : ").append("null").append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
+            sb.append(" enableRemoteReplication : ").append(gson.toJson(enableRemoteReplication)).append(",");
+        }
+        else{
+            sb.append(" enableRemoteReplication : ").append("null").append(",");
         }
         if(null != expirationReason && expirationReason.isPresent()){
-            sb.append(" expirationReason : ").append(expirationReason).append(",");
+            sb.append(" expirationReason : ").append(gson.toJson(expirationReason)).append(",");
+        }
+        else{
+            sb.append(" expirationReason : ").append("null").append(",");
         }
         if(null != expirationTime && expirationTime.isPresent()){
-            sb.append(" expirationTime : ").append(expirationTime).append(",");
+            sb.append(" expirationTime : ").append(gson.toJson(expirationTime)).append(",");
+        }
+        else{
+            sb.append(" expirationTime : ").append("null").append(",");
         }
         if(null != groupID && groupID.isPresent()){
-            sb.append(" groupID : ").append(groupID).append(",");
+            sb.append(" groupID : ").append(gson.toJson(groupID)).append(",");
+        }
+        else{
+            sb.append(" groupID : ").append("null").append(",");
         }
         if(null != groupSnapshotUUID && groupSnapshotUUID.isPresent()){
-            sb.append(" groupSnapshotUUID : ").append(groupSnapshotUUID).append(",");
+            sb.append(" groupSnapshotUUID : ").append(gson.toJson(groupSnapshotUUID)).append(",");
+        }
+        else{
+            sb.append(" groupSnapshotUUID : ").append("null").append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != remoteStatus && remoteStatus.isPresent()){
-            sb.append(" remoteStatus : ").append(remoteStatus).append(",");
+            sb.append(" remoteStatus : ").append(gson.toJson(remoteStatus)).append(",");
+        }
+        else{
+            sb.append(" remoteStatus : ").append("null").append(",");
         }
         if(null != remoteStatuses && remoteStatuses.isPresent()){
-            sb.append(" remoteStatuses : ").append(remoteStatuses).append(",");
+            sb.append(" remoteStatuses : ").append(gson.toJson(remoteStatuses)).append(",");
+        }
+        else{
+            sb.append(" remoteStatuses : ").append("null").append(",");
         }
         if(null != status && status.isPresent()){
-            sb.append(" status : ").append(status).append(",");
+            sb.append(" status : ").append(gson.toJson(status)).append(",");
+        }
+        else{
+            sb.append(" status : ").append("null").append(",");
         }
         if(null != totalSize && totalSize.isPresent()){
-            sb.append(" totalSize : ").append(totalSize).append(",");
+            sb.append(" totalSize : ").append(gson.toJson(totalSize)).append(",");
+        }
+        else{
+            sb.append(" totalSize : ").append("null").append(",");
         }
         if(null != virtualVolumeID && virtualVolumeID.isPresent()){
-            sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
+            sb.append(" virtualVolumeID : ").append(gson.toJson(virtualVolumeID)).append(",");
+        }
+        else{
+            sb.append(" virtualVolumeID : ").append("null").append(",");
         }
         if(null != volumePairUUID && volumePairUUID.isPresent()){
-            sb.append(" volumePairUUID : ").append(volumePairUUID).append(",");
+            sb.append(" volumePairUUID : ").append(gson.toJson(volumePairUUID)).append(",");
+        }
+        else{
+            sb.append(" volumePairUUID : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -397,7 +459,7 @@ public class GroupSnapshotMembers implements Serializable {
     public static class Builder {
         private Long volumeID;
         private Long snapshotID;
-        private String snapshotUUID;
+        private java.util.UUID snapshotUUID;
         private String checksum;
         private Optional<Attributes> attributes;
         private Optional<String> createTime;
@@ -471,7 +533,7 @@ public class GroupSnapshotMembers implements Serializable {
             return this;
         }
 
-        public GroupSnapshotMembers.Builder snapshotUUID(final String snapshotUUID) {
+        public GroupSnapshotMembers.Builder snapshotUUID(final java.util.UUID snapshotUUID) {
             this.snapshotUUID = snapshotUUID;
             return this;
         }

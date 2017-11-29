@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,7 @@ import java.util.Objects;
 
 public class ListVirtualNetworksRequest implements Serializable {
 
-    public static final long serialVersionUID = 7870206783219450280L;
+    public static final long serialVersionUID = -695712543085601445L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
     @SerializedName("virtualNetworkIDs") private Optional<Long[]> virtualNetworkIDs;
@@ -66,6 +67,7 @@ public class ListVirtualNetworksRequest implements Serializable {
      * Network ID to filter the list for a single virtual network.
      **/
     public Optional<Long> getVirtualNetworkID() { return this.virtualNetworkID; }
+   
     public void setVirtualNetworkID(Optional<Long> virtualNetworkID) { 
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
     }
@@ -73,6 +75,7 @@ public class ListVirtualNetworksRequest implements Serializable {
      * Network tag to filter the list for a single virtual network.
      **/
     public Optional<Long> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+   
     public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) { 
         this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
     }
@@ -80,6 +83,7 @@ public class ListVirtualNetworksRequest implements Serializable {
      * Network IDs to include in the list.
      **/
     public Optional<Long[]> getVirtualNetworkIDs() { return this.virtualNetworkIDs; }
+   
     public void setVirtualNetworkIDs(Optional<Long[]> virtualNetworkIDs) { 
         this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<Long[]>empty() : virtualNetworkIDs;
     }
@@ -87,6 +91,7 @@ public class ListVirtualNetworksRequest implements Serializable {
      * Network tag to include in the list.
      **/
     public Optional<Long[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
+   
     public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) { 
         this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
     }
@@ -123,19 +128,32 @@ public class ListVirtualNetworksRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+            sb.append(" virtualNetworkID : ").append(gson.toJson(virtualNetworkID)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkID : ").append("null").append(",");
         }
         if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
-            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+            sb.append(" virtualNetworkTag : ").append(gson.toJson(virtualNetworkTag)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkTag : ").append("null").append(",");
         }
         if(null != virtualNetworkIDs && virtualNetworkIDs.isPresent()){
-            sb.append(" virtualNetworkIDs : ").append(virtualNetworkIDs).append(",");
+            sb.append(" virtualNetworkIDs : ").append(gson.toJson(virtualNetworkIDs)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkIDs : ").append("null").append(",");
         }
         if(null != virtualNetworkTags && virtualNetworkTags.isPresent()){
-            sb.append(" virtualNetworkTags : ").append(virtualNetworkTags).append(",");
+            sb.append(" virtualNetworkTags : ").append(gson.toJson(virtualNetworkTags)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkTags : ").append("null").append(",");
         }
         sb.append( " }" );
 

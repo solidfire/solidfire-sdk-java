@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class RollbackToGroupSnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = 1511005291220334145L;
+    public static final long serialVersionUID = 3810566776539006574L;
     @SerializedName("groupSnapshot") private Optional<GroupSnapshot> groupSnapshot;
     @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
     @SerializedName("members") private Optional<GroupSnapshotMembers[]> members;
@@ -59,6 +60,7 @@ public class RollbackToGroupSnapshotResult implements Serializable {
      * 
      **/
     public Optional<GroupSnapshot> getGroupSnapshot() { return this.groupSnapshot; }
+   
     public void setGroupSnapshot(Optional<GroupSnapshot> groupSnapshot) { 
         this.groupSnapshot = (groupSnapshot == null) ? Optional.<GroupSnapshot>empty() : groupSnapshot;
     }
@@ -66,6 +68,7 @@ public class RollbackToGroupSnapshotResult implements Serializable {
      * Unique ID of the new group snapshot.
      **/
     public Optional<Long> getGroupSnapshotID() { return this.groupSnapshotID; }
+   
     public void setGroupSnapshotID(Optional<Long> groupSnapshotID) { 
         this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
     }
@@ -73,6 +76,7 @@ public class RollbackToGroupSnapshotResult implements Serializable {
      * List of checksum, volumeIDs and snapshotIDs for each member of the group.
      **/
     public Optional<GroupSnapshotMembers[]> getMembers() { return this.members; }
+   
     public void setMembers(Optional<GroupSnapshotMembers[]> members) { 
         this.members = (members == null) ? Optional.<GroupSnapshotMembers[]>empty() : members;
     }
@@ -107,16 +111,26 @@ public class RollbackToGroupSnapshotResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != groupSnapshot && groupSnapshot.isPresent()){
-            sb.append(" groupSnapshot : ").append(groupSnapshot).append(",");
+            sb.append(" groupSnapshot : ").append(gson.toJson(groupSnapshot)).append(",");
+        }
+        else{
+            sb.append(" groupSnapshot : ").append("null").append(",");
         }
         if(null != groupSnapshotID && groupSnapshotID.isPresent()){
-            sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
+            sb.append(" groupSnapshotID : ").append(gson.toJson(groupSnapshotID)).append(",");
+        }
+        else{
+            sb.append(" groupSnapshotID : ").append("null").append(",");
         }
         if(null != members && members.isPresent()){
-            sb.append(" members : ").append(members).append(",");
+            sb.append(" members : ").append(gson.toJson(members)).append(",");
+        }
+        else{
+            sb.append(" members : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ModifyVolumePairRequest implements Serializable {
 
-    public static final long serialVersionUID = 5515348424178660277L;
+    public static final long serialVersionUID = -1917779806252857220L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("pausedManual") private Optional<Boolean> pausedManual;
     @SerializedName("mode") private Optional<String> mode;
@@ -63,6 +64,7 @@ public class ModifyVolumePairRequest implements Serializable {
      * The ID of the volume to be modified.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -72,6 +74,7 @@ public class ModifyVolumePairRequest implements Serializable {
      * false: Restarts volume replication
      **/
     public Optional<Boolean> getPausedManual() { return this.pausedManual; }
+   
     public void setPausedManual(Optional<Boolean> pausedManual) { 
         this.pausedManual = (pausedManual == null) ? Optional.<Boolean>empty() : pausedManual;
     }
@@ -82,6 +85,7 @@ public class ModifyVolumePairRequest implements Serializable {
      * SnapshotsOnly: Only snapshots created on the source cluster are replicated. Active writes from the source volume are not replicated.
      **/
     public Optional<String> getMode() { return this.mode; }
+   
     public void setMode(Optional<String> mode) { 
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
     }
@@ -89,6 +93,7 @@ public class ModifyVolumePairRequest implements Serializable {
      * Internal use only.
      **/
     public Optional<Long> getPauseLimit() { return this.pauseLimit; }
+   
     public void setPauseLimit(Optional<Long> pauseLimit) { 
         this.pauseLimit = (pauseLimit == null) ? Optional.<Long>empty() : pauseLimit;
     }
@@ -125,17 +130,27 @@ public class ModifyVolumePairRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
         if(null != pausedManual && pausedManual.isPresent()){
-            sb.append(" pausedManual : ").append(pausedManual).append(",");
+            sb.append(" pausedManual : ").append(gson.toJson(pausedManual)).append(",");
+        }
+        else{
+            sb.append(" pausedManual : ").append("null").append(",");
         }
         if(null != mode && mode.isPresent()){
-            sb.append(" mode : ").append(mode).append(",");
+            sb.append(" mode : ").append(gson.toJson(mode)).append(",");
+        }
+        else{
+            sb.append(" mode : ").append("null").append(",");
         }
         if(null != pauseLimit && pauseLimit.isPresent()){
-            sb.append(" pauseLimit : ").append(pauseLimit).append(",");
+            sb.append(" pauseLimit : ").append(gson.toJson(pauseLimit)).append(",");
+        }
+        else{
+            sb.append(" pauseLimit : ").append("null").append(",");
         }
         sb.append( " }" );
 

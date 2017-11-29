@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class ListVolumeAccessGroupsRequest implements Serializable {
 
-    public static final long serialVersionUID = 3485888508920611313L;
+    public static final long serialVersionUID = -8023811621876007990L;
     @SerializedName("startVolumeAccessGroupID") private Optional<Long> startVolumeAccessGroupID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("volumeAccessGroups") private Optional<Long[]> volumeAccessGroups;
@@ -62,6 +63,7 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
      * The volume access group ID at which to begin the listing. If unspecified, there is no lower limit (implicitly 0).
      **/
     public Optional<Long> getStartVolumeAccessGroupID() { return this.startVolumeAccessGroupID; }
+   
     public void setStartVolumeAccessGroupID(Optional<Long> startVolumeAccessGroupID) { 
         this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<Long>empty() : startVolumeAccessGroupID;
     }
@@ -70,6 +72,7 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
      * useful for paging.
      **/
     public Optional<Long> getLimit() { return this.limit; }
+   
     public void setLimit(Optional<Long> limit) { 
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
@@ -77,6 +80,7 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
      * The list of ids of the volume access groups you wish to list
      **/
     public Optional<Long[]> getVolumeAccessGroups() { return this.volumeAccessGroups; }
+   
     public void setVolumeAccessGroups(Optional<Long[]> volumeAccessGroups) { 
         this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
     }
@@ -111,16 +115,26 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != startVolumeAccessGroupID && startVolumeAccessGroupID.isPresent()){
-            sb.append(" startVolumeAccessGroupID : ").append(startVolumeAccessGroupID).append(",");
+            sb.append(" startVolumeAccessGroupID : ").append(gson.toJson(startVolumeAccessGroupID)).append(",");
+        }
+        else{
+            sb.append(" startVolumeAccessGroupID : ").append("null").append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(gson.toJson(limit)).append(",");
+        }
+        else{
+            sb.append(" limit : ").append("null").append(",");
         }
         if(null != volumeAccessGroups && volumeAccessGroups.isPresent()){
-            sb.append(" volumeAccessGroups : ").append(volumeAccessGroups).append(",");
+            sb.append(" volumeAccessGroups : ").append(gson.toJson(volumeAccessGroups)).append(",");
+        }
+        else{
+            sb.append(" volumeAccessGroups : ").append("null").append(",");
         }
         sb.append( " }" );
 

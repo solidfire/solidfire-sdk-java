@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -43,7 +44,7 @@ import java.util.Objects;
 
 public class RemoveDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = -914391580318961573L;
+    public static final long serialVersionUID = 131252405671668047L;
     @SerializedName("drives") private Long[] drives;
     @SerializedName("forceDuringUpgrade") private Optional<Boolean> forceDuringUpgrade;
     // empty constructor
@@ -66,6 +67,7 @@ public class RemoveDrivesRequest implements Serializable {
      * List of driveIDs to remove from the cluster.
      **/
     public Long[] getDrives() { return this.drives; }
+   
     public void setDrives(Long[] drives) { 
         this.drives = drives;
     }
@@ -73,6 +75,7 @@ public class RemoveDrivesRequest implements Serializable {
      * If you want to remove a drive during upgrade, this must be set to true.
      **/
     public Optional<Boolean> getForceDuringUpgrade() { return this.forceDuringUpgrade; }
+   
     public void setForceDuringUpgrade(Optional<Boolean> forceDuringUpgrade) { 
         this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
     }
@@ -105,11 +108,15 @@ public class RemoveDrivesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
+        sb.append(" drives : ").append(gson.toJson(Arrays.toString(drives))).append(",");
         if(null != forceDuringUpgrade && forceDuringUpgrade.isPresent()){
-            sb.append(" forceDuringUpgrade : ").append(forceDuringUpgrade).append(",");
+            sb.append(" forceDuringUpgrade : ").append(gson.toJson(forceDuringUpgrade)).append(",");
+        }
+        else{
+            sb.append(" forceDuringUpgrade : ").append("null").append(",");
         }
         sb.append( " }" );
 

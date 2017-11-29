@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ListGroupSnapshotsRequest implements Serializable {
 
-    public static final long serialVersionUID = 6096544735626310926L;
+    public static final long serialVersionUID = 3471955734566932778L;
     @SerializedName("volumes") private Optional<Long[]> volumes;
     @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
     // empty constructor
@@ -67,6 +68,7 @@ public class ListGroupSnapshotsRequest implements Serializable {
      * are included.
      **/
     public Optional<Long[]> getVolumes() { return this.volumes; }
+   
     public void setVolumes(Optional<Long[]> volumes) { 
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
     }
@@ -74,6 +76,7 @@ public class ListGroupSnapshotsRequest implements Serializable {
      * Retrieves information for a specific group snapshot ID.
      **/
     public Optional<Long> getGroupSnapshotID() { return this.groupSnapshotID; }
+   
     public void setGroupSnapshotID(Optional<Long> groupSnapshotID) { 
         this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
     }
@@ -106,13 +109,20 @@ public class ListGroupSnapshotsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != volumes && volumes.isPresent()){
-            sb.append(" volumes : ").append(volumes).append(",");
+            sb.append(" volumes : ").append(gson.toJson(volumes)).append(",");
+        }
+        else{
+            sb.append(" volumes : ").append("null").append(",");
         }
         if(null != groupSnapshotID && groupSnapshotID.isPresent()){
-            sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
+            sb.append(" groupSnapshotID : ").append(gson.toJson(groupSnapshotID)).append(",");
+        }
+        else{
+            sb.append(" groupSnapshotID : ").append("null").append(",");
         }
         sb.append( " }" );
 

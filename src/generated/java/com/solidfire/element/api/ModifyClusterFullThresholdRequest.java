@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ModifyClusterFullThresholdRequest implements Serializable {
 
-    public static final long serialVersionUID = -6469390559899321814L;
+    public static final long serialVersionUID = -7464778437659417990L;
     @SerializedName("stage2AwareThreshold") private Optional<Long> stage2AwareThreshold;
     @SerializedName("stage3BlockThresholdPercent") private Optional<Long> stage3BlockThresholdPercent;
     @SerializedName("maxMetadataOverProvisionFactor") private Optional<Long> maxMetadataOverProvisionFactor;
@@ -71,6 +72,7 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
      * capacity notification.
      **/
     public Optional<Long> getStage2AwareThreshold() { return this.stage2AwareThreshold; }
+   
     public void setStage2AwareThreshold(Optional<Long> stage2AwareThreshold) { 
         this.stage2AwareThreshold = (stage2AwareThreshold == null) ? Optional.<Long>empty() : stage2AwareThreshold;
     }
@@ -79,6 +81,7 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
      * system to trigger a cluster "Warning" alert.
      **/
     public Optional<Long> getStage3BlockThresholdPercent() { return this.stage3BlockThresholdPercent; }
+   
     public void setStage3BlockThresholdPercent(Optional<Long> stage3BlockThresholdPercent) { 
         this.stage3BlockThresholdPercent = (stage3BlockThresholdPercent == null) ? Optional.<Long>empty() : stage3BlockThresholdPercent;
     }
@@ -86,6 +89,7 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
      * A value representative of the number of times metadata space can be overprovisioned relative to the amount of space available. For example, if there was enough metadata space to store 100 TiB of volumes and this number was set to 5, then 500 TiB worth of volumes can be created.
      **/
     public Optional<Long> getMaxMetadataOverProvisionFactor() { return this.maxMetadataOverProvisionFactor; }
+   
     public void setMaxMetadataOverProvisionFactor(Optional<Long> maxMetadataOverProvisionFactor) { 
         this.maxMetadataOverProvisionFactor = (maxMetadataOverProvisionFactor == null) ? Optional.<Long>empty() : maxMetadataOverProvisionFactor;
     }
@@ -120,16 +124,26 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != stage2AwareThreshold && stage2AwareThreshold.isPresent()){
-            sb.append(" stage2AwareThreshold : ").append(stage2AwareThreshold).append(",");
+            sb.append(" stage2AwareThreshold : ").append(gson.toJson(stage2AwareThreshold)).append(",");
+        }
+        else{
+            sb.append(" stage2AwareThreshold : ").append("null").append(",");
         }
         if(null != stage3BlockThresholdPercent && stage3BlockThresholdPercent.isPresent()){
-            sb.append(" stage3BlockThresholdPercent : ").append(stage3BlockThresholdPercent).append(",");
+            sb.append(" stage3BlockThresholdPercent : ").append(gson.toJson(stage3BlockThresholdPercent)).append(",");
+        }
+        else{
+            sb.append(" stage3BlockThresholdPercent : ").append("null").append(",");
         }
         if(null != maxMetadataOverProvisionFactor && maxMetadataOverProvisionFactor.isPresent()){
-            sb.append(" maxMetadataOverProvisionFactor : ").append(maxMetadataOverProvisionFactor).append(",");
+            sb.append(" maxMetadataOverProvisionFactor : ").append(gson.toJson(maxMetadataOverProvisionFactor)).append(",");
+        }
+        else{
+            sb.append(" maxMetadataOverProvisionFactor : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ListGroupSnapshotsResult implements Serializable {
 
-    public static final long serialVersionUID = 2340772200218208275L;
+    public static final long serialVersionUID = 2481293034206278787L;
     @SerializedName("groupSnapshots") private GroupSnapshot[] groupSnapshots;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class ListGroupSnapshotsResult implements Serializable {
      * List of Group Snapshots.
      **/
     public GroupSnapshot[] getGroupSnapshots() { return this.groupSnapshots; }
+   
     public void setGroupSnapshots(GroupSnapshot[] groupSnapshots) { 
         this.groupSnapshots = groupSnapshots;
     }
@@ -83,9 +85,10 @@ public class ListGroupSnapshotsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" groupSnapshots : ").append(Arrays.toString(groupSnapshots)).append(",");
+        sb.append(" groupSnapshots : ").append(gson.toJson(Arrays.toString(groupSnapshots))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

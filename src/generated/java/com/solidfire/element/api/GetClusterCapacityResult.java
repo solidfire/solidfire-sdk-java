@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetClusterCapacityResult implements Serializable {
 
-    public static final long serialVersionUID = 3740042992965786005L;
+    public static final long serialVersionUID = 3923025019627806089L;
     @SerializedName("clusterCapacity") private ClusterCapacity clusterCapacity;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class GetClusterCapacityResult implements Serializable {
      * 
      **/
     public ClusterCapacity getClusterCapacity() { return this.clusterCapacity; }
+   
     public void setClusterCapacity(ClusterCapacity clusterCapacity) { 
         this.clusterCapacity = clusterCapacity;
     }
@@ -83,9 +85,10 @@ public class GetClusterCapacityResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterCapacity : ").append(clusterCapacity).append(",");
+        sb.append(" clusterCapacity : ").append(gson.toJson(clusterCapacity)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

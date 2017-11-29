@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class AddDrivesResult implements Serializable {
 
-    public static final long serialVersionUID = -8853378537794746166L;
+    public static final long serialVersionUID = -1342411912202020142L;
     @SerializedName("asyncHandle") private Optional<Long> asyncHandle;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class AddDrivesResult implements Serializable {
      * 
      **/
     public Optional<Long> getAsyncHandle() { return this.asyncHandle; }
+   
     public void setAsyncHandle(Optional<Long> asyncHandle) { 
         this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : asyncHandle;
     }
@@ -83,10 +85,14 @@ public class AddDrivesResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != asyncHandle && asyncHandle.isPresent()){
-            sb.append(" asyncHandle : ").append(asyncHandle).append(",");
+            sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
+        }
+        else{
+            sb.append(" asyncHandle : ").append("null").append(",");
         }
         sb.append( " }" );
 

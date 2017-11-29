@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,7 @@ import java.util.Objects;
 
 public class ModifyInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 129604068641628288L;
+    public static final long serialVersionUID = -2269498454565308820L;
     @SerializedName("initiators") private ModifyInitiator[] initiators;
     // empty constructor
     @Since("7.0")
@@ -69,6 +70,7 @@ public class ModifyInitiatorsRequest implements Serializable {
      * new volume access group. (Integer)
      **/
     public ModifyInitiator[] getInitiators() { return this.initiators; }
+   
     public void setInitiators(ModifyInitiator[] initiators) { 
         this.initiators = initiators;
     }
@@ -99,9 +101,10 @@ public class ModifyInitiatorsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
+        sb.append(" initiators : ").append(gson.toJson(Arrays.toString(initiators))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

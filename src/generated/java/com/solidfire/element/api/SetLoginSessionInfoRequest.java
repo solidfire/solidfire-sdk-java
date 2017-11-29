@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class SetLoginSessionInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -141818038586849787L;
+    public static final long serialVersionUID = 1280173479845571914L;
     @SerializedName("timeout") private String timeout;
     // empty constructor
     @Since("7.0")
@@ -54,8 +55,10 @@ public class SetLoginSessionInfoRequest implements Serializable {
      * Cluster authentication expiration period. Formatted in
      * HH:mm:ss. For example, 01:30:00, 00:90:00, and 00:00:5400 can
      * be used to equal a 90 minute timeout period. The default value is 30 minutes.
+     * The minimum value is 1 minute.
      **/
     public String getTimeout() { return this.timeout; }
+   
     public void setTimeout(String timeout) { 
         this.timeout = timeout;
     }
@@ -86,9 +89,10 @@ public class SetLoginSessionInfoRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" timeout : ").append(timeout).append(",");
+        sb.append(" timeout : ").append(gson.toJson(timeout)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

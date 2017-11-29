@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class GetNvramInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -7876637748497002753L;
+    public static final long serialVersionUID = 650251251483157248L;
     @SerializedName("force") private Optional<Boolean> force;
     // empty constructor
     @Since("7.0")
@@ -55,6 +56,7 @@ public class GetNvramInfoRequest implements Serializable {
      * nodes in the cluster.
      **/
     public Optional<Boolean> getForce() { return this.force; }
+   
     public void setForce(Optional<Boolean> force) { 
         this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
@@ -85,10 +87,14 @@ public class GetNvramInfoRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force).append(",");
+            sb.append(" force : ").append(gson.toJson(force)).append(",");
+        }
+        else{
+            sb.append(" force : ").append("null").append(",");
         }
         sb.append( " }" );
 

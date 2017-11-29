@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class AddNodesResult implements Serializable {
 
-    public static final long serialVersionUID = -1265025910787719298L;
+    public static final long serialVersionUID = 2922145517052875853L;
     @SerializedName("autoInstall") private Optional<Boolean> autoInstall;
     @SerializedName("nodes") private AddedNode[] nodes;
     // empty constructor
@@ -56,6 +57,7 @@ public class AddNodesResult implements Serializable {
      * 
      **/
     public Optional<Boolean> getAutoInstall() { return this.autoInstall; }
+   
     public void setAutoInstall(Optional<Boolean> autoInstall) { 
         this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : autoInstall;
     }
@@ -63,6 +65,7 @@ public class AddNodesResult implements Serializable {
      * An array of objects mapping the previous "pendingNodeID" to the "nodeID".
      **/
     public AddedNode[] getNodes() { return this.nodes; }
+   
     public void setNodes(AddedNode[] nodes) { 
         this.nodes = nodes;
     }
@@ -95,12 +98,16 @@ public class AddNodesResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != autoInstall && autoInstall.isPresent()){
-            sb.append(" autoInstall : ").append(autoInstall).append(",");
+            sb.append(" autoInstall : ").append(gson.toJson(autoInstall)).append(",");
         }
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        else{
+            sb.append(" autoInstall : ").append("null").append(",");
+        }
+        sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

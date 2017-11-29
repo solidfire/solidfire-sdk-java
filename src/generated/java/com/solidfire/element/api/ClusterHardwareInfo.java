@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ClusterHardwareInfo implements Serializable {
 
-    public static final long serialVersionUID = 60420060657659193L;
+    public static final long serialVersionUID = -588255729826736799L;
     @SerializedName("drives") private java.util.Map<String,DriveHardwareInfo> drives;
     @SerializedName("nodes") private java.util.Map<String,Attributes> nodes;
     // empty constructor
@@ -56,6 +57,7 @@ public class ClusterHardwareInfo implements Serializable {
      * 
      **/
     public java.util.Map<String,DriveHardwareInfo> getDrives() { return this.drives; }
+   
     public void setDrives(java.util.Map<String,DriveHardwareInfo> drives) { 
         this.drives = drives;
     }
@@ -63,6 +65,7 @@ public class ClusterHardwareInfo implements Serializable {
      * 
      **/
     public java.util.Map<String,Attributes> getNodes() { return this.nodes; }
+   
     public void setNodes(java.util.Map<String,Attributes> nodes) { 
         this.nodes = nodes;
     }
@@ -95,10 +98,11 @@ public class ClusterHardwareInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(drives).append(",");
-        sb.append(" nodes : ").append(nodes).append(",");
+        sb.append(" drives : ").append(gson.toJson(drives)).append(",");
+        sb.append(" nodes : ").append(gson.toJson(nodes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

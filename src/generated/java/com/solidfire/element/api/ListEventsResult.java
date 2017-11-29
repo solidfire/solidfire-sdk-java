@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ListEventsResult implements Serializable {
 
-    public static final long serialVersionUID = 5829657162733905754L;
+    public static final long serialVersionUID = 2761767569186265400L;
     @SerializedName("eventQueueType") private String eventQueueType;
     @SerializedName("events") private EventInfo[] events;
     // empty constructor
@@ -56,6 +57,7 @@ public class ListEventsResult implements Serializable {
      * 
      **/
     public String getEventQueueType() { return this.eventQueueType; }
+   
     public void setEventQueueType(String eventQueueType) { 
         this.eventQueueType = eventQueueType;
     }
@@ -63,6 +65,7 @@ public class ListEventsResult implements Serializable {
      * 
      **/
     public EventInfo[] getEvents() { return this.events; }
+   
     public void setEvents(EventInfo[] events) { 
         this.events = events;
     }
@@ -95,10 +98,11 @@ public class ListEventsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" eventQueueType : ").append(eventQueueType).append(",");
-        sb.append(" events : ").append(Arrays.toString(events)).append(",");
+        sb.append(" eventQueueType : ").append(gson.toJson(eventQueueType)).append(",");
+        sb.append(" events : ").append(gson.toJson(Arrays.toString(events))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

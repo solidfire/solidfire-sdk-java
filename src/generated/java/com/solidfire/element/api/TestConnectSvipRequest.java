@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class TestConnectSvipRequest implements Serializable {
 
-    public static final long serialVersionUID = -8121991818891064525L;
+    public static final long serialVersionUID = -7455941838727406043L;
     @SerializedName("svip") private Optional<String> svip;
     // empty constructor
     @Since("7.0")
@@ -57,6 +58,7 @@ public class TestConnectSvipRequest implements Serializable {
      * testing the connection to the target cluster. This parameter is optional.
      **/
     public Optional<String> getSvip() { return this.svip; }
+   
     public void setSvip(Optional<String> svip) { 
         this.svip = (svip == null) ? Optional.<String>empty() : svip;
     }
@@ -87,10 +89,14 @@ public class TestConnectSvipRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != svip && svip.isPresent()){
-            sb.append(" svip : ").append(svip).append(",");
+            sb.append(" svip : ").append(gson.toJson(svip)).append(",");
+        }
+        else{
+            sb.append(" svip : ").append("null").append(",");
         }
         sb.append( " }" );
 

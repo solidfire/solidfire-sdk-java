@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,7 @@ import java.util.Objects;
 
 public class AddLdapClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = -1790954704553290568L;
+    public static final long serialVersionUID = -8808109453744251950L;
     @SerializedName("username") private String username;
     @SerializedName("access") private String[] access;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
@@ -66,6 +67,7 @@ public class AddLdapClusterAdminRequest implements Serializable {
      * The distinguished user name for the new LDAP cluster admin.
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
@@ -73,6 +75,7 @@ public class AddLdapClusterAdminRequest implements Serializable {
      * Controls which methods this Cluster Admin can use. For more details on the levels of access, see the Access Control appendix in the SolidFire API Reference.
      **/
     public String[] getAccess() { return this.access; }
+   
     public void setAccess(String[] access) { 
         this.access = access;
     }
@@ -80,6 +83,7 @@ public class AddLdapClusterAdminRequest implements Serializable {
      * Accept the End User License Agreement. Set to true to add a cluster administrator account to the system. If omitted or set to false, the method call fails.
      **/
     public Optional<Boolean> getAcceptEula() { return this.acceptEula; }
+   
     public void setAcceptEula(Optional<Boolean> acceptEula) { 
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
     }
@@ -87,6 +91,7 @@ public class AddLdapClusterAdminRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -123,15 +128,22 @@ public class AddLdapClusterAdminRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" username : ").append(username).append(",");
-        sb.append(" access : ").append(Arrays.toString(access)).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
+        sb.append(" access : ").append(gson.toJson(Arrays.toString(access))).append(",");
         if(null != acceptEula && acceptEula.isPresent()){
-            sb.append(" acceptEula : ").append(acceptEula).append(",");
+            sb.append(" acceptEula : ").append(gson.toJson(acceptEula)).append(",");
+        }
+        else{
+            sb.append(" acceptEula : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

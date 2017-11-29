@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,7 @@ import java.util.Objects;
 
 public class GetAsyncResultRequest implements Serializable {
 
-    public static final long serialVersionUID = -6312247673868161161L;
+    public static final long serialVersionUID = 4624708581636089693L;
     @SerializedName("asyncHandle") private Long asyncHandle;
     @SerializedName("keepResult") private Optional<Boolean> keepResult;
     // empty constructor
@@ -62,6 +63,7 @@ public class GetAsyncResultRequest implements Serializable {
      * asynchronous method call.
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
+   
     public void setAsyncHandle(Long asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
@@ -71,6 +73,7 @@ public class GetAsyncResultRequest implements Serializable {
      * queries to that asyncHandle.
      **/
     public Optional<Boolean> getKeepResult() { return this.keepResult; }
+   
     public void setKeepResult(Optional<Boolean> keepResult) { 
         this.keepResult = (keepResult == null) ? Optional.<Boolean>empty() : keepResult;
     }
@@ -103,11 +106,15 @@ public class GetAsyncResultRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" asyncHandle : ").append(asyncHandle).append(",");
+        sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
         if(null != keepResult && keepResult.isPresent()){
-            sb.append(" keepResult : ").append(keepResult).append(",");
+            sb.append(" keepResult : ").append(gson.toJson(keepResult)).append(",");
+        }
+        else{
+            sb.append(" keepResult : ").append("null").append(",");
         }
         sb.append( " }" );
 

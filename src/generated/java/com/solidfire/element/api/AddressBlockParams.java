@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,10 +35,9 @@ import java.util.Objects;
 
 public class AddressBlockParams implements Serializable {
 
-    public static final long serialVersionUID = -753645095633011507L;
+    public static final long serialVersionUID = -8233895487570391649L;
     @SerializedName("start") private String start;
     @SerializedName("size") private Long size;
-    @SerializedName("available") private Optional<String> available;
     // empty constructor
     @Since("7.0")
     public AddressBlockParams() {}
@@ -47,19 +47,18 @@ public class AddressBlockParams implements Serializable {
     @Since("7.0")
     public AddressBlockParams(
         String start,
-        Long size,
-        Optional<String> available
+        Long size
     )
     {
         this.start = start;
         this.size = size;
-        this.available = (available == null) ? Optional.<String>empty() : available;
     }
 
     /** 
      * Start of the IP address range.
      **/
     public String getStart() { return this.start; }
+   
     public void setStart(String start) { 
         this.start = start;
     }
@@ -67,15 +66,9 @@ public class AddressBlockParams implements Serializable {
      * Number of IP addresses to include in the block.
      **/
     public Long getSize() { return this.size; }
+   
     public void setSize(Long size) { 
         this.size = size;
-    }
-    /** 
-     * Nuber of available blocks
-     **/
-    public Optional<String> getAvailable() { return this.available; }
-    public void setAvailable(Optional<String> available) { 
-        this.available = (available == null) ? Optional.<String>empty() : available;
     }
 
     @Override
@@ -87,13 +80,12 @@ public class AddressBlockParams implements Serializable {
 
         return 
             Objects.equals(start, that.start) && 
-            Objects.equals(size, that.size) && 
-            Objects.equals(available, that.available);
+            Objects.equals(size, that.size);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( start,size,available );
+        return Objects.hash( start,size );
     }
 
 
@@ -101,20 +93,17 @@ public class AddressBlockParams implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("start", start);
         map.put("size", size);
-        map.put("available", available);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" start : ").append(start).append(",");
-        sb.append(" size : ").append(size).append(",");
-        if(null != available && available.isPresent()){
-            sb.append(" available : ").append(available).append(",");
-        }
+        sb.append(" start : ").append(gson.toJson(start)).append(",");
+        sb.append(" size : ").append(gson.toJson(size)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -134,21 +123,18 @@ public class AddressBlockParams implements Serializable {
     public static class Builder {
         private String start;
         private Long size;
-        private Optional<String> available;
 
         private Builder() { }
 
         public AddressBlockParams build() {
             return new AddressBlockParams (
                          this.start,
-                         this.size,
-                         this.available);
+                         this.size);
         }
 
         private AddressBlockParams.Builder buildFrom(final AddressBlockParams req) {
             this.start = req.start;
             this.size = req.size;
-            this.available = req.available;
 
             return this;
         }
@@ -160,11 +146,6 @@ public class AddressBlockParams implements Serializable {
 
         public AddressBlockParams.Builder size(final Long size) {
             this.size = size;
-            return this;
-        }
-
-        public AddressBlockParams.Builder optionalAvailable(final String available) {
-            this.available = (available == null) ? Optional.<String>empty() : Optional.of(available);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class GetBackupTargetRequest implements Serializable {
 
-    public static final long serialVersionUID = 8952561837054054779L;
+    public static final long serialVersionUID = 8900616105622903806L;
     @SerializedName("backupTargetID") private Long backupTargetID;
     // empty constructor
     @Since("7.0")
@@ -54,6 +55,7 @@ public class GetBackupTargetRequest implements Serializable {
      * The unique identifier assigned to the backup target.
      **/
     public Long getBackupTargetID() { return this.backupTargetID; }
+   
     public void setBackupTargetID(Long backupTargetID) { 
         this.backupTargetID = backupTargetID;
     }
@@ -84,9 +86,10 @@ public class GetBackupTargetRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" backupTargetID : ").append(backupTargetID).append(",");
+        sb.append(" backupTargetID : ").append(gson.toJson(backupTargetID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

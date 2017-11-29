@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class TestDrivesResult implements Serializable {
 
-    public static final long serialVersionUID = -6844244032205724247L;
+    public static final long serialVersionUID = 7173335651099316228L;
     @SerializedName("details") private String details;
     @SerializedName("duration") private String duration;
     @SerializedName("result") private String result;
@@ -59,6 +60,7 @@ public class TestDrivesResult implements Serializable {
      * 
      **/
     public String getDetails() { return this.details; }
+   
     public void setDetails(String details) { 
         this.details = details;
     }
@@ -66,6 +68,7 @@ public class TestDrivesResult implements Serializable {
      * 
      **/
     public String getDuration() { return this.duration; }
+   
     public void setDuration(String duration) { 
         this.duration = duration;
     }
@@ -73,6 +76,7 @@ public class TestDrivesResult implements Serializable {
      * 
      **/
     public String getResult() { return this.result; }
+   
     public void setResult(String result) { 
         this.result = result;
     }
@@ -107,11 +111,12 @@ public class TestDrivesResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" details : ").append(details).append(",");
-        sb.append(" duration : ").append(duration).append(",");
-        sb.append(" result : ").append(result).append(",");
+        sb.append(" details : ").append(gson.toJson(details)).append(",");
+        sb.append(" duration : ").append(gson.toJson(duration)).append(",");
+        sb.append(" result : ").append(gson.toJson(result)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

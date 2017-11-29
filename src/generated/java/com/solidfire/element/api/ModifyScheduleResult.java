@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ModifyScheduleResult implements Serializable {
 
-    public static final long serialVersionUID = -8867995487155199305L;
+    public static final long serialVersionUID = -6280410249936410494L;
     @SerializedName("schedule") private Optional<Schedule> schedule;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class ModifyScheduleResult implements Serializable {
      * 
      **/
     public Optional<Schedule> getSchedule() { return this.schedule; }
+   
     public void setSchedule(Optional<Schedule> schedule) { 
         this.schedule = (schedule == null) ? Optional.<Schedule>empty() : schedule;
     }
@@ -83,10 +85,14 @@ public class ModifyScheduleResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != schedule && schedule.isPresent()){
-            sb.append(" schedule : ").append(schedule).append(",");
+            sb.append(" schedule : ").append(gson.toJson(schedule)).append(",");
+        }
+        else{
+            sb.append(" schedule : ").append("null").append(",");
         }
         sb.append( " }" );
 

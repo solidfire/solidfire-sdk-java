@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ModifyVolumeAccessGroupResult implements Serializable {
 
-    public static final long serialVersionUID = 2898879091933680714L;
+    public static final long serialVersionUID = 2646586656634627601L;
     @SerializedName("volumeAccessGroup") private VolumeAccessGroup volumeAccessGroup;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class ModifyVolumeAccessGroupResult implements Serializable {
      * An object containing information about the newly modified volume access group.
      **/
     public VolumeAccessGroup getVolumeAccessGroup() { return this.volumeAccessGroup; }
+   
     public void setVolumeAccessGroup(VolumeAccessGroup volumeAccessGroup) { 
         this.volumeAccessGroup = volumeAccessGroup;
     }
@@ -83,9 +85,10 @@ public class ModifyVolumeAccessGroupResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroup : ").append(volumeAccessGroup).append(",");
+        sb.append(" volumeAccessGroup : ").append(gson.toJson(volumeAccessGroup)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -39,7 +40,7 @@ import java.util.Objects;
 
 public class CloneMultipleVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 124123484915976136L;
+    public static final long serialVersionUID = 2238262941096586292L;
     @SerializedName("volumes") private CloneMultipleVolumeParams[] volumes;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
@@ -80,6 +81,7 @@ public class CloneMultipleVolumesRequest implements Serializable {
      * Size is rounded up to the nearest 1MB.
      **/
     public CloneMultipleVolumeParams[] getVolumes() { return this.volumes; }
+   
     public void setVolumes(CloneMultipleVolumeParams[] volumes) { 
         this.volumes = volumes;
     }
@@ -88,6 +90,7 @@ public class CloneMultipleVolumesRequest implements Serializable {
      * overridden by information passed in the volume's array.
      **/
     public Optional<String> getAccess() { return this.access; }
+   
     public void setAccess(Optional<String> access) { 
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
@@ -95,6 +98,7 @@ public class CloneMultipleVolumesRequest implements Serializable {
      * ID of the group snapshot to use as a basis for the clone.
      **/
     public Optional<Long> getGroupSnapshotID() { return this.groupSnapshotID; }
+   
     public void setGroupSnapshotID(Optional<Long> groupSnapshotID) { 
         this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
     }
@@ -103,6 +107,7 @@ public class CloneMultipleVolumesRequest implements Serializable {
      * information passed in the volumes array.
      **/
     public Optional<Long> getNewAccountID() { return this.newAccountID; }
+   
     public void setNewAccountID(Optional<Long> newAccountID) { 
         this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
@@ -139,17 +144,27 @@ public class CloneMultipleVolumesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
+        sb.append(" volumes : ").append(gson.toJson(Arrays.toString(volumes))).append(",");
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access).append(",");
+            sb.append(" access : ").append(gson.toJson(access)).append(",");
+        }
+        else{
+            sb.append(" access : ").append("null").append(",");
         }
         if(null != groupSnapshotID && groupSnapshotID.isPresent()){
-            sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
+            sb.append(" groupSnapshotID : ").append(gson.toJson(groupSnapshotID)).append(",");
+        }
+        else{
+            sb.append(" groupSnapshotID : ").append("null").append(",");
         }
         if(null != newAccountID && newAccountID.isPresent()){
-            sb.append(" newAccountID : ").append(newAccountID).append(",");
+            sb.append(" newAccountID : ").append(gson.toJson(newAccountID)).append(",");
+        }
+        else{
+            sb.append(" newAccountID : ").append("null").append(",");
         }
         sb.append( " }" );
 

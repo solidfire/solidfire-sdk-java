@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class TestLdapAuthenticationRequest implements Serializable {
 
-    public static final long serialVersionUID = -8214557165709846268L;
+    public static final long serialVersionUID = -3991816212743901339L;
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("ldapConfiguration") private Optional<LdapConfiguration> ldapConfiguration;
@@ -61,6 +62,7 @@ public class TestLdapAuthenticationRequest implements Serializable {
      * The username to be tested.
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
@@ -68,6 +70,7 @@ public class TestLdapAuthenticationRequest implements Serializable {
      * The password for the username to be tested.
      **/
     public String getPassword() { return this.password; }
+   
     public void setPassword(String password) { 
         this.password = password;
     }
@@ -76,6 +79,7 @@ public class TestLdapAuthenticationRequest implements Serializable {
      * configuration even if LDAP authentication is disabled.
      **/
     public Optional<LdapConfiguration> getLdapConfiguration() { return this.ldapConfiguration; }
+   
     public void setLdapConfiguration(Optional<LdapConfiguration> ldapConfiguration) { 
         this.ldapConfiguration = (ldapConfiguration == null) ? Optional.<LdapConfiguration>empty() : ldapConfiguration;
     }
@@ -110,12 +114,16 @@ public class TestLdapAuthenticationRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" username : ").append(username).append(",");
-        sb.append(" password : ").append(password).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
+        sb.append(" password : ").append(gson.toJson(password)).append(",");
         if(null != ldapConfiguration && ldapConfiguration.isPresent()){
-            sb.append(" ldapConfiguration : ").append(ldapConfiguration).append(",");
+            sb.append(" ldapConfiguration : ").append(gson.toJson(ldapConfiguration)).append(",");
+        }
+        else{
+            sb.append(" ldapConfiguration : ").append("null").append(",");
         }
         sb.append( " }" );
 

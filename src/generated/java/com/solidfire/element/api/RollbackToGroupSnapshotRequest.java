@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class RollbackToGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 6204224908392625168L;
+    public static final long serialVersionUID = -809972948513042793L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
     @SerializedName("name") private Optional<String> name;
@@ -65,6 +66,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
      * Specifies the unique ID of the group snapshot.
      **/
     public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+   
     public void setGroupSnapshotID(Long groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
@@ -74,6 +76,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
      * false: (default) The previous active volume image is deleted.
      **/
     public Boolean getSaveCurrentState() { return this.saveCurrentState; }
+   
     public void setSaveCurrentState(Boolean saveCurrentState) { 
         this.saveCurrentState = saveCurrentState;
     }
@@ -86,6 +89,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
      * the rollback occurred.
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
@@ -93,6 +97,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -129,15 +134,22 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
-        sb.append(" saveCurrentState : ").append(saveCurrentState).append(",");
+        sb.append(" groupSnapshotID : ").append(gson.toJson(groupSnapshotID)).append(",");
+        sb.append(" saveCurrentState : ").append(gson.toJson(saveCurrentState)).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

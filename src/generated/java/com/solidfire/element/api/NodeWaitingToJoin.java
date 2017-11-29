@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class NodeWaitingToJoin implements Serializable {
 
-    public static final long serialVersionUID = 4644211491339289003L;
+    public static final long serialVersionUID = 4751353832656225215L;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("version") private String version;
     @SerializedName("nodeID") private Optional<Long> nodeID;
@@ -83,6 +84,7 @@ public class NodeWaitingToJoin implements Serializable {
      * 
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
@@ -90,6 +92,7 @@ public class NodeWaitingToJoin implements Serializable {
      * 
      **/
     public String getVersion() { return this.version; }
+   
     public void setVersion(String version) { 
         this.version = version;
     }
@@ -97,6 +100,7 @@ public class NodeWaitingToJoin implements Serializable {
      * 
      **/
     public Optional<Long> getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Optional<Long> nodeID) { 
         this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
     }
@@ -104,6 +108,7 @@ public class NodeWaitingToJoin implements Serializable {
      * 
      **/
     public Optional<Long> getPendingNodeID() { return this.pendingNodeID; }
+   
     public void setPendingNodeID(Optional<Long> pendingNodeID) { 
         this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : pendingNodeID;
     }
@@ -111,6 +116,7 @@ public class NodeWaitingToJoin implements Serializable {
      * 
      **/
     public Optional<String> getMip() { return this.mip; }
+   
     public void setMip(Optional<String> mip) { 
         this.mip = (mip == null) ? Optional.<String>empty() : mip;
     }
@@ -118,6 +124,7 @@ public class NodeWaitingToJoin implements Serializable {
      * 
      **/
     public Optional<String> getCip() { return this.cip; }
+   
     public void setCip(Optional<String> cip) { 
         this.cip = (cip == null) ? Optional.<String>empty() : cip;
     }
@@ -125,6 +132,7 @@ public class NodeWaitingToJoin implements Serializable {
      * 
      **/
     public Optional<String> getSip() { return this.sip; }
+   
     public void setSip(Optional<String> sip) { 
         this.sip = (sip == null) ? Optional.<String>empty() : sip;
     }
@@ -132,6 +140,7 @@ public class NodeWaitingToJoin implements Serializable {
      * 
      **/
     public Boolean getCompatible() { return this.compatible; }
+   
     public void setCompatible(Boolean compatible) { 
         this.compatible = compatible;
     }
@@ -139,6 +148,7 @@ public class NodeWaitingToJoin implements Serializable {
      * 
      **/
     public Optional<String> getChassisType() { return this.chassisType; }
+   
     public void setChassisType(Optional<String> chassisType) { 
         this.chassisType = (chassisType == null) ? Optional.<String>empty() : chassisType;
     }
@@ -146,6 +156,7 @@ public class NodeWaitingToJoin implements Serializable {
      * 
      **/
     public Optional<String> getHostname() { return this.hostname; }
+   
     public void setHostname(Optional<String> hostname) { 
         this.hostname = (hostname == null) ? Optional.<String>empty() : hostname;
     }
@@ -153,6 +164,7 @@ public class NodeWaitingToJoin implements Serializable {
      * 
      **/
     public Optional<String> getNodeType() { return this.nodeType; }
+   
     public void setNodeType(Optional<String> nodeType) { 
         this.nodeType = (nodeType == null) ? Optional.<String>empty() : nodeType;
     }
@@ -203,36 +215,64 @@ public class NodeWaitingToJoin implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
         }
-        sb.append(" version : ").append(version).append(",");
+        else{
+            sb.append(" name : ").append("null").append(",");
+        }
+        sb.append(" version : ").append(gson.toJson(version)).append(",");
         if(null != nodeID && nodeID.isPresent()){
-            sb.append(" nodeID : ").append(nodeID).append(",");
+            sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
+        }
+        else{
+            sb.append(" nodeID : ").append("null").append(",");
         }
         if(null != pendingNodeID && pendingNodeID.isPresent()){
-            sb.append(" pendingNodeID : ").append(pendingNodeID).append(",");
+            sb.append(" pendingNodeID : ").append(gson.toJson(pendingNodeID)).append(",");
+        }
+        else{
+            sb.append(" pendingNodeID : ").append("null").append(",");
         }
         if(null != mip && mip.isPresent()){
-            sb.append(" mip : ").append(mip).append(",");
+            sb.append(" mip : ").append(gson.toJson(mip)).append(",");
+        }
+        else{
+            sb.append(" mip : ").append("null").append(",");
         }
         if(null != cip && cip.isPresent()){
-            sb.append(" cip : ").append(cip).append(",");
+            sb.append(" cip : ").append(gson.toJson(cip)).append(",");
+        }
+        else{
+            sb.append(" cip : ").append("null").append(",");
         }
         if(null != sip && sip.isPresent()){
-            sb.append(" sip : ").append(sip).append(",");
+            sb.append(" sip : ").append(gson.toJson(sip)).append(",");
         }
-        sb.append(" compatible : ").append(compatible).append(",");
+        else{
+            sb.append(" sip : ").append("null").append(",");
+        }
+        sb.append(" compatible : ").append(gson.toJson(compatible)).append(",");
         if(null != chassisType && chassisType.isPresent()){
-            sb.append(" chassisType : ").append(chassisType).append(",");
+            sb.append(" chassisType : ").append(gson.toJson(chassisType)).append(",");
+        }
+        else{
+            sb.append(" chassisType : ").append("null").append(",");
         }
         if(null != hostname && hostname.isPresent()){
-            sb.append(" hostname : ").append(hostname).append(",");
+            sb.append(" hostname : ").append(gson.toJson(hostname)).append(",");
+        }
+        else{
+            sb.append(" hostname : ").append("null").append(",");
         }
         if(null != nodeType && nodeType.isPresent()){
-            sb.append(" nodeType : ").append(nodeType).append(",");
+            sb.append(" nodeType : ").append(gson.toJson(nodeType)).append(",");
+        }
+        else{
+            sb.append(" nodeType : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class EventInfo implements Serializable {
 
-    public static final long serialVersionUID = 4530460853307909797L;
+    public static final long serialVersionUID = 848178818129099493L;
     @SerializedName("eventID") private Long eventID;
     @SerializedName("severity") private Long severity;
     @SerializedName("eventInfoType") private String eventInfoType;
@@ -83,6 +84,7 @@ public class EventInfo implements Serializable {
      * 
      **/
     public Long getEventID() { return this.eventID; }
+   
     public void setEventID(Long eventID) { 
         this.eventID = eventID;
     }
@@ -90,6 +92,7 @@ public class EventInfo implements Serializable {
      * 
      **/
     public Long getSeverity() { return this.severity; }
+   
     public void setSeverity(Long severity) { 
         this.severity = severity;
     }
@@ -97,6 +100,7 @@ public class EventInfo implements Serializable {
      * 
      **/
     public String getEventInfoType() { return this.eventInfoType; }
+   
     public void setEventInfoType(String eventInfoType) { 
         this.eventInfoType = eventInfoType;
     }
@@ -104,6 +108,7 @@ public class EventInfo implements Serializable {
      * 
      **/
     public String getMessage() { return this.message; }
+   
     public void setMessage(String message) { 
         this.message = message;
     }
@@ -111,6 +116,7 @@ public class EventInfo implements Serializable {
      * 
      **/
     public Long getServiceID() { return this.serviceID; }
+   
     public void setServiceID(Long serviceID) { 
         this.serviceID = serviceID;
     }
@@ -118,6 +124,7 @@ public class EventInfo implements Serializable {
      * 
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -125,6 +132,7 @@ public class EventInfo implements Serializable {
      * 
      **/
     public Long getDriveID() { return this.driveID; }
+   
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
@@ -132,6 +140,7 @@ public class EventInfo implements Serializable {
      * 
      **/
     public Long[] getDriveIDs() { return this.driveIDs; }
+   
     public void setDriveIDs(Long[] driveIDs) { 
         this.driveIDs = driveIDs;
     }
@@ -139,6 +148,7 @@ public class EventInfo implements Serializable {
      * 
      **/
     public String getTimeOfReport() { return this.timeOfReport; }
+   
     public void setTimeOfReport(String timeOfReport) { 
         this.timeOfReport = timeOfReport;
     }
@@ -146,6 +156,7 @@ public class EventInfo implements Serializable {
      * 
      **/
     public String getTimeOfPublish() { return this.timeOfPublish; }
+   
     public void setTimeOfPublish(String timeOfPublish) { 
         this.timeOfPublish = timeOfPublish;
     }
@@ -153,6 +164,7 @@ public class EventInfo implements Serializable {
      * 
      **/
     public Optional<Object> getDetails() { return this.details; }
+   
     public void setDetails(Optional<Object> details) { 
         this.details = (details == null) ? Optional.<Object>empty() : details;
     }
@@ -203,20 +215,24 @@ public class EventInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" eventID : ").append(eventID).append(",");
-        sb.append(" severity : ").append(severity).append(",");
-        sb.append(" eventInfoType : ").append(eventInfoType).append(",");
-        sb.append(" message : ").append(message).append(",");
-        sb.append(" serviceID : ").append(serviceID).append(",");
-        sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" driveID : ").append(driveID).append(",");
-        sb.append(" driveIDs : ").append(Arrays.toString(driveIDs)).append(",");
-        sb.append(" timeOfReport : ").append(timeOfReport).append(",");
-        sb.append(" timeOfPublish : ").append(timeOfPublish).append(",");
+        sb.append(" eventID : ").append(gson.toJson(eventID)).append(",");
+        sb.append(" severity : ").append(gson.toJson(severity)).append(",");
+        sb.append(" eventInfoType : ").append(gson.toJson(eventInfoType)).append(",");
+        sb.append(" message : ").append(gson.toJson(message)).append(",");
+        sb.append(" serviceID : ").append(gson.toJson(serviceID)).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
+        sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
+        sb.append(" driveIDs : ").append(gson.toJson(Arrays.toString(driveIDs))).append(",");
+        sb.append(" timeOfReport : ").append(gson.toJson(timeOfReport)).append(",");
+        sb.append(" timeOfPublish : ").append(gson.toJson(timeOfPublish)).append(",");
         if(null != details && details.isPresent()){
-            sb.append(" details : ").append(details).append(",");
+            sb.append(" details : ").append(gson.toJson(details)).append(",");
+        }
+        else{
+            sb.append(" details : ").append("null").append(",");
         }
         sb.append( " }" );
 

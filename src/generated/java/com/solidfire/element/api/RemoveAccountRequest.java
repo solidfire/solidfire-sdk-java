@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class RemoveAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = 1930107044860122377L;
+    public static final long serialVersionUID = 5238041783915396464L;
     @SerializedName("accountID") private Long accountID;
     // empty constructor
     @Since("7.0")
@@ -56,6 +57,7 @@ public class RemoveAccountRequest implements Serializable {
      * Specifies the AccountID for the account to be removed.
      **/
     public Long getAccountID() { return this.accountID; }
+   
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
@@ -86,9 +88,10 @@ public class RemoveAccountRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" accountID : ").append(accountID).append(",");
+        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

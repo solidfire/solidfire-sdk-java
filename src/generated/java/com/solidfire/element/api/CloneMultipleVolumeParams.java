@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class CloneMultipleVolumeParams implements Serializable {
 
-    public static final long serialVersionUID = -8094408842619275123L;
+    public static final long serialVersionUID = -5436439440207991654L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("name") private Optional<String> name;
@@ -68,6 +69,7 @@ public class CloneMultipleVolumeParams implements Serializable {
      * Required parameter for "volumes" array: volumeID.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -81,6 +83,7 @@ public class CloneMultipleVolumeParams implements Serializable {
      * If unspecified, the access settings of the clone will be the same as the source.
      **/
     public Optional<String> getAccess() { return this.access; }
+   
     public void setAccess(Optional<String> access) { 
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
@@ -88,6 +91,7 @@ public class CloneMultipleVolumeParams implements Serializable {
      * New name for the clone.
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
@@ -95,6 +99,7 @@ public class CloneMultipleVolumeParams implements Serializable {
      * Account ID for the new volume.
      **/
     public Optional<Long> getNewAccountID() { return this.newAccountID; }
+   
     public void setNewAccountID(Optional<Long> newAccountID) { 
         this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
@@ -102,6 +107,7 @@ public class CloneMultipleVolumeParams implements Serializable {
      * New size Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
      **/
     public Optional<Long> getNewSize() { return this.newSize; }
+   
     public void setNewSize(Optional<Long> newSize) { 
         this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
     }
@@ -109,6 +115,7 @@ public class CloneMultipleVolumeParams implements Serializable {
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -149,23 +156,39 @@ public class CloneMultipleVolumeParams implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access).append(",");
+            sb.append(" access : ").append(gson.toJson(access)).append(",");
+        }
+        else{
+            sb.append(" access : ").append("null").append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != newAccountID && newAccountID.isPresent()){
-            sb.append(" newAccountID : ").append(newAccountID).append(",");
+            sb.append(" newAccountID : ").append(gson.toJson(newAccountID)).append(",");
+        }
+        else{
+            sb.append(" newAccountID : ").append("null").append(",");
         }
         if(null != newSize && newSize.isPresent()){
-            sb.append(" newSize : ").append(newSize).append(",");
+            sb.append(" newSize : ").append(gson.toJson(newSize)).append(",");
+        }
+        else{
+            sb.append(" newSize : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

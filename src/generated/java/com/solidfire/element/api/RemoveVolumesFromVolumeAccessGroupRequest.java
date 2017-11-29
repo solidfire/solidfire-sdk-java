@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = -1586126254405022680L;
+    public static final long serialVersionUID = -2043557978124640960L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("volumes") private Long[] volumes;
     // empty constructor
@@ -57,6 +58,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
      * The ID of the volume access group to remove volumes from.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
@@ -64,6 +66,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
      * The ID of the volume access group to remove volumes from.
      **/
     public Long[] getVolumes() { return this.volumes; }
+   
     public void setVolumes(Long[] volumes) { 
         this.volumes = volumes;
     }
@@ -96,10 +99,11 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
+        sb.append(" volumes : ").append(gson.toJson(Arrays.toString(volumes))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

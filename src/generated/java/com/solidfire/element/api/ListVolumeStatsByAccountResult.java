@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ListVolumeStatsByAccountResult implements Serializable {
 
-    public static final long serialVersionUID = -7526047392406406573L;
+    public static final long serialVersionUID = 6149147754051418212L;
     @SerializedName("volumeStats") private VolumeStats[] volumeStats;
     // empty constructor
     @Since("7.0")
@@ -54,6 +55,7 @@ public class ListVolumeStatsByAccountResult implements Serializable {
      * Note: The volumeID member is 0 for each entry, as the values represent the summation of all volumes owned by the account.
      **/
     public VolumeStats[] getVolumeStats() { return this.volumeStats; }
+   
     public void setVolumeStats(VolumeStats[] volumeStats) { 
         this.volumeStats = volumeStats;
     }
@@ -84,9 +86,10 @@ public class ListVolumeStatsByAccountResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeStats : ").append(Arrays.toString(volumeStats)).append(",");
+        sb.append(" volumeStats : ").append(gson.toJson(Arrays.toString(volumeStats))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

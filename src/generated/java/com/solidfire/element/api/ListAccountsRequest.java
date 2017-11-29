@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ListAccountsRequest implements Serializable {
 
-    public static final long serialVersionUID = -7515621413749741420L;
+    public static final long serialVersionUID = 6374093142117098440L;
     @SerializedName("startAccountID") private Optional<Long> startAccountID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("includeStorageContainers") private Optional<Boolean> includeStorageContainers;
@@ -74,6 +75,7 @@ public class ListAccountsRequest implements Serializable {
      * 1.
      **/
     public Optional<Long> getStartAccountID() { return this.startAccountID; }
+   
     public void setStartAccountID(Optional<Long> startAccountID) { 
         this.startAccountID = (startAccountID == null) ? Optional.<Long>empty() : startAccountID;
     }
@@ -81,6 +83,7 @@ public class ListAccountsRequest implements Serializable {
      * Maximum number of AccountInfo objects to return.
      **/
     public Optional<Long> getLimit() { return this.limit; }
+   
     public void setLimit(Optional<Long> limit) { 
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
@@ -89,6 +92,7 @@ public class ListAccountsRequest implements Serializable {
      * default. To exclude storage containers, set to false.
      **/
     public Optional<Boolean> getIncludeStorageContainers() { return this.includeStorageContainers; }
+   
     public void setIncludeStorageContainers(Optional<Boolean> includeStorageContainers) { 
         this.includeStorageContainers = (includeStorageContainers == null) ? Optional.<Boolean>empty() : includeStorageContainers;
     }
@@ -123,16 +127,26 @@ public class ListAccountsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != startAccountID && startAccountID.isPresent()){
-            sb.append(" startAccountID : ").append(startAccountID).append(",");
+            sb.append(" startAccountID : ").append(gson.toJson(startAccountID)).append(",");
+        }
+        else{
+            sb.append(" startAccountID : ").append("null").append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(gson.toJson(limit)).append(",");
+        }
+        else{
+            sb.append(" limit : ").append("null").append(",");
         }
         if(null != includeStorageContainers && includeStorageContainers.isPresent()){
-            sb.append(" includeStorageContainers : ").append(includeStorageContainers).append(",");
+            sb.append(" includeStorageContainers : ").append(gson.toJson(includeStorageContainers)).append(",");
+        }
+        else{
+            sb.append(" includeStorageContainers : ").append("null").append(",");
         }
         sb.append( " }" );
 

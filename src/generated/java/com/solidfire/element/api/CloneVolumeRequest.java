@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class CloneVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 513126381279753378L;
+    public static final long serialVersionUID = 5788489168458713078L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("newAccountID") private Optional<Long> newAccountID;
@@ -77,6 +78,7 @@ public class CloneVolumeRequest implements Serializable {
      * VolumeID for the volume to be cloned.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -84,6 +86,7 @@ public class CloneVolumeRequest implements Serializable {
      * The name of the new cloned volume. Might be 1 to 64 characters in length.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -92,6 +95,7 @@ public class CloneVolumeRequest implements Serializable {
      * accountID of the owner of the volume being cloned is used.
      **/
     public Optional<Long> getNewAccountID() { return this.newAccountID; }
+   
     public void setNewAccountID(Optional<Long> newAccountID) { 
         this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
@@ -101,6 +105,7 @@ public class CloneVolumeRequest implements Serializable {
      * changed. Size is rounded to the nearest 1MB.
      **/
     public Optional<Long> getNewSize() { return this.newSize; }
+   
     public void setNewSize(Optional<Long> newSize) { 
         this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
     }
@@ -115,6 +120,7 @@ public class CloneVolumeRequest implements Serializable {
      * If a value is not specified, the access value does not change.
      **/
     public Optional<String> getAccess() { return this.access; }
+   
     public void setAccess(Optional<String> access) { 
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
@@ -123,6 +129,7 @@ public class CloneVolumeRequest implements Serializable {
      * provided, the current active volume is used.
      **/
     public Optional<Long> getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Optional<Long> snapshotID) { 
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
@@ -130,6 +137,7 @@ public class CloneVolumeRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -137,6 +145,7 @@ public class CloneVolumeRequest implements Serializable {
      * Should the volume provide 512-byte sector emulation?
      **/
     public Optional<Boolean> getEnable512e() { return this.enable512e; }
+   
     public void setEnable512e(Optional<Boolean> enable512e) { 
         this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
     }
@@ -181,27 +190,46 @@ public class CloneVolumeRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" name : ").append(name).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
         if(null != newAccountID && newAccountID.isPresent()){
-            sb.append(" newAccountID : ").append(newAccountID).append(",");
+            sb.append(" newAccountID : ").append(gson.toJson(newAccountID)).append(",");
+        }
+        else{
+            sb.append(" newAccountID : ").append("null").append(",");
         }
         if(null != newSize && newSize.isPresent()){
-            sb.append(" newSize : ").append(newSize).append(",");
+            sb.append(" newSize : ").append(gson.toJson(newSize)).append(",");
+        }
+        else{
+            sb.append(" newSize : ").append("null").append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access).append(",");
+            sb.append(" access : ").append(gson.toJson(access)).append(",");
+        }
+        else{
+            sb.append(" access : ").append("null").append(",");
         }
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID).append(",");
+            sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        }
+        else{
+            sb.append(" snapshotID : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         if(null != enable512e && enable512e.isPresent()){
-            sb.append(" enable512e : ").append(enable512e).append(",");
+            sb.append(" enable512e : ").append(gson.toJson(enable512e)).append(",");
+        }
+        else{
+            sb.append(" enable512e : ").append("null").append(",");
         }
         sb.append( " }" );
 

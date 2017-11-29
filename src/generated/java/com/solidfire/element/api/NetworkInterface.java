@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class NetworkInterface implements Serializable {
 
-    public static final long serialVersionUID = -8770906631066561122L;
+    public static final long serialVersionUID = -5263858092411106865L;
     @SerializedName("address") private String address;
     @SerializedName("broadcast") private String broadcast;
     @SerializedName("macAddress") private String macAddress;
@@ -80,6 +81,7 @@ public class NetworkInterface implements Serializable {
      * IP address of the network.
      **/
     public String getAddress() { return this.address; }
+   
     public void setAddress(String address) { 
         this.address = address;
     }
@@ -87,6 +89,7 @@ public class NetworkInterface implements Serializable {
      * Address of NTP broadcast.
      **/
     public String getBroadcast() { return this.broadcast; }
+   
     public void setBroadcast(String broadcast) { 
         this.broadcast = broadcast;
     }
@@ -94,6 +97,7 @@ public class NetworkInterface implements Serializable {
      * Address used to configure the interface.
      **/
     public String getMacAddress() { return this.macAddress; }
+   
     public void setMacAddress(String macAddress) { 
         this.macAddress = macAddress;
     }
@@ -101,6 +105,7 @@ public class NetworkInterface implements Serializable {
      * Packet size on the network interface.
      **/
     public Long getMtu() { return this.mtu; }
+   
     public void setMtu(Long mtu) { 
         this.mtu = mtu;
     }
@@ -108,6 +113,7 @@ public class NetworkInterface implements Serializable {
      * Name of the network interface.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -115,6 +121,7 @@ public class NetworkInterface implements Serializable {
      * Netmask for the network interface.
      **/
     public String getNetmask() { return this.netmask; }
+   
     public void setNetmask(String netmask) { 
         this.netmask = netmask;
     }
@@ -122,6 +129,7 @@ public class NetworkInterface implements Serializable {
      * Status of the network.
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -129,6 +137,7 @@ public class NetworkInterface implements Serializable {
      * The type of network, ie, BondMaster.
      **/
     public String getType() { return this.type; }
+   
     public void setType(String type) { 
         this.type = type;
     }
@@ -136,6 +145,7 @@ public class NetworkInterface implements Serializable {
      * Virtual Network Tag if on virtual network.
      **/
     public Long getVirtualNetworkTag() { return this.virtualNetworkTag; }
+   
     public void setVirtualNetworkTag(Long virtualNetworkTag) { 
         this.virtualNetworkTag = virtualNetworkTag;
     }
@@ -143,6 +153,7 @@ public class NetworkInterface implements Serializable {
      * 
      **/
     public Optional<Boolean> getNamespace() { return this.namespace; }
+   
     public void setNamespace(Optional<Boolean> namespace) { 
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
@@ -191,19 +202,23 @@ public class NetworkInterface implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" address : ").append(address).append(",");
-        sb.append(" broadcast : ").append(broadcast).append(",");
-        sb.append(" macAddress : ").append(macAddress).append(",");
-        sb.append(" mtu : ").append(mtu).append(",");
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" netmask : ").append(netmask).append(",");
-        sb.append(" status : ").append(status).append(",");
-        sb.append(" type : ").append(type).append(",");
-        sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+        sb.append(" address : ").append(gson.toJson(address)).append(",");
+        sb.append(" broadcast : ").append(gson.toJson(broadcast)).append(",");
+        sb.append(" macAddress : ").append(gson.toJson(macAddress)).append(",");
+        sb.append(" mtu : ").append(gson.toJson(mtu)).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" netmask : ").append(gson.toJson(netmask)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
+        sb.append(" type : ").append(gson.toJson(type)).append(",");
+        sb.append(" virtualNetworkTag : ").append(gson.toJson(virtualNetworkTag)).append(",");
         if(null != namespace && namespace.isPresent()){
-            sb.append(" namespace : ").append(namespace).append(",");
+            sb.append(" namespace : ").append(gson.toJson(namespace)).append(",");
+        }
+        else{
+            sb.append(" namespace : ").append("null").append(",");
         }
         sb.append( " }" );
 

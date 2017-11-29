@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class EnableLdapAuthenticationRequest implements Serializable {
 
-    public static final long serialVersionUID = -2324963835386058900L;
+    public static final long serialVersionUID = 2976054419327822022L;
     @SerializedName("authType") private Optional<String> authType;
     @SerializedName("groupSearchBaseDN") private Optional<String> groupSearchBaseDN;
     @SerializedName("groupSearchCustomFilter") private Optional<String> groupSearchCustomFilter;
@@ -83,6 +84,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
      * SearchAndBind
      **/
     public Optional<String> getAuthType() { return this.authType; }
+   
     public void setAuthType(Optional<String> authType) { 
         this.authType = (authType == null) ? Optional.<String>empty() : authType;
     }
@@ -90,6 +92,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
      * The base DN of the tree to start the group search (will do a subtree search from here).
      **/
     public Optional<String> getGroupSearchBaseDN() { return this.groupSearchBaseDN; }
+   
     public void setGroupSearchBaseDN(Optional<String> groupSearchBaseDN) { 
         this.groupSearchBaseDN = (groupSearchBaseDN == null) ? Optional.<String>empty() : groupSearchBaseDN;
     }
@@ -97,6 +100,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
      * For use with the CustomFilter search type, an LDAP filter to use to return the DNs of a users groups. The string can have placeholder text of %USERNAME% and %USERDN% to be replaced with their username and full userDN as needed.
      **/
     public Optional<String> getGroupSearchCustomFilter() { return this.groupSearchCustomFilter; }
+   
     public void setGroupSearchCustomFilter(Optional<String> groupSearchCustomFilter) { 
         this.groupSearchCustomFilter = (groupSearchCustomFilter == null) ? Optional.<String>empty() : groupSearchCustomFilter;
     }
@@ -107,6 +111,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
      * MemberDN: MemberDN style groups (single level).
      **/
     public Optional<String> getGroupSearchType() { return this.groupSearchType; }
+   
     public void setGroupSearchType(Optional<String> groupSearchType) { 
         this.groupSearchType = (groupSearchType == null) ? Optional.<String>empty() : groupSearchType;
     }
@@ -114,6 +119,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
      * A fully qualified DN to log in with to perform an LDAP search for the user (needs read access to the LDAP directory).
      **/
     public Optional<String> getSearchBindDN() { return this.searchBindDN; }
+   
     public void setSearchBindDN(Optional<String> searchBindDN) { 
         this.searchBindDN = (searchBindDN == null) ? Optional.<String>empty() : searchBindDN;
     }
@@ -121,6 +127,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
      * The password for the searchBindDN account used for searching.
      **/
     public Optional<String> getSearchBindPassword() { return this.searchBindPassword; }
+   
     public void setSearchBindPassword(Optional<String> searchBindPassword) { 
         this.searchBindPassword = (searchBindPassword == null) ? Optional.<String>empty() : searchBindPassword;
     }
@@ -128,6 +135,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
      * A comma-separated list of LDAP server URIs (examples: "ldap://1.2.3.4" and ldaps://1.2.3.4:123")
      **/
     public String[] getServerURIs() { return this.serverURIs; }
+   
     public void setServerURIs(String[] serverURIs) { 
         this.serverURIs = serverURIs;
     }
@@ -135,6 +143,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
      * A string that is used to form a fully qualified user DN. The string should have the placeholder text %USERNAME%, which is replaced with the username of the authenticating user.
      **/
     public Optional<String> getUserDNTemplate() { return this.userDNTemplate; }
+   
     public void setUserDNTemplate(Optional<String> userDNTemplate) { 
         this.userDNTemplate = (userDNTemplate == null) ? Optional.<String>empty() : userDNTemplate;
     }
@@ -142,6 +151,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
      * The base DN of the tree to start the search (will do a subtree search from here).
      **/
     public Optional<String> getUserSearchBaseDN() { return this.userSearchBaseDN; }
+   
     public void setUserSearchBaseDN(Optional<String> userSearchBaseDN) { 
         this.userSearchBaseDN = (userSearchBaseDN == null) ? Optional.<String>empty() : userSearchBaseDN;
     }
@@ -149,6 +159,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
      * The LDAP filter to use. The string should have the placeholder text %USERNAME% which is replaced with the username of the authenticating user. Example: (&(objectClass=person)(sAMAccountName=%USERNAME%)) will use the sAMAccountName field in Active Directory to match the username entered at cluster login.
      **/
     public Optional<String> getUserSearchFilter() { return this.userSearchFilter; }
+   
     public void setUserSearchFilter(Optional<String> userSearchFilter) { 
         this.userSearchFilter = (userSearchFilter == null) ? Optional.<String>empty() : userSearchFilter;
     }
@@ -197,35 +208,63 @@ public class EnableLdapAuthenticationRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != authType && authType.isPresent()){
-            sb.append(" authType : ").append(authType).append(",");
+            sb.append(" authType : ").append(gson.toJson(authType)).append(",");
+        }
+        else{
+            sb.append(" authType : ").append("null").append(",");
         }
         if(null != groupSearchBaseDN && groupSearchBaseDN.isPresent()){
-            sb.append(" groupSearchBaseDN : ").append(groupSearchBaseDN).append(",");
+            sb.append(" groupSearchBaseDN : ").append(gson.toJson(groupSearchBaseDN)).append(",");
+        }
+        else{
+            sb.append(" groupSearchBaseDN : ").append("null").append(",");
         }
         if(null != groupSearchCustomFilter && groupSearchCustomFilter.isPresent()){
-            sb.append(" groupSearchCustomFilter : ").append(groupSearchCustomFilter).append(",");
+            sb.append(" groupSearchCustomFilter : ").append(gson.toJson(groupSearchCustomFilter)).append(",");
+        }
+        else{
+            sb.append(" groupSearchCustomFilter : ").append("null").append(",");
         }
         if(null != groupSearchType && groupSearchType.isPresent()){
-            sb.append(" groupSearchType : ").append(groupSearchType).append(",");
+            sb.append(" groupSearchType : ").append(gson.toJson(groupSearchType)).append(",");
+        }
+        else{
+            sb.append(" groupSearchType : ").append("null").append(",");
         }
         if(null != searchBindDN && searchBindDN.isPresent()){
-            sb.append(" searchBindDN : ").append(searchBindDN).append(",");
+            sb.append(" searchBindDN : ").append(gson.toJson(searchBindDN)).append(",");
+        }
+        else{
+            sb.append(" searchBindDN : ").append("null").append(",");
         }
         if(null != searchBindPassword && searchBindPassword.isPresent()){
-            sb.append(" searchBindPassword : ").append(searchBindPassword).append(",");
+            sb.append(" searchBindPassword : ").append(gson.toJson(searchBindPassword)).append(",");
         }
-        sb.append(" serverURIs : ").append(Arrays.toString(serverURIs)).append(",");
+        else{
+            sb.append(" searchBindPassword : ").append("null").append(",");
+        }
+        sb.append(" serverURIs : ").append(gson.toJson(Arrays.toString(serverURIs))).append(",");
         if(null != userDNTemplate && userDNTemplate.isPresent()){
-            sb.append(" userDNTemplate : ").append(userDNTemplate).append(",");
+            sb.append(" userDNTemplate : ").append(gson.toJson(userDNTemplate)).append(",");
+        }
+        else{
+            sb.append(" userDNTemplate : ").append("null").append(",");
         }
         if(null != userSearchBaseDN && userSearchBaseDN.isPresent()){
-            sb.append(" userSearchBaseDN : ").append(userSearchBaseDN).append(",");
+            sb.append(" userSearchBaseDN : ").append(gson.toJson(userSearchBaseDN)).append(",");
+        }
+        else{
+            sb.append(" userSearchBaseDN : ").append("null").append(",");
         }
         if(null != userSearchFilter && userSearchFilter.isPresent()){
-            sb.append(" userSearchFilter : ").append(userSearchFilter).append(",");
+            sb.append(" userSearchFilter : ").append(gson.toJson(userSearchFilter)).append(",");
+        }
+        else{
+            sb.append(" userSearchFilter : ").append("null").append(",");
         }
         sb.append( " }" );
 

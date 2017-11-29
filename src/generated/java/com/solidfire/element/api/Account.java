@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class Account implements Serializable {
 
-    public static final long serialVersionUID = -5637807900996030182L;
+    public static final long serialVersionUID = 6182745512723579970L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("username") private String username;
     @SerializedName("status") private String status;
@@ -76,6 +77,7 @@ public class Account implements Serializable {
      * Unique AccountID for the account.
      **/
     public Long getAccountID() { return this.accountID; }
+   
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
@@ -83,6 +85,7 @@ public class Account implements Serializable {
      * User name for the account.
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
@@ -90,6 +93,7 @@ public class Account implements Serializable {
      * Current status of the account.
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -97,6 +101,7 @@ public class Account implements Serializable {
      * List of VolumeIDs for Volumes owned by this account.
      **/
     public Long[] getVolumes() { return this.volumes; }
+   
     public void setVolumes(Long[] volumes) { 
         this.volumes = volumes;
     }
@@ -104,6 +109,7 @@ public class Account implements Serializable {
      * CHAP secret to use for the initiator.
      **/
     public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
+   
     public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
@@ -111,6 +117,7 @@ public class Account implements Serializable {
      * CHAP secret to use for the target (mutual CHAP authentication).
      **/
     public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
+   
     public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
@@ -118,6 +125,7 @@ public class Account implements Serializable {
      * The id of the storage container associated with the account
      **/
     public Optional<java.util.UUID> getStorageContainerID() { return this.storageContainerID; }
+   
     public void setStorageContainerID(Optional<java.util.UUID> storageContainerID) { 
         this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : storageContainerID;
     }
@@ -125,6 +133,7 @@ public class Account implements Serializable {
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -169,23 +178,36 @@ public class Account implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" accountID : ").append(accountID).append(",");
-        sb.append(" username : ").append(username).append(",");
-        sb.append(" status : ").append(status).append(",");
-        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
+        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
+        sb.append(" volumes : ").append(gson.toJson(Arrays.toString(volumes))).append(",");
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+            sb.append(" initiatorSecret : ").append(gson.toJson(initiatorSecret)).append(",");
+        }
+        else{
+            sb.append(" initiatorSecret : ").append("null").append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret).append(",");
+            sb.append(" targetSecret : ").append(gson.toJson(targetSecret)).append(",");
+        }
+        else{
+            sb.append(" targetSecret : ").append("null").append(",");
         }
         if(null != storageContainerID && storageContainerID.isPresent()){
-            sb.append(" storageContainerID : ").append(storageContainerID).append(",");
+            sb.append(" storageContainerID : ").append(gson.toJson(storageContainerID)).append(",");
+        }
+        else{
+            sb.append(" storageContainerID : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

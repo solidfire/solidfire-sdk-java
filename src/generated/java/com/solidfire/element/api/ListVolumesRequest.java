@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class ListVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 1679195579471116122L;
+    public static final long serialVersionUID = 5183986509019868242L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("volumeStatus") private Optional<String> volumeStatus;
@@ -96,6 +97,7 @@ public class ListVolumesRequest implements Serializable {
      * volumeIDs parameter.
      **/
     public Optional<Long> getStartVolumeID() { return this.startVolumeID; }
+   
     public void setStartVolumeID(Optional<Long> startVolumeID) { 
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
     }
@@ -105,6 +107,7 @@ public class ListVolumesRequest implements Serializable {
      * volumeIDs parameter.
      **/
     public Optional<Long> getLimit() { return this.limit; }
+   
     public void setLimit(Optional<Long> limit) { 
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
@@ -118,6 +121,7 @@ public class ListVolumesRequest implements Serializable {
      * deleted
      **/
     public Optional<String> getVolumeStatus() { return this.volumeStatus; }
+   
     public void setVolumeStatus(Optional<String> volumeStatus) { 
         this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
     }
@@ -125,6 +129,7 @@ public class ListVolumesRequest implements Serializable {
      * Returns only the volumes owned by the accounts you specify here. Mutually exclusive with the volumeIDs parameter.
      **/
     public Optional<Long[]> getAccounts() { return this.accounts; }
+   
     public void setAccounts(Optional<Long[]> accounts) { 
         this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
     }
@@ -135,6 +140,7 @@ public class ListVolumesRequest implements Serializable {
      * false: Returns all volumes that are not paired.
      **/
     public Optional<Boolean> getIsPaired() { return this.isPaired; }
+   
     public void setIsPaired(Optional<Boolean> isPaired) { 
         this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
     }
@@ -145,6 +151,7 @@ public class ListVolumesRequest implements Serializable {
      * parameters.
      **/
     public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
+   
     public void setVolumeIDs(Optional<Long[]> volumeIDs) { 
         this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
     }
@@ -153,6 +160,7 @@ public class ListVolumesRequest implements Serializable {
      * name is returned.
      **/
     public Optional<String> getVolumeName() { return this.volumeName; }
+   
     public void setVolumeName(Optional<String> volumeName) { 
         this.volumeName = (volumeName == null) ? Optional.<String>empty() : volumeName;
     }
@@ -161,6 +169,7 @@ public class ListVolumesRequest implements Serializable {
      * To exclude virtual volumes, set to false.
      **/
     public Optional<Boolean> getIncludeVirtualVolumes() { return this.includeVirtualVolumes; }
+   
     public void setIncludeVirtualVolumes(Optional<Boolean> includeVirtualVolumes) { 
         this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
     }
@@ -205,31 +214,56 @@ public class ListVolumesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != startVolumeID && startVolumeID.isPresent()){
-            sb.append(" startVolumeID : ").append(startVolumeID).append(",");
+            sb.append(" startVolumeID : ").append(gson.toJson(startVolumeID)).append(",");
+        }
+        else{
+            sb.append(" startVolumeID : ").append("null").append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(gson.toJson(limit)).append(",");
+        }
+        else{
+            sb.append(" limit : ").append("null").append(",");
         }
         if(null != volumeStatus && volumeStatus.isPresent()){
-            sb.append(" volumeStatus : ").append(volumeStatus).append(",");
+            sb.append(" volumeStatus : ").append(gson.toJson(volumeStatus)).append(",");
+        }
+        else{
+            sb.append(" volumeStatus : ").append("null").append(",");
         }
         if(null != accounts && accounts.isPresent()){
-            sb.append(" accounts : ").append(accounts).append(",");
+            sb.append(" accounts : ").append(gson.toJson(accounts)).append(",");
+        }
+        else{
+            sb.append(" accounts : ").append("null").append(",");
         }
         if(null != isPaired && isPaired.isPresent()){
-            sb.append(" isPaired : ").append(isPaired).append(",");
+            sb.append(" isPaired : ").append(gson.toJson(isPaired)).append(",");
+        }
+        else{
+            sb.append(" isPaired : ").append("null").append(",");
         }
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
+            sb.append(" volumeIDs : ").append(gson.toJson(volumeIDs)).append(",");
+        }
+        else{
+            sb.append(" volumeIDs : ").append("null").append(",");
         }
         if(null != volumeName && volumeName.isPresent()){
-            sb.append(" volumeName : ").append(volumeName).append(",");
+            sb.append(" volumeName : ").append(gson.toJson(volumeName)).append(",");
+        }
+        else{
+            sb.append(" volumeName : ").append("null").append(",");
         }
         if(null != includeVirtualVolumes && includeVirtualVolumes.isPresent()){
-            sb.append(" includeVirtualVolumes : ").append(includeVirtualVolumes).append(",");
+            sb.append(" includeVirtualVolumes : ").append(gson.toJson(includeVirtualVolumes)).append(",");
+        }
+        else{
+            sb.append(" includeVirtualVolumes : ").append("null").append(",");
         }
         sb.append( " }" );
 

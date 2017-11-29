@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -42,11 +43,12 @@ import java.util.Objects;
 
 public class QoS implements Serializable {
 
-    public static final long serialVersionUID = -4041527656264070217L;
+    public static final long serialVersionUID = 1023223855695272644L;
     @SerializedName("minIOPS") private Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
     @SerializedName("burstIOPS") private Optional<Long> burstIOPS;
     @SerializedName("burstTime") private Optional<Long> burstTime;
+    @SerializedName("curve") private Optional<Attributes> curve;
     // empty constructor
     @Since("7.0")
     public QoS() {}
@@ -58,13 +60,15 @@ public class QoS implements Serializable {
         Optional<Long> minIOPS,
         Optional<Long> maxIOPS,
         Optional<Long> burstIOPS,
-        Optional<Long> burstTime
+        Optional<Long> burstTime,
+        Optional<Attributes> curve
     )
     {
         this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : minIOPS;
         this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : maxIOPS;
         this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : burstIOPS;
         this.burstTime = (burstTime == null) ? Optional.<Long>empty() : burstTime;
+        this.curve = (curve == null) ? Optional.<Attributes>empty() : curve;
     }
 
     /** 
@@ -73,6 +77,7 @@ public class QoS implements Serializable {
      * at their minimum IOPS value and there is still insufficient performance capacity.
      **/
     public Optional<Long> getMinIOPS() { return this.minIOPS; }
+   
     public void setMinIOPS(Optional<Long> minIOPS) { 
         this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : minIOPS;
     }
@@ -80,6 +85,7 @@ public class QoS implements Serializable {
      * Desired maximum 4KB IOPS allowed over an extended period of time.
      **/
     public Optional<Long> getMaxIOPS() { return this.maxIOPS; }
+   
     public void setMaxIOPS(Optional<Long> maxIOPS) { 
         this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : maxIOPS;
     }
@@ -88,6 +94,7 @@ public class QoS implements Serializable {
      * Allows for bursts of I/O activity over the normal max IOPS value.
      **/
     public Optional<Long> getBurstIOPS() { return this.burstIOPS; }
+   
     public void setBurstIOPS(Optional<Long> burstIOPS) { 
         this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : burstIOPS;
     }
@@ -97,8 +104,20 @@ public class QoS implements Serializable {
      * Note: this value is calculated by the system based on IOPS set for QoS.
      **/
     public Optional<Long> getBurstTime() { return this.burstTime; }
+   
     public void setBurstTime(Optional<Long> burstTime) { 
         this.burstTime = (burstTime == null) ? Optional.<Long>empty() : burstTime;
+    }
+    /** 
+     * The curve is a set of key-value pairs.
+     * The keys are I/O sizes in bytes.
+     * The values represent the cost performing an IOP at a specific I/O size.
+     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
+     **/
+    public Optional<Attributes> getCurve() { return this.curve; }
+   
+    public void setCurve(Optional<Attributes> curve) { 
+        this.curve = (curve == null) ? Optional.<Attributes>empty() : curve;
     }
 
     @Override
@@ -112,12 +131,13 @@ public class QoS implements Serializable {
             Objects.equals(minIOPS, that.minIOPS) && 
             Objects.equals(maxIOPS, that.maxIOPS) && 
             Objects.equals(burstIOPS, that.burstIOPS) && 
-            Objects.equals(burstTime, that.burstTime);
+            Objects.equals(burstTime, that.burstTime) && 
+            Objects.equals(curve, that.curve);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( minIOPS,maxIOPS,burstIOPS,burstTime );
+        return Objects.hash( minIOPS,maxIOPS,burstIOPS,burstTime,curve );
     }
 
 
@@ -127,25 +147,45 @@ public class QoS implements Serializable {
         map.put("maxIOPS", maxIOPS);
         map.put("burstIOPS", burstIOPS);
         map.put("burstTime", burstTime);
+        map.put("curve", curve);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != minIOPS && minIOPS.isPresent()){
-            sb.append(" minIOPS : ").append(minIOPS).append(",");
+            sb.append(" minIOPS : ").append(gson.toJson(minIOPS)).append(",");
+        }
+        else{
+            sb.append(" minIOPS : ").append("null").append(",");
         }
         if(null != maxIOPS && maxIOPS.isPresent()){
-            sb.append(" maxIOPS : ").append(maxIOPS).append(",");
+            sb.append(" maxIOPS : ").append(gson.toJson(maxIOPS)).append(",");
+        }
+        else{
+            sb.append(" maxIOPS : ").append("null").append(",");
         }
         if(null != burstIOPS && burstIOPS.isPresent()){
-            sb.append(" burstIOPS : ").append(burstIOPS).append(",");
+            sb.append(" burstIOPS : ").append(gson.toJson(burstIOPS)).append(",");
+        }
+        else{
+            sb.append(" burstIOPS : ").append("null").append(",");
         }
         if(null != burstTime && burstTime.isPresent()){
-            sb.append(" burstTime : ").append(burstTime).append(",");
+            sb.append(" burstTime : ").append(gson.toJson(burstTime)).append(",");
+        }
+        else{
+            sb.append(" burstTime : ").append("null").append(",");
+        }
+        if(null != curve && curve.isPresent()){
+            sb.append(" curve : ").append(gson.toJson(curve)).append(",");
+        }
+        else{
+            sb.append(" curve : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -168,6 +208,7 @@ public class QoS implements Serializable {
         private Optional<Long> maxIOPS;
         private Optional<Long> burstIOPS;
         private Optional<Long> burstTime;
+        private Optional<Attributes> curve;
 
         private Builder() { }
 
@@ -176,7 +217,8 @@ public class QoS implements Serializable {
                          this.minIOPS,
                          this.maxIOPS,
                          this.burstIOPS,
-                         this.burstTime);
+                         this.burstTime,
+                         this.curve);
         }
 
         private QoS.Builder buildFrom(final QoS req) {
@@ -184,6 +226,7 @@ public class QoS implements Serializable {
             this.maxIOPS = req.maxIOPS;
             this.burstIOPS = req.burstIOPS;
             this.burstTime = req.burstTime;
+            this.curve = req.curve;
 
             return this;
         }
@@ -205,6 +248,11 @@ public class QoS implements Serializable {
 
         public QoS.Builder optionalBurstTime(final Long burstTime) {
             this.burstTime = (burstTime == null) ? Optional.<Long>empty() : Optional.of(burstTime);
+            return this;
+        }
+
+        public QoS.Builder optionalCurve(final Attributes curve) {
+            this.curve = (curve == null) ? Optional.<Attributes>empty() : Optional.of(curve);
             return this;
         }
 

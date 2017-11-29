@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class CloneMultipleVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = -5167493112161711037L;
+    public static final long serialVersionUID = 6829236154780075849L;
     @SerializedName("asyncHandle") private Long asyncHandle;
     @SerializedName("groupCloneID") private Long groupCloneID;
     @SerializedName("members") private GroupCloneVolumeMember[] members;
@@ -59,6 +60,7 @@ public class CloneMultipleVolumesResult implements Serializable {
      * A value returned from an asynchronous method call.
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
+   
     public void setAsyncHandle(Long asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
@@ -66,6 +68,7 @@ public class CloneMultipleVolumesResult implements Serializable {
      * Unique ID of the new group clone.
      **/
     public Long getGroupCloneID() { return this.groupCloneID; }
+   
     public void setGroupCloneID(Long groupCloneID) { 
         this.groupCloneID = groupCloneID;
     }
@@ -73,6 +76,7 @@ public class CloneMultipleVolumesResult implements Serializable {
      * List of volumeIDs for the source and destination volume pairs.
      **/
     public GroupCloneVolumeMember[] getMembers() { return this.members; }
+   
     public void setMembers(GroupCloneVolumeMember[] members) { 
         this.members = members;
     }
@@ -107,11 +111,12 @@ public class CloneMultipleVolumesResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" asyncHandle : ").append(asyncHandle).append(",");
-        sb.append(" groupCloneID : ").append(groupCloneID).append(",");
-        sb.append(" members : ").append(Arrays.toString(members)).append(",");
+        sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
+        sb.append(" groupCloneID : ").append(gson.toJson(groupCloneID)).append(",");
+        sb.append(" members : ").append(gson.toJson(Arrays.toString(members))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

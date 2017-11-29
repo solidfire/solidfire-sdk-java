@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ListVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = 108192121085083230L;
+    public static final long serialVersionUID = -5301816642691385785L;
     @SerializedName("volumes") private Volume[] volumes;
     // empty constructor
     @Since("8.0")
@@ -54,6 +55,7 @@ public class ListVolumesResult implements Serializable {
      * List of volumes.
      **/
     public Volume[] getVolumes() { return this.volumes; }
+   
     public void setVolumes(Volume[] volumes) { 
         this.volumes = volumes;
     }
@@ -84,9 +86,10 @@ public class ListVolumesResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
+        sb.append(" volumes : ").append(gson.toJson(Arrays.toString(volumes))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

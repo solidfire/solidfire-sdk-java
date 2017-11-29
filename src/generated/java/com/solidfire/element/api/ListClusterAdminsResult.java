@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ListClusterAdminsResult implements Serializable {
 
-    public static final long serialVersionUID = -204058836529248623L;
+    public static final long serialVersionUID = 7677046371408387626L;
     @SerializedName("clusterAdmins") private ClusterAdmin[] clusterAdmins;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class ListClusterAdminsResult implements Serializable {
      * Information about the cluster admin.
      **/
     public ClusterAdmin[] getClusterAdmins() { return this.clusterAdmins; }
+   
     public void setClusterAdmins(ClusterAdmin[] clusterAdmins) { 
         this.clusterAdmins = clusterAdmins;
     }
@@ -83,9 +85,10 @@ public class ListClusterAdminsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterAdmins : ").append(Arrays.toString(clusterAdmins)).append(",");
+        sb.append(" clusterAdmins : ").append(gson.toJson(Arrays.toString(clusterAdmins))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

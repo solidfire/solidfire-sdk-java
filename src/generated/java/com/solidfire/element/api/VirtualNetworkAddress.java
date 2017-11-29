@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class VirtualNetworkAddress implements Serializable {
 
-    public static final long serialVersionUID = -1840195263816924349L;
+    public static final long serialVersionUID = -4065911921073610306L;
     @SerializedName("virtualNetworkID") private Long virtualNetworkID;
     @SerializedName("address") private String address;
     // empty constructor
@@ -56,6 +57,7 @@ public class VirtualNetworkAddress implements Serializable {
      * SolidFire unique identifier for a virtual network.
      **/
     public Long getVirtualNetworkID() { return this.virtualNetworkID; }
+   
     public void setVirtualNetworkID(Long virtualNetworkID) { 
         this.virtualNetworkID = virtualNetworkID;
     }
@@ -63,6 +65,7 @@ public class VirtualNetworkAddress implements Serializable {
      * Virtual Network Address.
      **/
     public String getAddress() { return this.address; }
+   
     public void setAddress(String address) { 
         this.address = address;
     }
@@ -95,10 +98,11 @@ public class VirtualNetworkAddress implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
-        sb.append(" address : ").append(address).append(",");
+        sb.append(" virtualNetworkID : ").append(gson.toJson(virtualNetworkID)).append(",");
+        sb.append(" address : ").append(gson.toJson(address)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

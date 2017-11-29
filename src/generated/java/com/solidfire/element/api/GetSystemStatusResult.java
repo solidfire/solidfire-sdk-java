@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetSystemStatusResult implements Serializable {
 
-    public static final long serialVersionUID = -5551671385469066836L;
+    public static final long serialVersionUID = -4384165836130921641L;
     @SerializedName("rebootRequired") private Boolean rebootRequired;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class GetSystemStatusResult implements Serializable {
      * 
      **/
     public Boolean getRebootRequired() { return this.rebootRequired; }
+   
     public void setRebootRequired(Boolean rebootRequired) { 
         this.rebootRequired = rebootRequired;
     }
@@ -83,9 +85,10 @@ public class GetSystemStatusResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" rebootRequired : ").append(rebootRequired).append(",");
+        sb.append(" rebootRequired : ").append(gson.toJson(rebootRequired)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

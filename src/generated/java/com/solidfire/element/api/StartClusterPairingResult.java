@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class StartClusterPairingResult implements Serializable {
 
-    public static final long serialVersionUID = -2705640501454661505L;
+    public static final long serialVersionUID = 8946070231339981768L;
     @SerializedName("clusterPairingKey") private String clusterPairingKey;
     @SerializedName("clusterPairID") private Long clusterPairID;
     // empty constructor
@@ -56,6 +57,7 @@ public class StartClusterPairingResult implements Serializable {
      * A string of characters that is used by the "CompleteClusterPairing" API method.
      **/
     public String getClusterPairingKey() { return this.clusterPairingKey; }
+   
     public void setClusterPairingKey(String clusterPairingKey) { 
         this.clusterPairingKey = clusterPairingKey;
     }
@@ -63,6 +65,7 @@ public class StartClusterPairingResult implements Serializable {
      * Unique identifier for the cluster pair.
      **/
     public Long getClusterPairID() { return this.clusterPairID; }
+   
     public void setClusterPairID(Long clusterPairID) { 
         this.clusterPairID = clusterPairID;
     }
@@ -95,10 +98,11 @@ public class StartClusterPairingResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterPairingKey : ").append(clusterPairingKey).append(",");
-        sb.append(" clusterPairID : ").append(clusterPairID).append(",");
+        sb.append(" clusterPairingKey : ").append(gson.toJson(clusterPairingKey)).append(",");
+        sb.append(" clusterPairID : ").append(gson.toJson(clusterPairID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

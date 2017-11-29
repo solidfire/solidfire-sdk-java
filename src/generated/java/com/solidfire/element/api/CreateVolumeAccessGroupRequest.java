@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class CreateVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 4851506015403976112L;
+    public static final long serialVersionUID = -2025480166130283290L;
     @SerializedName("name") private String name;
     @SerializedName("initiators") private Optional<String[]> initiators;
     @SerializedName("volumes") private Optional<Long[]> volumes;
@@ -83,6 +84,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
      * The name for this volume access group. Not required to be unique, but recommended.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -90,6 +92,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
      * List of initiators to include in the volume access group. If unspecified, the access group's configured initiators are not modified.
      **/
     public Optional<String[]> getInitiators() { return this.initiators; }
+   
     public void setInitiators(Optional<String[]> initiators) { 
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
@@ -97,6 +100,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
      * List of volumes to initially include in the volume access group. If unspecified, the access group's volumes are not modified.
      **/
     public Optional<Long[]> getVolumes() { return this.volumes; }
+   
     public void setVolumes(Optional<Long[]> volumes) { 
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
     }
@@ -104,6 +108,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
      * The ID of the SolidFire virtual network to associate the volume access group with.
      **/
     public Optional<Long[]> getVirtualNetworkID() { return this.virtualNetworkID; }
+   
     public void setVirtualNetworkID(Optional<Long[]> virtualNetworkID) { 
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
     }
@@ -111,6 +116,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
      * The ID of the SolidFire virtual network to associate the volume access group with.
      **/
     public Optional<Long[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
+   
     public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) { 
         this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
     }
@@ -118,6 +124,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -158,23 +165,39 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" name : ").append(name).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
         if(null != initiators && initiators.isPresent()){
-            sb.append(" initiators : ").append(initiators).append(",");
+            sb.append(" initiators : ").append(gson.toJson(initiators)).append(",");
+        }
+        else{
+            sb.append(" initiators : ").append("null").append(",");
         }
         if(null != volumes && volumes.isPresent()){
-            sb.append(" volumes : ").append(volumes).append(",");
+            sb.append(" volumes : ").append(gson.toJson(volumes)).append(",");
+        }
+        else{
+            sb.append(" volumes : ").append("null").append(",");
         }
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+            sb.append(" virtualNetworkID : ").append(gson.toJson(virtualNetworkID)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkID : ").append("null").append(",");
         }
         if(null != virtualNetworkTags && virtualNetworkTags.isPresent()){
-            sb.append(" virtualNetworkTags : ").append(virtualNetworkTags).append(",");
+            sb.append(" virtualNetworkTags : ").append(gson.toJson(virtualNetworkTags)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkTags : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class CreateStorageContainerRequest implements Serializable {
 
-    public static final long serialVersionUID = 8510090562069174233L;
+    public static final long serialVersionUID = 7671944159568486150L;
     @SerializedName("name") private String name;
     @SerializedName("initiatorSecret") private Optional<String> initiatorSecret;
     @SerializedName("targetSecret") private Optional<String> targetSecret;
@@ -64,6 +65,7 @@ public class CreateStorageContainerRequest implements Serializable {
      * naming restrictions.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -71,6 +73,7 @@ public class CreateStorageContainerRequest implements Serializable {
      * The secret for CHAP authentication for the initiator.
      **/
     public Optional<String> getInitiatorSecret() { return this.initiatorSecret; }
+   
     public void setInitiatorSecret(Optional<String> initiatorSecret) { 
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
     }
@@ -78,6 +81,7 @@ public class CreateStorageContainerRequest implements Serializable {
      * The secret for CHAP authentication for the target.
      **/
     public Optional<String> getTargetSecret() { return this.targetSecret; }
+   
     public void setTargetSecret(Optional<String> targetSecret) { 
         this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : targetSecret;
     }
@@ -86,6 +90,7 @@ public class CreateStorageContainerRequest implements Serializable {
      * storage container.
      **/
     public Optional<Long> getAccountID() { return this.accountID; }
+   
     public void setAccountID(Optional<Long> accountID) { 
         this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
     }
@@ -122,17 +127,27 @@ public class CreateStorageContainerRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" name : ").append(name).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+            sb.append(" initiatorSecret : ").append(gson.toJson(initiatorSecret)).append(",");
+        }
+        else{
+            sb.append(" initiatorSecret : ").append("null").append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret).append(",");
+            sb.append(" targetSecret : ").append(gson.toJson(targetSecret)).append(",");
+        }
+        else{
+            sb.append(" targetSecret : ").append("null").append(",");
         }
         if(null != accountID && accountID.isPresent()){
-            sb.append(" accountID : ").append(accountID).append(",");
+            sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
+        }
+        else{
+            sb.append(" accountID : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class FeatureObject implements Serializable {
 
-    public static final long serialVersionUID = 2435317048976432254L;
+    public static final long serialVersionUID = -1569252747237563646L;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("feature") private String feature;
     // empty constructor
@@ -56,6 +57,7 @@ public class FeatureObject implements Serializable {
      * True if the feature is enabled, otherwise false.
      **/
     public Boolean getEnabled() { return this.enabled; }
+   
     public void setEnabled(Boolean enabled) { 
         this.enabled = enabled;
     }
@@ -63,6 +65,7 @@ public class FeatureObject implements Serializable {
      * The name of the feature.
      **/
     public String getFeature() { return this.feature; }
+   
     public void setFeature(String feature) { 
         this.feature = feature;
     }
@@ -95,10 +98,11 @@ public class FeatureObject implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" enabled : ").append(enabled).append(",");
-        sb.append(" feature : ").append(feature).append(",");
+        sb.append(" enabled : ").append(gson.toJson(enabled)).append(",");
+        sb.append(" feature : ").append(gson.toJson(feature)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

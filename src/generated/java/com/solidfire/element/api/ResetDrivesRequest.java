@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class ResetDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 9091135840559500796L;
+    public static final long serialVersionUID = -8699379922010603427L;
     @SerializedName("drives") private String drives;
     @SerializedName("force") private Boolean force;
     // empty constructor
@@ -58,6 +59,7 @@ public class ResetDrivesRequest implements Serializable {
      * List of device names (not driveIDs) to reset.
      **/
     public String getDrives() { return this.drives; }
+   
     public void setDrives(String drives) { 
         this.drives = drives;
     }
@@ -65,6 +67,7 @@ public class ResetDrivesRequest implements Serializable {
      * Required parameter to successfully reset a drive.
      **/
     public Boolean getForce() { return this.force; }
+   
     public void setForce(Boolean force) { 
         this.force = force;
     }
@@ -97,10 +100,11 @@ public class ResetDrivesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(drives).append(",");
-        sb.append(" force : ").append(force).append(",");
+        sb.append(" drives : ").append(gson.toJson(drives)).append(",");
+        sb.append(" force : ").append(gson.toJson(force)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

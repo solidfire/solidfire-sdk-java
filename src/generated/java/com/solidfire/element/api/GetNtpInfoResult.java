@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetNtpInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 9086866457059775600L;
+    public static final long serialVersionUID = -3054121633811647599L;
     @SerializedName("broadcastclient") private Boolean broadcastclient;
     @SerializedName("servers") private String[] servers;
     // empty constructor
@@ -58,6 +59,7 @@ public class GetNtpInfoResult implements Serializable {
      * false
      **/
     public Boolean getBroadcastclient() { return this.broadcastclient; }
+   
     public void setBroadcastclient(Boolean broadcastclient) { 
         this.broadcastclient = broadcastclient;
     }
@@ -65,6 +67,7 @@ public class GetNtpInfoResult implements Serializable {
      * List of NTP servers.
      **/
     public String[] getServers() { return this.servers; }
+   
     public void setServers(String[] servers) { 
         this.servers = servers;
     }
@@ -97,10 +100,11 @@ public class GetNtpInfoResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" broadcastclient : ").append(broadcastclient).append(",");
-        sb.append(" servers : ").append(Arrays.toString(servers)).append(",");
+        sb.append(" broadcastclient : ").append(gson.toJson(broadcastclient)).append(",");
+        sb.append(" servers : ").append(gson.toJson(Arrays.toString(servers))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

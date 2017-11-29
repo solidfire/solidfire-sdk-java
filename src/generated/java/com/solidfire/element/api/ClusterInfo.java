@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ClusterInfo implements Serializable {
 
-    public static final long serialVersionUID = -4957511188625744229L;
+    public static final long serialVersionUID = 6937143244161912485L;
     @SerializedName("mvipInterface") private Optional<String> mvipInterface;
     @SerializedName("mvipVlanTag") private Optional<String> mvipVlanTag;
     @SerializedName("svipInterface") private Optional<String> svipInterface;
@@ -96,6 +97,7 @@ public class ClusterInfo implements Serializable {
      * 
      **/
     public Optional<String> getMvipInterface() { return this.mvipInterface; }
+   
     public void setMvipInterface(Optional<String> mvipInterface) { 
         this.mvipInterface = (mvipInterface == null) ? Optional.<String>empty() : mvipInterface;
     }
@@ -103,6 +105,7 @@ public class ClusterInfo implements Serializable {
      * 
      **/
     public Optional<String> getMvipVlanTag() { return this.mvipVlanTag; }
+   
     public void setMvipVlanTag(Optional<String> mvipVlanTag) { 
         this.mvipVlanTag = (mvipVlanTag == null) ? Optional.<String>empty() : mvipVlanTag;
     }
@@ -110,6 +113,7 @@ public class ClusterInfo implements Serializable {
      * 
      **/
     public Optional<String> getSvipInterface() { return this.svipInterface; }
+   
     public void setSvipInterface(Optional<String> svipInterface) { 
         this.svipInterface = (svipInterface == null) ? Optional.<String>empty() : svipInterface;
     }
@@ -117,6 +121,7 @@ public class ClusterInfo implements Serializable {
      * 
      **/
     public Optional<String> getSvipVlanTag() { return this.svipVlanTag; }
+   
     public void setSvipVlanTag(Optional<String> svipVlanTag) { 
         this.svipVlanTag = (svipVlanTag == null) ? Optional.<String>empty() : svipVlanTag;
     }
@@ -124,6 +129,7 @@ public class ClusterInfo implements Serializable {
      * Encryption at rest state.
      **/
     public String getEncryptionAtRestState() { return this.encryptionAtRestState; }
+   
     public void setEncryptionAtRestState(String encryptionAtRestState) { 
         this.encryptionAtRestState = encryptionAtRestState;
     }
@@ -131,6 +137,7 @@ public class ClusterInfo implements Serializable {
      * Array of Node IP addresses that are participating in the cluster.
      **/
     public String[] getEnsemble() { return this.ensemble; }
+   
     public void setEnsemble(String[] ensemble) { 
         this.ensemble = ensemble;
     }
@@ -138,6 +145,7 @@ public class ClusterInfo implements Serializable {
      * Management network interface.
      **/
     public String getMvip() { return this.mvip; }
+   
     public void setMvip(String mvip) { 
         this.mvip = mvip;
     }
@@ -145,6 +153,7 @@ public class ClusterInfo implements Serializable {
      * Node holding the master MVIP address
      **/
     public Long getMvipNodeID() { return this.mvipNodeID; }
+   
     public void setMvipNodeID(Long mvipNodeID) { 
         this.mvipNodeID = mvipNodeID;
     }
@@ -152,6 +161,7 @@ public class ClusterInfo implements Serializable {
      * Unique cluster name.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -160,6 +170,7 @@ public class ClusterInfo implements Serializable {
      * Valid value is 2
      **/
     public Long getRepCount() { return this.repCount; }
+   
     public void setRepCount(Long repCount) { 
         this.repCount = repCount;
     }
@@ -167,6 +178,7 @@ public class ClusterInfo implements Serializable {
      * Storage virtual IP
      **/
     public String getSvip() { return this.svip; }
+   
     public void setSvip(String svip) { 
         this.svip = svip;
     }
@@ -174,6 +186,7 @@ public class ClusterInfo implements Serializable {
      * Node holding the master SVIP address.
      **/
     public Long getSvipNodeID() { return this.svipNodeID; }
+   
     public void setSvipNodeID(Long svipNodeID) { 
         this.svipNodeID = svipNodeID;
     }
@@ -181,6 +194,7 @@ public class ClusterInfo implements Serializable {
      * Unique ID for the cluster.
      **/
     public String getUniqueID() { return this.uniqueID; }
+   
     public void setUniqueID(String uniqueID) { 
         this.uniqueID = uniqueID;
     }
@@ -188,6 +202,7 @@ public class ClusterInfo implements Serializable {
      * 
      **/
     public java.util.UUID getUuid() { return this.uuid; }
+   
     public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
@@ -195,6 +210,7 @@ public class ClusterInfo implements Serializable {
      * List of Name/Value pairs in JSON object format.
      **/
     public Attributes getAttributes() { return this.attributes; }
+   
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
@@ -253,31 +269,44 @@ public class ClusterInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != mvipInterface && mvipInterface.isPresent()){
-            sb.append(" mvipInterface : ").append(mvipInterface).append(",");
+            sb.append(" mvipInterface : ").append(gson.toJson(mvipInterface)).append(",");
+        }
+        else{
+            sb.append(" mvipInterface : ").append("null").append(",");
         }
         if(null != mvipVlanTag && mvipVlanTag.isPresent()){
-            sb.append(" mvipVlanTag : ").append(mvipVlanTag).append(",");
+            sb.append(" mvipVlanTag : ").append(gson.toJson(mvipVlanTag)).append(",");
+        }
+        else{
+            sb.append(" mvipVlanTag : ").append("null").append(",");
         }
         if(null != svipInterface && svipInterface.isPresent()){
-            sb.append(" svipInterface : ").append(svipInterface).append(",");
+            sb.append(" svipInterface : ").append(gson.toJson(svipInterface)).append(",");
+        }
+        else{
+            sb.append(" svipInterface : ").append("null").append(",");
         }
         if(null != svipVlanTag && svipVlanTag.isPresent()){
-            sb.append(" svipVlanTag : ").append(svipVlanTag).append(",");
+            sb.append(" svipVlanTag : ").append(gson.toJson(svipVlanTag)).append(",");
         }
-        sb.append(" encryptionAtRestState : ").append(encryptionAtRestState).append(",");
-        sb.append(" ensemble : ").append(Arrays.toString(ensemble)).append(",");
-        sb.append(" mvip : ").append(mvip).append(",");
-        sb.append(" mvipNodeID : ").append(mvipNodeID).append(",");
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" repCount : ").append(repCount).append(",");
-        sb.append(" svip : ").append(svip).append(",");
-        sb.append(" svipNodeID : ").append(svipNodeID).append(",");
-        sb.append(" uniqueID : ").append(uniqueID).append(",");
-        sb.append(" uuid : ").append(uuid).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
+        else{
+            sb.append(" svipVlanTag : ").append("null").append(",");
+        }
+        sb.append(" encryptionAtRestState : ").append(gson.toJson(encryptionAtRestState)).append(",");
+        sb.append(" ensemble : ").append(gson.toJson(Arrays.toString(ensemble))).append(",");
+        sb.append(" mvip : ").append(gson.toJson(mvip)).append(",");
+        sb.append(" mvipNodeID : ").append(gson.toJson(mvipNodeID)).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" repCount : ").append(gson.toJson(repCount)).append(",");
+        sb.append(" svip : ").append(gson.toJson(svip)).append(",");
+        sb.append(" svipNodeID : ").append(gson.toJson(svipNodeID)).append(",");
+        sb.append(" uniqueID : ").append(gson.toJson(uniqueID)).append(",");
+        sb.append(" uuid : ").append(gson.toJson(uuid)).append(",");
+        sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class RemoveClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 518132307708384078L;
+    public static final long serialVersionUID = -3802184349571466111L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     // empty constructor
     @Since("7.0")
@@ -54,6 +55,7 @@ public class RemoveClusterAdminRequest implements Serializable {
      * ClusterAdminID for the cluster admin to remove.
      **/
     public Long getClusterAdminID() { return this.clusterAdminID; }
+   
     public void setClusterAdminID(Long clusterAdminID) { 
         this.clusterAdminID = clusterAdminID;
     }
@@ -84,9 +86,10 @@ public class RemoveClusterAdminRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
+        sb.append(" clusterAdminID : ").append(gson.toJson(clusterAdminID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ClusterAdmin implements Serializable {
 
-    public static final long serialVersionUID = -2942376997202145152L;
+    public static final long serialVersionUID = 5002497716622301063L;
     @SerializedName("authMethod") private String authMethod;
     @SerializedName("access") private String[] access;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
@@ -65,6 +66,7 @@ public class ClusterAdmin implements Serializable {
      * 
      **/
     public String getAuthMethod() { return this.authMethod; }
+   
     public void setAuthMethod(String authMethod) { 
         this.authMethod = authMethod;
     }
@@ -72,6 +74,7 @@ public class ClusterAdmin implements Serializable {
      * 
      **/
     public String[] getAccess() { return this.access; }
+   
     public void setAccess(String[] access) { 
         this.access = access;
     }
@@ -79,6 +82,7 @@ public class ClusterAdmin implements Serializable {
      * 
      **/
     public Long getClusterAdminID() { return this.clusterAdminID; }
+   
     public void setClusterAdminID(Long clusterAdminID) { 
         this.clusterAdminID = clusterAdminID;
     }
@@ -86,6 +90,7 @@ public class ClusterAdmin implements Serializable {
      * 
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
@@ -93,6 +98,7 @@ public class ClusterAdmin implements Serializable {
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -131,14 +137,18 @@ public class ClusterAdmin implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" authMethod : ").append(authMethod).append(",");
-        sb.append(" access : ").append(Arrays.toString(access)).append(",");
-        sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
-        sb.append(" username : ").append(username).append(",");
+        sb.append(" authMethod : ").append(gson.toJson(authMethod)).append(",");
+        sb.append(" access : ").append(gson.toJson(Arrays.toString(access))).append(",");
+        sb.append(" clusterAdminID : ").append(gson.toJson(clusterAdminID)).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

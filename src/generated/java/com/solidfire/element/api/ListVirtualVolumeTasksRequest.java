@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumeTasksRequest implements Serializable {
 
-    public static final long serialVersionUID = -3895420752921706990L;
+    public static final long serialVersionUID = -6145951520781588511L;
     @SerializedName("virtualVolumeTaskIDs") private Optional<java.util.UUID[]> virtualVolumeTaskIDs;
     // empty constructor
     @Since("7.0")
@@ -54,6 +55,7 @@ public class ListVirtualVolumeTasksRequest implements Serializable {
      * A list of virtual volume task IDs for which to retrieve information. If you omit this parameter, the method returns information about all virtual volume tasks.
      **/
     public Optional<java.util.UUID[]> getVirtualVolumeTaskIDs() { return this.virtualVolumeTaskIDs; }
+   
     public void setVirtualVolumeTaskIDs(Optional<java.util.UUID[]> virtualVolumeTaskIDs) { 
         this.virtualVolumeTaskIDs = (virtualVolumeTaskIDs == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumeTaskIDs;
     }
@@ -84,10 +86,14 @@ public class ListVirtualVolumeTasksRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != virtualVolumeTaskIDs && virtualVolumeTaskIDs.isPresent()){
-            sb.append(" virtualVolumeTaskIDs : ").append(virtualVolumeTaskIDs).append(",");
+            sb.append(" virtualVolumeTaskIDs : ").append(gson.toJson(virtualVolumeTaskIDs)).append(",");
+        }
+        else{
+            sb.append(" virtualVolumeTaskIDs : ").append("null").append(",");
         }
         sb.append( " }" );
 

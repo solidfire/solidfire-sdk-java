@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,8 +34,10 @@ import java.util.Objects;
 
 public class ResetDrivesResult implements Serializable {
 
-    public static final long serialVersionUID = -7593723774346856967L;
+    public static final long serialVersionUID = -5931507223727898696L;
     @SerializedName("details") private ResetDrivesDetails details;
+    @SerializedName("duration") private Optional<String> duration;
+    @SerializedName("result") private Optional<String> result;
     // empty constructor
     @Since("7.0")
     public ResetDrivesResult() {}
@@ -43,18 +46,37 @@ public class ResetDrivesResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ResetDrivesResult(
-        ResetDrivesDetails details
+        ResetDrivesDetails details,
+        Optional<String> duration,
+        Optional<String> result
     )
     {
         this.details = details;
+        this.duration = (duration == null) ? Optional.<String>empty() : duration;
+        this.result = (result == null) ? Optional.<String>empty() : result;
     }
 
     /** 
      * Details of drives that are being reset.
      **/
     public ResetDrivesDetails getDetails() { return this.details; }
+   
     public void setDetails(ResetDrivesDetails details) { 
         this.details = details;
+    }
+    /** 
+     **/
+    public Optional<String> getDuration() { return this.duration; }
+   
+    public void setDuration(Optional<String> duration) { 
+        this.duration = (duration == null) ? Optional.<String>empty() : duration;
+    }
+    /** 
+     **/
+    public Optional<String> getResult() { return this.result; }
+   
+    public void setResult(Optional<String> result) { 
+        this.result = (result == null) ? Optional.<String>empty() : result;
     }
 
     @Override
@@ -65,27 +87,44 @@ public class ResetDrivesResult implements Serializable {
         ResetDrivesResult that = (ResetDrivesResult) o;
 
         return 
-            Objects.equals(details, that.details);
+            Objects.equals(details, that.details) && 
+            Objects.equals(duration, that.duration) && 
+            Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( details );
+        return Objects.hash( details,duration,result );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("details", details);
+        map.put("duration", duration);
+        map.put("result", result);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" details : ").append(details).append(",");
+        sb.append(" details : ").append(gson.toJson(details)).append(",");
+        if(null != duration && duration.isPresent()){
+            sb.append(" duration : ").append(gson.toJson(duration)).append(",");
+        }
+        else{
+            sb.append(" duration : ").append("null").append(",");
+        }
+        if(null != result && result.isPresent()){
+            sb.append(" result : ").append(gson.toJson(result)).append(",");
+        }
+        else{
+            sb.append(" result : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,22 +143,38 @@ public class ResetDrivesResult implements Serializable {
 
     public static class Builder {
         private ResetDrivesDetails details;
+        private Optional<String> duration;
+        private Optional<String> result;
 
         private Builder() { }
 
         public ResetDrivesResult build() {
             return new ResetDrivesResult (
-                         this.details);
+                         this.details,
+                         this.duration,
+                         this.result);
         }
 
         private ResetDrivesResult.Builder buildFrom(final ResetDrivesResult req) {
             this.details = req.details;
+            this.duration = req.duration;
+            this.result = req.result;
 
             return this;
         }
 
         public ResetDrivesResult.Builder details(final ResetDrivesDetails details) {
             this.details = details;
+            return this;
+        }
+
+        public ResetDrivesResult.Builder optionalDuration(final String duration) {
+            this.duration = (duration == null) ? Optional.<String>empty() : Optional.of(duration);
+            return this;
+        }
+
+        public ResetDrivesResult.Builder optionalResult(final String result) {
+            this.result = (result == null) ? Optional.<String>empty() : Optional.of(result);
             return this;
         }
 

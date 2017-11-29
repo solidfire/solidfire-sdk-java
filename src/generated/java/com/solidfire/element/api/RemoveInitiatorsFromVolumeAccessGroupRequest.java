@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 3390299949209479751L;
+    public static final long serialVersionUID = 307064900088076518L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("initiators") private String[] initiators;
     @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators;
@@ -63,6 +64,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
      * from which the initiators are removed.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
@@ -71,6 +73,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
      * access group.
      **/
     public String[] getInitiators() { return this.initiators; }
+   
     public void setInitiators(String[] initiators) { 
         this.initiators = initiators;
     }
@@ -79,6 +82,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
      * false: Do not delete initiator objects after they are removed from a volume access group.
      **/
     public Optional<Boolean> getDeleteOrphanInitiators() { return this.deleteOrphanInitiators; }
+   
     public void setDeleteOrphanInitiators(Optional<Boolean> deleteOrphanInitiators) { 
         this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
     }
@@ -113,12 +117,16 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
+        sb.append(" initiators : ").append(gson.toJson(Arrays.toString(initiators))).append(",");
         if(null != deleteOrphanInitiators && deleteOrphanInitiators.isPresent()){
-            sb.append(" deleteOrphanInitiators : ").append(deleteOrphanInitiators).append(",");
+            sb.append(" deleteOrphanInitiators : ").append(gson.toJson(deleteOrphanInitiators)).append(",");
+        }
+        else{
+            sb.append(" deleteOrphanInitiators : ").append("null").append(",");
         }
         sb.append( " }" );
 

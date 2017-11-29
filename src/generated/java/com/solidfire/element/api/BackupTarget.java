@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class BackupTarget implements Serializable {
 
-    public static final long serialVersionUID = 8826238734821802472L;
+    public static final long serialVersionUID = -2195701379749552647L;
     @SerializedName("name") private String name;
     @SerializedName("backupTargetID") private Long backupTargetID;
     @SerializedName("attributes") private Optional<Attributes> attributes;
@@ -60,6 +61,7 @@ public class BackupTarget implements Serializable {
      * Name for the backup target.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -67,6 +69,7 @@ public class BackupTarget implements Serializable {
      * Unique identifier assigned to the backup target.
      **/
     public Long getBackupTargetID() { return this.backupTargetID; }
+   
     public void setBackupTargetID(Long backupTargetID) { 
         this.backupTargetID = backupTargetID;
     }
@@ -74,6 +77,7 @@ public class BackupTarget implements Serializable {
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -108,12 +112,16 @@ public class BackupTarget implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" backupTargetID : ").append(backupTargetID).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" backupTargetID : ").append(gson.toJson(backupTargetID)).append(",");
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

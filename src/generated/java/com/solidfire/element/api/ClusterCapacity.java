@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ClusterCapacity implements Serializable {
 
-    public static final long serialVersionUID = 3622498463373308885L;
+    public static final long serialVersionUID = -9123859184117899227L;
     @SerializedName("activeBlockSpace") private Long activeBlockSpace;
     @SerializedName("activeSessions") private Long activeSessions;
     @SerializedName("averageIOPS") private Long averageIOPS;
@@ -171,6 +172,7 @@ public class ClusterCapacity implements Serializable {
      * This includes additional information such as metadata entries and space which can be cleaned up.
      **/
     public Long getActiveBlockSpace() { return this.activeBlockSpace; }
+   
     public void setActiveBlockSpace(Long activeBlockSpace) { 
         this.activeBlockSpace = activeBlockSpace;
     }
@@ -178,6 +180,7 @@ public class ClusterCapacity implements Serializable {
      * Number of active iSCSI sessions communicating with the cluster
      **/
     public Long getActiveSessions() { return this.activeSessions; }
+   
     public void setActiveSessions(Long activeSessions) { 
         this.activeSessions = activeSessions;
     }
@@ -185,6 +188,7 @@ public class ClusterCapacity implements Serializable {
      * Average IPS for the cluster since midnight Coordinated Universal Time (UTC).
      **/
     public Long getAverageIOPS() { return this.averageIOPS; }
+   
     public void setAverageIOPS(Long averageIOPS) { 
         this.averageIOPS = averageIOPS;
     }
@@ -192,6 +196,7 @@ public class ClusterCapacity implements Serializable {
      * The average size of IOPS to all volumes in the cluster.
      **/
     public Long getClusterRecentIOSize() { return this.clusterRecentIOSize; }
+   
     public void setClusterRecentIOSize(Long clusterRecentIOSize) { 
         this.clusterRecentIOSize = clusterRecentIOSize;
     }
@@ -199,6 +204,7 @@ public class ClusterCapacity implements Serializable {
      * Average IOPS for all volumes in the cluster over the last 5 seconds.
      **/
     public Long getCurrentIOPS() { return this.currentIOPS; }
+   
     public void setCurrentIOPS(Long currentIOPS) { 
         this.currentIOPS = currentIOPS;
     }
@@ -206,6 +212,7 @@ public class ClusterCapacity implements Serializable {
      * Estimated maximum IOPS capability of the current cluster.
      **/
     public Long getMaxIOPS() { return this.maxIOPS; }
+   
     public void setMaxIOPS(Long maxIOPS) { 
         this.maxIOPS = maxIOPS;
     }
@@ -216,6 +223,7 @@ public class ClusterCapacity implements Serializable {
      * maxOverProvisionableSpace = maxProvisionedSpace * GetClusterFull
      **/
     public Long getMaxOverProvisionableSpace() { return this.maxOverProvisionableSpace; }
+   
     public void setMaxOverProvisionableSpace(Long maxOverProvisionableSpace) { 
         this.maxOverProvisionableSpace = maxOverProvisionableSpace;
     }
@@ -223,6 +231,7 @@ public class ClusterCapacity implements Serializable {
      * The total amount of provisionable space if all volumes are 100% filled (no thin provisioned metadata).
      **/
     public Long getMaxProvisionedSpace() { return this.maxProvisionedSpace; }
+   
     public void setMaxProvisionedSpace(Long maxProvisionedSpace) { 
         this.maxProvisionedSpace = maxProvisionedSpace;
     }
@@ -230,6 +239,7 @@ public class ClusterCapacity implements Serializable {
      * The amount of bytes on volume drives used to store metadata.
      **/
     public Long getMaxUsedMetadataSpace() { return this.maxUsedMetadataSpace; }
+   
     public void setMaxUsedMetadataSpace(Long maxUsedMetadataSpace) { 
         this.maxUsedMetadataSpace = maxUsedMetadataSpace;
     }
@@ -237,6 +247,7 @@ public class ClusterCapacity implements Serializable {
      * The total amount of space on all active block drives.
      **/
     public Long getMaxUsedSpace() { return this.maxUsedSpace; }
+   
     public void setMaxUsedSpace(Long maxUsedSpace) { 
         this.maxUsedSpace = maxUsedSpace;
     }
@@ -244,6 +255,7 @@ public class ClusterCapacity implements Serializable {
      * Total number of 4KiB blocks with data after the last garbage collection operation has completed.
      **/
     public Long getNonZeroBlocks() { return this.nonZeroBlocks; }
+   
     public void setNonZeroBlocks(Long nonZeroBlocks) { 
         this.nonZeroBlocks = nonZeroBlocks;
     }
@@ -251,6 +263,7 @@ public class ClusterCapacity implements Serializable {
      * Peak number of iSCSI connections since midnight UTC.
      **/
     public Long getPeakActiveSessions() { return this.peakActiveSessions; }
+   
     public void setPeakActiveSessions(Long peakActiveSessions) { 
         this.peakActiveSessions = peakActiveSessions;
     }
@@ -258,6 +271,7 @@ public class ClusterCapacity implements Serializable {
      * The highest value for currentIOPS since midnight UTC.
      **/
     public Long getPeakIOPS() { return this.peakIOPS; }
+   
     public void setPeakIOPS(Long peakIOPS) { 
         this.peakIOPS = peakIOPS;
     }
@@ -265,6 +279,7 @@ public class ClusterCapacity implements Serializable {
      * Total amount of space provisioned in all volumes on the cluster.
      **/
     public Long getProvisionedSpace() { return this.provisionedSpace; }
+   
     public void setProvisionedSpace(Long provisionedSpace) { 
         this.provisionedSpace = provisionedSpace;
     }
@@ -272,6 +287,7 @@ public class ClusterCapacity implements Serializable {
      * Total number of 4KiB blocks in snapshots with data.
      **/
     public Long getSnapshotNonZeroBlocks() { return this.snapshotNonZeroBlocks; }
+   
     public void setSnapshotNonZeroBlocks(Long snapshotNonZeroBlocks) { 
         this.snapshotNonZeroBlocks = snapshotNonZeroBlocks;
     }
@@ -279,6 +295,7 @@ public class ClusterCapacity implements Serializable {
      * The date and time this cluster capacity sample was taken.
      **/
     public String getTimestamp() { return this.timestamp; }
+   
     public void setTimestamp(String timestamp) { 
         this.timestamp = timestamp;
     }
@@ -286,6 +303,7 @@ public class ClusterCapacity implements Serializable {
      * The total number of I/O operations performed throughout the lifetime of the cluster
      **/
     public Long getTotalOps() { return this.totalOps; }
+   
     public void setTotalOps(Long totalOps) { 
         this.totalOps = totalOps;
     }
@@ -294,6 +312,7 @@ public class ClusterCapacity implements Serializable {
      * The value includes replicated blocks.
      **/
     public Long getUniqueBlocks() { return this.uniqueBlocks; }
+   
     public void setUniqueBlocks(Long uniqueBlocks) { 
         this.uniqueBlocks = uniqueBlocks;
     }
@@ -302,6 +321,7 @@ public class ClusterCapacity implements Serializable {
      * This number is always consistent with the uniqueBlocks value.
      **/
     public Long getUniqueBlocksUsedSpace() { return this.uniqueBlocksUsedSpace; }
+   
     public void setUniqueBlocksUsedSpace(Long uniqueBlocksUsedSpace) { 
         this.uniqueBlocksUsedSpace = uniqueBlocksUsedSpace;
     }
@@ -309,6 +329,7 @@ public class ClusterCapacity implements Serializable {
      * The total amount of bytes on volume drives used to store metadata
      **/
     public Long getUsedMetadataSpace() { return this.usedMetadataSpace; }
+   
     public void setUsedMetadataSpace(Long usedMetadataSpace) { 
         this.usedMetadataSpace = usedMetadataSpace;
     }
@@ -317,6 +338,7 @@ public class ClusterCapacity implements Serializable {
      * This number provides an estimate of how much metadata space would be regained by deleting all snapshots on the system.
      **/
     public Long getUsedMetadataSpaceInSnapshots() { return this.usedMetadataSpaceInSnapshots; }
+   
     public void setUsedMetadataSpaceInSnapshots(Long usedMetadataSpaceInSnapshots) { 
         this.usedMetadataSpaceInSnapshots = usedMetadataSpaceInSnapshots;
     }
@@ -324,6 +346,7 @@ public class ClusterCapacity implements Serializable {
      * Total amount of space used by all block drives in the system.
      **/
     public Long getUsedSpace() { return this.usedSpace; }
+   
     public void setUsedSpace(Long usedSpace) { 
         this.usedSpace = usedSpace;
     }
@@ -331,6 +354,7 @@ public class ClusterCapacity implements Serializable {
      * Total number of 4KiB blocks without data after the last round of garabage collection operation has completed.
      **/
     public Long getZeroBlocks() { return this.zeroBlocks; }
+   
     public void setZeroBlocks(Long zeroBlocks) { 
         this.zeroBlocks = zeroBlocks;
     }
@@ -405,31 +429,32 @@ public class ClusterCapacity implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" activeBlockSpace : ").append(activeBlockSpace).append(",");
-        sb.append(" activeSessions : ").append(activeSessions).append(",");
-        sb.append(" averageIOPS : ").append(averageIOPS).append(",");
-        sb.append(" clusterRecentIOSize : ").append(clusterRecentIOSize).append(",");
-        sb.append(" currentIOPS : ").append(currentIOPS).append(",");
-        sb.append(" maxIOPS : ").append(maxIOPS).append(",");
-        sb.append(" maxOverProvisionableSpace : ").append(maxOverProvisionableSpace).append(",");
-        sb.append(" maxProvisionedSpace : ").append(maxProvisionedSpace).append(",");
-        sb.append(" maxUsedMetadataSpace : ").append(maxUsedMetadataSpace).append(",");
-        sb.append(" maxUsedSpace : ").append(maxUsedSpace).append(",");
-        sb.append(" nonZeroBlocks : ").append(nonZeroBlocks).append(",");
-        sb.append(" peakActiveSessions : ").append(peakActiveSessions).append(",");
-        sb.append(" peakIOPS : ").append(peakIOPS).append(",");
-        sb.append(" provisionedSpace : ").append(provisionedSpace).append(",");
-        sb.append(" snapshotNonZeroBlocks : ").append(snapshotNonZeroBlocks).append(",");
-        sb.append(" timestamp : ").append(timestamp).append(",");
-        sb.append(" totalOps : ").append(totalOps).append(",");
-        sb.append(" uniqueBlocks : ").append(uniqueBlocks).append(",");
-        sb.append(" uniqueBlocksUsedSpace : ").append(uniqueBlocksUsedSpace).append(",");
-        sb.append(" usedMetadataSpace : ").append(usedMetadataSpace).append(",");
-        sb.append(" usedMetadataSpaceInSnapshots : ").append(usedMetadataSpaceInSnapshots).append(",");
-        sb.append(" usedSpace : ").append(usedSpace).append(",");
-        sb.append(" zeroBlocks : ").append(zeroBlocks).append(",");
+        sb.append(" activeBlockSpace : ").append(gson.toJson(activeBlockSpace)).append(",");
+        sb.append(" activeSessions : ").append(gson.toJson(activeSessions)).append(",");
+        sb.append(" averageIOPS : ").append(gson.toJson(averageIOPS)).append(",");
+        sb.append(" clusterRecentIOSize : ").append(gson.toJson(clusterRecentIOSize)).append(",");
+        sb.append(" currentIOPS : ").append(gson.toJson(currentIOPS)).append(",");
+        sb.append(" maxIOPS : ").append(gson.toJson(maxIOPS)).append(",");
+        sb.append(" maxOverProvisionableSpace : ").append(gson.toJson(maxOverProvisionableSpace)).append(",");
+        sb.append(" maxProvisionedSpace : ").append(gson.toJson(maxProvisionedSpace)).append(",");
+        sb.append(" maxUsedMetadataSpace : ").append(gson.toJson(maxUsedMetadataSpace)).append(",");
+        sb.append(" maxUsedSpace : ").append(gson.toJson(maxUsedSpace)).append(",");
+        sb.append(" nonZeroBlocks : ").append(gson.toJson(nonZeroBlocks)).append(",");
+        sb.append(" peakActiveSessions : ").append(gson.toJson(peakActiveSessions)).append(",");
+        sb.append(" peakIOPS : ").append(gson.toJson(peakIOPS)).append(",");
+        sb.append(" provisionedSpace : ").append(gson.toJson(provisionedSpace)).append(",");
+        sb.append(" snapshotNonZeroBlocks : ").append(gson.toJson(snapshotNonZeroBlocks)).append(",");
+        sb.append(" timestamp : ").append(gson.toJson(timestamp)).append(",");
+        sb.append(" totalOps : ").append(gson.toJson(totalOps)).append(",");
+        sb.append(" uniqueBlocks : ").append(gson.toJson(uniqueBlocks)).append(",");
+        sb.append(" uniqueBlocksUsedSpace : ").append(gson.toJson(uniqueBlocksUsedSpace)).append(",");
+        sb.append(" usedMetadataSpace : ").append(gson.toJson(usedMetadataSpace)).append(",");
+        sb.append(" usedMetadataSpaceInSnapshots : ").append(gson.toJson(usedMetadataSpaceInSnapshots)).append(",");
+        sb.append(" usedSpace : ").append(gson.toJson(usedSpace)).append(",");
+        sb.append(" zeroBlocks : ").append(gson.toJson(zeroBlocks)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

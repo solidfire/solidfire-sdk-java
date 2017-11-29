@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ModifyClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = -3786762490871412882L;
+    public static final long serialVersionUID = 4400919580991586247L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("password") private Optional<String> password;
     @SerializedName("access") private Optional<String[]> access;
@@ -63,6 +64,7 @@ public class ModifyClusterAdminRequest implements Serializable {
      * ClusterAdminID for the cluster admin or LDAP cluster admin to modify.
      **/
     public Long getClusterAdminID() { return this.clusterAdminID; }
+   
     public void setClusterAdminID(Long clusterAdminID) { 
         this.clusterAdminID = clusterAdminID;
     }
@@ -70,6 +72,7 @@ public class ModifyClusterAdminRequest implements Serializable {
      * Password used to authenticate this cluster admin.
      **/
     public Optional<String> getPassword() { return this.password; }
+   
     public void setPassword(Optional<String> password) { 
         this.password = (password == null) ? Optional.<String>empty() : password;
     }
@@ -77,6 +80,7 @@ public class ModifyClusterAdminRequest implements Serializable {
      * Controls which methods this cluster admin can use. For more details, see Access Control in the Element API Reference Guide.
      **/
     public Optional<String[]> getAccess() { return this.access; }
+   
     public void setAccess(Optional<String[]> access) { 
         this.access = (access == null) ? Optional.<String[]>empty() : access;
     }
@@ -84,6 +88,7 @@ public class ModifyClusterAdminRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -120,17 +125,27 @@ public class ModifyClusterAdminRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
+        sb.append(" clusterAdminID : ").append(gson.toJson(clusterAdminID)).append(",");
         if(null != password && password.isPresent()){
-            sb.append(" password : ").append(password).append(",");
+            sb.append(" password : ").append(gson.toJson(password)).append(",");
+        }
+        else{
+            sb.append(" password : ").append("null").append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access).append(",");
+            sb.append(" access : ").append(gson.toJson(access)).append(",");
+        }
+        else{
+            sb.append(" access : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

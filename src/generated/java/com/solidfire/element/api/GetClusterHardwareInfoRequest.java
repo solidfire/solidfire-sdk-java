@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class GetClusterHardwareInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -8967023920633030751L;
+    public static final long serialVersionUID = -12873472881062536L;
     @SerializedName("type") private Optional<String> type;
     // empty constructor
     @Since("7.0")
@@ -62,6 +63,7 @@ public class GetClusterHardwareInfoRequest implements Serializable {
      * If this parameter is omitted, a type of "all" is assumed.
      **/
     public Optional<String> getType() { return this.type; }
+   
     public void setType(Optional<String> type) { 
         this.type = (type == null) ? Optional.<String>empty() : type;
     }
@@ -92,10 +94,14 @@ public class GetClusterHardwareInfoRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != type && type.isPresent()){
-            sb.append(" type : ").append(type).append(",");
+            sb.append(" type : ").append(gson.toJson(type)).append(",");
+        }
+        else{
+            sb.append(" type : ").append("null").append(",");
         }
         sb.append( " }" );
 

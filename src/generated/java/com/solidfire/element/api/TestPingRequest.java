@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class TestPingRequest implements Serializable {
 
-    public static final long serialVersionUID = 2718706506810708959L;
+    public static final long serialVersionUID = -6798451733195067348L;
     @SerializedName("attempts") private Optional<Long> attempts;
     @SerializedName("hosts") private Optional<String> hosts;
     @SerializedName("totalTimeoutSec") private Optional<Long> totalTimeoutSec;
@@ -72,6 +73,7 @@ public class TestPingRequest implements Serializable {
      * should repeat the test ping. The default value is 5.
      **/
     public Optional<Long> getAttempts() { return this.attempts; }
+   
     public void setAttempts(Optional<Long> attempts) { 
         this.attempts = (attempts == null) ? Optional.<Long>empty() : attempts;
     }
@@ -79,6 +81,7 @@ public class TestPingRequest implements Serializable {
      * Specifies a comma-separated list of addresses or hostnames of devices to ping.
      **/
     public Optional<String> getHosts() { return this.hosts; }
+   
     public void setHosts(Optional<String> hosts) { 
         this.hosts = (hosts == null) ? Optional.<String>empty() : hosts;
     }
@@ -86,6 +89,7 @@ public class TestPingRequest implements Serializable {
      * Specifies the length of time the ping should wait for a system response before issuing the next ping attempt or ending the process.
      **/
     public Optional<Long> getTotalTimeoutSec() { return this.totalTimeoutSec; }
+   
     public void setTotalTimeoutSec(Optional<Long> totalTimeoutSec) { 
         this.totalTimeoutSec = (totalTimeoutSec == null) ? Optional.<Long>empty() : totalTimeoutSec;
     }
@@ -93,6 +97,7 @@ public class TestPingRequest implements Serializable {
      * Specifies the number of bytes to send in the ICMP packet that is sent to each IP. The number must be less than the maximum MTU specified in the network configuration.
      **/
     public Optional<Long> getPacketSize() { return this.packetSize; }
+   
     public void setPacketSize(Optional<Long> packetSize) { 
         this.packetSize = (packetSize == null) ? Optional.<Long>empty() : packetSize;
     }
@@ -100,6 +105,7 @@ public class TestPingRequest implements Serializable {
      * Specifies the number of milliseconds to wait for each individual ping response. The default value is 500 ms.
      **/
     public Optional<Long> getPingTimeoutMsec() { return this.pingTimeoutMsec; }
+   
     public void setPingTimeoutMsec(Optional<Long> pingTimeoutMsec) { 
         this.pingTimeoutMsec = (pingTimeoutMsec == null) ? Optional.<Long>empty() : pingTimeoutMsec;
     }
@@ -107,6 +113,7 @@ public class TestPingRequest implements Serializable {
      * Specifies that the Do not Fragment (DF) flag is enabled for the ICMP packets.
      **/
     public Optional<Boolean> getProhibitFragmentation() { return this.prohibitFragmentation; }
+   
     public void setProhibitFragmentation(Optional<Boolean> prohibitFragmentation) { 
         this.prohibitFragmentation = (prohibitFragmentation == null) ? Optional.<Boolean>empty() : prohibitFragmentation;
     }
@@ -147,25 +154,44 @@ public class TestPingRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != attempts && attempts.isPresent()){
-            sb.append(" attempts : ").append(attempts).append(",");
+            sb.append(" attempts : ").append(gson.toJson(attempts)).append(",");
+        }
+        else{
+            sb.append(" attempts : ").append("null").append(",");
         }
         if(null != hosts && hosts.isPresent()){
-            sb.append(" hosts : ").append(hosts).append(",");
+            sb.append(" hosts : ").append(gson.toJson(hosts)).append(",");
+        }
+        else{
+            sb.append(" hosts : ").append("null").append(",");
         }
         if(null != totalTimeoutSec && totalTimeoutSec.isPresent()){
-            sb.append(" totalTimeoutSec : ").append(totalTimeoutSec).append(",");
+            sb.append(" totalTimeoutSec : ").append(gson.toJson(totalTimeoutSec)).append(",");
+        }
+        else{
+            sb.append(" totalTimeoutSec : ").append("null").append(",");
         }
         if(null != packetSize && packetSize.isPresent()){
-            sb.append(" packetSize : ").append(packetSize).append(",");
+            sb.append(" packetSize : ").append(gson.toJson(packetSize)).append(",");
+        }
+        else{
+            sb.append(" packetSize : ").append("null").append(",");
         }
         if(null != pingTimeoutMsec && pingTimeoutMsec.isPresent()){
-            sb.append(" pingTimeoutMsec : ").append(pingTimeoutMsec).append(",");
+            sb.append(" pingTimeoutMsec : ").append(gson.toJson(pingTimeoutMsec)).append(",");
+        }
+        else{
+            sb.append(" pingTimeoutMsec : ").append("null").append(",");
         }
         if(null != prohibitFragmentation && prohibitFragmentation.isPresent()){
-            sb.append(" prohibitFragmentation : ").append(prohibitFragmentation).append(",");
+            sb.append(" prohibitFragmentation : ").append(gson.toJson(prohibitFragmentation)).append(",");
+        }
+        else{
+            sb.append(" prohibitFragmentation : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,11 +37,14 @@ import java.util.Objects;
 
 public class Volume implements Serializable {
 
-    public static final long serialVersionUID = 8038817091532690826L;
+    public static final long serialVersionUID = -7686354995119743056L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("createTime") private String createTime;
+    @SerializedName("volumeConsistencyGroupUUID") private java.util.UUID volumeConsistencyGroupUUID;
+    @SerializedName("volumeUUID") private java.util.UUID volumeUUID;
+    @SerializedName("enableSnapMirrorReplication") private Boolean enableSnapMirrorReplication;
     @SerializedName("status") private String status;
     @SerializedName("access") private String access;
     @SerializedName("enable512e") private Boolean enable512e;
@@ -48,10 +52,13 @@ public class Volume implements Serializable {
     @SerializedName("scsiEUIDeviceID") private String scsiEUIDeviceID;
     @SerializedName("scsiNAADeviceID") private String scsiNAADeviceID;
     @SerializedName("qos") private VolumeQOS qos;
+    @SerializedName("qosPolicyID") private Optional<Long> qosPolicyID;
     @SerializedName("volumeAccessGroups") private Long[] volumeAccessGroups;
     @SerializedName("volumePairs") private VolumePair[] volumePairs;
     @SerializedName("deleteTime") private Optional<String> deleteTime;
     @SerializedName("purgeTime") private Optional<String> purgeTime;
+    @SerializedName("lastAccessTime") private Optional<String> lastAccessTime;
+    @SerializedName("lastAccessTimeIO") private Optional<String> lastAccessTimeIO;
     @SerializedName("sliceCount") private Long sliceCount;
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("blockSize") private Long blockSize;
@@ -69,6 +76,9 @@ public class Volume implements Serializable {
         String name,
         Long accountID,
         String createTime,
+        java.util.UUID volumeConsistencyGroupUUID,
+        java.util.UUID volumeUUID,
+        Boolean enableSnapMirrorReplication,
         String status,
         String access,
         Boolean enable512e,
@@ -90,6 +100,9 @@ public class Volume implements Serializable {
         this.name = name;
         this.accountID = accountID;
         this.createTime = createTime;
+        this.volumeConsistencyGroupUUID = volumeConsistencyGroupUUID;
+        this.volumeUUID = volumeUUID;
+        this.enableSnapMirrorReplication = enableSnapMirrorReplication;
         this.status = status;
         this.access = access;
         this.enable512e = enable512e;
@@ -113,6 +126,9 @@ public class Volume implements Serializable {
         String name,
         Long accountID,
         String createTime,
+        java.util.UUID volumeConsistencyGroupUUID,
+        java.util.UUID volumeUUID,
+        Boolean enableSnapMirrorReplication,
         String status,
         String access,
         Boolean enable512e,
@@ -135,6 +151,9 @@ public class Volume implements Serializable {
         this.name = name;
         this.accountID = accountID;
         this.createTime = createTime;
+        this.volumeConsistencyGroupUUID = volumeConsistencyGroupUUID;
+        this.volumeUUID = volumeUUID;
+        this.enableSnapMirrorReplication = enableSnapMirrorReplication;
         this.status = status;
         this.access = access;
         this.enable512e = enable512e;
@@ -152,11 +171,70 @@ public class Volume implements Serializable {
         this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
         this.attributes = attributes;
     }
+    // parameterized constructor
+    @Since("10.0")
+    public Volume(
+        Long volumeID,
+        String name,
+        Long accountID,
+        String createTime,
+        java.util.UUID volumeConsistencyGroupUUID,
+        java.util.UUID volumeUUID,
+        Boolean enableSnapMirrorReplication,
+        String status,
+        String access,
+        Boolean enable512e,
+        Optional<String> iqn,
+        String scsiEUIDeviceID,
+        String scsiNAADeviceID,
+        VolumeQOS qos,
+        Optional<Long> qosPolicyID,
+        Long[] volumeAccessGroups,
+        VolumePair[] volumePairs,
+        Optional<String> deleteTime,
+        Optional<String> purgeTime,
+        Optional<String> lastAccessTime,
+        Optional<String> lastAccessTimeIO,
+        Long sliceCount,
+        Long totalSize,
+        Long blockSize,
+        Optional<java.util.UUID> virtualVolumeID,
+        Attributes attributes
+    )
+    {
+        this.volumeID = volumeID;
+        this.name = name;
+        this.accountID = accountID;
+        this.createTime = createTime;
+        this.volumeConsistencyGroupUUID = volumeConsistencyGroupUUID;
+        this.volumeUUID = volumeUUID;
+        this.enableSnapMirrorReplication = enableSnapMirrorReplication;
+        this.status = status;
+        this.access = access;
+        this.enable512e = enable512e;
+        this.iqn = (iqn == null) ? Optional.<String>empty() : iqn;
+        this.scsiEUIDeviceID = scsiEUIDeviceID;
+        this.scsiNAADeviceID = scsiNAADeviceID;
+        this.qos = qos;
+        this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
+        this.volumeAccessGroups = volumeAccessGroups;
+        this.volumePairs = volumePairs;
+        this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : deleteTime;
+        this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
+        this.lastAccessTime = (lastAccessTime == null) ? Optional.<String>empty() : lastAccessTime;
+        this.lastAccessTimeIO = (lastAccessTimeIO == null) ? Optional.<String>empty() : lastAccessTimeIO;
+        this.sliceCount = sliceCount;
+        this.totalSize = totalSize;
+        this.blockSize = blockSize;
+        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
+        this.attributes = attributes;
+    }
 
     /** 
      * Unique VolumeID for the volume.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -164,6 +242,7 @@ public class Volume implements Serializable {
      * Name of the volume as provided at creation time.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -171,6 +250,7 @@ public class Volume implements Serializable {
      * Unique AccountID for the account.
      **/
     public Long getAccountID() { return this.accountID; }
+   
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
@@ -178,8 +258,33 @@ public class Volume implements Serializable {
      * UTC formatted time the volume was created.
      **/
     public String getCreateTime() { return this.createTime; }
+   
     public void setCreateTime(String createTime) { 
         this.createTime = createTime;
+    }
+    /** 
+     * 
+     **/
+    public java.util.UUID getVolumeConsistencyGroupUUID() { return this.volumeConsistencyGroupUUID; }
+   
+    public void setVolumeConsistencyGroupUUID(java.util.UUID volumeConsistencyGroupUUID) { 
+        this.volumeConsistencyGroupUUID = volumeConsistencyGroupUUID;
+    }
+    /** 
+     * 
+     **/
+    public java.util.UUID getVolumeUUID() { return this.volumeUUID; }
+   
+    public void setVolumeUUID(java.util.UUID volumeUUID) { 
+        this.volumeUUID = volumeUUID;
+    }
+    /** 
+     * 
+     **/
+    public Boolean getEnableSnapMirrorReplication() { return this.enableSnapMirrorReplication; }
+   
+    public void setEnableSnapMirrorReplication(Boolean enableSnapMirrorReplication) { 
+        this.enableSnapMirrorReplication = enableSnapMirrorReplication;
     }
     /** 
      * Current status of the volume
@@ -187,6 +292,7 @@ public class Volume implements Serializable {
      * active: An active volume ready for connections.
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -198,6 +304,7 @@ public class Volume implements Serializable {
      * replicationTarget: Designated as a target volume in a replicated volume pair.
      **/
     public String getAccess() { return this.access; }
+   
     public void setAccess(String access) { 
         this.access = access;
     }
@@ -205,6 +312,7 @@ public class Volume implements Serializable {
      * If "true", the volume provides 512 byte sector emulation.
      **/
     public Boolean getEnable512e() { return this.enable512e; }
+   
     public void setEnable512e(Boolean enable512e) { 
         this.enable512e = enable512e;
     }
@@ -212,6 +320,7 @@ public class Volume implements Serializable {
      * Volume iSCSI Qualified Name.
      **/
     public Optional<String> getIqn() { return this.iqn; }
+   
     public void setIqn(Optional<String> iqn) { 
         this.iqn = (iqn == null) ? Optional.<String>empty() : iqn;
     }
@@ -219,6 +328,7 @@ public class Volume implements Serializable {
      * Globally unique SCSI device identifier for the volume in EUI-64 based 16-byte format.
      **/
     public String getScsiEUIDeviceID() { return this.scsiEUIDeviceID; }
+   
     public void setScsiEUIDeviceID(String scsiEUIDeviceID) { 
         this.scsiEUIDeviceID = scsiEUIDeviceID;
     }
@@ -226,6 +336,7 @@ public class Volume implements Serializable {
      * Globally unique SCSI device identifier for the volume in NAA IEEE Registered Extended format.
      **/
     public String getScsiNAADeviceID() { return this.scsiNAADeviceID; }
+   
     public void setScsiNAADeviceID(String scsiNAADeviceID) { 
         this.scsiNAADeviceID = scsiNAADeviceID;
     }
@@ -233,13 +344,24 @@ public class Volume implements Serializable {
      * Quality of service settings for this volume.
      **/
     public VolumeQOS getQos() { return this.qos; }
+   
     public void setQos(VolumeQOS qos) { 
         this.qos = qos;
+    }
+    /** 
+     * The QoS policy ID associated with the volume.
+     * The value is null if the volume is not associated with a policy.
+     **/
+    public Optional<Long> getQosPolicyID() { return this.qosPolicyID; }
+   
+    public void setQosPolicyID(Optional<Long> qosPolicyID) { 
+        this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
     }
     /** 
      * List of volume access groups to which a volume beintegers.
      **/
     public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
+   
     public void setVolumeAccessGroups(Long[] volumeAccessGroups) { 
         this.volumeAccessGroups = volumeAccessGroups;
     }
@@ -249,6 +371,7 @@ public class Volume implements Serializable {
      * @see VolumePairs for return values.
      **/
     public VolumePair[] getVolumePairs() { return this.volumePairs; }
+   
     public void setVolumePairs(VolumePair[] volumePairs) { 
         this.volumePairs = volumePairs;
     }
@@ -257,6 +380,7 @@ public class Volume implements Serializable {
      * If this has no value, the volume has not yet been deleted.
      **/
     public Optional<String> getDeleteTime() { return this.deleteTime; }
+   
     public void setDeleteTime(Optional<String> deleteTime) { 
         this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : deleteTime;
     }
@@ -265,14 +389,34 @@ public class Volume implements Serializable {
      * If this has no value, the volume has not yet been deleted (and is not scheduled for purging).
      **/
     public Optional<String> getPurgeTime() { return this.purgeTime; }
+   
     public void setPurgeTime(Optional<String> purgeTime) { 
         this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
+    }
+    /** 
+     * The last time any access to this volume occurred.
+     * If this has no value, the last access time is not known.
+     **/
+    public Optional<String> getLastAccessTime() { return this.lastAccessTime; }
+   
+    public void setLastAccessTime(Optional<String> lastAccessTime) { 
+        this.lastAccessTime = (lastAccessTime == null) ? Optional.<String>empty() : lastAccessTime;
+    }
+    /** 
+     * The last time I/O access to this volume occurred.
+     * If this has no value, the last I/O access time is not known.
+     **/
+    public Optional<String> getLastAccessTimeIO() { return this.lastAccessTimeIO; }
+   
+    public void setLastAccessTimeIO(Optional<String> lastAccessTimeIO) { 
+        this.lastAccessTimeIO = (lastAccessTimeIO == null) ? Optional.<String>empty() : lastAccessTimeIO;
     }
     /** 
      * The number of slices backing this volume.
      * In the current software, this value will always be 1.
      **/
     public Long getSliceCount() { return this.sliceCount; }
+   
     public void setSliceCount(Long sliceCount) { 
         this.sliceCount = sliceCount;
     }
@@ -280,6 +424,7 @@ public class Volume implements Serializable {
      * Total size of this volume in bytes.
      **/
     public Long getTotalSize() { return this.totalSize; }
+   
     public void setTotalSize(Long totalSize) { 
         this.totalSize = totalSize;
     }
@@ -287,6 +432,7 @@ public class Volume implements Serializable {
      * Size of the blocks on the volume.
      **/
     public Long getBlockSize() { return this.blockSize; }
+   
     public void setBlockSize(Long blockSize) { 
         this.blockSize = blockSize;
     }
@@ -294,6 +440,7 @@ public class Volume implements Serializable {
      * Virtual volume ID this volume backs.
      **/
     public Optional<java.util.UUID> getVirtualVolumeID() { return this.virtualVolumeID; }
+   
     public void setVirtualVolumeID(Optional<java.util.UUID> virtualVolumeID) { 
         this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
     }
@@ -301,6 +448,7 @@ public class Volume implements Serializable {
      * List of Name/Value pairs in JSON object format.
      **/
     public Attributes getAttributes() { return this.attributes; }
+   
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
@@ -317,6 +465,9 @@ public class Volume implements Serializable {
             Objects.equals(name, that.name) && 
             Objects.equals(accountID, that.accountID) && 
             Objects.equals(createTime, that.createTime) && 
+            Objects.equals(volumeConsistencyGroupUUID, that.volumeConsistencyGroupUUID) && 
+            Objects.equals(volumeUUID, that.volumeUUID) && 
+            Objects.equals(enableSnapMirrorReplication, that.enableSnapMirrorReplication) && 
             Objects.equals(status, that.status) && 
             Objects.equals(access, that.access) && 
             Objects.equals(enable512e, that.enable512e) && 
@@ -324,10 +475,13 @@ public class Volume implements Serializable {
             Objects.equals(scsiEUIDeviceID, that.scsiEUIDeviceID) && 
             Objects.equals(scsiNAADeviceID, that.scsiNAADeviceID) && 
             Objects.equals(qos, that.qos) && 
+            Objects.equals(qosPolicyID, that.qosPolicyID) && 
             Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) && 
             Arrays.equals(volumePairs, that.volumePairs) && 
             Objects.equals(deleteTime, that.deleteTime) && 
             Objects.equals(purgeTime, that.purgeTime) && 
+            Objects.equals(lastAccessTime, that.lastAccessTime) && 
+            Objects.equals(lastAccessTimeIO, that.lastAccessTimeIO) && 
             Objects.equals(sliceCount, that.sliceCount) && 
             Objects.equals(totalSize, that.totalSize) && 
             Objects.equals(blockSize, that.blockSize) && 
@@ -337,7 +491,7 @@ public class Volume implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,name,accountID,createTime,status,access,enable512e,iqn,scsiEUIDeviceID,scsiNAADeviceID,qos,(Object[])volumeAccessGroups,(Object[])volumePairs,deleteTime,purgeTime,sliceCount,totalSize,blockSize,virtualVolumeID,attributes );
+        return Objects.hash( volumeID,name,accountID,createTime,volumeConsistencyGroupUUID,volumeUUID,enableSnapMirrorReplication,status,access,enable512e,iqn,scsiEUIDeviceID,scsiNAADeviceID,qos,qosPolicyID,(Object[])volumeAccessGroups,(Object[])volumePairs,deleteTime,purgeTime,lastAccessTime,lastAccessTimeIO,sliceCount,totalSize,blockSize,virtualVolumeID,attributes );
     }
 
 
@@ -347,6 +501,9 @@ public class Volume implements Serializable {
         map.put("name", name);
         map.put("accountID", accountID);
         map.put("createTime", createTime);
+        map.put("volumeConsistencyGroupUUID", volumeConsistencyGroupUUID);
+        map.put("volumeUUID", volumeUUID);
+        map.put("enableSnapMirrorReplication", enableSnapMirrorReplication);
         map.put("status", status);
         map.put("access", access);
         map.put("enable512e", enable512e);
@@ -354,10 +511,13 @@ public class Volume implements Serializable {
         map.put("scsiEUIDeviceID", scsiEUIDeviceID);
         map.put("scsiNAADeviceID", scsiNAADeviceID);
         map.put("qos", qos);
+        map.put("qosPolicyID", qosPolicyID);
         map.put("volumeAccessGroups", volumeAccessGroups);
         map.put("volumePairs", volumePairs);
         map.put("deleteTime", deleteTime);
         map.put("purgeTime", purgeTime);
+        map.put("lastAccessTime", lastAccessTime);
+        map.put("lastAccessTimeIO", lastAccessTimeIO);
         map.put("sliceCount", sliceCount);
         map.put("totalSize", totalSize);
         map.put("blockSize", blockSize);
@@ -369,36 +529,70 @@ public class Volume implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" accountID : ").append(accountID).append(",");
-        sb.append(" createTime : ").append(createTime).append(",");
-        sb.append(" status : ").append(status).append(",");
-        sb.append(" access : ").append(access).append(",");
-        sb.append(" enable512e : ").append(enable512e).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
+        sb.append(" createTime : ").append(gson.toJson(createTime)).append(",");
+        sb.append(" volumeConsistencyGroupUUID : ").append(gson.toJson(volumeConsistencyGroupUUID)).append(",");
+        sb.append(" volumeUUID : ").append(gson.toJson(volumeUUID)).append(",");
+        sb.append(" enableSnapMirrorReplication : ").append(gson.toJson(enableSnapMirrorReplication)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
+        sb.append(" access : ").append(gson.toJson(access)).append(",");
+        sb.append(" enable512e : ").append(gson.toJson(enable512e)).append(",");
         if(null != iqn && iqn.isPresent()){
-            sb.append(" iqn : ").append(iqn).append(",");
+            sb.append(" iqn : ").append(gson.toJson(iqn)).append(",");
         }
-        sb.append(" scsiEUIDeviceID : ").append(scsiEUIDeviceID).append(",");
-        sb.append(" scsiNAADeviceID : ").append(scsiNAADeviceID).append(",");
-        sb.append(" qos : ").append(qos).append(",");
-        sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups)).append(",");
-        sb.append(" volumePairs : ").append(Arrays.toString(volumePairs)).append(",");
+        else{
+            sb.append(" iqn : ").append("null").append(",");
+        }
+        sb.append(" scsiEUIDeviceID : ").append(gson.toJson(scsiEUIDeviceID)).append(",");
+        sb.append(" scsiNAADeviceID : ").append(gson.toJson(scsiNAADeviceID)).append(",");
+        sb.append(" qos : ").append(gson.toJson(qos)).append(",");
+        if(null != qosPolicyID && qosPolicyID.isPresent()){
+            sb.append(" qosPolicyID : ").append(gson.toJson(qosPolicyID)).append(",");
+        }
+        else{
+            sb.append(" qosPolicyID : ").append("null").append(",");
+        }
+        sb.append(" volumeAccessGroups : ").append(gson.toJson(Arrays.toString(volumeAccessGroups))).append(",");
+        sb.append(" volumePairs : ").append(gson.toJson(Arrays.toString(volumePairs))).append(",");
         if(null != deleteTime && deleteTime.isPresent()){
-            sb.append(" deleteTime : ").append(deleteTime).append(",");
+            sb.append(" deleteTime : ").append(gson.toJson(deleteTime)).append(",");
+        }
+        else{
+            sb.append(" deleteTime : ").append("null").append(",");
         }
         if(null != purgeTime && purgeTime.isPresent()){
-            sb.append(" purgeTime : ").append(purgeTime).append(",");
+            sb.append(" purgeTime : ").append(gson.toJson(purgeTime)).append(",");
         }
-        sb.append(" sliceCount : ").append(sliceCount).append(",");
-        sb.append(" totalSize : ").append(totalSize).append(",");
-        sb.append(" blockSize : ").append(blockSize).append(",");
+        else{
+            sb.append(" purgeTime : ").append("null").append(",");
+        }
+        if(null != lastAccessTime && lastAccessTime.isPresent()){
+            sb.append(" lastAccessTime : ").append(gson.toJson(lastAccessTime)).append(",");
+        }
+        else{
+            sb.append(" lastAccessTime : ").append("null").append(",");
+        }
+        if(null != lastAccessTimeIO && lastAccessTimeIO.isPresent()){
+            sb.append(" lastAccessTimeIO : ").append(gson.toJson(lastAccessTimeIO)).append(",");
+        }
+        else{
+            sb.append(" lastAccessTimeIO : ").append("null").append(",");
+        }
+        sb.append(" sliceCount : ").append(gson.toJson(sliceCount)).append(",");
+        sb.append(" totalSize : ").append(gson.toJson(totalSize)).append(",");
+        sb.append(" blockSize : ").append(gson.toJson(blockSize)).append(",");
         if(null != virtualVolumeID && virtualVolumeID.isPresent()){
-            sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
+            sb.append(" virtualVolumeID : ").append(gson.toJson(virtualVolumeID)).append(",");
         }
-        sb.append(" attributes : ").append(attributes).append(",");
+        else{
+            sb.append(" virtualVolumeID : ").append("null").append(",");
+        }
+        sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -420,6 +614,9 @@ public class Volume implements Serializable {
         private String name;
         private Long accountID;
         private String createTime;
+        private java.util.UUID volumeConsistencyGroupUUID;
+        private java.util.UUID volumeUUID;
+        private Boolean enableSnapMirrorReplication;
         private String status;
         private String access;
         private Boolean enable512e;
@@ -427,10 +624,13 @@ public class Volume implements Serializable {
         private String scsiEUIDeviceID;
         private String scsiNAADeviceID;
         private VolumeQOS qos;
+        private Optional<Long> qosPolicyID;
         private Long[] volumeAccessGroups;
         private VolumePair[] volumePairs;
         private Optional<String> deleteTime;
         private Optional<String> purgeTime;
+        private Optional<String> lastAccessTime;
+        private Optional<String> lastAccessTimeIO;
         private Long sliceCount;
         private Long totalSize;
         private Long blockSize;
@@ -445,6 +645,9 @@ public class Volume implements Serializable {
                          this.name,
                          this.accountID,
                          this.createTime,
+                         this.volumeConsistencyGroupUUID,
+                         this.volumeUUID,
+                         this.enableSnapMirrorReplication,
                          this.status,
                          this.access,
                          this.enable512e,
@@ -452,10 +655,13 @@ public class Volume implements Serializable {
                          this.scsiEUIDeviceID,
                          this.scsiNAADeviceID,
                          this.qos,
+                         this.qosPolicyID,
                          this.volumeAccessGroups,
                          this.volumePairs,
                          this.deleteTime,
                          this.purgeTime,
+                         this.lastAccessTime,
+                         this.lastAccessTimeIO,
                          this.sliceCount,
                          this.totalSize,
                          this.blockSize,
@@ -468,6 +674,9 @@ public class Volume implements Serializable {
             this.name = req.name;
             this.accountID = req.accountID;
             this.createTime = req.createTime;
+            this.volumeConsistencyGroupUUID = req.volumeConsistencyGroupUUID;
+            this.volumeUUID = req.volumeUUID;
+            this.enableSnapMirrorReplication = req.enableSnapMirrorReplication;
             this.status = req.status;
             this.access = req.access;
             this.enable512e = req.enable512e;
@@ -475,10 +684,13 @@ public class Volume implements Serializable {
             this.scsiEUIDeviceID = req.scsiEUIDeviceID;
             this.scsiNAADeviceID = req.scsiNAADeviceID;
             this.qos = req.qos;
+            this.qosPolicyID = req.qosPolicyID;
             this.volumeAccessGroups = req.volumeAccessGroups;
             this.volumePairs = req.volumePairs;
             this.deleteTime = req.deleteTime;
             this.purgeTime = req.purgeTime;
+            this.lastAccessTime = req.lastAccessTime;
+            this.lastAccessTimeIO = req.lastAccessTimeIO;
             this.sliceCount = req.sliceCount;
             this.totalSize = req.totalSize;
             this.blockSize = req.blockSize;
@@ -505,6 +717,21 @@ public class Volume implements Serializable {
 
         public Volume.Builder createTime(final String createTime) {
             this.createTime = createTime;
+            return this;
+        }
+
+        public Volume.Builder volumeConsistencyGroupUUID(final java.util.UUID volumeConsistencyGroupUUID) {
+            this.volumeConsistencyGroupUUID = volumeConsistencyGroupUUID;
+            return this;
+        }
+
+        public Volume.Builder volumeUUID(final java.util.UUID volumeUUID) {
+            this.volumeUUID = volumeUUID;
+            return this;
+        }
+
+        public Volume.Builder enableSnapMirrorReplication(final Boolean enableSnapMirrorReplication) {
+            this.enableSnapMirrorReplication = enableSnapMirrorReplication;
             return this;
         }
 
@@ -543,6 +770,11 @@ public class Volume implements Serializable {
             return this;
         }
 
+        public Volume.Builder optionalQosPolicyID(final Long qosPolicyID) {
+            this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : Optional.of(qosPolicyID);
+            return this;
+        }
+
         public Volume.Builder volumeAccessGroups(final Long[] volumeAccessGroups) {
             this.volumeAccessGroups = volumeAccessGroups;
             return this;
@@ -560,6 +792,16 @@ public class Volume implements Serializable {
 
         public Volume.Builder optionalPurgeTime(final String purgeTime) {
             this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : Optional.of(purgeTime);
+            return this;
+        }
+
+        public Volume.Builder optionalLastAccessTime(final String lastAccessTime) {
+            this.lastAccessTime = (lastAccessTime == null) ? Optional.<String>empty() : Optional.of(lastAccessTime);
+            return this;
+        }
+
+        public Volume.Builder optionalLastAccessTimeIO(final String lastAccessTimeIO) {
+            this.lastAccessTimeIO = (lastAccessTimeIO == null) ? Optional.<String>empty() : Optional.of(lastAccessTimeIO);
             return this;
         }
 

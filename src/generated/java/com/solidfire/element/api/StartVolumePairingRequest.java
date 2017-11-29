@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class StartVolumePairingRequest implements Serializable {
 
-    public static final long serialVersionUID = -8973993284540904524L;
+    public static final long serialVersionUID = -2380012139817761596L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("mode") private Optional<String> mode;
     // empty constructor
@@ -66,6 +67,7 @@ public class StartVolumePairingRequest implements Serializable {
      * The ID of the volume on which to start the pairing process.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -73,6 +75,7 @@ public class StartVolumePairingRequest implements Serializable {
      * The mode of the volume on which to start the pairing process. The mode can only be set if the volume is the source volume. Possible values are: Async: (default if no mode parameter specified) Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster. Sync: Source acknowledges write when the data is stored locally and on the remote cluster. SnapshotsOnly: Only snapshots created on the source cluster will be replicated. Active writes from the source volume are not replicated.
      **/
     public Optional<String> getMode() { return this.mode; }
+   
     public void setMode(Optional<String> mode) { 
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
     }
@@ -105,11 +108,15 @@ public class StartVolumePairingRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
         if(null != mode && mode.isPresent()){
-            sb.append(" mode : ").append(mode).append(",");
+            sb.append(" mode : ").append(gson.toJson(mode)).append(",");
+        }
+        else{
+            sb.append(" mode : ").append("null").append(",");
         }
         sb.append( " }" );
 

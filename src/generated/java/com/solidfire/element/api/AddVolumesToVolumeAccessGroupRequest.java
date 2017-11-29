@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 949460952582568573L;
+    public static final long serialVersionUID = 4436096027296728855L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("volumes") private Long[] volumes;
     // empty constructor
@@ -58,6 +59,7 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
      * The ID of the volume access group to which volumes are added.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
@@ -66,6 +68,7 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
      * group.
      **/
     public Long[] getVolumes() { return this.volumes; }
+   
     public void setVolumes(Long[] volumes) { 
         this.volumes = volumes;
     }
@@ -98,10 +101,11 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
+        sb.append(" volumes : ").append(gson.toJson(Arrays.toString(volumes))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class RemoveVolumePairRequest implements Serializable {
 
-    public static final long serialVersionUID = 8643970207869762715L;
+    public static final long serialVersionUID = 1918590127844654958L;
     @SerializedName("volumeID") private Long volumeID;
     // empty constructor
     @Since("7.0")
@@ -54,6 +55,7 @@ public class RemoveVolumePairRequest implements Serializable {
      * The ID of the volume on which to stop the replication process.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -84,9 +86,10 @@ public class RemoveVolumePairRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

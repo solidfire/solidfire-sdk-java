@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetClusterStatsResult implements Serializable {
 
-    public static final long serialVersionUID = 609855260769659987L;
+    public static final long serialVersionUID = -4887384401902242783L;
     @SerializedName("clusterStats") private ClusterStats clusterStats;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class GetClusterStatsResult implements Serializable {
      * 
      **/
     public ClusterStats getClusterStats() { return this.clusterStats; }
+   
     public void setClusterStats(ClusterStats clusterStats) { 
         this.clusterStats = clusterStats;
     }
@@ -83,9 +85,10 @@ public class GetClusterStatsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterStats : ").append(clusterStats).append(",");
+        sb.append(" clusterStats : ").append(gson.toJson(clusterStats)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

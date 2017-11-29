@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,13 +37,14 @@ import java.util.Objects;
 
 public class CreateSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 1129429419093459379L;
+    public static final long serialVersionUID = 4393987975111566974L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
     @SerializedName("retention") private Optional<String> retention;
     @SerializedName("attributes") private Optional<Attributes> attributes;
+    @SerializedName("snapMirrorLabel") private Optional<String> snapMirrorLabel;
     // empty constructor
     @Since("7.0")
     public CreateSnapshotRequest() {}
@@ -80,11 +82,32 @@ public class CreateSnapshotRequest implements Serializable {
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
+    // parameterized constructor
+    @Since("10.0")
+    public CreateSnapshotRequest(
+        Long volumeID,
+        Optional<Long> snapshotID,
+        Optional<String> name,
+        Optional<Boolean> enableRemoteReplication,
+        Optional<String> retention,
+        Optional<Attributes> attributes,
+        Optional<String> snapMirrorLabel
+    )
+    {
+        this.volumeID = volumeID;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
+        this.retention = (retention == null) ? Optional.<String>empty() : retention;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.snapMirrorLabel = (snapMirrorLabel == null) ? Optional.<String>empty() : snapMirrorLabel;
+    }
 
     /** 
      * Specifies the unique ID of the volume image from which to copy.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -93,6 +116,7 @@ public class CreateSnapshotRequest implements Serializable {
      * is made. The snapshotID passed must be a snapshot on the given volume.
      **/
     public Optional<Long> getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Optional<Long> snapshotID) { 
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
@@ -100,6 +124,7 @@ public class CreateSnapshotRequest implements Serializable {
      * Specifies a name for the snapshot. If unspecified, the date and time the snapshot was taken is used.
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
@@ -110,6 +135,7 @@ public class CreateSnapshotRequest implements Serializable {
      * false: Default. The snapshot is not replicated.
      **/
     public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
+   
     public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
@@ -117,6 +143,7 @@ public class CreateSnapshotRequest implements Serializable {
      * Specifies the amount of time for which the snapshot is retained. The format is HH:mm:ss.
      **/
     public Optional<String> getRetention() { return this.retention; }
+   
     public void setRetention(Optional<String> retention) { 
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
     }
@@ -124,8 +151,17 @@ public class CreateSnapshotRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+    }
+    /** 
+     * Label used by SnapMirror software to specify snapshot retention policy on SnapMirror endpoint.
+     **/
+    public Optional<String> getSnapMirrorLabel() { return this.snapMirrorLabel; }
+   
+    public void setSnapMirrorLabel(Optional<String> snapMirrorLabel) { 
+        this.snapMirrorLabel = (snapMirrorLabel == null) ? Optional.<String>empty() : snapMirrorLabel;
     }
 
     @Override
@@ -141,12 +177,13 @@ public class CreateSnapshotRequest implements Serializable {
             Objects.equals(name, that.name) && 
             Objects.equals(enableRemoteReplication, that.enableRemoteReplication) && 
             Objects.equals(retention, that.retention) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(snapMirrorLabel, that.snapMirrorLabel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,snapshotID,name,enableRemoteReplication,retention,attributes );
+        return Objects.hash( volumeID,snapshotID,name,enableRemoteReplication,retention,attributes,snapMirrorLabel );
     }
 
 
@@ -158,29 +195,52 @@ public class CreateSnapshotRequest implements Serializable {
         map.put("enableRemoteReplication", enableRemoteReplication);
         map.put("retention", retention);
         map.put("attributes", attributes);
+        map.put("snapMirrorLabel", snapMirrorLabel);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID).append(",");
+            sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        }
+        else{
+            sb.append(" snapshotID : ").append("null").append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
+            sb.append(" enableRemoteReplication : ").append(gson.toJson(enableRemoteReplication)).append(",");
+        }
+        else{
+            sb.append(" enableRemoteReplication : ").append("null").append(",");
         }
         if(null != retention && retention.isPresent()){
-            sb.append(" retention : ").append(retention).append(",");
+            sb.append(" retention : ").append(gson.toJson(retention)).append(",");
+        }
+        else{
+            sb.append(" retention : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
+        }
+        if(null != snapMirrorLabel && snapMirrorLabel.isPresent()){
+            sb.append(" snapMirrorLabel : ").append(gson.toJson(snapMirrorLabel)).append(",");
+        }
+        else{
+            sb.append(" snapMirrorLabel : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -205,6 +265,7 @@ public class CreateSnapshotRequest implements Serializable {
         private Optional<Boolean> enableRemoteReplication;
         private Optional<String> retention;
         private Optional<Attributes> attributes;
+        private Optional<String> snapMirrorLabel;
 
         private Builder() { }
 
@@ -215,7 +276,8 @@ public class CreateSnapshotRequest implements Serializable {
                          this.name,
                          this.enableRemoteReplication,
                          this.retention,
-                         this.attributes);
+                         this.attributes,
+                         this.snapMirrorLabel);
         }
 
         private CreateSnapshotRequest.Builder buildFrom(final CreateSnapshotRequest req) {
@@ -225,6 +287,7 @@ public class CreateSnapshotRequest implements Serializable {
             this.enableRemoteReplication = req.enableRemoteReplication;
             this.retention = req.retention;
             this.attributes = req.attributes;
+            this.snapMirrorLabel = req.snapMirrorLabel;
 
             return this;
         }
@@ -256,6 +319,11 @@ public class CreateSnapshotRequest implements Serializable {
 
         public CreateSnapshotRequest.Builder optionalAttributes(final Attributes attributes) {
             this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
+            return this;
+        }
+
+        public CreateSnapshotRequest.Builder optionalSnapMirrorLabel(final String snapMirrorLabel) {
+            this.snapMirrorLabel = (snapMirrorLabel == null) ? Optional.<String>empty() : Optional.of(snapMirrorLabel);
             return this;
         }
 

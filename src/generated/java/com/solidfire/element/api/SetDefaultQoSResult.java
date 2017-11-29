@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class SetDefaultQoSResult implements Serializable {
 
-    public static final long serialVersionUID = 2543266559344175814L;
+    public static final long serialVersionUID = -6206404466462206474L;
     @SerializedName("minIOPS") private Long minIOPS;
     @SerializedName("maxIOPS") private Long maxIOPS;
     @SerializedName("burstIOPS") private Long burstIOPS;
@@ -59,6 +60,7 @@ public class SetDefaultQoSResult implements Serializable {
      * The minimum number of sustained IOPS that are provided by the cluster to a volume. 
      **/
     public Long getMinIOPS() { return this.minIOPS; }
+   
     public void setMinIOPS(Long minIOPS) { 
         this.minIOPS = minIOPS;
     }
@@ -66,6 +68,7 @@ public class SetDefaultQoSResult implements Serializable {
      * The maximum number of sustained IOPS that are provided by the cluster to a volume.
      **/
     public Long getMaxIOPS() { return this.maxIOPS; }
+   
     public void setMaxIOPS(Long maxIOPS) { 
         this.maxIOPS = maxIOPS;
     }
@@ -73,6 +76,7 @@ public class SetDefaultQoSResult implements Serializable {
      * The maximum number of IOPS allowed in a short burst scenario.
      **/
     public Long getBurstIOPS() { return this.burstIOPS; }
+   
     public void setBurstIOPS(Long burstIOPS) { 
         this.burstIOPS = burstIOPS;
     }
@@ -107,11 +111,12 @@ public class SetDefaultQoSResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" minIOPS : ").append(minIOPS).append(",");
-        sb.append(" maxIOPS : ").append(maxIOPS).append(",");
-        sb.append(" burstIOPS : ").append(burstIOPS).append(",");
+        sb.append(" minIOPS : ").append(gson.toJson(minIOPS)).append(",");
+        sb.append(" maxIOPS : ").append(gson.toJson(maxIOPS)).append(",");
+        sb.append(" burstIOPS : ").append(gson.toJson(burstIOPS)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

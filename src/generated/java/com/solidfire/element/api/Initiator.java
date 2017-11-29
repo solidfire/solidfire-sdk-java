@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class Initiator implements Serializable {
 
-    public static final long serialVersionUID = -8416369643469274318L;
+    public static final long serialVersionUID = -3345742751132381246L;
     @SerializedName("alias") private String alias;
     @SerializedName("initiatorID") private Long initiatorID;
     @SerializedName("initiatorName") private String initiatorName;
@@ -66,6 +67,7 @@ public class Initiator implements Serializable {
      * The friendly name assigned to this initiator. (String)
      **/
     public String getAlias() { return this.alias; }
+   
     public void setAlias(String alias) { 
         this.alias = alias;
     }
@@ -73,6 +75,7 @@ public class Initiator implements Serializable {
      * The numeric ID of the initiator that has been created. (Integer)
      **/
     public Long getInitiatorID() { return this.initiatorID; }
+   
     public void setInitiatorID(Long initiatorID) { 
         this.initiatorID = initiatorID;
     }
@@ -80,6 +83,7 @@ public class Initiator implements Serializable {
      * The name of the initiator that has been created. (String)
      **/
     public String getInitiatorName() { return this.initiatorName; }
+   
     public void setInitiatorName(String initiatorName) { 
         this.initiatorName = initiatorName;
     }
@@ -87,6 +91,7 @@ public class Initiator implements Serializable {
      * A list of volumeAccessGroupIDs to which this initiator beintegers. (Array of Integers)
      **/
     public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
+   
     public void setVolumeAccessGroups(Long[] volumeAccessGroups) { 
         this.volumeAccessGroups = volumeAccessGroups;
     }
@@ -94,6 +99,7 @@ public class Initiator implements Serializable {
      * A set of JSON attributes assigned to this initiator. (JSON Object)
      **/
     public Attributes getAttributes() { return this.attributes; }
+   
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
@@ -132,13 +138,14 @@ public class Initiator implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" alias : ").append(alias).append(",");
-        sb.append(" initiatorID : ").append(initiatorID).append(",");
-        sb.append(" initiatorName : ").append(initiatorName).append(",");
-        sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups)).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
+        sb.append(" alias : ").append(gson.toJson(alias)).append(",");
+        sb.append(" initiatorID : ").append(gson.toJson(initiatorID)).append(",");
+        sb.append(" initiatorName : ").append(gson.toJson(initiatorName)).append(",");
+        sb.append(" volumeAccessGroups : ").append(gson.toJson(Arrays.toString(volumeAccessGroups))).append(",");
+        sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -254,7 +254,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public CreateBackupTargetResult createBackupTarget(
         String name, 
-        Optional<Attributes> attributes
+        Attributes attributes
         );
 
     
@@ -572,6 +572,15 @@ public interface SolidFireElementIF {
 
     
     /** 
+     * You can use the GetSSLCertificate method to retrieve the SSL certificate that is currently active on the cluster.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public GetSSLCertificateResult getSSLCertificate();
+    
+
+    
+    /** 
      * GetSystemStatus enables you to return whether a reboot ir required or not.
      **/
     @Since("5.0")
@@ -617,6 +626,19 @@ public interface SolidFireElementIF {
         );
 
     
+    /** 
+     * ListEvents returns events detected on the cluster, sorted from oldest to newest.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListEventsResult listEvents(
+        Optional<Long> maxEvents, 
+        Optional<Long> startEventID, 
+        Optional<Long> endEventID, 
+        Optional<String> eventType
+        );
+
+    
 
     
     /** 
@@ -657,6 +679,16 @@ public interface SolidFireElementIF {
         Optional<Long> maxMetadataOverProvisionFactor
         );
 
+    
+
+    
+    /** 
+     * You can use the RemoveSSLCertificate method to remove the user SSL certificate and private key for the cluster.
+     * After the certificate and private key are removed, the cluster is configured to use the default certificate and private key.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public RemoveSSLCertificateResult removeSSLCertificate();
     
     /** 
      * The SetClusterConfig API method enables you to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified, see Cluster Object Attributes. To display the current cluster
@@ -702,6 +734,25 @@ public interface SolidFireElementIF {
 
     
     /** 
+     * You can use the SetSSLCertificate method to set a user SSL certificate and a private key for the cluster.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public SetSSLCertificateResult setSSLCertificate(final SetSSLCertificateRequest request);
+
+    
+    /** 
+     * You can use the SetSSLCertificate method to set a user SSL certificate and a private key for the cluster.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public SetSSLCertificateResult setSSLCertificate(
+        String certificate, 
+        String privateKey
+        );
+
+    
+    /** 
      * You can use AddClusterAdmin to add a new cluster admin account. A cluster ddmin can manage the cluster using the API and management tools. Cluster admins are completely separate and unrelated to standard tenant accounts.
      * Each cluster admin can be restricted to a subset of the API. NetApp recommends using multiple cluster admin accounts for different users and applications. You should give each cluster admin the minimal permissions necessary; this reduces the potential impact of credential compromise.
      * You must accept the End User License Agreement (EULA) by setting the acceptEula parameter to true to add a cluster administrator account to the system.
@@ -735,6 +786,15 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public GetCurrentClusterAdminResult getCurrentClusterAdmin();
+    
+
+    
+    /** 
+     * You can use the GetLoginBanner method to get the currently active Terms of Use banner that users see when they log on to the web interface.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public GetLoginBannerResult getLoginBanner();
     
 
     
@@ -785,6 +845,32 @@ public interface SolidFireElementIF {
 
     
     /** 
+     * You can use the SetLoginBanner method to set the active Terms of Use banner users see when they log on to the web interface.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public SetLoginBannerResult setLoginBanner(final SetLoginBannerRequest request);
+
+    
+    /** 
+     * You can use the SetLoginBanner method to set the active Terms of Use banner users see when they log on to the web interface.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public SetLoginBannerResult setLoginBanner();
+    
+    /** 
+     * You can use the SetLoginBanner method to set the active Terms of Use banner users see when they log on to the web interface.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public SetLoginBannerResult setLoginBanner(
+        Optional<String> banner, 
+        Optional<Boolean> enabled
+        );
+
+    
+    /** 
      * AddDrives enables you to add one or more available drives to the cluster, enabling the drives to host a portion of the cluster's data.
      * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be
      * added via AddDrives before they can be utilized. Use the ListDrives method to display drives that are "available" to be added. When
@@ -818,6 +904,27 @@ public interface SolidFireElementIF {
     public AddDrivesResult addDrives(
         NewDrive[] drives, 
         Optional<Boolean> forceDuringUpgrade
+        );
+
+    
+    /** 
+     * AddDrives enables you to add one or more available drives to the cluster, enabling the drives to host a portion of the cluster's data.
+     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be
+     * added via AddDrives before they can be utilized. Use the ListDrives method to display drives that are "available" to be added. When
+     * you add multiple drives, it is more efficient to add them in a single AddDrives method call rather than multiple individual methods
+     * with a single drive each. This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
+     * When you add a drive, the system automatically determines the "type" of drive it should be.
+     * The method is asynchronous and returns immediately. However, it can take some time for the data in the cluster to be rebalanced
+     * using the newly added drives. As the new drives are syncing on the system, you can use the ListSyncJobs method to see how the
+     * drives are being rebalanced and the progress of adding the new drive. You can also use the GetAsyncResult method to query the
+     * method's returned asyncHandle.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddDrivesResult addDrives(
+        NewDrive[] drives, 
+        Optional<Boolean> forceDuringUpgrade, 
+        Optional<Boolean> forceDuringBinSync
         );
 
     
@@ -1494,6 +1601,16 @@ public interface SolidFireElementIF {
     @ConnectionType("Node")
     public GetNetworkConfigResult getNetworkConfig();
     
+
+    
+    /** 
+     * You can use the GetNodeSSLCertificate method to retrieve the SSL certificate that is currently active on the cluster.
+     * You can use this method on both management and storage nodes.
+     **/
+    @Since("10.0")
+    @ConnectionType("Node")
+    public GetNodeSSLCertificateResult getNodeSSLCertificate();
+    
     /** 
      * GetNodeStats enables you to retrieve the high-level activity measurements for a single node.
      **/
@@ -1596,6 +1713,16 @@ public interface SolidFireElementIF {
         );
 
     
+
+    
+    /** 
+     * You can use the RemoveNodeSSLCertificate method to remove the user SSL certificate and private key for the management node.
+     * After the certificate and private key are removed, the management node is configured to use the default certificate and private key..
+     **/
+    @Since("10.0")
+    @ConnectionType("Node")
+    public RemoveNodeSSLCertificateResult removeNodeSSLCertificate();
+    
     /** 
      * The SetConfig API method enables you to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method. 
      * Note: This method is available only through the per-node API endpoint 5.0 or later.
@@ -1637,6 +1764,25 @@ public interface SolidFireElementIF {
     @ConnectionType("Node")
     public SetNetworkConfigResult setNetworkConfig(
         NetworkParams network
+        );
+
+    
+    /** 
+     * You can use the SetNodeSSLCertificate method to set a user SSL certificate and private key for the management node.
+     **/
+    @Since("10.0")
+    @ConnectionType("Node")
+    public SetNodeSSLCertificateResult setNodeSSLCertificate(final SetNodeSSLCertificateRequest request);
+
+    
+    /** 
+     * You can use the SetNodeSSLCertificate method to set a user SSL certificate and private key for the management node.
+     **/
+    @Since("10.0")
+    @ConnectionType("Node")
+    public SetNodeSSLCertificateResult setNodeSSLCertificate(
+        String certificate, 
+        String privateKey
         );
 
     
@@ -1833,6 +1979,25 @@ public interface SolidFireElementIF {
     public ResetNodeResult resetNode(
         String build, 
         Boolean force
+        );
+
+    
+    /** 
+     * The ResetNode API method enables you to reset a node to the factory settings. All data, packages (software upgrades, and so on),
+     * configurations, and log files are deleted from the node when you call this method. However, network settings for the node are
+     * preserved during this operation. Nodes that are participating in a cluster cannot be reset to the factory settings.
+     * The ResetNode API can only be used on nodes that are in an "Available" state. It cannot be used on nodes that are "Active" in a
+     * cluster, or in a "Pending" state.
+     * Caution: This method clears any data that is on the node. Exercise caution when using this method.
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Since("5.0")
+    @ConnectionType("Node")
+    public ResetNodeResult resetNode(
+        String build, 
+        Boolean force, 
+        Optional<Boolean> reboot, 
+        Optional<String> options
         );
 
     
@@ -2077,6 +2242,22 @@ public interface SolidFireElementIF {
 
     
     /** 
+     * CreateGroupSnapshot enables you to create a point-in-time copy of a group of volumes. You can use this snapshot later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time that you created the snapshot.
+     * Note: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CreateGroupSnapshotResult createGroupSnapshot(
+        Long[] volumes, 
+        Optional<String> name, 
+        Optional<Boolean> enableRemoteReplication, 
+        Optional<String> retention, 
+        Optional<Attributes> attributes, 
+        Optional<String> snapMirrorLabel
+        );
+
+    
+    /** 
      * CreateSnapshot enables you to create a point-in-time copy of a volume. You can create a snapshot from any volume or from an existing snapshot. If you do not provide a SnapshotID with this API method, a snapshot is created from the volume's active branch.
      * If the volume from which the snapshot is created is being replicated to a remote cluster, the snapshot can also be replicated to the same target. Use the enableRemoteReplication parameter to enable snapshot replication.
      * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
@@ -2115,6 +2296,24 @@ public interface SolidFireElementIF {
         Optional<Boolean> enableRemoteReplication, 
         Optional<String> retention, 
         Optional<Attributes> attributes
+        );
+
+    
+    /** 
+     * CreateSnapshot enables you to create a point-in-time copy of a volume. You can create a snapshot from any volume or from an existing snapshot. If you do not provide a SnapshotID with this API method, a snapshot is created from the volume's active branch.
+     * If the volume from which the snapshot is created is being replicated to a remote cluster, the snapshot can also be replicated to the same target. Use the enableRemoteReplication parameter to enable snapshot replication.
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult createSnapshot(
+        Long volumeID, 
+        Optional<Long> snapshotID, 
+        Optional<String> name, 
+        Optional<Boolean> enableRemoteReplication, 
+        Optional<String> retention, 
+        Optional<Attributes> attributes, 
+        Optional<String> snapMirrorLabel
         );
 
     
@@ -2226,6 +2425,19 @@ public interface SolidFireElementIF {
 
     
     /** 
+     * ModifyGroupSnapshot enables you to change the attributes of a group of snapshots. You can also use this method to enable snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifyGroupSnapshotResult modifyGroupSnapshot(
+        Long groupSnapshotID, 
+        Optional<String> expirationTime, 
+        Optional<Boolean> enableRemoteReplication, 
+        Optional<String> snapMirrorLabel
+        );
+
+    
+    /** 
      * ModifySnapshot enables you to change the attributes currently assigned to a snapshot. You can use this method to enable snapshots created on
      * the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
      **/
@@ -2244,6 +2456,20 @@ public interface SolidFireElementIF {
         Long snapshotID, 
         Optional<String> expirationTime, 
         Optional<Boolean> enableRemoteReplication
+        );
+
+    
+    /** 
+     * ModifySnapshot enables you to change the attributes currently assigned to a snapshot. You can use this method to enable snapshots created on
+     * the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifySnapshotResult modifySnapshot(
+        Long snapshotID, 
+        Optional<String> expirationTime, 
+        Optional<Boolean> enableRemoteReplication, 
+        Optional<String> snapMirrorLabel
         );
 
     
@@ -3140,6 +3366,32 @@ public interface SolidFireElementIF {
 
     
     /** 
+     * You can use the CreateQoSPolicy method to create a QoSPolicy object that you can later apply to a volume upon creation or modification. A QoS policy has a unique ID, a name, and QoS settings.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public CreateQoSPolicyResult createQoSPolicy(final CreateQoSPolicyRequest request);
+
+    
+    /** 
+     * You can use the CreateQoSPolicy method to create a QoSPolicy object that you can later apply to a volume upon creation or modification. A QoS policy has a unique ID, a name, and QoS settings.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public CreateQoSPolicyResult createQoSPolicy();
+    
+    /** 
+     * You can use the CreateQoSPolicy method to create a QoSPolicy object that you can later apply to a volume upon creation or modification. A QoS policy has a unique ID, a name, and QoS settings.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public CreateQoSPolicyResult createQoSPolicy(
+        String name, 
+        QoS qos
+        );
+
+    
+    /** 
      * CreateVolume enables you to create a new (empty) volume on the cluster. As soon as the volume creation is complete, the volume is
      * available for connection via iSCSI.
      **/
@@ -3161,6 +3413,52 @@ public interface SolidFireElementIF {
         Boolean enable512e, 
         Optional<QoS> qos, 
         Optional<Attributes> attributes
+        );
+
+    
+    /** 
+     * CreateVolume enables you to create a new (empty) volume on the cluster. As soon as the volume creation is complete, the volume is
+     * available for connection via iSCSI.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(
+        String name, 
+        Long accountID, 
+        Long totalSize, 
+        Boolean enable512e, 
+        Optional<QoS> qos, 
+        Optional<Attributes> attributes, 
+        Optional<Boolean> associateWithQoSPolicy, 
+        Optional<Long> qosPolicyID
+        );
+
+    
+    /** 
+     * You can use the DeleteQoSPolicy method to delete a QoS policy from the system.
+     * The QoS settings for all volumes created of modified with this policy are unaffected.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public DeleteQoSPolicyResult deleteQoSPolicy(final DeleteQoSPolicyRequest request);
+
+    
+    /** 
+     * You can use the DeleteQoSPolicy method to delete a QoS policy from the system.
+     * The QoS settings for all volumes created of modified with this policy are unaffected.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public DeleteQoSPolicyResult deleteQoSPolicy();
+    
+    /** 
+     * You can use the DeleteQoSPolicy method to delete a QoS policy from the system.
+     * The QoS settings for all volumes created of modified with this policy are unaffected.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public DeleteQoSPolicyResult deleteQoSPolicy(
+        Long qosPolicyID
         );
 
     
@@ -3264,6 +3562,31 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public VolumeQOS getDefaultQoS();
+    
+    /** 
+     * You can use the GetQoSPolicy method to get details about a specific QoSPolicy from the system.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public GetQoSPolicyResult getQoSPolicy(final GetQoSPolicyRequest request);
+
+    
+    /** 
+     * You can use the GetQoSPolicy method to get details about a specific QoSPolicy from the system.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public GetQoSPolicyResult getQoSPolicy();
+    
+    /** 
+     * You can use the GetQoSPolicy method to get details about a specific QoSPolicy from the system.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public GetQoSPolicyResult getQoSPolicy(
+        Long qosPolicyID
+        );
+
     
 
     
@@ -3378,6 +3701,15 @@ public interface SolidFireElementIF {
         Optional<Boolean> includeVirtualVolumes
         );
 
+    
+
+    
+    /** 
+     * You can use the ListQoSPolicies method to list all the settings of all QoS policies on the system.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public ListQoSPoliciesResult listQoSPolicies();
     
     /** 
      * The ListVolumes method enables you to retrieve a list of volumes that are in a cluster. You can specify the volumes you want to
@@ -3563,6 +3895,33 @@ public interface SolidFireElementIF {
 
     
     /** 
+     * You can use the ModifyQoSPolicy method to modify an existing QoSPolicy on the system.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public ModifyQoSPolicyResult modifyQoSPolicy(final ModifyQoSPolicyRequest request);
+
+    
+    /** 
+     * You can use the ModifyQoSPolicy method to modify an existing QoSPolicy on the system.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public ModifyQoSPolicyResult modifyQoSPolicy();
+    
+    /** 
+     * You can use the ModifyQoSPolicy method to modify an existing QoSPolicy on the system.
+     **/
+    @Since("10.0")
+    @ConnectionType("Cluster")
+    public ModifyQoSPolicyResult modifyQoSPolicy(
+        Long qosPolicyID, 
+        Optional<String> name, 
+        Optional<QoS> qos
+        );
+
+    
+    /** 
      * ModifyVolume enables you to modify settings on an existing volume. You can make modifications to one volume at a time and
      * changes take place immediately. If you do not specify QoS values when you modify a volume, they remain the same as before the modification. You can retrieve
      * default QoS values for a newly created volume by running the GetDefaultQoS method.
@@ -3596,6 +3955,30 @@ public interface SolidFireElementIF {
         Optional<QoS> qos, 
         Optional<Long> totalSize, 
         Optional<Attributes> attributes
+        );
+
+    
+    /** 
+     * ModifyVolume enables you to modify settings on an existing volume. You can make modifications to one volume at a time and
+     * changes take place immediately. If you do not specify QoS values when you modify a volume, they remain the same as before the modification. You can retrieve
+     * default QoS values for a newly created volume by running the GetDefaultQoS method.
+     * When you need to increase the size of a volume that is being replicated, do so in the following order to prevent replication errors:
+     * 1. Increase the size of the "Replication Target" volume.
+     * 2. Increase the size of the source or "Read / Write" volume.
+     * NetApp recommends that both the target and source volumes are the same size.
+     * Note: If you change the "access" status to locked or target, all existing iSCSI connections are terminated.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeResult modifyVolume(
+        Long volumeID, 
+        Optional<Long> accountID, 
+        Optional<String> access, 
+        Optional<QoS> qos, 
+        Optional<Long> totalSize, 
+        Optional<Attributes> attributes, 
+        Optional<Boolean> associateWithQoSPolicy, 
+        Optional<Long> qosPolicyID
         );
 
     
@@ -3636,6 +4019,32 @@ public interface SolidFireElementIF {
         Optional<String> access, 
         Optional<QoS> qos, 
         Optional<Long> totalSize, 
+        Optional<Attributes> attributes
+        );
+
+    
+    /** 
+     * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately.
+     * If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.
+     * If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged.
+     * You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.
+     * When you need to increase the size of volumes that are being replicated, do so in the following order
+     * to prevent replication errors:
+     *    Increase the size of the "Replication Target" volume.
+     *    Increase the size of the source or "Read / Write" volume.
+     * Recommend that both the target and source volumes be the same size.
+     * NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumesResult modifyVolumes(
+        Long[] volumeIDs, 
+        Optional<Long> accountID, 
+        Optional<String> access, 
+        Optional<QoS> qos, 
+        Optional<Long> totalSize, 
+        Optional<Boolean> associateWithQoSPolicy, 
+        Optional<Long> qosPolicyID, 
         Optional<Attributes> attributes
         );
 
@@ -3885,6 +4294,19 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(
         Long volumeAccessGroupID
+        );
+
+    
+    /** 
+     * DeleteVolumeAccessGroup enables you to delete a
+     * volume access group.
+     **/
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(
+        Long volumeAccessGroupID, 
+        Optional<Boolean> deleteOrphanInitiators, 
+        Optional<Boolean> force
         );
 
     

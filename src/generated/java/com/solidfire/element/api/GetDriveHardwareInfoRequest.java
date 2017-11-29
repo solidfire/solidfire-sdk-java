@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class GetDriveHardwareInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -8586094268613725837L;
+    public static final long serialVersionUID = 654573717298567372L;
     @SerializedName("driveID") private Long driveID;
     // empty constructor
     @Since("7.0")
@@ -55,6 +56,7 @@ public class GetDriveHardwareInfoRequest implements Serializable {
      * DriveID for the drive information requested. You can get DriveIDs by using the ListDrives method.
      **/
     public Long getDriveID() { return this.driveID; }
+   
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
@@ -85,9 +87,10 @@ public class GetDriveHardwareInfoRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" driveID : ").append(driveID).append(",");
+        sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

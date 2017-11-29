@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 5861056278571739633L;
+    public static final long serialVersionUID = 464604941728324684L;
     @SerializedName("details") private Optional<Boolean> details;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("recursive") private Optional<Boolean> recursive;
@@ -70,6 +71,7 @@ public class ListVirtualVolumesRequest implements Serializable {
      * the response.
      **/
     public Optional<Boolean> getDetails() { return this.details; }
+   
     public void setDetails(Optional<Boolean> details) { 
         this.details = (details == null) ? Optional.<Boolean>empty() : details;
     }
@@ -77,6 +79,7 @@ public class ListVirtualVolumesRequest implements Serializable {
      * The maximum number of virtual volumes to list.
      **/
     public Optional<Long> getLimit() { return this.limit; }
+   
     public void setLimit(Optional<Long> limit) { 
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
@@ -89,6 +92,7 @@ public class ListVirtualVolumesRequest implements Serializable {
      * virtual volume in the response.
      **/
     public Optional<Boolean> getRecursive() { return this.recursive; }
+   
     public void setRecursive(Optional<Boolean> recursive) { 
         this.recursive = (recursive == null) ? Optional.<Boolean>empty() : recursive;
     }
@@ -96,6 +100,7 @@ public class ListVirtualVolumesRequest implements Serializable {
      * The ID of the virtual volume at which to begin the list.
      **/
     public Optional<java.util.UUID> getStartVirtualVolumeID() { return this.startVirtualVolumeID; }
+   
     public void setStartVirtualVolumeID(Optional<java.util.UUID> startVirtualVolumeID) { 
         this.startVirtualVolumeID = (startVirtualVolumeID == null) ? Optional.<java.util.UUID>empty() : startVirtualVolumeID;
     }
@@ -105,6 +110,7 @@ public class ListVirtualVolumesRequest implements Serializable {
      * about only these virtual volumes.
      **/
     public Optional<java.util.UUID[]> getVirtualVolumeIDs() { return this.virtualVolumeIDs; }
+   
     public void setVirtualVolumeIDs(Optional<java.util.UUID[]> virtualVolumeIDs) { 
         this.virtualVolumeIDs = (virtualVolumeIDs == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumeIDs;
     }
@@ -143,22 +149,38 @@ public class ListVirtualVolumesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != details && details.isPresent()){
-            sb.append(" details : ").append(details).append(",");
+            sb.append(" details : ").append(gson.toJson(details)).append(",");
+        }
+        else{
+            sb.append(" details : ").append("null").append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(gson.toJson(limit)).append(",");
+        }
+        else{
+            sb.append(" limit : ").append("null").append(",");
         }
         if(null != recursive && recursive.isPresent()){
-            sb.append(" recursive : ").append(recursive).append(",");
+            sb.append(" recursive : ").append(gson.toJson(recursive)).append(",");
+        }
+        else{
+            sb.append(" recursive : ").append("null").append(",");
         }
         if(null != startVirtualVolumeID && startVirtualVolumeID.isPresent()){
-            sb.append(" startVirtualVolumeID : ").append(startVirtualVolumeID).append(",");
+            sb.append(" startVirtualVolumeID : ").append(gson.toJson(startVirtualVolumeID)).append(",");
+        }
+        else{
+            sb.append(" startVirtualVolumeID : ").append("null").append(",");
         }
         if(null != virtualVolumeIDs && virtualVolumeIDs.isPresent()){
-            sb.append(" virtualVolumeIDs : ").append(virtualVolumeIDs).append(",");
+            sb.append(" virtualVolumeIDs : ").append(gson.toJson(virtualVolumeIDs)).append(",");
+        }
+        else{
+            sb.append(" virtualVolumeIDs : ").append("null").append(",");
         }
         sb.append( " }" );
 

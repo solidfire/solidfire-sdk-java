@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetClusterHardwareInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -7200767948217508154L;
+    public static final long serialVersionUID = -4943994234075066899L;
     @SerializedName("clusterHardwareInfo") private ClusterHardwareInfo clusterHardwareInfo;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class GetClusterHardwareInfoResult implements Serializable {
      * Hardware information for all nodes and drives in the cluster. Each object in this output is labeled with the nodeID of the given node.
      **/
     public ClusterHardwareInfo getClusterHardwareInfo() { return this.clusterHardwareInfo; }
+   
     public void setClusterHardwareInfo(ClusterHardwareInfo clusterHardwareInfo) { 
         this.clusterHardwareInfo = clusterHardwareInfo;
     }
@@ -83,9 +85,10 @@ public class GetClusterHardwareInfoResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterHardwareInfo : ").append(clusterHardwareInfo).append(",");
+        sb.append(" clusterHardwareInfo : ").append(gson.toJson(clusterHardwareInfo)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

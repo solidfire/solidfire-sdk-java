@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class NodeStateResult implements Serializable {
 
-    public static final long serialVersionUID = 9027261839154577081L;
+    public static final long serialVersionUID = 1253365030459376831L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("result") private Optional<NodeStateInfo> result;
     // empty constructor
@@ -56,6 +57,7 @@ public class NodeStateResult implements Serializable {
      * ID of the node.
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -63,6 +65,7 @@ public class NodeStateResult implements Serializable {
      * NodeStateInfo object.
      **/
     public Optional<NodeStateInfo> getResult() { return this.result; }
+   
     public void setResult(Optional<NodeStateInfo> result) { 
         this.result = (result == null) ? Optional.<NodeStateInfo>empty() : result;
     }
@@ -95,11 +98,15 @@ public class NodeStateResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodeID : ").append(nodeID).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
         if(null != result && result.isPresent()){
-            sb.append(" result : ").append(result).append(",");
+            sb.append(" result : ").append(gson.toJson(result)).append(",");
+        }
+        else{
+            sb.append(" result : ").append("null").append(",");
         }
         sb.append( " }" );
 

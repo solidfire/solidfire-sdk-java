@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ResetNodeResult implements Serializable {
 
-    public static final long serialVersionUID = 1393122486488072595L;
+    public static final long serialVersionUID = 1741204150018515933L;
     @SerializedName("details") private Optional<ResetNodeDetails> details;
     @SerializedName("duration") private Optional<String> duration;
     @SerializedName("result") private Optional<String> result;
@@ -59,6 +60,7 @@ public class ResetNodeResult implements Serializable {
      * 
      **/
     public Optional<ResetNodeDetails> getDetails() { return this.details; }
+   
     public void setDetails(Optional<ResetNodeDetails> details) { 
         this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : details;
     }
@@ -66,6 +68,7 @@ public class ResetNodeResult implements Serializable {
      * 
      **/
     public Optional<String> getDuration() { return this.duration; }
+   
     public void setDuration(Optional<String> duration) { 
         this.duration = (duration == null) ? Optional.<String>empty() : duration;
     }
@@ -73,6 +76,7 @@ public class ResetNodeResult implements Serializable {
      * 
      **/
     public Optional<String> getResult() { return this.result; }
+   
     public void setResult(Optional<String> result) { 
         this.result = (result == null) ? Optional.<String>empty() : result;
     }
@@ -107,16 +111,26 @@ public class ResetNodeResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != details && details.isPresent()){
-            sb.append(" details : ").append(details).append(",");
+            sb.append(" details : ").append(gson.toJson(details)).append(",");
+        }
+        else{
+            sb.append(" details : ").append("null").append(",");
         }
         if(null != duration && duration.isPresent()){
-            sb.append(" duration : ").append(duration).append(",");
+            sb.append(" duration : ").append(gson.toJson(duration)).append(",");
+        }
+        else{
+            sb.append(" duration : ").append("null").append(",");
         }
         if(null != result && result.isPresent()){
-            sb.append(" result : ").append(result).append(",");
+            sb.append(" result : ").append(gson.toJson(result)).append(",");
+        }
+        else{
+            sb.append(" result : ").append("null").append(",");
         }
         sb.append( " }" );
 

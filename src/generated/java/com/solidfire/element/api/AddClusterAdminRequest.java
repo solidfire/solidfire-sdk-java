@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class AddClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 1314216236753443486L;
+    public static final long serialVersionUID = -198981678144562959L;
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("access") private String[] access;
@@ -68,6 +69,7 @@ public class AddClusterAdminRequest implements Serializable {
      * Unique username for this cluster admin. Must be between 1 and 1024 characters in length.
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
@@ -75,6 +77,7 @@ public class AddClusterAdminRequest implements Serializable {
      * Password used to authenticate this cluster admin.
      **/
     public String getPassword() { return this.password; }
+   
     public void setPassword(String password) { 
         this.password = password;
     }
@@ -82,6 +85,7 @@ public class AddClusterAdminRequest implements Serializable {
      * Controls which methods this cluster admin can use. For more details on the levels of access, see Access Control in the Element API Reference Guide.
      **/
     public String[] getAccess() { return this.access; }
+   
     public void setAccess(String[] access) { 
         this.access = access;
     }
@@ -91,6 +95,7 @@ public class AddClusterAdminRequest implements Serializable {
      * set this parameter to true.
      **/
     public Optional<Boolean> getAcceptEula() { return this.acceptEula; }
+   
     public void setAcceptEula(Optional<Boolean> acceptEula) { 
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
     }
@@ -98,6 +103,7 @@ public class AddClusterAdminRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -136,16 +142,23 @@ public class AddClusterAdminRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" username : ").append(username).append(",");
-        sb.append(" password : ").append(password).append(",");
-        sb.append(" access : ").append(Arrays.toString(access)).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
+        sb.append(" password : ").append(gson.toJson(password)).append(",");
+        sb.append(" access : ").append(gson.toJson(Arrays.toString(access))).append(",");
         if(null != acceptEula && acceptEula.isPresent()){
-            sb.append(" acceptEula : ").append(acceptEula).append(",");
+            sb.append(" acceptEula : ").append(gson.toJson(acceptEula)).append(",");
+        }
+        else{
+            sb.append(" acceptEula : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

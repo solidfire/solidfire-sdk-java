@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ModifyBackupTargetRequest implements Serializable {
 
-    public static final long serialVersionUID = 4811977427947684426L;
+    public static final long serialVersionUID = -7833229859937145799L;
     @SerializedName("backupTargetID") private Long backupTargetID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("attributes") private Optional<Attributes> attributes;
@@ -60,6 +61,7 @@ public class ModifyBackupTargetRequest implements Serializable {
      * The unique target ID for the target to modify.
      **/
     public Long getBackupTargetID() { return this.backupTargetID; }
+   
     public void setBackupTargetID(Long backupTargetID) { 
         this.backupTargetID = backupTargetID;
     }
@@ -67,6 +69,7 @@ public class ModifyBackupTargetRequest implements Serializable {
      * The new name for the backup target.
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
@@ -74,6 +77,7 @@ public class ModifyBackupTargetRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -108,14 +112,21 @@ public class ModifyBackupTargetRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" backupTargetID : ").append(backupTargetID).append(",");
+        sb.append(" backupTargetID : ").append(gson.toJson(backupTargetID)).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

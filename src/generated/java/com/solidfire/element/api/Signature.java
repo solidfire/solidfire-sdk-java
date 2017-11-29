@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class Signature implements Serializable {
 
-    public static final long serialVersionUID = 4942507282318410530L;
+    public static final long serialVersionUID = 6006039558308474583L;
     @SerializedName("data") private String data;
     @SerializedName("pubkey") private String pubkey;
     @SerializedName("version") private Long version;
@@ -59,6 +60,7 @@ public class Signature implements Serializable {
      * 
      **/
     public String getData() { return this.data; }
+   
     public void setData(String data) { 
         this.data = data;
     }
@@ -66,6 +68,7 @@ public class Signature implements Serializable {
      * 
      **/
     public String getPubkey() { return this.pubkey; }
+   
     public void setPubkey(String pubkey) { 
         this.pubkey = pubkey;
     }
@@ -73,6 +76,7 @@ public class Signature implements Serializable {
      * 
      **/
     public Long getVersion() { return this.version; }
+   
     public void setVersion(Long version) { 
         this.version = version;
     }
@@ -107,11 +111,12 @@ public class Signature implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" data : ").append(data).append(",");
-        sb.append(" pubkey : ").append(pubkey).append(",");
-        sb.append(" version : ").append(version).append(",");
+        sb.append(" data : ").append(gson.toJson(data)).append(",");
+        sb.append(" pubkey : ").append(gson.toJson(pubkey)).append(",");
+        sb.append(" version : ").append(gson.toJson(version)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

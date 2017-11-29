@@ -92,7 +92,7 @@ public class HttpsRequestDispatcher implements RequestDispatcher {
      * @throws IOException if anything went wrong on the connection side of things.
      */
     @Override
-    public String dispatchRequest(String input) throws IOException {
+    public String dispatchRequest(String input) throws IOException, ApiConnectionException {
         final byte[] encodedRequest = input.getBytes(Charset.forName("UTF-8"));
         final HttpsURLConnection connection = (HttpsURLConnection) endpoint.openConnection();
         prepareConnection(connection);
@@ -105,6 +105,9 @@ public class HttpsRequestDispatcher implements RequestDispatcher {
         // JSON-RPC...we don't actually care about the response code
         final InputStream response = connection.getResponseCode() == 200 ? connection.getInputStream() : connection.getErrorStream();
         try {
+            if (connection.getResponseCode() == 401){
+                throw new ApiConnectionException("Bad Credentials.");
+            }
             return decodeResponse(response);
         } finally {
             if (null != response) {

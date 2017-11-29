@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ListInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 2196214409667326261L;
+    public static final long serialVersionUID = -4434314446707155324L;
     @SerializedName("startInitiatorID") private Optional<Long> startInitiatorID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("initiators") private Optional<Long[]> initiators;
@@ -61,6 +62,7 @@ public class ListInitiatorsRequest implements Serializable {
      * parameter or the "initiators" parameter, but not both.
      **/
     public Optional<Long> getStartInitiatorID() { return this.startInitiatorID; }
+   
     public void setStartInitiatorID(Optional<Long> startInitiatorID) { 
         this.startInitiatorID = (startInitiatorID == null) ? Optional.<Long>empty() : startInitiatorID;
     }
@@ -68,6 +70,7 @@ public class ListInitiatorsRequest implements Serializable {
      * The maximum number of initiator objects to return.
      **/
     public Optional<Long> getLimit() { return this.limit; }
+   
     public void setLimit(Optional<Long> limit) { 
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
@@ -76,6 +79,7 @@ public class ListInitiatorsRequest implements Serializable {
      * the "startInitiatorID" parameter, but not both.
      **/
     public Optional<Long[]> getInitiators() { return this.initiators; }
+   
     public void setInitiators(Optional<Long[]> initiators) { 
         this.initiators = (initiators == null) ? Optional.<Long[]>empty() : initiators;
     }
@@ -110,16 +114,26 @@ public class ListInitiatorsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != startInitiatorID && startInitiatorID.isPresent()){
-            sb.append(" startInitiatorID : ").append(startInitiatorID).append(",");
+            sb.append(" startInitiatorID : ").append(gson.toJson(startInitiatorID)).append(",");
+        }
+        else{
+            sb.append(" startInitiatorID : ").append("null").append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(gson.toJson(limit)).append(",");
+        }
+        else{
+            sb.append(" limit : ").append("null").append(",");
         }
         if(null != initiators && initiators.isPresent()){
-            sb.append(" initiators : ").append(initiators).append(",");
+            sb.append(" initiators : ").append(gson.toJson(initiators)).append(",");
+        }
+        else{
+            sb.append(" initiators : ").append("null").append(",");
         }
         sb.append( " }" );
 

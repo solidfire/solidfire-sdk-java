@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class AddClusterAdminResult implements Serializable {
 
-    public static final long serialVersionUID = 4196212265580309734L;
+    public static final long serialVersionUID = -6913123489772234284L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class AddClusterAdminResult implements Serializable {
      * ClusterAdminID for the newly created Cluster Admin.
      **/
     public Long getClusterAdminID() { return this.clusterAdminID; }
+   
     public void setClusterAdminID(Long clusterAdminID) { 
         this.clusterAdminID = clusterAdminID;
     }
@@ -83,9 +85,10 @@ public class AddClusterAdminResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
+        sb.append(" clusterAdminID : ").append(gson.toJson(clusterAdminID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

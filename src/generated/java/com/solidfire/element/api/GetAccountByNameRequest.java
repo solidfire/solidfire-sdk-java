@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class GetAccountByNameRequest implements Serializable {
 
-    public static final long serialVersionUID = -2621547753919941790L;
+    public static final long serialVersionUID = -8075543913758135473L;
     @SerializedName("username") private String username;
     // empty constructor
     @Since("7.0")
@@ -54,6 +55,7 @@ public class GetAccountByNameRequest implements Serializable {
      * Username for the account.
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
@@ -84,9 +86,10 @@ public class GetAccountByNameRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" username : ").append(username).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

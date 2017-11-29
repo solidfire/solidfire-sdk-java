@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class CreateInitiator implements Serializable {
 
-    public static final long serialVersionUID = 3416468846658316964L;
+    public static final long serialVersionUID = 5723732916272205312L;
     @SerializedName("name") private String name;
     @SerializedName("alias") private Optional<String> alias;
     @SerializedName("volumeAccessGroupID") private Optional<Long> volumeAccessGroupID;
@@ -63,6 +64,7 @@ public class CreateInitiator implements Serializable {
      * (Required) The name of the initiator (IQN or WWPN) to create. (String)
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -70,6 +72,7 @@ public class CreateInitiator implements Serializable {
      * (Optional) The friendly name to assign to this initiator. (String)
      **/
     public Optional<String> getAlias() { return this.alias; }
+   
     public void setAlias(Optional<String> alias) { 
         this.alias = (alias == null) ? Optional.<String>empty() : alias;
     }
@@ -77,6 +80,7 @@ public class CreateInitiator implements Serializable {
      * (Optional) The ID of the volume access group to which this newly created initiator will be added. (Integer)
      **/
     public Optional<Long> getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Optional<Long> volumeAccessGroupID) { 
         this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<Long>empty() : volumeAccessGroupID;
     }
@@ -84,6 +88,7 @@ public class CreateInitiator implements Serializable {
      * (Optional) A set of JSON attributes assigned to this initiator. (JSON Object)
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -120,17 +125,27 @@ public class CreateInitiator implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" name : ").append(name).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
         if(null != alias && alias.isPresent()){
-            sb.append(" alias : ").append(alias).append(",");
+            sb.append(" alias : ").append(gson.toJson(alias)).append(",");
+        }
+        else{
+            sb.append(" alias : ").append("null").append(",");
         }
         if(null != volumeAccessGroupID && volumeAccessGroupID.isPresent()){
-            sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
+            sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
+        }
+        else{
+            sb.append(" volumeAccessGroupID : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class SetNtpInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 608075483046425231L;
+    public static final long serialVersionUID = -7411371300821324016L;
     @SerializedName("servers") private String[] servers;
     @SerializedName("broadcastclient") private Optional<Boolean> broadcastclient;
     // empty constructor
@@ -58,6 +59,7 @@ public class SetNtpInfoRequest implements Serializable {
      * List of NTP servers to add to each nodes NTP configuration.
      **/
     public String[] getServers() { return this.servers; }
+   
     public void setServers(String[] servers) { 
         this.servers = servers;
     }
@@ -65,6 +67,7 @@ public class SetNtpInfoRequest implements Serializable {
      * Enables every node in the cluster as a broadcast client.
      **/
     public Optional<Boolean> getBroadcastclient() { return this.broadcastclient; }
+   
     public void setBroadcastclient(Optional<Boolean> broadcastclient) { 
         this.broadcastclient = (broadcastclient == null) ? Optional.<Boolean>empty() : broadcastclient;
     }
@@ -97,11 +100,15 @@ public class SetNtpInfoRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" servers : ").append(Arrays.toString(servers)).append(",");
+        sb.append(" servers : ").append(gson.toJson(Arrays.toString(servers))).append(",");
         if(null != broadcastclient && broadcastclient.isPresent()){
-            sb.append(" broadcastclient : ").append(broadcastclient).append(",");
+            sb.append(" broadcastclient : ").append(gson.toJson(broadcastclient)).append(",");
+        }
+        else{
+            sb.append(" broadcastclient : ").append("null").append(",");
         }
         sb.append( " }" );
 

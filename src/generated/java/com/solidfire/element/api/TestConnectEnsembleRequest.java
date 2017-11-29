@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class TestConnectEnsembleRequest implements Serializable {
 
-    public static final long serialVersionUID = -8687658580977541312L;
+    public static final long serialVersionUID = -3782328525447605172L;
     @SerializedName("ensemble") private Optional<String> ensemble;
     // empty constructor
     @Since("7.0")
@@ -55,6 +56,7 @@ public class TestConnectEnsembleRequest implements Serializable {
      * Uses a comma-separated list of ensemble node cluster IP addresses to test connectivity. This parameter is optional.
      **/
     public Optional<String> getEnsemble() { return this.ensemble; }
+   
     public void setEnsemble(Optional<String> ensemble) { 
         this.ensemble = (ensemble == null) ? Optional.<String>empty() : ensemble;
     }
@@ -85,10 +87,14 @@ public class TestConnectEnsembleRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != ensemble && ensemble.isPresent()){
-            sb.append(" ensemble : ").append(ensemble).append(",");
+            sb.append(" ensemble : ").append(gson.toJson(ensemble)).append(",");
+        }
+        else{
+            sb.append(" ensemble : ").append("null").append(",");
         }
         sb.append( " }" );
 

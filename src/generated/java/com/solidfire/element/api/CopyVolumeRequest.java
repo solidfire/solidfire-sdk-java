@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -40,7 +41,7 @@ import java.util.Objects;
 
 public class CopyVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -977690859469406535L;
+    public static final long serialVersionUID = 4384537390538905479L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("dstVolumeID") private Long dstVolumeID;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
@@ -66,6 +67,7 @@ public class CopyVolumeRequest implements Serializable {
      * VolumeID of the volume to be read from.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -73,6 +75,7 @@ public class CopyVolumeRequest implements Serializable {
      * VolumeID of the volume to be overwritten.
      **/
     public Long getDstVolumeID() { return this.dstVolumeID; }
+   
     public void setDstVolumeID(Long dstVolumeID) { 
         this.dstVolumeID = dstVolumeID;
     }
@@ -81,6 +84,7 @@ public class CopyVolumeRequest implements Serializable {
      * If no ID is provided, the current active volume is used.
      **/
     public Optional<Long> getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Optional<Long> snapshotID) { 
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
@@ -115,12 +119,16 @@ public class CopyVolumeRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" dstVolumeID : ").append(dstVolumeID).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" dstVolumeID : ").append(gson.toJson(dstVolumeID)).append(",");
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID).append(",");
+            sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        }
+        else{
+            sb.append(" snapshotID : ").append("null").append(",");
         }
         sb.append( " }" );
 

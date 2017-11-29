@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ListVolumeStatsByAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = -8376215761264401129L;
+    public static final long serialVersionUID = 1835653242170335685L;
     @SerializedName("accounts") private Optional<Long[]> accounts;
     @SerializedName("includeVirtualVolumes") private Optional<Boolean> includeVirtualVolumes;
     // empty constructor
@@ -65,6 +66,7 @@ public class ListVolumeStatsByAccountRequest implements Serializable {
      * One or more account ids by which to filter the result.
      **/
     public Optional<Long[]> getAccounts() { return this.accounts; }
+   
     public void setAccounts(Optional<Long[]> accounts) { 
         this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
     }
@@ -72,6 +74,7 @@ public class ListVolumeStatsByAccountRequest implements Serializable {
      * Includes virtual volumes in the response by default. To exclude virtual volumes, set to false.
      **/
     public Optional<Boolean> getIncludeVirtualVolumes() { return this.includeVirtualVolumes; }
+   
     public void setIncludeVirtualVolumes(Optional<Boolean> includeVirtualVolumes) { 
         this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
     }
@@ -104,13 +107,20 @@ public class ListVolumeStatsByAccountRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != accounts && accounts.isPresent()){
-            sb.append(" accounts : ").append(accounts).append(",");
+            sb.append(" accounts : ").append(gson.toJson(accounts)).append(",");
+        }
+        else{
+            sb.append(" accounts : ").append("null").append(",");
         }
         if(null != includeVirtualVolumes && includeVirtualVolumes.isPresent()){
-            sb.append(" includeVirtualVolumes : ").append(includeVirtualVolumes).append(",");
+            sb.append(" includeVirtualVolumes : ").append(gson.toJson(includeVirtualVolumes)).append(",");
+        }
+        else{
+            sb.append(" includeVirtualVolumes : ").append("null").append(",");
         }
         sb.append( " }" );
 

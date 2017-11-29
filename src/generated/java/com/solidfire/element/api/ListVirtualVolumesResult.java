@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = -2591084689131596112L;
+    public static final long serialVersionUID = 7373707765592220409L;
     @SerializedName("virtualVolumes") private VirtualVolumeInfo[] virtualVolumes;
     @SerializedName("nextVirtualVolumeID") private Optional<java.util.UUID> nextVirtualVolumeID;
     // empty constructor
@@ -56,6 +57,7 @@ public class ListVirtualVolumesResult implements Serializable {
      * 
      **/
     public VirtualVolumeInfo[] getVirtualVolumes() { return this.virtualVolumes; }
+   
     public void setVirtualVolumes(VirtualVolumeInfo[] virtualVolumes) { 
         this.virtualVolumes = virtualVolumes;
     }
@@ -63,6 +65,7 @@ public class ListVirtualVolumesResult implements Serializable {
      * 
      **/
     public Optional<java.util.UUID> getNextVirtualVolumeID() { return this.nextVirtualVolumeID; }
+   
     public void setNextVirtualVolumeID(Optional<java.util.UUID> nextVirtualVolumeID) { 
         this.nextVirtualVolumeID = (nextVirtualVolumeID == null) ? Optional.<java.util.UUID>empty() : nextVirtualVolumeID;
     }
@@ -95,11 +98,15 @@ public class ListVirtualVolumesResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" virtualVolumes : ").append(Arrays.toString(virtualVolumes)).append(",");
+        sb.append(" virtualVolumes : ").append(gson.toJson(Arrays.toString(virtualVolumes))).append(",");
         if(null != nextVirtualVolumeID && nextVirtualVolumeID.isPresent()){
-            sb.append(" nextVirtualVolumeID : ").append(nextVirtualVolumeID).append(",");
+            sb.append(" nextVirtualVolumeID : ").append(gson.toJson(nextVirtualVolumeID)).append(",");
+        }
+        else{
+            sb.append(" nextVirtualVolumeID : ").append("null").append(",");
         }
         sb.append( " }" );
 

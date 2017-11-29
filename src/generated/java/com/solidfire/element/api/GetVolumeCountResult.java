@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetVolumeCountResult implements Serializable {
 
-    public static final long serialVersionUID = -5836580974842139563L;
+    public static final long serialVersionUID = -1120969743003135408L;
     @SerializedName("count") private Long count;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class GetVolumeCountResult implements Serializable {
      * The number of volumes currently in the system.
      **/
     public Long getCount() { return this.count; }
+   
     public void setCount(Long count) { 
         this.count = count;
     }
@@ -83,9 +85,10 @@ public class GetVolumeCountResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" count : ").append(count).append(",");
+        sb.append(" count : ").append(gson.toJson(count)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -16,13 +16,13 @@
 
 package com.solidfire.client;
 
-import com.solidfire.element.api.GetAPIResult;
+import com.solidfire.core.client.ApiConnectionException;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.element.api.GetAPIResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,13 +51,6 @@ public abstract class AbstractFactory<T extends com.solidfire.core.client.Servic
      * @return Value for property 'minApiVersion'.
      */
     protected abstract double getMinApiVersion();
-
-    /**
-     * Getter for property 'maxApiVersion'.
-     *
-     * @return Value for property 'maxApiVersion'.
-     */
-    protected abstract double getMaxApiVersion();
 
     /**
      * Initializes the ServiceBase with a given RequestDispatcher.
@@ -170,7 +163,32 @@ public abstract class AbstractFactory<T extends com.solidfire.core.client.Servic
         final com.solidfire.core.client.RequestDispatcher dispatcher;
 
         final T element = toServiceBase(buildRequestDispatcher(target, port, username, password, of(getMinApiVersion()+""), verifySSL));
-        final GetAPIResult getAPIResult = element.sendRequest("GetAPI", null, null, GetAPIResult.class);
+        GetAPIResult getAPIResult = null;
+
+        try {
+            getAPIResult = element.sendRequest("GetAPI", null, null, GetAPIResult.class);
+        }
+        catch (NullPointerException e) {
+            throw new com.solidfire.core.client.ApiException("400 Bad Request");
+        }
+        catch (ApiConnectionException e){
+            throw new com.solidfire.core.client.ApiConnectionException("Bad Credentials.", e.getCause());
+        }
+        catch (com.solidfire.core.client.ApiException e){
+            if (e.getCause() instanceof UnknownHostException){
+                throw new com.solidfire.core.client.ApiException("Unknown host based on target.", e.getCause());
+            }
+            else if (e.getCause() instanceof SocketTimeoutException){
+                throw new com.solidfire.core.client.ApiException("Connection timed out.", e.getCause());
+            }
+            else if (e.getCause() instanceof ConnectException){
+                throw new com.solidfire.core.client.ApiException("Connection refused. Confirm your target is a SolidFire cluster or node.", e.getCause());
+            }
+            else {
+                throw new com.solidfire.core.client.ApiException("Connection failed.", e.getCause());
+            }
+        }
+
 
         if (version.isPresent()) {
             final double versionActual;
@@ -198,12 +216,6 @@ public abstract class AbstractFactory<T extends com.solidfire.core.client.Servic
             } else {
                 throw new com.solidfire.core.client.ApiException(format("Invalid version to connect on this cluster. Valid versions are: %s", join(supportedVersions, ", ", "or")));
             }
-
-            if (versionActual > getMaxApiVersion()) {
-                log.warn("You have connected to a version that is higher than supported by this SDK. Some functionality may not work.");
-            }
-        } else if (getAPIResult.getCurrentVersion() > getMaxApiVersion()) {
-            dispatcher = buildRequestDispatcher(target, port, username, password, of(getMaxApiVersion() + ""), verifySSL);
         } else {
             dispatcher = buildRequestDispatcher(target, port, username, password, of(getAPIResult.getCurrentVersion() + ""), verifySSL);
         }
@@ -235,4 +247,5 @@ public abstract class AbstractFactory<T extends com.solidfire.core.client.Servic
 
         return returnedResult;
     }
+
 }

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class RemoveVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = -6963569258898366506L;
+    public static final long serialVersionUID = -69827457523190851L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
     // empty constructor
@@ -58,6 +59,7 @@ public class RemoveVirtualNetworkRequest implements Serializable {
      * Network ID that identifies the virtual network to remove.
      **/
     public Optional<Long> getVirtualNetworkID() { return this.virtualNetworkID; }
+   
     public void setVirtualNetworkID(Optional<Long> virtualNetworkID) { 
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
     }
@@ -65,6 +67,7 @@ public class RemoveVirtualNetworkRequest implements Serializable {
      * Network tag that identifies the virtual network to remove.
      **/
     public Optional<Long> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+   
     public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) { 
         this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
     }
@@ -97,13 +100,20 @@ public class RemoveVirtualNetworkRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+            sb.append(" virtualNetworkID : ").append(gson.toJson(virtualNetworkID)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkID : ").append("null").append(",");
         }
         if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
-            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+            sb.append(" virtualNetworkTag : ").append(gson.toJson(virtualNetworkTag)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkTag : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class RtfiInfo implements Serializable {
 
-    public static final long serialVersionUID = 8847268565010913303L;
+    public static final long serialVersionUID = 2818977902491736813L;
     @SerializedName("mipi") private Optional<String> mipi;
     @SerializedName("generation") private Object generation;
     @SerializedName("statusUrlLogfile") private Optional<String> statusUrlLogfile;
@@ -77,6 +78,7 @@ public class RtfiInfo implements Serializable {
      * 
      **/
     public Optional<String> getMipi() { return this.mipi; }
+   
     public void setMipi(Optional<String> mipi) { 
         this.mipi = (mipi == null) ? Optional.<String>empty() : mipi;
     }
@@ -84,6 +86,7 @@ public class RtfiInfo implements Serializable {
      * 
      **/
     public Object getGeneration() { return this.generation; }
+   
     public void setGeneration(Object generation) { 
         this.generation = generation;
     }
@@ -91,6 +94,7 @@ public class RtfiInfo implements Serializable {
      * 
      **/
     public Optional<String> getStatusUrlLogfile() { return this.statusUrlLogfile; }
+   
     public void setStatusUrlLogfile(Optional<String> statusUrlLogfile) { 
         this.statusUrlLogfile = (statusUrlLogfile == null) ? Optional.<String>empty() : statusUrlLogfile;
     }
@@ -98,6 +102,7 @@ public class RtfiInfo implements Serializable {
      * 
      **/
     public String getBuild() { return this.build; }
+   
     public void setBuild(String build) { 
         this.build = build;
     }
@@ -105,6 +110,7 @@ public class RtfiInfo implements Serializable {
      * 
      **/
     public String getStatusUrlAll() { return this.statusUrlAll; }
+   
     public void setStatusUrlAll(String statusUrlAll) { 
         this.statusUrlAll = statusUrlAll;
     }
@@ -112,6 +118,7 @@ public class RtfiInfo implements Serializable {
      * 
      **/
     public Optional<Long> getGenerationNext() { return this.generationNext; }
+   
     public void setGenerationNext(Optional<Long> generationNext) { 
         this.generationNext = (generationNext == null) ? Optional.<Long>empty() : generationNext;
     }
@@ -119,6 +126,7 @@ public class RtfiInfo implements Serializable {
      * 
      **/
     public Optional<String> getMip() { return this.mip; }
+   
     public void setMip(Optional<String> mip) { 
         this.mip = (mip == null) ? Optional.<String>empty() : mip;
     }
@@ -126,6 +134,7 @@ public class RtfiInfo implements Serializable {
      * 
      **/
     public String getStatusUrlCurrent() { return this.statusUrlCurrent; }
+   
     public void setStatusUrlCurrent(String statusUrlCurrent) { 
         this.statusUrlCurrent = statusUrlCurrent;
     }
@@ -133,6 +142,7 @@ public class RtfiInfo implements Serializable {
      * 
      **/
     public Optional<Attributes> getOptions() { return this.options; }
+   
     public void setOptions(Optional<Attributes> options) { 
         this.options = (options == null) ? Optional.<Attributes>empty() : options;
     }
@@ -179,26 +189,42 @@ public class RtfiInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != mipi && mipi.isPresent()){
-            sb.append(" mipi : ").append(mipi).append(",");
+            sb.append(" mipi : ").append(gson.toJson(mipi)).append(",");
         }
-        sb.append(" generation : ").append(generation).append(",");
+        else{
+            sb.append(" mipi : ").append("null").append(",");
+        }
+        sb.append(" generation : ").append(gson.toJson(generation)).append(",");
         if(null != statusUrlLogfile && statusUrlLogfile.isPresent()){
-            sb.append(" statusUrlLogfile : ").append(statusUrlLogfile).append(",");
+            sb.append(" statusUrlLogfile : ").append(gson.toJson(statusUrlLogfile)).append(",");
         }
-        sb.append(" build : ").append(build).append(",");
-        sb.append(" statusUrlAll : ").append(statusUrlAll).append(",");
+        else{
+            sb.append(" statusUrlLogfile : ").append("null").append(",");
+        }
+        sb.append(" build : ").append(gson.toJson(build)).append(",");
+        sb.append(" statusUrlAll : ").append(gson.toJson(statusUrlAll)).append(",");
         if(null != generationNext && generationNext.isPresent()){
-            sb.append(" generationNext : ").append(generationNext).append(",");
+            sb.append(" generationNext : ").append(gson.toJson(generationNext)).append(",");
+        }
+        else{
+            sb.append(" generationNext : ").append("null").append(",");
         }
         if(null != mip && mip.isPresent()){
-            sb.append(" mip : ").append(mip).append(",");
+            sb.append(" mip : ").append(gson.toJson(mip)).append(",");
         }
-        sb.append(" statusUrlCurrent : ").append(statusUrlCurrent).append(",");
+        else{
+            sb.append(" mip : ").append("null").append(",");
+        }
+        sb.append(" statusUrlCurrent : ").append(gson.toJson(statusUrlCurrent)).append(",");
         if(null != options && options.isPresent()){
-            sb.append(" options : ").append(options).append(",");
+            sb.append(" options : ").append(gson.toJson(options)).append(",");
+        }
+        else{
+            sb.append(" options : ").append("null").append(",");
         }
         sb.append( " }" );
 

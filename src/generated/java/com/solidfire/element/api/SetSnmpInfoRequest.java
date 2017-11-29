@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class SetSnmpInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 2734361054810888021L;
+    public static final long serialVersionUID = -3822330151084949865L;
     @SerializedName("networks") private Optional<SnmpNetwork[]> networks;
     @SerializedName("enabled") private Optional<Boolean> enabled;
     @SerializedName("snmpV3Enabled") private Optional<Boolean> snmpV3Enabled;
@@ -67,6 +68,7 @@ public class SetSnmpInfoRequest implements Serializable {
      * Network Object for possible "networks" values. This parameter is required only for SNMP v2.
      **/
     public Optional<SnmpNetwork[]> getNetworks() { return this.networks; }
+   
     public void setNetworks(Optional<SnmpNetwork[]> networks) { 
         this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : networks;
     }
@@ -74,6 +76,7 @@ public class SetSnmpInfoRequest implements Serializable {
      * If set to true, SNMP is enabled on each node in the cluster.
      **/
     public Optional<Boolean> getEnabled() { return this.enabled; }
+   
     public void setEnabled(Optional<Boolean> enabled) { 
         this.enabled = (enabled == null) ? Optional.<Boolean>empty() : enabled;
     }
@@ -81,6 +84,7 @@ public class SetSnmpInfoRequest implements Serializable {
      * If set to true, SNMP v3 is enabled on each node in the cluster.
      **/
     public Optional<Boolean> getSnmpV3Enabled() { return this.snmpV3Enabled; }
+   
     public void setSnmpV3Enabled(Optional<Boolean> snmpV3Enabled) { 
         this.snmpV3Enabled = (snmpV3Enabled == null) ? Optional.<Boolean>empty() : snmpV3Enabled;
     }
@@ -88,6 +92,7 @@ public class SetSnmpInfoRequest implements Serializable {
      * If SNMP v3 is enabled, this value must be passed in place of the networks parameter. This parameter is required only for SNMP v3.
      **/
     public Optional<SnmpV3UsmUser[]> getUsmUsers() { return this.usmUsers; }
+   
     public void setUsmUsers(Optional<SnmpV3UsmUser[]> usmUsers) { 
         this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : usmUsers;
     }
@@ -124,19 +129,32 @@ public class SetSnmpInfoRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != networks && networks.isPresent()){
-            sb.append(" networks : ").append(networks).append(",");
+            sb.append(" networks : ").append(gson.toJson(networks)).append(",");
+        }
+        else{
+            sb.append(" networks : ").append("null").append(",");
         }
         if(null != enabled && enabled.isPresent()){
-            sb.append(" enabled : ").append(enabled).append(",");
+            sb.append(" enabled : ").append(gson.toJson(enabled)).append(",");
+        }
+        else{
+            sb.append(" enabled : ").append("null").append(",");
         }
         if(null != snmpV3Enabled && snmpV3Enabled.isPresent()){
-            sb.append(" snmpV3Enabled : ").append(snmpV3Enabled).append(",");
+            sb.append(" snmpV3Enabled : ").append(gson.toJson(snmpV3Enabled)).append(",");
+        }
+        else{
+            sb.append(" snmpV3Enabled : ").append("null").append(",");
         }
         if(null != usmUsers && usmUsers.isPresent()){
-            sb.append(" usmUsers : ").append(usmUsers).append(",");
+            sb.append(" usmUsers : ").append(gson.toJson(usmUsers)).append(",");
+        }
+        else{
+            sb.append(" usmUsers : ").append("null").append(",");
         }
         sb.append( " }" );
 

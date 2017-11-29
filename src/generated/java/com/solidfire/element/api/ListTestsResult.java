@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ListTestsResult implements Serializable {
 
-    public static final long serialVersionUID = -4134305168088384763L;
+    public static final long serialVersionUID = 3886812087466529195L;
     @SerializedName("tests") private Object tests;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class ListTestsResult implements Serializable {
      * List of tests that can be performed on the node.
      **/
     public Object getTests() { return this.tests; }
+   
     public void setTests(Object tests) { 
         this.tests = tests;
     }
@@ -83,9 +85,10 @@ public class ListTestsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" tests : ").append(tests).append(",");
+        sb.append(" tests : ").append(gson.toJson(tests)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

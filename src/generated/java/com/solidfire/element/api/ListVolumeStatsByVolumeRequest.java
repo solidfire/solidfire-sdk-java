@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class ListVolumeStatsByVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 5910449560054712740L;
+    public static final long serialVersionUID = -2881782186131140487L;
     @SerializedName("includeVirtualVolumes") private Optional<Boolean> includeVirtualVolumes;
 
     
@@ -59,6 +60,7 @@ public class ListVolumeStatsByVolumeRequest implements Serializable {
      * To exclude virtual volumes, set to false.
      **/
     public Optional<Boolean> getIncludeVirtualVolumes() { return this.includeVirtualVolumes; }
+   
     public void setIncludeVirtualVolumes(Optional<Boolean> includeVirtualVolumes) { 
         this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
     }
@@ -89,10 +91,14 @@ public class ListVolumeStatsByVolumeRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != includeVirtualVolumes && includeVirtualVolumes.isPresent()){
-            sb.append(" includeVirtualVolumes : ").append(includeVirtualVolumes).append(",");
+            sb.append(" includeVirtualVolumes : ").append(gson.toJson(includeVirtualVolumes)).append(",");
+        }
+        else{
+            sb.append(" includeVirtualVolumes : ").append("null").append(",");
         }
         sb.append( " }" );
 

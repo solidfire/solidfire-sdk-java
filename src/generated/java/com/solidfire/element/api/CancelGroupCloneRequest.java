@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class CancelGroupCloneRequest implements Serializable {
 
-    public static final long serialVersionUID = 2747582539237172930L;
+    public static final long serialVersionUID = 9021390497646602910L;
     @SerializedName("groupCloneID") private Long groupCloneID;
     // empty constructor
     @Since("7.0")
@@ -55,6 +56,7 @@ public class CancelGroupCloneRequest implements Serializable {
      * The cloneID for the ongoing clone process.
      **/
     public Long getGroupCloneID() { return this.groupCloneID; }
+   
     public void setGroupCloneID(Long groupCloneID) { 
         this.groupCloneID = groupCloneID;
     }
@@ -85,9 +87,10 @@ public class CancelGroupCloneRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" groupCloneID : ").append(groupCloneID).append(",");
+        sb.append(" groupCloneID : ").append(gson.toJson(groupCloneID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

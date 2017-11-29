@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class SetConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = -8478027765607540632L;
+    public static final long serialVersionUID = -6082910372309011917L;
     @SerializedName("config") private ConfigParams config;
     // empty constructor
     @Since("7.0")
@@ -56,6 +57,7 @@ public class SetConfigRequest implements Serializable {
      * Objects that you want changed for the cluster interface settings.
      **/
     public ConfigParams getConfig() { return this.config; }
+   
     public void setConfig(ConfigParams config) { 
         this.config = config;
     }
@@ -86,9 +88,10 @@ public class SetConfigRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" config : ").append(config).append(",");
+        sb.append(" config : ").append(gson.toJson(config)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

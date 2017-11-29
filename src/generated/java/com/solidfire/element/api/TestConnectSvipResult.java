@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class TestConnectSvipResult implements Serializable {
 
-    public static final long serialVersionUID = 3977059247615679121L;
+    public static final long serialVersionUID = -3317230458482045560L;
     @SerializedName("details") private TestConnectSvipDetails details;
     @SerializedName("duration") private String duration;
     @SerializedName("result") private String result;
@@ -59,6 +60,7 @@ public class TestConnectSvipResult implements Serializable {
      * Information about the test operation
      **/
     public TestConnectSvipDetails getDetails() { return this.details; }
+   
     public void setDetails(TestConnectSvipDetails details) { 
         this.details = details;
     }
@@ -66,6 +68,7 @@ public class TestConnectSvipResult implements Serializable {
      * The length of time required to run the test.
      **/
     public String getDuration() { return this.duration; }
+   
     public void setDuration(String duration) { 
         this.duration = duration;
     }
@@ -73,6 +76,7 @@ public class TestConnectSvipResult implements Serializable {
      * The results of the entire test
      **/
     public String getResult() { return this.result; }
+   
     public void setResult(String result) { 
         this.result = result;
     }
@@ -107,11 +111,12 @@ public class TestConnectSvipResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" details : ").append(details).append(",");
-        sb.append(" duration : ").append(duration).append(",");
-        sb.append(" result : ").append(result).append(",");
+        sb.append(" details : ").append(gson.toJson(details)).append(",");
+        sb.append(" duration : ").append(gson.toJson(duration)).append(",");
+        sb.append(" result : ").append(gson.toJson(result)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

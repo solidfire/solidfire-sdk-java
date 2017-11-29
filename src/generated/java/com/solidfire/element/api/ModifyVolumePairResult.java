@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ModifyVolumePairResult implements Serializable {
 
-    public static final long serialVersionUID = -1501864476434117477L;
+    public static final long serialVersionUID = -8650584550251531095L;
     // empty constructor
     @Since("7.0")
     public ModifyVolumePairResult() {}

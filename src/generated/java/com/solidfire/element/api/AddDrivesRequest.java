@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -43,9 +44,10 @@ import java.util.Objects;
 
 public class AddDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 8104326946027329700L;
+    public static final long serialVersionUID = -3122822977530475421L;
     @SerializedName("drives") private NewDrive[] drives;
     @SerializedName("forceDuringUpgrade") private Optional<Boolean> forceDuringUpgrade;
+    @SerializedName("forceDuringBinSync") private Optional<Boolean> forceDuringBinSync;
     // empty constructor
     @Since("7.0")
     public AddDrivesRequest() {}
@@ -61,6 +63,18 @@ public class AddDrivesRequest implements Serializable {
         this.drives = drives;
         this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
     }
+    // parameterized constructor
+    @Since("10.0")
+    public AddDrivesRequest(
+        NewDrive[] drives,
+        Optional<Boolean> forceDuringUpgrade,
+        Optional<Boolean> forceDuringBinSync
+    )
+    {
+        this.drives = drives;
+        this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
+        this.forceDuringBinSync = (forceDuringBinSync == null) ? Optional.<Boolean>empty() : forceDuringBinSync;
+    }
 
     /** 
      * Returns information about each drive to be added to the
@@ -73,6 +87,7 @@ public class AddDrivesRequest implements Serializable {
      * type. (String)
      **/
     public NewDrive[] getDrives() { return this.drives; }
+   
     public void setDrives(NewDrive[] drives) { 
         this.drives = drives;
     }
@@ -80,8 +95,17 @@ public class AddDrivesRequest implements Serializable {
      * Allows the user to force the addition of drives during an upgrade.
      **/
     public Optional<Boolean> getForceDuringUpgrade() { return this.forceDuringUpgrade; }
+   
     public void setForceDuringUpgrade(Optional<Boolean> forceDuringUpgrade) { 
         this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
+    }
+    /** 
+     * Allows the user to force the addition of drives during a bin sync operation.
+     **/
+    public Optional<Boolean> getForceDuringBinSync() { return this.forceDuringBinSync; }
+   
+    public void setForceDuringBinSync(Optional<Boolean> forceDuringBinSync) { 
+        this.forceDuringBinSync = (forceDuringBinSync == null) ? Optional.<Boolean>empty() : forceDuringBinSync;
     }
 
     @Override
@@ -93,12 +117,13 @@ public class AddDrivesRequest implements Serializable {
 
         return 
             Arrays.equals(drives, that.drives) && 
-            Objects.equals(forceDuringUpgrade, that.forceDuringUpgrade);
+            Objects.equals(forceDuringUpgrade, that.forceDuringUpgrade) && 
+            Objects.equals(forceDuringBinSync, that.forceDuringBinSync);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])drives,forceDuringUpgrade );
+        return Objects.hash( (Object[])drives,forceDuringUpgrade,forceDuringBinSync );
     }
 
 
@@ -106,17 +131,28 @@ public class AddDrivesRequest implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("drives", drives);
         map.put("forceDuringUpgrade", forceDuringUpgrade);
+        map.put("forceDuringBinSync", forceDuringBinSync);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
+        sb.append(" drives : ").append(gson.toJson(Arrays.toString(drives))).append(",");
         if(null != forceDuringUpgrade && forceDuringUpgrade.isPresent()){
-            sb.append(" forceDuringUpgrade : ").append(forceDuringUpgrade).append(",");
+            sb.append(" forceDuringUpgrade : ").append(gson.toJson(forceDuringUpgrade)).append(",");
+        }
+        else{
+            sb.append(" forceDuringUpgrade : ").append("null").append(",");
+        }
+        if(null != forceDuringBinSync && forceDuringBinSync.isPresent()){
+            sb.append(" forceDuringBinSync : ").append(gson.toJson(forceDuringBinSync)).append(",");
+        }
+        else{
+            sb.append(" forceDuringBinSync : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -137,18 +173,21 @@ public class AddDrivesRequest implements Serializable {
     public static class Builder {
         private NewDrive[] drives;
         private Optional<Boolean> forceDuringUpgrade;
+        private Optional<Boolean> forceDuringBinSync;
 
         private Builder() { }
 
         public AddDrivesRequest build() {
             return new AddDrivesRequest (
                          this.drives,
-                         this.forceDuringUpgrade);
+                         this.forceDuringUpgrade,
+                         this.forceDuringBinSync);
         }
 
         private AddDrivesRequest.Builder buildFrom(final AddDrivesRequest req) {
             this.drives = req.drives;
             this.forceDuringUpgrade = req.forceDuringUpgrade;
+            this.forceDuringBinSync = req.forceDuringBinSync;
 
             return this;
         }
@@ -160,6 +199,11 @@ public class AddDrivesRequest implements Serializable {
 
         public AddDrivesRequest.Builder optionalForceDuringUpgrade(final Boolean forceDuringUpgrade) {
             this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : Optional.of(forceDuringUpgrade);
+            return this;
+        }
+
+        public AddDrivesRequest.Builder optionalForceDuringBinSync(final Boolean forceDuringBinSync) {
+            this.forceDuringBinSync = (forceDuringBinSync == null) ? Optional.<Boolean>empty() : Optional.of(forceDuringBinSync);
             return this;
         }
 

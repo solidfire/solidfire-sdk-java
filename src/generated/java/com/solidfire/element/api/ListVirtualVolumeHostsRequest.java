@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumeHostsRequest implements Serializable {
 
-    public static final long serialVersionUID = 5446520204652356550L;
+    public static final long serialVersionUID = -3948315934498837790L;
     @SerializedName("virtualVolumeHostIDs") private Optional<java.util.UUID[]> virtualVolumeHostIDs;
     // empty constructor
     @Since("7.0")
@@ -55,6 +56,7 @@ public class ListVirtualVolumeHostsRequest implements Serializable {
      * A list of virtual volume host IDs for which to retrieve information. If you omit this parameter, the method returns information about all virtual volume hosts.
      **/
     public Optional<java.util.UUID[]> getVirtualVolumeHostIDs() { return this.virtualVolumeHostIDs; }
+   
     public void setVirtualVolumeHostIDs(Optional<java.util.UUID[]> virtualVolumeHostIDs) { 
         this.virtualVolumeHostIDs = (virtualVolumeHostIDs == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumeHostIDs;
     }
@@ -85,10 +87,14 @@ public class ListVirtualVolumeHostsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != virtualVolumeHostIDs && virtualVolumeHostIDs.isPresent()){
-            sb.append(" virtualVolumeHostIDs : ").append(virtualVolumeHostIDs).append(",");
+            sb.append(" virtualVolumeHostIDs : ").append(gson.toJson(virtualVolumeHostIDs)).append(",");
+        }
+        else{
+            sb.append(" virtualVolumeHostIDs : ").append("null").append(",");
         }
         sb.append( " }" );
 

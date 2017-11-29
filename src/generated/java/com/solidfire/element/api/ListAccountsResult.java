@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ListAccountsResult implements Serializable {
 
-    public static final long serialVersionUID = -4319480912404858155L;
+    public static final long serialVersionUID = 647365102596714293L;
     @SerializedName("accounts") private Account[] accounts;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class ListAccountsResult implements Serializable {
      * List of accounts.
      **/
     public Account[] getAccounts() { return this.accounts; }
+   
     public void setAccounts(Account[] accounts) { 
         this.accounts = accounts;
     }
@@ -83,9 +85,10 @@ public class ListAccountsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" accounts : ").append(Arrays.toString(accounts)).append(",");
+        sb.append(" accounts : ").append(gson.toJson(Arrays.toString(accounts))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

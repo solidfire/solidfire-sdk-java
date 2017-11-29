@@ -27,7 +27,10 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -40,6 +43,15 @@ import static java.lang.String.format;
 public class ServiceBase {
 
     private static final Logger log = LoggerFactory.getLogger(ServiceBase.class);
+    private final ArrayList<String> secretKeys = new ArrayList<>(Arrays.asList(
+            "clusterPairingKey",
+            "volumePairingKey",
+            "password",
+            "initiatorSecret",
+            "scriptParameters",
+            "targetSecret",
+            "searchBindPassword"
+    ));
 
     static {
         HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
@@ -121,7 +133,6 @@ public class ServiceBase {
         }
 
         final String jsonRequest = encodeRequest(method, requestParams, requestParamsClass);
-        log.debug("Request: {}", jsonRequest);
         try {
             final String response;
             response = getRequestDispatcher()
@@ -157,6 +168,7 @@ public class ServiceBase {
         if (requestParams != null) {
             requestObj.add("params", gson.toJsonTree(requestParams, requestParamsClass));
         }
+        log.debug("Request: {}", obfuscateSecretKeys(requestObj, false).toString());
         return gson.toJson(requestObj);
     }
 
@@ -169,7 +181,6 @@ public class ServiceBase {
      * @return the result (response) object
      */
     protected <TResult> TResult decodeResponse(String response, Class<TResult> resultParamsClass) {
-        log.debug("Response: {}", response);
 
         final Gson gson = getGsonBuilder().create();
 
@@ -180,6 +191,7 @@ public class ServiceBase {
             reader.setLenient(true);
 
             final JsonObject resultObj = gson.fromJson(reader, JsonObject.class);
+            log.debug("Response: {}", obfuscateSecretKeys(resultObj, false).toString());
 
             if(resultObj == null) {
                 throw new NullPointerException();
@@ -207,6 +219,40 @@ public class ServiceBase {
             throw new ApiException(format("There was a problem parsing the response from the server. ( response=%s )", response), e);
 
         }
+    }
+
+    private JsonElement obfuscateSecretKeys(JsonElement element, Boolean obfuscate) {
+        if(element.isJsonObject()) {
+            JsonObject obj = element.getAsJsonObject();
+            JsonObject newObj = new JsonObject();
+            Set<Map.Entry<String, JsonElement>> entries = obj.entrySet();
+            for(Map.Entry<String, JsonElement> entry : entries) {
+                String myKey = entry.getKey();
+                if(secretKeys.contains(myKey)) {
+                    newObj.add(myKey, obfuscateSecretKeys(entry.getValue(), true));
+                }
+                else {
+                    newObj.add(myKey, obfuscateSecretKeys(entry.getValue(), false));
+                }
+            }
+            return newObj;
+        }
+        if(element.isJsonArray()) {
+            JsonArray arr = element.getAsJsonArray();
+            JsonArray newArr = new JsonArray();
+            for(JsonElement myElement : arr) {
+                newArr.add(obfuscateSecretKeys(myElement, false));
+            }
+            return newArr;
+        }
+        if(element.isJsonPrimitive()) {
+            if(obfuscate) {
+                return new JsonPrimitive("*****");
+            } else {
+                return element;
+            }
+        }
+        return null;
     }
 
     protected void checkForError(JsonObject resultObj) throws ApiServerException {

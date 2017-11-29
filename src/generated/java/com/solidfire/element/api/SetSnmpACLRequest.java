@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class SetSnmpACLRequest implements Serializable {
 
-    public static final long serialVersionUID = 3157013297456196225L;
+    public static final long serialVersionUID = 5198207276070077502L;
     @SerializedName("networks") private SnmpNetwork[] networks;
     @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
     // empty constructor
@@ -60,6 +61,7 @@ public class SetSnmpACLRequest implements Serializable {
      * Network Object for possible "networks" values. This parameter is required if SNMP v3 is disabled.
      **/
     public SnmpNetwork[] getNetworks() { return this.networks; }
+   
     public void setNetworks(SnmpNetwork[] networks) { 
         this.networks = networks;
     }
@@ -67,6 +69,7 @@ public class SetSnmpACLRequest implements Serializable {
      * List of users and the type of access they have to the SNMP servers running on the cluster nodes.
      **/
     public SnmpV3UsmUser[] getUsmUsers() { return this.usmUsers; }
+   
     public void setUsmUsers(SnmpV3UsmUser[] usmUsers) { 
         this.usmUsers = usmUsers;
     }
@@ -99,10 +102,11 @@ public class SetSnmpACLRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" networks : ").append(Arrays.toString(networks)).append(",");
-        sb.append(" usmUsers : ").append(Arrays.toString(usmUsers)).append(",");
+        sb.append(" networks : ").append(gson.toJson(Arrays.toString(networks))).append(",");
+        sb.append(" usmUsers : ").append(gson.toJson(Arrays.toString(usmUsers))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

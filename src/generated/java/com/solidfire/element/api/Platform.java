@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class Platform implements Serializable {
 
-    public static final long serialVersionUID = -968276323282039768L;
+    public static final long serialVersionUID = -6612096304691711343L;
     @SerializedName("nodeType") private String nodeType;
     @SerializedName("chassisType") private String chassisType;
     @SerializedName("cpuModel") private String cpuModel;
@@ -65,6 +66,7 @@ public class Platform implements Serializable {
      * SolidFire's name for this platform.
      **/
     public String getNodeType() { return this.nodeType; }
+   
     public void setNodeType(String nodeType) { 
         this.nodeType = nodeType;
     }
@@ -72,6 +74,7 @@ public class Platform implements Serializable {
      * Name of the chassis (example: "R620").
      **/
     public String getChassisType() { return this.chassisType; }
+   
     public void setChassisType(String chassisType) { 
         this.chassisType = chassisType;
     }
@@ -79,6 +82,7 @@ public class Platform implements Serializable {
      * The model of CPU used on this platform.
      **/
     public String getCpuModel() { return this.cpuModel; }
+   
     public void setCpuModel(String cpuModel) { 
         this.cpuModel = cpuModel;
     }
@@ -86,6 +90,7 @@ public class Platform implements Serializable {
      * The amount of memory on this platform in GiB.
      **/
     public Long getNodeMemoryGB() { return this.nodeMemoryGB; }
+   
     public void setNodeMemoryGB(Long nodeMemoryGB) { 
         this.nodeMemoryGB = nodeMemoryGB;
     }
@@ -93,6 +98,7 @@ public class Platform implements Serializable {
      * 
      **/
     public Optional<String> getPlatformConfigVersion() { return this.platformConfigVersion; }
+   
     public void setPlatformConfigVersion(Optional<String> platformConfigVersion) { 
         this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : platformConfigVersion;
     }
@@ -131,14 +137,18 @@ public class Platform implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodeType : ").append(nodeType).append(",");
-        sb.append(" chassisType : ").append(chassisType).append(",");
-        sb.append(" cpuModel : ").append(cpuModel).append(",");
-        sb.append(" nodeMemoryGB : ").append(nodeMemoryGB).append(",");
+        sb.append(" nodeType : ").append(gson.toJson(nodeType)).append(",");
+        sb.append(" chassisType : ").append(gson.toJson(chassisType)).append(",");
+        sb.append(" cpuModel : ").append(gson.toJson(cpuModel)).append(",");
+        sb.append(" nodeMemoryGB : ").append(gson.toJson(nodeMemoryGB)).append(",");
         if(null != platformConfigVersion && platformConfigVersion.isPresent()){
-            sb.append(" platformConfigVersion : ").append(platformConfigVersion).append(",");
+            sb.append(" platformConfigVersion : ").append(gson.toJson(platformConfigVersion)).append(",");
+        }
+        else{
+            sb.append(" platformConfigVersion : ").append("null").append(",");
         }
         sb.append( " }" );
 

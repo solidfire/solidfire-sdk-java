@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class CreateVolumeAccessGroupResult implements Serializable {
 
-    public static final long serialVersionUID = 2015284469851878532L;
+    public static final long serialVersionUID = -3703710454092842045L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("volumeAccessGroup") private Optional<VolumeAccessGroup> volumeAccessGroup;
     // empty constructor
@@ -56,6 +57,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
      * The ID for the newly-created volume access group.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
@@ -63,6 +65,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
      * 
      **/
     public Optional<VolumeAccessGroup> getVolumeAccessGroup() { return this.volumeAccessGroup; }
+   
     public void setVolumeAccessGroup(Optional<VolumeAccessGroup> volumeAccessGroup) { 
         this.volumeAccessGroup = (volumeAccessGroup == null) ? Optional.<VolumeAccessGroup>empty() : volumeAccessGroup;
     }
@@ -95,11 +98,15 @@ public class CreateVolumeAccessGroupResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
         if(null != volumeAccessGroup && volumeAccessGroup.isPresent()){
-            sb.append(" volumeAccessGroup : ").append(volumeAccessGroup).append(",");
+            sb.append(" volumeAccessGroup : ").append(gson.toJson(volumeAccessGroup)).append(",");
+        }
+        else{
+            sb.append(" volumeAccessGroup : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ModifyVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = -462558436418401077L;
+    public static final long serialVersionUID = 5469388004351442315L;
     @SerializedName("volumes") private Volume[] volumes;
     @SerializedName("qos") private Optional<QoS> qos;
     // empty constructor
@@ -56,6 +57,7 @@ public class ModifyVolumesResult implements Serializable {
      * 
      **/
     public Volume[] getVolumes() { return this.volumes; }
+   
     public void setVolumes(Volume[] volumes) { 
         this.volumes = volumes;
     }
@@ -63,6 +65,7 @@ public class ModifyVolumesResult implements Serializable {
      * 
      **/
     public Optional<QoS> getQos() { return this.qos; }
+   
     public void setQos(Optional<QoS> qos) { 
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
@@ -95,11 +98,15 @@ public class ModifyVolumesResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
+        sb.append(" volumes : ").append(gson.toJson(Arrays.toString(volumes))).append(",");
         if(null != qos && qos.isPresent()){
-            sb.append(" qos : ").append(qos).append(",");
+            sb.append(" qos : ").append(gson.toJson(qos)).append(",");
+        }
+        else{
+            sb.append(" qos : ").append("null").append(",");
         }
         sb.append( " }" );
 

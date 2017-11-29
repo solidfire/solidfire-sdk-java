@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class LdapConfiguration implements Serializable {
 
-    public static final long serialVersionUID = 8481208810608793924L;
+    public static final long serialVersionUID = -4900050528922714170L;
     @SerializedName("authType") private String authType;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("groupSearchBaseDN") private String groupSearchBaseDN;
@@ -84,6 +85,7 @@ public class LdapConfiguration implements Serializable {
      * SearchAndBind
      **/
     public String getAuthType() { return this.authType; }
+   
     public void setAuthType(String authType) { 
         this.authType = authType;
     }
@@ -94,6 +96,7 @@ public class LdapConfiguration implements Serializable {
      * false
      **/
     public Boolean getEnabled() { return this.enabled; }
+   
     public void setEnabled(Boolean enabled) { 
         this.enabled = enabled;
     }
@@ -101,6 +104,7 @@ public class LdapConfiguration implements Serializable {
      * The base DN of the tree to start the group search (will do a subtree search from here).
      **/
     public String getGroupSearchBaseDN() { return this.groupSearchBaseDN; }
+   
     public void setGroupSearchBaseDN(String groupSearchBaseDN) { 
         this.groupSearchBaseDN = groupSearchBaseDN;
     }
@@ -108,6 +112,7 @@ public class LdapConfiguration implements Serializable {
      * The custom search filter used.
      **/
     public String getGroupSearchCustomFilter() { return this.groupSearchCustomFilter; }
+   
     public void setGroupSearchCustomFilter(String groupSearchCustomFilter) { 
         this.groupSearchCustomFilter = groupSearchCustomFilter;
     }
@@ -118,6 +123,7 @@ public class LdapConfiguration implements Serializable {
      * MemberDN: MemberDN style groups (single-level).
      **/
     public String getGroupSearchType() { return this.groupSearchType; }
+   
     public void setGroupSearchType(String groupSearchType) { 
         this.groupSearchType = groupSearchType;
     }
@@ -125,6 +131,7 @@ public class LdapConfiguration implements Serializable {
      * A fully qualified DN to log in with to perform an LDAP search for the user (needs read access to the LDAP directory).
      **/
     public String getSearchBindDN() { return this.searchBindDN; }
+   
     public void setSearchBindDN(String searchBindDN) { 
         this.searchBindDN = searchBindDN;
     }
@@ -132,6 +139,7 @@ public class LdapConfiguration implements Serializable {
      * A comma-separated list of LDAP server URIs (examples: "ldap://1.2.3.4" and ldaps://1.2.3.4:123")
      **/
     public String[] getServerURIs() { return this.serverURIs; }
+   
     public void setServerURIs(String[] serverURIs) { 
         this.serverURIs = serverURIs;
     }
@@ -139,6 +147,7 @@ public class LdapConfiguration implements Serializable {
      * A string that is used to form a fully qualified user DN.
      **/
     public String getUserDNTemplate() { return this.userDNTemplate; }
+   
     public void setUserDNTemplate(String userDNTemplate) { 
         this.userDNTemplate = userDNTemplate;
     }
@@ -146,6 +155,7 @@ public class LdapConfiguration implements Serializable {
      * The base DN of the tree used to start the search (will do a subtree search from here).
      **/
     public String getUserSearchBaseDN() { return this.userSearchBaseDN; }
+   
     public void setUserSearchBaseDN(String userSearchBaseDN) { 
         this.userSearchBaseDN = userSearchBaseDN;
     }
@@ -153,6 +163,7 @@ public class LdapConfiguration implements Serializable {
      * The LDAP filter used.
      **/
     public String getUserSearchFilter() { return this.userSearchFilter; }
+   
     public void setUserSearchFilter(String userSearchFilter) { 
         this.userSearchFilter = userSearchFilter;
     }
@@ -201,18 +212,19 @@ public class LdapConfiguration implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" authType : ").append(authType).append(",");
-        sb.append(" enabled : ").append(enabled).append(",");
-        sb.append(" groupSearchBaseDN : ").append(groupSearchBaseDN).append(",");
-        sb.append(" groupSearchCustomFilter : ").append(groupSearchCustomFilter).append(",");
-        sb.append(" groupSearchType : ").append(groupSearchType).append(",");
-        sb.append(" searchBindDN : ").append(searchBindDN).append(",");
-        sb.append(" serverURIs : ").append(Arrays.toString(serverURIs)).append(",");
-        sb.append(" userDNTemplate : ").append(userDNTemplate).append(",");
-        sb.append(" userSearchBaseDN : ").append(userSearchBaseDN).append(",");
-        sb.append(" userSearchFilter : ").append(userSearchFilter).append(",");
+        sb.append(" authType : ").append(gson.toJson(authType)).append(",");
+        sb.append(" enabled : ").append(gson.toJson(enabled)).append(",");
+        sb.append(" groupSearchBaseDN : ").append(gson.toJson(groupSearchBaseDN)).append(",");
+        sb.append(" groupSearchCustomFilter : ").append(gson.toJson(groupSearchCustomFilter)).append(",");
+        sb.append(" groupSearchType : ").append(gson.toJson(groupSearchType)).append(",");
+        sb.append(" searchBindDN : ").append(gson.toJson(searchBindDN)).append(",");
+        sb.append(" serverURIs : ").append(gson.toJson(Arrays.toString(serverURIs))).append(",");
+        sb.append(" userDNTemplate : ").append(gson.toJson(userDNTemplate)).append(",");
+        sb.append(" userSearchBaseDN : ").append(gson.toJson(userSearchBaseDN)).append(",");
+        sb.append(" userSearchFilter : ").append(gson.toJson(userSearchFilter)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

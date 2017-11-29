@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class GetIpmiConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = 8810486621883169482L;
+    public static final long serialVersionUID = 6742458829674675710L;
     @SerializedName("chassisType") private Optional<String> chassisType;
     // empty constructor
     @Since("7.0")
@@ -57,6 +58,7 @@ public class GetIpmiConfigRequest implements Serializable {
      * {chassis type}: Returns sensor information for a specified chassis type.
      **/
     public Optional<String> getChassisType() { return this.chassisType; }
+   
     public void setChassisType(Optional<String> chassisType) { 
         this.chassisType = (chassisType == null) ? Optional.<String>empty() : chassisType;
     }
@@ -87,10 +89,14 @@ public class GetIpmiConfigRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != chassisType && chassisType.isPresent()){
-            sb.append(" chassisType : ").append(chassisType).append(",");
+            sb.append(" chassisType : ").append(gson.toJson(chassisType)).append(",");
+        }
+        else{
+            sb.append(" chassisType : ").append("null").append(",");
         }
         sb.append( " }" );
 

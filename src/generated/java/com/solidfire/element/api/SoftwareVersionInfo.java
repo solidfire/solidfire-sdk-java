@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class SoftwareVersionInfo implements Serializable {
 
-    public static final long serialVersionUID = 9031495610136000953L;
+    public static final long serialVersionUID = -4210356135559607214L;
     @SerializedName("currentVersion") private String currentVersion;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("packageName") private String packageName;
@@ -65,6 +66,7 @@ public class SoftwareVersionInfo implements Serializable {
      * 
      **/
     public String getCurrentVersion() { return this.currentVersion; }
+   
     public void setCurrentVersion(String currentVersion) { 
         this.currentVersion = currentVersion;
     }
@@ -72,6 +74,7 @@ public class SoftwareVersionInfo implements Serializable {
      * 
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -79,6 +82,7 @@ public class SoftwareVersionInfo implements Serializable {
      * 
      **/
     public String getPackageName() { return this.packageName; }
+   
     public void setPackageName(String packageName) { 
         this.packageName = packageName;
     }
@@ -86,6 +90,7 @@ public class SoftwareVersionInfo implements Serializable {
      * 
      **/
     public String getPendingVersion() { return this.pendingVersion; }
+   
     public void setPendingVersion(String pendingVersion) { 
         this.pendingVersion = pendingVersion;
     }
@@ -93,6 +98,7 @@ public class SoftwareVersionInfo implements Serializable {
      * 
      **/
     public String getStartTime() { return this.startTime; }
+   
     public void setStartTime(String startTime) { 
         this.startTime = startTime;
     }
@@ -131,13 +137,14 @@ public class SoftwareVersionInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" currentVersion : ").append(currentVersion).append(",");
-        sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" packageName : ").append(packageName).append(",");
-        sb.append(" pendingVersion : ").append(pendingVersion).append(",");
-        sb.append(" startTime : ").append(startTime).append(",");
+        sb.append(" currentVersion : ").append(gson.toJson(currentVersion)).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
+        sb.append(" packageName : ").append(gson.toJson(packageName)).append(",");
+        sb.append(" pendingVersion : ").append(gson.toJson(pendingVersion)).append(",");
+        sb.append(" startTime : ").append(gson.toJson(startTime)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

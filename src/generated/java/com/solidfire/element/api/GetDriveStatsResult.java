@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetDriveStatsResult implements Serializable {
 
-    public static final long serialVersionUID = -162902541164992180L;
+    public static final long serialVersionUID = 8281886346697342369L;
     @SerializedName("driveStats") private DriveStats driveStats;
     // empty constructor
     @Since("7.0")
@@ -53,6 +54,7 @@ public class GetDriveStatsResult implements Serializable {
      * 
      **/
     public DriveStats getDriveStats() { return this.driveStats; }
+   
     public void setDriveStats(DriveStats driveStats) { 
         this.driveStats = driveStats;
     }
@@ -83,9 +85,10 @@ public class GetDriveStatsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" driveStats : ").append(driveStats).append(",");
+        sb.append(" driveStats : ").append(gson.toJson(driveStats)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

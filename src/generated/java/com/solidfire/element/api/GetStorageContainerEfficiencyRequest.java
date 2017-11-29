@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class GetStorageContainerEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = -2147464210752945777L;
+    public static final long serialVersionUID = -7455071277055012178L;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
     // empty constructor
     @Since("7.0")
@@ -54,6 +55,7 @@ public class GetStorageContainerEfficiencyRequest implements Serializable {
      * The ID of the storage container for which to retrieve efficiency information.
      **/
     public java.util.UUID getStorageContainerID() { return this.storageContainerID; }
+   
     public void setStorageContainerID(java.util.UUID storageContainerID) { 
         this.storageContainerID = storageContainerID;
     }
@@ -84,9 +86,10 @@ public class GetStorageContainerEfficiencyRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" storageContainerID : ").append(storageContainerID).append(",");
+        sb.append(" storageContainerID : ").append(gson.toJson(storageContainerID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

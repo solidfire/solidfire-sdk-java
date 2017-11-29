@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,7 @@ import java.util.Objects;
 
 public class RollbackToSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -8399318088873389243L;
+    public static final long serialVersionUID = 9171061592688594261L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
@@ -70,6 +71,7 @@ public class RollbackToSnapshotRequest implements Serializable {
      * VolumeID for the volume.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -77,6 +79,7 @@ public class RollbackToSnapshotRequest implements Serializable {
      * The ID of a previously created snapshot on the given volume.
      **/
     public Long getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
@@ -86,6 +89,7 @@ public class RollbackToSnapshotRequest implements Serializable {
      * false: (default) The previous active volume image is deleted.
      **/
     public Boolean getSaveCurrentState() { return this.saveCurrentState; }
+   
     public void setSaveCurrentState(Boolean saveCurrentState) { 
         this.saveCurrentState = saveCurrentState;
     }
@@ -93,6 +97,7 @@ public class RollbackToSnapshotRequest implements Serializable {
      * Name for the snapshot. If unspecified, the name of the snapshot being rolled back to is used with "- copy" appended to the end of the name.
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
@@ -100,6 +105,7 @@ public class RollbackToSnapshotRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -138,16 +144,23 @@ public class RollbackToSnapshotRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" snapshotID : ").append(snapshotID).append(",");
-        sb.append(" saveCurrentState : ").append(saveCurrentState).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        sb.append(" saveCurrentState : ").append(gson.toJson(saveCurrentState)).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class GetLdapConfigurationResult implements Serializable {
 
-    public static final long serialVersionUID = 2961511469613912501L;
+    public static final long serialVersionUID = -1364313198500777326L;
     @SerializedName("ldapConfiguration") private LdapConfiguration ldapConfiguration;
     // empty constructor
     @Since("7.0")
@@ -55,6 +56,7 @@ public class GetLdapConfigurationResult implements Serializable {
      * Note: If LDAP authentication is currently disabled, all the returned settings will be empty with the exception of "authType", and "groupSearchType" which are set to "SearchAndBind" and "ActiveDirectory" respectively.
      **/
     public LdapConfiguration getLdapConfiguration() { return this.ldapConfiguration; }
+   
     public void setLdapConfiguration(LdapConfiguration ldapConfiguration) { 
         this.ldapConfiguration = ldapConfiguration;
     }
@@ -85,9 +87,10 @@ public class GetLdapConfigurationResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" ldapConfiguration : ").append(ldapConfiguration).append(",");
+        sb.append(" ldapConfiguration : ").append(gson.toJson(ldapConfiguration)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

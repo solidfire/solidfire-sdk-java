@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class SnapshotReplication implements Serializable {
 
-    public static final long serialVersionUID = 6666088222318542111L;
+    public static final long serialVersionUID = 2102476646550090901L;
     @SerializedName("state") private String state;
     @SerializedName("stateDetails") private String stateDetails;
     // empty constructor
@@ -56,6 +57,7 @@ public class SnapshotReplication implements Serializable {
      * The state of the snapshot replication.
      **/
     public String getState() { return this.state; }
+   
     public void setState(String state) { 
         this.state = state;
     }
@@ -63,6 +65,7 @@ public class SnapshotReplication implements Serializable {
      * Reserved for future use.
      **/
     public String getStateDetails() { return this.stateDetails; }
+   
     public void setStateDetails(String stateDetails) { 
         this.stateDetails = stateDetails;
     }
@@ -95,10 +98,11 @@ public class SnapshotReplication implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" state : ").append(state).append(",");
-        sb.append(" stateDetails : ").append(stateDetails).append(",");
+        sb.append(" state : ").append(gson.toJson(state)).append(",");
+        sb.append(" stateDetails : ").append(gson.toJson(stateDetails)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

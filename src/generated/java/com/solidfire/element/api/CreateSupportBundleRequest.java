@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class CreateSupportBundleRequest implements Serializable {
 
-    public static final long serialVersionUID = -8962480415794390134L;
+    public static final long serialVersionUID = -8754973164099938902L;
     @SerializedName("bundleName") private Optional<String> bundleName;
     @SerializedName("extraArgs") private Optional<String> extraArgs;
     @SerializedName("timeoutSec") private Optional<Long> timeoutSec;
@@ -60,6 +61,7 @@ public class CreateSupportBundleRequest implements Serializable {
      * The unique name for the support bundle. If no name is provided, "supportbundle" and the node name are used as the filename.
      **/
     public Optional<String> getBundleName() { return this.bundleName; }
+   
     public void setBundleName(Optional<String> bundleName) { 
         this.bundleName = (bundleName == null) ? Optional.<String>empty() : bundleName;
     }
@@ -67,6 +69,7 @@ public class CreateSupportBundleRequest implements Serializable {
      * Passed to the sf_make_support_bundle script. You should use this parameter only at the request of NetApp SolidFire Support.
      **/
     public Optional<String> getExtraArgs() { return this.extraArgs; }
+   
     public void setExtraArgs(Optional<String> extraArgs) { 
         this.extraArgs = (extraArgs == null) ? Optional.<String>empty() : extraArgs;
     }
@@ -74,6 +77,7 @@ public class CreateSupportBundleRequest implements Serializable {
      * The number of seconds to allow the support bundle script to run before stopping. The default value is 1500 seconds.
      **/
     public Optional<Long> getTimeoutSec() { return this.timeoutSec; }
+   
     public void setTimeoutSec(Optional<Long> timeoutSec) { 
         this.timeoutSec = (timeoutSec == null) ? Optional.<Long>empty() : timeoutSec;
     }
@@ -108,16 +112,26 @@ public class CreateSupportBundleRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != bundleName && bundleName.isPresent()){
-            sb.append(" bundleName : ").append(bundleName).append(",");
+            sb.append(" bundleName : ").append(gson.toJson(bundleName)).append(",");
+        }
+        else{
+            sb.append(" bundleName : ").append("null").append(",");
         }
         if(null != extraArgs && extraArgs.isPresent()){
-            sb.append(" extraArgs : ").append(extraArgs).append(",");
+            sb.append(" extraArgs : ").append(gson.toJson(extraArgs)).append(",");
+        }
+        else{
+            sb.append(" extraArgs : ").append("null").append(",");
         }
         if(null != timeoutSec && timeoutSec.isPresent()){
-            sb.append(" timeoutSec : ").append(timeoutSec).append(",");
+            sb.append(" timeoutSec : ").append(gson.toJson(timeoutSec)).append(",");
+        }
+        else{
+            sb.append(" timeoutSec : ").append("null").append(",");
         }
         sb.append( " }" );
 

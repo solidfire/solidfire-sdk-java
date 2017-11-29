@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class VolumePair implements Serializable {
 
-    public static final long serialVersionUID = -1303128094110770559L;
+    public static final long serialVersionUID = 4755249077071999580L;
     @SerializedName("clusterPairID") private Long clusterPairID;
     @SerializedName("remoteVolumeID") private Long remoteVolumeID;
     @SerializedName("remoteSliceID") private Long remoteSliceID;
@@ -70,6 +71,7 @@ public class VolumePair implements Serializable {
      * The remote cluster a volume is paired with.
      **/
     public Long getClusterPairID() { return this.clusterPairID; }
+   
     public void setClusterPairID(Long clusterPairID) { 
         this.clusterPairID = clusterPairID;
     }
@@ -77,6 +79,7 @@ public class VolumePair implements Serializable {
      * The VolumeID on the remote cluster a volume is paired with.
      **/
     public Long getRemoteVolumeID() { return this.remoteVolumeID; }
+   
     public void setRemoteVolumeID(Long remoteVolumeID) { 
         this.remoteVolumeID = remoteVolumeID;
     }
@@ -84,6 +87,7 @@ public class VolumePair implements Serializable {
      * The SliceID on the remote cluster a volume is paired with.
      **/
     public Long getRemoteSliceID() { return this.remoteSliceID; }
+   
     public void setRemoteSliceID(Long remoteSliceID) { 
         this.remoteSliceID = remoteSliceID;
     }
@@ -91,6 +95,7 @@ public class VolumePair implements Serializable {
      * The last-observed name of the volume on the remote cluster a volume is paired with.
      **/
     public String getRemoteVolumeName() { return this.remoteVolumeName; }
+   
     public void setRemoteVolumeName(String remoteVolumeName) { 
         this.remoteVolumeName = remoteVolumeName;
     }
@@ -98,6 +103,7 @@ public class VolumePair implements Serializable {
      * A UUID in canonical form.
      **/
     public java.util.UUID getVolumePairUUID() { return this.volumePairUUID; }
+   
     public void setVolumePairUUID(java.util.UUID volumePairUUID) { 
         this.volumePairUUID = volumePairUUID;
     }
@@ -105,6 +111,7 @@ public class VolumePair implements Serializable {
      * Details about the replication configuration for this volume pair.
      **/
     public RemoteReplication getRemoteReplication() { return this.remoteReplication; }
+   
     public void setRemoteReplication(RemoteReplication remoteReplication) { 
         this.remoteReplication = remoteReplication;
     }
@@ -145,14 +152,15 @@ public class VolumePair implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterPairID : ").append(clusterPairID).append(",");
-        sb.append(" remoteVolumeID : ").append(remoteVolumeID).append(",");
-        sb.append(" remoteSliceID : ").append(remoteSliceID).append(",");
-        sb.append(" remoteVolumeName : ").append(remoteVolumeName).append(",");
-        sb.append(" volumePairUUID : ").append(volumePairUUID).append(",");
-        sb.append(" remoteReplication : ").append(remoteReplication).append(",");
+        sb.append(" clusterPairID : ").append(gson.toJson(clusterPairID)).append(",");
+        sb.append(" remoteVolumeID : ").append(gson.toJson(remoteVolumeID)).append(",");
+        sb.append(" remoteSliceID : ").append(gson.toJson(remoteSliceID)).append(",");
+        sb.append(" remoteVolumeName : ").append(gson.toJson(remoteVolumeName)).append(",");
+        sb.append(" volumePairUUID : ").append(gson.toJson(volumePairUUID)).append(",");
+        sb.append(" remoteReplication : ").append(gson.toJson(remoteReplication)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

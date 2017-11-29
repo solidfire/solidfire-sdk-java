@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class ListStorageContainersRequest implements Serializable {
 
-    public static final long serialVersionUID = -2051845265952348384L;
+    public static final long serialVersionUID = -5845430743886438182L;
     @SerializedName("storageContainerIDs") private Optional<java.util.UUID[]> storageContainerIDs;
     // empty constructor
     @Since("7.0")
@@ -54,6 +55,7 @@ public class ListStorageContainersRequest implements Serializable {
      * A list of storage container IDs for which to retrieve information. If you omit this parameter, the method returns information about all storage containers in the system.
      **/
     public Optional<java.util.UUID[]> getStorageContainerIDs() { return this.storageContainerIDs; }
+   
     public void setStorageContainerIDs(Optional<java.util.UUID[]> storageContainerIDs) { 
         this.storageContainerIDs = (storageContainerIDs == null) ? Optional.<java.util.UUID[]>empty() : storageContainerIDs;
     }
@@ -84,10 +86,14 @@ public class ListStorageContainersRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != storageContainerIDs && storageContainerIDs.isPresent()){
-            sb.append(" storageContainerIDs : ").append(storageContainerIDs).append(",");
+            sb.append(" storageContainerIDs : ").append(gson.toJson(storageContainerIDs)).append(",");
+        }
+        else{
+            sb.append(" storageContainerIDs : ").append("null").append(",");
         }
         sb.append( " }" );
 

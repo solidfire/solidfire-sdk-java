@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class AddNodesRequest implements Serializable {
 
-    public static final long serialVersionUID = -6849026455094099622L;
+    public static final long serialVersionUID = -3701373756118626536L;
     @SerializedName("pendingNodes") private Long[] pendingNodes;
     @SerializedName("autoInstall") private Optional<Boolean> autoInstall;
     // empty constructor
@@ -58,6 +59,7 @@ public class AddNodesRequest implements Serializable {
      *  List of pending NodeIDs for the nodes to be added. You can  obtain the list of pending nodes using the ListPendingNodes method.
      **/
     public Long[] getPendingNodes() { return this.pendingNodes; }
+   
     public void setPendingNodes(Long[] pendingNodes) { 
         this.pendingNodes = pendingNodes;
     }
@@ -65,6 +67,7 @@ public class AddNodesRequest implements Serializable {
      * Whether these nodes should be autoinstalled
      **/
     public Optional<Boolean> getAutoInstall() { return this.autoInstall; }
+   
     public void setAutoInstall(Optional<Boolean> autoInstall) { 
         this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : autoInstall;
     }
@@ -97,11 +100,15 @@ public class AddNodesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes)).append(",");
+        sb.append(" pendingNodes : ").append(gson.toJson(Arrays.toString(pendingNodes))).append(",");
         if(null != autoInstall && autoInstall.isPresent()){
-            sb.append(" autoInstall : ").append(autoInstall).append(",");
+            sb.append(" autoInstall : ").append(gson.toJson(autoInstall)).append(",");
+        }
+        else{
+            sb.append(" autoInstall : ").append("null").append(",");
         }
         sb.append( " }" );
 

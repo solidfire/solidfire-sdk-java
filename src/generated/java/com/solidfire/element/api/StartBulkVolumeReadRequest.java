@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -41,7 +42,7 @@ import java.util.Objects;
 
 public class StartBulkVolumeReadRequest implements Serializable {
 
-    public static final long serialVersionUID = 371997972445094346L;
+    public static final long serialVersionUID = 5648404525108938309L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
@@ -76,6 +77,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
      * The ID of the volume to be read.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -86,6 +88,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
      * volume write.
      **/
     public String getFormat() { return this.format; }
+   
     public void setFormat(String format) { 
         this.format = format;
     }
@@ -95,6 +98,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
      * volume image is made.
      **/
     public Optional<Long> getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Optional<Long> snapshotID) { 
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
@@ -104,6 +108,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
      * can be contacted.
      **/
     public Optional<String> getScript() { return this.script; }
+   
     public void setScript(Optional<String> script) { 
         this.script = (script == null) ? Optional.<String>empty() : script;
     }
@@ -111,6 +116,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
      * JSON parameters to pass to the script.
      **/
     public Optional<Attributes> getScriptParameters() { return this.scriptParameters; }
+   
     public void setScriptParameters(Optional<Attributes> scriptParameters) { 
         this.scriptParameters = (scriptParameters == null) ? Optional.<Attributes>empty() : scriptParameters;
     }
@@ -118,6 +124,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
      * JSON attributes for the bulk volume job.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -158,21 +165,34 @@ public class StartBulkVolumeReadRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" format : ").append(format).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" format : ").append(gson.toJson(format)).append(",");
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID).append(",");
+            sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        }
+        else{
+            sb.append(" snapshotID : ").append("null").append(",");
         }
         if(null != script && script.isPresent()){
-            sb.append(" script : ").append(script).append(",");
+            sb.append(" script : ").append(gson.toJson(script)).append(",");
+        }
+        else{
+            sb.append(" script : ").append("null").append(",");
         }
         if(null != scriptParameters && scriptParameters.isPresent()){
-            sb.append(" scriptParameters : ").append(scriptParameters).append(",");
+            sb.append(" scriptParameters : ").append(gson.toJson(scriptParameters)).append(",");
+        }
+        else{
+            sb.append(" scriptParameters : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

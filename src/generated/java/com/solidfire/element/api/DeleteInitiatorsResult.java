@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class DeleteInitiatorsResult implements Serializable {
 
-    public static final long serialVersionUID = -5768128643523307506L;
+    public static final long serialVersionUID = 1414747549145750294L;
     // empty constructor
     @Since("7.0")
     public DeleteInitiatorsResult() {}

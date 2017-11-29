@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -41,7 +42,7 @@ import java.util.Objects;
 
 public class AddVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = -2294193974889334300L;
+    public static final long serialVersionUID = -6379118305344760739L;
     @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
     @SerializedName("name") private String name;
     @SerializedName("addressBlocks") private AddressBlockParams[] addressBlocks;
@@ -100,6 +101,7 @@ public class AddVirtualNetworkRequest implements Serializable {
      * A unique virtual network (VLAN) tag. Supported values are 1 through 4094.The number zero (0) is not supported.
      **/
     public Long getVirtualNetworkTag() { return this.virtualNetworkTag; }
+   
     public void setVirtualNetworkTag(Long virtualNetworkTag) { 
         this.virtualNetworkTag = virtualNetworkTag;
     }
@@ -107,6 +109,7 @@ public class AddVirtualNetworkRequest implements Serializable {
      * A user-defined name for the new virtual network.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -117,6 +120,7 @@ public class AddVirtualNetworkRequest implements Serializable {
      * size: The number of IP addresses to include in the block. (Integer)
      **/
     public AddressBlockParams[] getAddressBlocks() { return this.addressBlocks; }
+   
     public void setAddressBlocks(AddressBlockParams[] addressBlocks) { 
         this.addressBlocks = addressBlocks;
     }
@@ -124,6 +128,7 @@ public class AddVirtualNetworkRequest implements Serializable {
      * Unique network mask for the virtual network being created.
      **/
     public String getNetmask() { return this.netmask; }
+   
     public void setNetmask(String netmask) { 
         this.netmask = netmask;
     }
@@ -131,6 +136,7 @@ public class AddVirtualNetworkRequest implements Serializable {
      * Unique storage IP address for the virtual network being created.
      **/
     public String getSvip() { return this.svip; }
+   
     public void setSvip(String svip) { 
         this.svip = svip;
     }
@@ -138,6 +144,7 @@ public class AddVirtualNetworkRequest implements Serializable {
      * The IP address of a gateway of the virtual network. This parameter is only valid if the "namespace" parameter is set to true.
      **/
     public Optional<String> getGateway() { return this.gateway; }
+   
     public void setGateway(Optional<String> gateway) { 
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
     }
@@ -145,6 +152,7 @@ public class AddVirtualNetworkRequest implements Serializable {
      * When set to true, enables the Routable Storage VLANs functionality by creating and configuring a namespace and the virtual network contained by it.
      **/
     public Optional<Boolean> getNamespace() { return this.namespace; }
+   
     public void setNamespace(Optional<Boolean> namespace) { 
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
@@ -152,6 +160,7 @@ public class AddVirtualNetworkRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -196,21 +205,31 @@ public class AddVirtualNetworkRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" addressBlocks : ").append(Arrays.toString(addressBlocks)).append(",");
-        sb.append(" netmask : ").append(netmask).append(",");
-        sb.append(" svip : ").append(svip).append(",");
+        sb.append(" virtualNetworkTag : ").append(gson.toJson(virtualNetworkTag)).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" addressBlocks : ").append(gson.toJson(Arrays.toString(addressBlocks))).append(",");
+        sb.append(" netmask : ").append(gson.toJson(netmask)).append(",");
+        sb.append(" svip : ").append(gson.toJson(svip)).append(",");
         if(null != gateway && gateway.isPresent()){
-            sb.append(" gateway : ").append(gateway).append(",");
+            sb.append(" gateway : ").append(gson.toJson(gateway)).append(",");
+        }
+        else{
+            sb.append(" gateway : ").append("null").append(",");
         }
         if(null != namespace && namespace.isPresent()){
-            sb.append(" namespace : ").append(namespace).append(",");
+            sb.append(" namespace : ").append(gson.toJson(namespace)).append(",");
+        }
+        else{
+            sb.append(" namespace : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

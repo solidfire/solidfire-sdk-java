@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class GetFeatureStatusRequest implements Serializable {
 
-    public static final long serialVersionUID = -2373229916563322428L;
+    public static final long serialVersionUID = -6557742284592325892L;
     @SerializedName("feature") private Optional<String> feature;
     // empty constructor
     @Since("7.0")
@@ -56,6 +57,7 @@ public class GetFeatureStatusRequest implements Serializable {
      * cluster feature.
      **/
     public Optional<String> getFeature() { return this.feature; }
+   
     public void setFeature(Optional<String> feature) { 
         this.feature = (feature == null) ? Optional.<String>empty() : feature;
     }
@@ -86,10 +88,14 @@ public class GetFeatureStatusRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != feature && feature.isPresent()){
-            sb.append(" feature : ").append(feature).append(",");
+            sb.append(" feature : ").append(gson.toJson(feature)).append(",");
+        }
+        else{
+            sb.append(" feature : ").append("null").append(",");
         }
         sb.append( " }" );
 

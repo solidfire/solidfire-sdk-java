@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 public class CreateClusterRequest implements Serializable {
 
-    public static final long serialVersionUID = -7671165210552926362L;
+    public static final long serialVersionUID = 1893097687519200263L;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
     @SerializedName("mvip") private String mvip;
     @SerializedName("svip") private String svip;
@@ -79,6 +80,7 @@ public class CreateClusterRequest implements Serializable {
      * set this parameter to true.
      **/
     public Optional<Boolean> getAcceptEula() { return this.acceptEula; }
+   
     public void setAcceptEula(Optional<Boolean> acceptEula) { 
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
     }
@@ -86,6 +88,7 @@ public class CreateClusterRequest implements Serializable {
      * Floating (virtual) IP address for the cluster on the management network.
      **/
     public String getMvip() { return this.mvip; }
+   
     public void setMvip(String mvip) { 
         this.mvip = mvip;
     }
@@ -93,6 +96,7 @@ public class CreateClusterRequest implements Serializable {
      * Floating (virtual) IP address for the cluster on the storage (iSCSI) network.
      **/
     public String getSvip() { return this.svip; }
+   
     public void setSvip(String svip) { 
         this.svip = svip;
     }
@@ -100,6 +104,7 @@ public class CreateClusterRequest implements Serializable {
      * Number of replicas of each piece of data to store in the cluster. Valid value is "2".
      **/
     public Long getRepCount() { return this.repCount; }
+   
     public void setRepCount(Long repCount) { 
         this.repCount = repCount;
     }
@@ -107,6 +112,7 @@ public class CreateClusterRequest implements Serializable {
      * Username for the cluster admin.
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
@@ -114,6 +120,7 @@ public class CreateClusterRequest implements Serializable {
      * Initial password for the cluster admin account.
      **/
     public String getPassword() { return this.password; }
+   
     public void setPassword(String password) { 
         this.password = password;
     }
@@ -121,6 +128,7 @@ public class CreateClusterRequest implements Serializable {
      * CIP/SIP addresses of the initial set of nodes making up the cluster. This node's IP must be in the list.
      **/
     public String[] getNodes() { return this.nodes; }
+   
     public void setNodes(String[] nodes) { 
         this.nodes = nodes;
     }
@@ -128,6 +136,7 @@ public class CreateClusterRequest implements Serializable {
      * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -172,19 +181,26 @@ public class CreateClusterRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != acceptEula && acceptEula.isPresent()){
-            sb.append(" acceptEula : ").append(acceptEula).append(",");
+            sb.append(" acceptEula : ").append(gson.toJson(acceptEula)).append(",");
         }
-        sb.append(" mvip : ").append(mvip).append(",");
-        sb.append(" svip : ").append(svip).append(",");
-        sb.append(" repCount : ").append(repCount).append(",");
-        sb.append(" username : ").append(username).append(",");
-        sb.append(" password : ").append(password).append(",");
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        else{
+            sb.append(" acceptEula : ").append("null").append(",");
+        }
+        sb.append(" mvip : ").append(gson.toJson(mvip)).append(",");
+        sb.append(" svip : ").append(gson.toJson(svip)).append(",");
+        sb.append(" repCount : ").append(gson.toJson(repCount)).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
+        sb.append(" password : ").append(gson.toJson(password)).append(",");
+        sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

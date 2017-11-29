@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,7 +35,7 @@ import java.util.Objects;
 
 public class DeleteGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 103176093686436611L;
+    public static final long serialVersionUID = -8423630645405500327L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("saveMembers") private Boolean saveMembers;
     // empty constructor
@@ -57,6 +58,7 @@ public class DeleteGroupSnapshotRequest implements Serializable {
      * Specifies the unique ID of the group snapshot.
      **/
     public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+   
     public void setGroupSnapshotID(Long groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
@@ -66,6 +68,7 @@ public class DeleteGroupSnapshotRequest implements Serializable {
      * false: The group and snapshots are deleted.
      **/
     public Boolean getSaveMembers() { return this.saveMembers; }
+   
     public void setSaveMembers(Boolean saveMembers) { 
         this.saveMembers = saveMembers;
     }
@@ -98,10 +101,11 @@ public class DeleteGroupSnapshotRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
-        sb.append(" saveMembers : ").append(saveMembers).append(",");
+        sb.append(" groupSnapshotID : ").append(gson.toJson(groupSnapshotID)).append(",");
+        sb.append(" saveMembers : ").append(gson.toJson(saveMembers)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

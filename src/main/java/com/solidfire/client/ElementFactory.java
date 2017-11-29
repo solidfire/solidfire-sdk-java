@@ -29,7 +29,6 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
     private static final Logger log = LoggerFactory.getLogger(ElementFactory.class);
 
     private static final double MIN_SDK_VERSION = 7.0;
-    private static final double MAX_SDK_VERSION = 9.1;
 
     private ElementFactory() {
     }
@@ -60,7 +59,6 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
      *                  validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
      *                  when the target is an IP address.
      * @return an instance of the SolidFire Element
-     * @see #getMaxApiVersion()
      */
     public static SolidFireElement create(String target, String username, String password, boolean verifySSL) {
         return new ElementFactory().checkVersion(target, Optional.<Integer>empty(), username, password, Optional.<String>empty(), verifySSL);
@@ -112,7 +110,6 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
      *                  validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
      *                  when the target is an IP address.
      * @return an instance of the SolidFire Element
-     * @see #getMaxApiVersion()
      */
     public static SolidFireElement create(String target, Integer port, String username, String password, boolean verifySSL) {
         return new ElementFactory().checkVersion(target, of(port), username, password, Optional.<String>empty(), verifySSL);
@@ -162,13 +159,6 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
         return MIN_SDK_VERSION;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected double getMaxApiVersion() {
-        return MAX_SDK_VERSION;
-    }
 
     /**
      * {@inheritDoc}
