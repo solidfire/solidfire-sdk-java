@@ -11,7 +11,7 @@ The SolidFire Java SDK is a collection of software modules and libraries that fa
 | Component    | Version             |
 | ------------ | ------------------- |
 | Java         | 7.0 & 8.0           |
-| SolidFire OS | Element 7.0 - 10.0  |
+| SolidFire OS | Element 7.0 - 11.0  |
 
 ## Getting Help
 
@@ -27,7 +27,7 @@ If you have any questions or comments about this product, submit an issue on git
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
-  <version>1.5.0.89</version>
+  <version>1.6.0.88</version>
 </dependency>
 
 ~~~
@@ -36,7 +36,7 @@ or SBT:
 
 ~~~ scala
 
-libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.5"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.6"
 
 ~~~
 
@@ -44,7 +44,7 @@ or Gradle:
 
 ~~~ groovy
 
-compile 'com.solidfire:solidfire-sdk-java:1.5'
+compile 'com.solidfire:solidfire-sdk-java:1.6'
 
 ~~~
 
@@ -56,7 +56,7 @@ compile 'com.solidfire:solidfire-sdk-java:1.5'
 | solidfire.code.gson | 2.6.2   |
 | joda-time           | 2.9.3   |
 | joda-convert        | 1.8.1   |
-| slf4j-api           | 1.7.25  |
+| slf4j-api           | 1.6.6   |
 
 
 ### Limitations with a Certificate Signed Assembly Jar
@@ -68,7 +68,7 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 ## Documentation
 
-[Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/docs/index.html)
+[Latest JavaDoc](https://github.com/solidfire/solidfire-sdk-java/raw/master/docs/)
 
 [Release Notes](https://github.com/solidfire/solidfire-sdk-java/raw/master/NetApp_SolidFire_Java_SDK_Release_Notes.pdf)
 
@@ -326,7 +326,7 @@ You also need to add the appropriate SLF4J dependency. Continuing with the logba
         
 ## License
 
-Copyright © 2016, 2017 NetApp, Inc. All rights reserved.
+Copyright © 2016 - 2018 NetApp, Inc. All rights reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
