@@ -63,9 +63,6 @@ compile 'com.solidfire:solidfire-sdk-java:1.7'
 
 The SDK assembly is signed with a certificate controlled by SolidFire, Inc, assuring the archive is official and legitimate.  One caveat to having a set of components also signed with SolidFire's certificate, is no other version of these components can exist on the classpath. This will cause a security exception in the JVM.  
 
-If using the SDK with a restricted version of the above listed components, e.g. logback, or in developing an enterprise solution that runs in a web application container, etc., use the publicly [hosted versions](http://mvnrepository.com/artifact/com.solidfire) of the SDK.
-
-
 ## Documentation
 
 [Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/docs/index.html)
@@ -74,10 +71,10 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 ## Examples
 
-Step 1 - Build a [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.4/com/solidfire/element/api/SolidFireElement.html) object using the factory
+Step 1 - Build a [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/docs/com/solidfire/element/api/SolidFireElement.html) object using the factory
 ---
-This is the preferred way to construct the [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.4/com/solidfire/element/api/SolidFireElement.html) object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
-SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the [ElementFactory](https://solidfire.github.io/solidfire-sdk-java/doc/v1.4/com/solidfire/client/ElementFactory.html) documentation.
+This is the preferred way to construct the [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/docs/com/solidfire/element/api/SolidFireElement.html) object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
+SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the [ElementFactory](https://solidfire.github.io/solidfire-sdk-java/docs/com/solidfire/client/ElementFactory.html) documentation.
 
 #### Java:
 
