@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class Signature implements Serializable {
 
-    public static final long serialVersionUID = 6006039558308474583L;
+    public static final long serialVersionUID = 4896314094858277122L;
     @SerializedName("data") private String data;
     @SerializedName("pubkey") private String pubkey;
     @SerializedName("version") private Long version;

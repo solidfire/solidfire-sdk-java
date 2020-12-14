@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class DeleteStorageContainersRequest implements Serializable {
 
-    public static final long serialVersionUID = -6842793456686063781L;
+    public static final long serialVersionUID = 7211997720310691334L;
     @SerializedName("storageContainerIDs") private java.util.UUID[] storageContainerIDs;
     // empty constructor
     @Since("7.0")

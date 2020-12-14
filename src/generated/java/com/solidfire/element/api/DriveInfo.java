@@ -34,14 +34,20 @@ import java.util.Objects;
 
 public class DriveInfo implements Serializable {
 
-    public static final long serialVersionUID = 7549732089467034997L;
+    public static final long serialVersionUID = 1095234922319013004L;
     @SerializedName("capacity") private Long capacity;
+    @SerializedName("usableCapacity") private Long usableCapacity;
+    @SerializedName("segmentFileSize") private Long segmentFileSize;
     @SerializedName("driveID") private Long driveID;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("serial") private String serial;
     @SerializedName("chassisSlot") private String chassisSlot;
     @SerializedName("slot") private Long slot;
     @SerializedName("status") private String status;
+    @SerializedName("driveFailureDetail") private Optional<String> driveFailureDetail;
+    @SerializedName("driveSecurityFaultReason") private Optional<String> driveSecurityFaultReason;
+    @SerializedName("keyProviderID") private Optional<Long> keyProviderID;
+    @SerializedName("keyID") private Optional<java.util.UUID> keyID;
     @SerializedName("type") private String type;
     @SerializedName("attributes") private Attributes attributes;
     // empty constructor
@@ -58,6 +64,10 @@ public class DriveInfo implements Serializable {
         String serial,
         Long slot,
         String status,
+        Optional<String> driveFailureDetail,
+        Optional<String> driveSecurityFaultReason,
+        Optional<Long> keyProviderID,
+        Optional<java.util.UUID> keyID,
         String type,
         Attributes attributes
     )
@@ -68,6 +78,10 @@ public class DriveInfo implements Serializable {
         this.serial = serial;
         this.slot = slot;
         this.status = status;
+        this.driveFailureDetail = (driveFailureDetail == null) ? Optional.<String>empty() : driveFailureDetail;
+        this.driveSecurityFaultReason = (driveSecurityFaultReason == null) ? Optional.<String>empty() : driveSecurityFaultReason;
+        this.keyProviderID = (keyProviderID == null) ? Optional.<Long>empty() : keyProviderID;
+        this.keyID = (keyID == null) ? Optional.<java.util.UUID>empty() : keyID;
         this.type = type;
         this.attributes = attributes;
     }
@@ -81,6 +95,10 @@ public class DriveInfo implements Serializable {
         String chassisSlot,
         Long slot,
         String status,
+        Optional<String> driveFailureDetail,
+        Optional<String> driveSecurityFaultReason,
+        Optional<Long> keyProviderID,
+        Optional<java.util.UUID> keyID,
         String type,
         Attributes attributes
     )
@@ -92,17 +110,73 @@ public class DriveInfo implements Serializable {
         this.chassisSlot = chassisSlot;
         this.slot = slot;
         this.status = status;
+        this.driveFailureDetail = (driveFailureDetail == null) ? Optional.<String>empty() : driveFailureDetail;
+        this.driveSecurityFaultReason = (driveSecurityFaultReason == null) ? Optional.<String>empty() : driveSecurityFaultReason;
+        this.keyProviderID = (keyProviderID == null) ? Optional.<Long>empty() : keyProviderID;
+        this.keyID = (keyID == null) ? Optional.<java.util.UUID>empty() : keyID;
+        this.type = type;
+        this.attributes = attributes;
+    }
+    // parameterized constructor
+    @Since("11.0")
+    public DriveInfo(
+        Long capacity,
+        Long usableCapacity,
+        Long segmentFileSize,
+        Long driveID,
+        Long nodeID,
+        String serial,
+        String chassisSlot,
+        Long slot,
+        String status,
+        Optional<String> driveFailureDetail,
+        Optional<String> driveSecurityFaultReason,
+        Optional<Long> keyProviderID,
+        Optional<java.util.UUID> keyID,
+        String type,
+        Attributes attributes
+    )
+    {
+        this.capacity = capacity;
+        this.usableCapacity = usableCapacity;
+        this.segmentFileSize = segmentFileSize;
+        this.driveID = driveID;
+        this.nodeID = nodeID;
+        this.serial = serial;
+        this.chassisSlot = chassisSlot;
+        this.slot = slot;
+        this.status = status;
+        this.driveFailureDetail = (driveFailureDetail == null) ? Optional.<String>empty() : driveFailureDetail;
+        this.driveSecurityFaultReason = (driveSecurityFaultReason == null) ? Optional.<String>empty() : driveSecurityFaultReason;
+        this.keyProviderID = (keyProviderID == null) ? Optional.<Long>empty() : keyProviderID;
+        this.keyID = (keyID == null) ? Optional.<java.util.UUID>empty() : keyID;
         this.type = type;
         this.attributes = attributes;
     }
 
     /** 
-     * Total capacity of the drive, in bytes.
+     * Total Raw capacity of the drive, in bytes.
      **/
     public Long getCapacity() { return this.capacity; }
    
     public void setCapacity(Long capacity) { 
         this.capacity = capacity;
+    }
+    /** 
+     * Total Usable capacity of the drive, in bytes.
+     **/
+    public Long getUsableCapacity() { return this.usableCapacity; }
+   
+    public void setUsableCapacity(Long usableCapacity) { 
+        this.usableCapacity = usableCapacity;
+    }
+    /** 
+     * Segment File Size of the drive, in bytes.
+     **/
+    public Long getSegmentFileSize() { return this.segmentFileSize; }
+   
+    public void setSegmentFileSize(Long segmentFileSize) { 
+        this.segmentFileSize = segmentFileSize;
     }
     /** 
      * DriveID for this drive.
@@ -154,6 +228,39 @@ public class DriveInfo implements Serializable {
         this.status = status;
     }
     /** 
+     * If a drive's status is 'Failed', this field provides more detail on why the drive was marked failed.
+     **/
+    public Optional<String> getDriveFailureDetail() { return this.driveFailureDetail; }
+   
+    public void setDriveFailureDetail(Optional<String> driveFailureDetail) { 
+        this.driveFailureDetail = (driveFailureDetail == null) ? Optional.<String>empty() : driveFailureDetail;
+    }
+    /** 
+     * If enabling or disabling drive security failed, this is the reason why it failed.
+     * If the value is 'none', there was no failure.
+     **/
+    public Optional<String> getDriveSecurityFaultReason() { return this.driveSecurityFaultReason; }
+   
+    public void setDriveSecurityFaultReason(Optional<String> driveSecurityFaultReason) { 
+        this.driveSecurityFaultReason = (driveSecurityFaultReason == null) ? Optional.<String>empty() : driveSecurityFaultReason;
+    }
+    /** 
+     * Identifies the provider of the authentication key for unlocking this drive.
+     **/
+    public Optional<Long> getKeyProviderID() { return this.keyProviderID; }
+   
+    public void setKeyProviderID(Optional<Long> keyProviderID) { 
+        this.keyProviderID = (keyProviderID == null) ? Optional.<Long>empty() : keyProviderID;
+    }
+    /** 
+     * The keyID used by the key provider to acquire the authentication key for unlocking this drive.
+     **/
+    public Optional<java.util.UUID> getKeyID() { return this.keyID; }
+   
+    public void setKeyID(Optional<java.util.UUID> keyID) { 
+        this.keyID = (keyID == null) ? Optional.<java.util.UUID>empty() : keyID;
+    }
+    /** 
      * 
      **/
     public String getType() { return this.type; }
@@ -179,31 +286,43 @@ public class DriveInfo implements Serializable {
 
         return 
             Objects.equals(capacity, that.capacity) && 
+            Objects.equals(usableCapacity, that.usableCapacity) && 
+            Objects.equals(segmentFileSize, that.segmentFileSize) && 
             Objects.equals(driveID, that.driveID) && 
             Objects.equals(nodeID, that.nodeID) && 
             Objects.equals(serial, that.serial) && 
             Objects.equals(chassisSlot, that.chassisSlot) && 
             Objects.equals(slot, that.slot) && 
             Objects.equals(status, that.status) && 
+            Objects.equals(driveFailureDetail, that.driveFailureDetail) && 
+            Objects.equals(driveSecurityFaultReason, that.driveSecurityFaultReason) && 
+            Objects.equals(keyProviderID, that.keyProviderID) && 
+            Objects.equals(keyID, that.keyID) && 
             Objects.equals(type, that.type) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( capacity,driveID,nodeID,serial,chassisSlot,slot,status,type,attributes );
+        return Objects.hash( capacity,usableCapacity,segmentFileSize,driveID,nodeID,serial,chassisSlot,slot,status,driveFailureDetail,driveSecurityFaultReason,keyProviderID,keyID,type,attributes );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("capacity", capacity);
+        map.put("usableCapacity", usableCapacity);
+        map.put("segmentFileSize", segmentFileSize);
         map.put("driveID", driveID);
         map.put("nodeID", nodeID);
         map.put("serial", serial);
         map.put("chassisSlot", chassisSlot);
         map.put("slot", slot);
         map.put("status", status);
+        map.put("driveFailureDetail", driveFailureDetail);
+        map.put("driveSecurityFaultReason", driveSecurityFaultReason);
+        map.put("keyProviderID", keyProviderID);
+        map.put("keyID", keyID);
         map.put("type", type);
         map.put("attributes", attributes);
         return map;
@@ -216,12 +335,38 @@ public class DriveInfo implements Serializable {
         sb.append( "{ " );
 
         sb.append(" capacity : ").append(gson.toJson(capacity)).append(",");
+        sb.append(" usableCapacity : ").append(gson.toJson(usableCapacity)).append(",");
+        sb.append(" segmentFileSize : ").append(gson.toJson(segmentFileSize)).append(",");
         sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
         sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
         sb.append(" serial : ").append(gson.toJson(serial)).append(",");
         sb.append(" chassisSlot : ").append(gson.toJson(chassisSlot)).append(",");
         sb.append(" slot : ").append(gson.toJson(slot)).append(",");
         sb.append(" status : ").append(gson.toJson(status)).append(",");
+        if(null != driveFailureDetail && driveFailureDetail.isPresent()){
+            sb.append(" driveFailureDetail : ").append(gson.toJson(driveFailureDetail)).append(",");
+        }
+        else{
+            sb.append(" driveFailureDetail : ").append("null").append(",");
+        }
+        if(null != driveSecurityFaultReason && driveSecurityFaultReason.isPresent()){
+            sb.append(" driveSecurityFaultReason : ").append(gson.toJson(driveSecurityFaultReason)).append(",");
+        }
+        else{
+            sb.append(" driveSecurityFaultReason : ").append("null").append(",");
+        }
+        if(null != keyProviderID && keyProviderID.isPresent()){
+            sb.append(" keyProviderID : ").append(gson.toJson(keyProviderID)).append(",");
+        }
+        else{
+            sb.append(" keyProviderID : ").append("null").append(",");
+        }
+        if(null != keyID && keyID.isPresent()){
+            sb.append(" keyID : ").append(gson.toJson(keyID)).append(",");
+        }
+        else{
+            sb.append(" keyID : ").append("null").append(",");
+        }
         sb.append(" type : ").append(gson.toJson(type)).append(",");
         sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
@@ -242,12 +387,18 @@ public class DriveInfo implements Serializable {
 
     public static class Builder {
         private Long capacity;
+        private Long usableCapacity;
+        private Long segmentFileSize;
         private Long driveID;
         private Long nodeID;
         private String serial;
         private String chassisSlot;
         private Long slot;
         private String status;
+        private Optional<String> driveFailureDetail;
+        private Optional<String> driveSecurityFaultReason;
+        private Optional<Long> keyProviderID;
+        private Optional<java.util.UUID> keyID;
         private String type;
         private Attributes attributes;
 
@@ -256,24 +407,36 @@ public class DriveInfo implements Serializable {
         public DriveInfo build() {
             return new DriveInfo (
                          this.capacity,
+                         this.usableCapacity,
+                         this.segmentFileSize,
                          this.driveID,
                          this.nodeID,
                          this.serial,
                          this.chassisSlot,
                          this.slot,
                          this.status,
+                         this.driveFailureDetail,
+                         this.driveSecurityFaultReason,
+                         this.keyProviderID,
+                         this.keyID,
                          this.type,
                          this.attributes);
         }
 
         private DriveInfo.Builder buildFrom(final DriveInfo req) {
             this.capacity = req.capacity;
+            this.usableCapacity = req.usableCapacity;
+            this.segmentFileSize = req.segmentFileSize;
             this.driveID = req.driveID;
             this.nodeID = req.nodeID;
             this.serial = req.serial;
             this.chassisSlot = req.chassisSlot;
             this.slot = req.slot;
             this.status = req.status;
+            this.driveFailureDetail = req.driveFailureDetail;
+            this.driveSecurityFaultReason = req.driveSecurityFaultReason;
+            this.keyProviderID = req.keyProviderID;
+            this.keyID = req.keyID;
             this.type = req.type;
             this.attributes = req.attributes;
 
@@ -282,6 +445,16 @@ public class DriveInfo implements Serializable {
 
         public DriveInfo.Builder capacity(final Long capacity) {
             this.capacity = capacity;
+            return this;
+        }
+
+        public DriveInfo.Builder usableCapacity(final Long usableCapacity) {
+            this.usableCapacity = usableCapacity;
+            return this;
+        }
+
+        public DriveInfo.Builder segmentFileSize(final Long segmentFileSize) {
+            this.segmentFileSize = segmentFileSize;
             return this;
         }
 
@@ -312,6 +485,26 @@ public class DriveInfo implements Serializable {
 
         public DriveInfo.Builder status(final String status) {
             this.status = status;
+            return this;
+        }
+
+        public DriveInfo.Builder optionalDriveFailureDetail(final String driveFailureDetail) {
+            this.driveFailureDetail = (driveFailureDetail == null) ? Optional.<String>empty() : Optional.of(driveFailureDetail);
+            return this;
+        }
+
+        public DriveInfo.Builder optionalDriveSecurityFaultReason(final String driveSecurityFaultReason) {
+            this.driveSecurityFaultReason = (driveSecurityFaultReason == null) ? Optional.<String>empty() : Optional.of(driveSecurityFaultReason);
+            return this;
+        }
+
+        public DriveInfo.Builder optionalKeyProviderID(final Long keyProviderID) {
+            this.keyProviderID = (keyProviderID == null) ? Optional.<Long>empty() : Optional.of(keyProviderID);
+            return this;
+        }
+
+        public DriveInfo.Builder optionalKeyID(final java.util.UUID keyID) {
+            this.keyID = (keyID == null) ? Optional.<java.util.UUID>empty() : Optional.of(keyID);
             return this;
         }
 

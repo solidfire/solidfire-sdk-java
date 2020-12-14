@@ -36,10 +36,9 @@ import java.util.Objects;
 
 public class DeleteVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = -4577487893309432735L;
+    public static final long serialVersionUID = 1378116694693392020L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
-    @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators;
-    @SerializedName("force") private Optional<Boolean> force;
+    @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators = Optional.of(true);
     // empty constructor
     @Since("7.0")
     public DeleteVolumeAccessGroupRequest() {}
@@ -57,13 +56,11 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
     @Since("9.0")
     public DeleteVolumeAccessGroupRequest(
         Long volumeAccessGroupID,
-        Optional<Boolean> deleteOrphanInitiators,
-        Optional<Boolean> force
+        Optional<Boolean> deleteOrphanInitiators
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
 
     /** 
@@ -76,23 +73,13 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
-     * true: Delete initiator objects after they are removed from a volume access group.
+     * true: Default. Delete initiator objects after they are removed from a volume access group.
      * false: Do not delete initiator objects after they are removed from a volume access group.
      **/
     public Optional<Boolean> getDeleteOrphanInitiators() { return this.deleteOrphanInitiators; }
    
     public void setDeleteOrphanInitiators(Optional<Boolean> deleteOrphanInitiators) { 
         this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
-    }
-    /** 
-     * Adding this flag will force the volume access group to be deleted even though it has a Virtual Network ID or Tag.
-     * true: Volume access group will be deleted.
-     * false: Default. Do not delete the volume access group if it has a Virtual Network ID or Tag.
-     **/
-    public Optional<Boolean> getForce() { return this.force; }
-   
-    public void setForce(Optional<Boolean> force) { 
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
 
     @Override
@@ -104,13 +91,12 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
 
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
-            Objects.equals(deleteOrphanInitiators, that.deleteOrphanInitiators) && 
-            Objects.equals(force, that.force);
+            Objects.equals(deleteOrphanInitiators, that.deleteOrphanInitiators);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID,deleteOrphanInitiators,force );
+        return Objects.hash( volumeAccessGroupID,deleteOrphanInitiators );
     }
 
 
@@ -118,7 +104,6 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volumeAccessGroupID", volumeAccessGroupID);
         map.put("deleteOrphanInitiators", deleteOrphanInitiators);
-        map.put("force", force);
         return map;
     }
 
@@ -134,12 +119,6 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
         }
         else{
             sb.append(" deleteOrphanInitiators : ").append("null").append(",");
-        }
-        if(null != force && force.isPresent()){
-            sb.append(" force : ").append(gson.toJson(force)).append(",");
-        }
-        else{
-            sb.append(" force : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -160,21 +139,18 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
     public static class Builder {
         private Long volumeAccessGroupID;
         private Optional<Boolean> deleteOrphanInitiators;
-        private Optional<Boolean> force;
 
         private Builder() { }
 
         public DeleteVolumeAccessGroupRequest build() {
             return new DeleteVolumeAccessGroupRequest (
                          this.volumeAccessGroupID,
-                         this.deleteOrphanInitiators,
-                         this.force);
+                         this.deleteOrphanInitiators);
         }
 
         private DeleteVolumeAccessGroupRequest.Builder buildFrom(final DeleteVolumeAccessGroupRequest req) {
             this.volumeAccessGroupID = req.volumeAccessGroupID;
             this.deleteOrphanInitiators = req.deleteOrphanInitiators;
-            this.force = req.force;
 
             return this;
         }
@@ -186,11 +162,6 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
 
         public DeleteVolumeAccessGroupRequest.Builder optionalDeleteOrphanInitiators(final Boolean deleteOrphanInitiators) {
             this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : Optional.of(deleteOrphanInitiators);
-            return this;
-        }
-
-        public DeleteVolumeAccessGroupRequest.Builder optionalForce(final Boolean force) {
-            this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
             return this;
         }
 

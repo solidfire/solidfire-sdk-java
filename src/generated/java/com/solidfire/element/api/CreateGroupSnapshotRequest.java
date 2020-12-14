@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class CreateGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -9118662980562098698L;
+    public static final long serialVersionUID = 2478225097522811714L;
     @SerializedName("volumes") private Long[] volumes;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;

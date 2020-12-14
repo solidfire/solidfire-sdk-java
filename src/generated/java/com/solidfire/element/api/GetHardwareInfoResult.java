@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetHardwareInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -195013475782007290L;
+    public static final long serialVersionUID = -4035024608952950391L;
     @SerializedName("hardwareInfo") private Attributes hardwareInfo;
     // empty constructor
     @Since("7.0")

@@ -174,10 +174,10 @@ class ServiceBaseSuite extends WordSpec with BeforeAndAfterAll with MockitoSugar
 
     "Deserialize with extra fields" in {
       val clean = Utility.getResultFromResource[ListVolumesResult]("ListVolumes.json")
-      clean.getVolumes.length should be (6)
+      clean.getVolumes.length should be (1)
 
       val dirty = Utility.getResultFromResource[ListVolumesResult]("ListVolumesWithExtraFields.json")
-      dirty.getVolumes.length should be (6)
+      dirty.getVolumes.length should be (1)
     }
 
     "handle simple empty map conversion" in {

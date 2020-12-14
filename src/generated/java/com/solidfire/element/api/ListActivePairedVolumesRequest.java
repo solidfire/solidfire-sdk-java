@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListActivePairedVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 8593817170530166873L;
+    public static final long serialVersionUID = 6136511316053406527L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
     // empty constructor

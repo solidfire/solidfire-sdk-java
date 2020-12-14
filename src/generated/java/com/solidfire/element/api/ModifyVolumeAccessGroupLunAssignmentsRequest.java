@@ -42,7 +42,7 @@ import java.util.Objects;
 
 public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializable {
 
-    public static final long serialVersionUID = 4157486897027617747L;
+    public static final long serialVersionUID = -6247227280540807589L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
     // empty constructor

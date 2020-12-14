@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListQoSPoliciesResult implements Serializable {
 
-    public static final long serialVersionUID = -1234862136123215177L;
+    public static final long serialVersionUID = 8299666419095892264L;
     @SerializedName("qosPolicies") private QoSPolicy[] qosPolicies;
 
     

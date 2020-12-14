@@ -46,23 +46,23 @@ public class ManageAccountsExample {
         // grab the account ID from the result object
         Long newAccountId = addAccountResult.getAccountID();
 
-
+        
         // create a request object and set the username property
         AddAccountRequest addAccountRequest1 = AddAccountRequest.builder()
-                                                                .username("my-new-account")
+                                                                .username("my-new-account-1")
                                                                 .optionalInitiatorSecret(new CHAPSecret("a12To16charvalue"))
                                                                 .build();
-
+        
         // send the request and gather the result
         AddAccountResult addAccountResult1 = sfe.addAccount(addAccountRequest1);
 
         // grab the account ID from the result object
         Long newAccountId1 = addAccountResult.getAccountID();
 
-
+        
         // create a request object and set the username property
         ModifyAccountRequest modifyAccountRequestt = ModifyAccountRequest.builder()
-                                                                         .accountID(1L)
+                                                                         .accountID(newAccountId1)
                                                                          .optionalTargetSecret(CHAPSecret.autoGenerate())
                                                                          .build();
 

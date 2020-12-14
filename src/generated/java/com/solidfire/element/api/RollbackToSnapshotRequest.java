@@ -39,7 +39,7 @@ import java.util.Objects;
 
 public class RollbackToSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 9171061592688594261L;
+    public static final long serialVersionUID = -1072865670820730269L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;

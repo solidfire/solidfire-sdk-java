@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class CreateSupportBundleRequest implements Serializable {
 
-    public static final long serialVersionUID = -8754973164099938902L;
+    public static final long serialVersionUID = 5093905576577744326L;
     @SerializedName("bundleName") private Optional<String> bundleName;
     @SerializedName("extraArgs") private Optional<String> extraArgs;
     @SerializedName("timeoutSec") private Optional<Long> timeoutSec;

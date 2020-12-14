@@ -30,20 +30,24 @@ import java.util.Objects;
 
 /**
  * TestPingRequest  
- * You can use the TestPing API method to validate the
- * connection to all the nodes in a cluster on both 1G and 10G interfaces by using ICMP packets. The test uses the appropriate MTU sizes for each packet based on the MTU settings in the network configuration.
+ * The TestPing API allows to test the reachability to IP address(s) using ICMP packets. Source address(v4 or v6), interface and vlan tag can be specified. If not Bond1G/10G network is used to reach the target address.
+ * The test uses the appropriate MTU sizes for each packet based on the MTU settings in the network configuration.
  * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class TestPingRequest implements Serializable {
 
-    public static final long serialVersionUID = -6798451733195067348L;
+    public static final long serialVersionUID = 1396474575042870005L;
     @SerializedName("attempts") private Optional<Long> attempts;
     @SerializedName("hosts") private Optional<String> hosts;
     @SerializedName("totalTimeoutSec") private Optional<Long> totalTimeoutSec;
     @SerializedName("packetSize") private Optional<Long> packetSize;
     @SerializedName("pingTimeoutMsec") private Optional<Long> pingTimeoutMsec;
     @SerializedName("prohibitFragmentation") private Optional<Boolean> prohibitFragmentation;
+    @SerializedName("sourceAddressV4") private Optional<String> sourceAddressV4;
+    @SerializedName("sourceAddressV6") private Optional<String> sourceAddressV6;
+    @SerializedName("interface") private Optional<String> iface;
+    @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
     // empty constructor
     @Since("7.0")
     public TestPingRequest() {}
@@ -57,7 +61,11 @@ public class TestPingRequest implements Serializable {
         Optional<Long> totalTimeoutSec,
         Optional<Long> packetSize,
         Optional<Long> pingTimeoutMsec,
-        Optional<Boolean> prohibitFragmentation
+        Optional<Boolean> prohibitFragmentation,
+        Optional<String> sourceAddressV4,
+        Optional<String> sourceAddressV6,
+        Optional<String> iface,
+        Optional<Long> virtualNetworkTag
     )
     {
         this.attempts = (attempts == null) ? Optional.<Long>empty() : attempts;
@@ -66,6 +74,10 @@ public class TestPingRequest implements Serializable {
         this.packetSize = (packetSize == null) ? Optional.<Long>empty() : packetSize;
         this.pingTimeoutMsec = (pingTimeoutMsec == null) ? Optional.<Long>empty() : pingTimeoutMsec;
         this.prohibitFragmentation = (prohibitFragmentation == null) ? Optional.<Boolean>empty() : prohibitFragmentation;
+        this.sourceAddressV4 = (sourceAddressV4 == null) ? Optional.<String>empty() : sourceAddressV4;
+        this.sourceAddressV6 = (sourceAddressV6 == null) ? Optional.<String>empty() : sourceAddressV6;
+        this.iface = (iface == null) ? Optional.<String>empty() : iface;
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
     }
 
     /** 
@@ -117,6 +129,41 @@ public class TestPingRequest implements Serializable {
     public void setProhibitFragmentation(Optional<Boolean> prohibitFragmentation) { 
         this.prohibitFragmentation = (prohibitFragmentation == null) ? Optional.<Boolean>empty() : prohibitFragmentation;
     }
+    /** 
+     * The ipv4 source address to be used in the ICMP ping packets
+     * sourceAddressV4 or sourceAddressV6 is required
+     **/
+    public Optional<String> getSourceAddressV4() { return this.sourceAddressV4; }
+   
+    public void setSourceAddressV4(Optional<String> sourceAddressV4) { 
+        this.sourceAddressV4 = (sourceAddressV4 == null) ? Optional.<String>empty() : sourceAddressV4;
+    }
+    /** 
+     * The ipv6 source address to be used in the ICMP ping packets
+     * sourceAddressV4 or sourceAddressV6 is required
+     **/
+    public Optional<String> getSourceAddressV6() { return this.sourceAddressV6; }
+   
+    public void setSourceAddressV6(Optional<String> sourceAddressV6) { 
+        this.sourceAddressV6 = (sourceAddressV6 == null) ? Optional.<String>empty() : sourceAddressV6;
+    }
+    /** 
+     * Existing interface on which the temporary vlan interface is created
+     **/
+    public Optional<String> getIface() { return this.iface; }
+   
+    public void setIface(Optional<String> iface) { 
+        this.iface = (iface == null) ? Optional.<String>empty() : iface;
+    }
+    /** 
+     * VLAN on which host addresses reachability needs to be tested
+     * The temporary vlan interface is created with this tag
+     **/
+    public Optional<Long> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+   
+    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) { 
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -131,12 +178,16 @@ public class TestPingRequest implements Serializable {
             Objects.equals(totalTimeoutSec, that.totalTimeoutSec) && 
             Objects.equals(packetSize, that.packetSize) && 
             Objects.equals(pingTimeoutMsec, that.pingTimeoutMsec) && 
-            Objects.equals(prohibitFragmentation, that.prohibitFragmentation);
+            Objects.equals(prohibitFragmentation, that.prohibitFragmentation) && 
+            Objects.equals(sourceAddressV4, that.sourceAddressV4) && 
+            Objects.equals(sourceAddressV6, that.sourceAddressV6) && 
+            Objects.equals(iface, that.iface) && 
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( attempts,hosts,totalTimeoutSec,packetSize,pingTimeoutMsec,prohibitFragmentation );
+        return Objects.hash( attempts,hosts,totalTimeoutSec,packetSize,pingTimeoutMsec,prohibitFragmentation,sourceAddressV4,sourceAddressV6,iface,virtualNetworkTag );
     }
 
 
@@ -148,6 +199,10 @@ public class TestPingRequest implements Serializable {
         map.put("packetSize", packetSize);
         map.put("pingTimeoutMsec", pingTimeoutMsec);
         map.put("prohibitFragmentation", prohibitFragmentation);
+        map.put("sourceAddressV4", sourceAddressV4);
+        map.put("sourceAddressV6", sourceAddressV6);
+        map.put("iface", iface);
+        map.put("virtualNetworkTag", virtualNetworkTag);
         return map;
     }
 
@@ -193,6 +248,30 @@ public class TestPingRequest implements Serializable {
         else{
             sb.append(" prohibitFragmentation : ").append("null").append(",");
         }
+        if(null != sourceAddressV4 && sourceAddressV4.isPresent()){
+            sb.append(" sourceAddressV4 : ").append(gson.toJson(sourceAddressV4)).append(",");
+        }
+        else{
+            sb.append(" sourceAddressV4 : ").append("null").append(",");
+        }
+        if(null != sourceAddressV6 && sourceAddressV6.isPresent()){
+            sb.append(" sourceAddressV6 : ").append(gson.toJson(sourceAddressV6)).append(",");
+        }
+        else{
+            sb.append(" sourceAddressV6 : ").append("null").append(",");
+        }
+        if(null != iface && iface.isPresent()){
+            sb.append(" iface : ").append(gson.toJson(iface)).append(",");
+        }
+        else{
+            sb.append(" iface : ").append("null").append(",");
+        }
+        if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
+            sb.append(" virtualNetworkTag : ").append(gson.toJson(virtualNetworkTag)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkTag : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -216,6 +295,10 @@ public class TestPingRequest implements Serializable {
         private Optional<Long> packetSize;
         private Optional<Long> pingTimeoutMsec;
         private Optional<Boolean> prohibitFragmentation;
+        private Optional<String> sourceAddressV4;
+        private Optional<String> sourceAddressV6;
+        private Optional<String> iface;
+        private Optional<Long> virtualNetworkTag;
 
         private Builder() { }
 
@@ -226,7 +309,11 @@ public class TestPingRequest implements Serializable {
                          this.totalTimeoutSec,
                          this.packetSize,
                          this.pingTimeoutMsec,
-                         this.prohibitFragmentation);
+                         this.prohibitFragmentation,
+                         this.sourceAddressV4,
+                         this.sourceAddressV6,
+                         this.iface,
+                         this.virtualNetworkTag);
         }
 
         private TestPingRequest.Builder buildFrom(final TestPingRequest req) {
@@ -236,6 +323,10 @@ public class TestPingRequest implements Serializable {
             this.packetSize = req.packetSize;
             this.pingTimeoutMsec = req.pingTimeoutMsec;
             this.prohibitFragmentation = req.prohibitFragmentation;
+            this.sourceAddressV4 = req.sourceAddressV4;
+            this.sourceAddressV6 = req.sourceAddressV6;
+            this.iface = req.iface;
+            this.virtualNetworkTag = req.virtualNetworkTag;
 
             return this;
         }
@@ -267,6 +358,26 @@ public class TestPingRequest implements Serializable {
 
         public TestPingRequest.Builder optionalProhibitFragmentation(final Boolean prohibitFragmentation) {
             this.prohibitFragmentation = (prohibitFragmentation == null) ? Optional.<Boolean>empty() : Optional.of(prohibitFragmentation);
+            return this;
+        }
+
+        public TestPingRequest.Builder optionalSourceAddressV4(final String sourceAddressV4) {
+            this.sourceAddressV4 = (sourceAddressV4 == null) ? Optional.<String>empty() : Optional.of(sourceAddressV4);
+            return this;
+        }
+
+        public TestPingRequest.Builder optionalSourceAddressV6(final String sourceAddressV6) {
+            this.sourceAddressV6 = (sourceAddressV6 == null) ? Optional.<String>empty() : Optional.of(sourceAddressV6);
+            return this;
+        }
+
+        public TestPingRequest.Builder optionalIface(final String iface) {
+            this.iface = (iface == null) ? Optional.<String>empty() : Optional.of(iface);
+            return this;
+        }
+
+        public TestPingRequest.Builder optionalVirtualNetworkTag(final Long virtualNetworkTag) {
+            this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
             return this;
         }
 

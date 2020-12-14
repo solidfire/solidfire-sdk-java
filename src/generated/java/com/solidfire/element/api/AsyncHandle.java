@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class AsyncHandle implements Serializable {
 
-    public static final long serialVersionUID = 6742944263515331189L;
+    public static final long serialVersionUID = 8263855607454339869L;
     @SerializedName("asyncResultID") private Long asyncResultID;
     @SerializedName("completed") private Boolean completed;
     @SerializedName("createTime") private String createTime;

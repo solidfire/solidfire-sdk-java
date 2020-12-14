@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ISCSISession implements Serializable {
 
-    public static final long serialVersionUID = -1637168637781139879L;
+    public static final long serialVersionUID = -553164094587156794L;
     @SerializedName("driveIDs") private Optional<Long[]> driveIDs;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("initiator") private Optional<Initiator> initiator;

@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SnmpV3UsmUser implements Serializable {
 
-    public static final long serialVersionUID = 4809109003511391850L;
+    public static final long serialVersionUID = 7156114663719660830L;
     @SerializedName("access") private String access;
     @SerializedName("name") private String name;
     @SerializedName("password") private String password;
@@ -64,10 +64,10 @@ public class SnmpV3UsmUser implements Serializable {
     }
 
     /** 
-     * rouser: read-only access.*
+     * rouser: read-only access.
      * rwuser: for read-write access.
      * rosys: for read-only access to a restricted set of system information
-     * *SolidFire recommends that all USM users be set to "rouser" access, because all SolidFire MIB objects are read-only.
+     * SolidFire recommends that all USM users be set to "rouser" access, because all SolidFire MIB objects are read-only.
      **/
     public String getAccess() { return this.access; }
    

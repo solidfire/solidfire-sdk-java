@@ -37,15 +37,17 @@ import java.util.Objects;
 
 public class CreateClusterRequest implements Serializable {
 
-    public static final long serialVersionUID = 1893097687519200263L;
+    public static final long serialVersionUID = -7399083057729155838L;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
+    @SerializedName("serialNumber") private Optional<String> serialNumber;
+    @SerializedName("orderNumber") private Optional<String> orderNumber;
     @SerializedName("mvip") private String mvip;
     @SerializedName("svip") private String svip;
-    @SerializedName("repCount") private Long repCount;
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("nodes") private String[] nodes;
     @SerializedName("attributes") private Optional<Attributes> attributes;
+    @SerializedName("enableSoftwareEncryptionAtRest") private Optional<Boolean> enableSoftwareEncryptionAtRest;
     // empty constructor
     @Since("7.0")
     public CreateClusterRequest() {}
@@ -57,7 +59,6 @@ public class CreateClusterRequest implements Serializable {
         Optional<Boolean> acceptEula,
         String mvip,
         String svip,
-        Long repCount,
         String username,
         String password,
         String[] nodes,
@@ -67,11 +68,36 @@ public class CreateClusterRequest implements Serializable {
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
         this.mvip = mvip;
         this.svip = svip;
-        this.repCount = repCount;
         this.username = username;
         this.password = password;
         this.nodes = nodes;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public CreateClusterRequest(
+        Optional<Boolean> acceptEula,
+        Optional<String> serialNumber,
+        Optional<String> orderNumber,
+        String mvip,
+        String svip,
+        String username,
+        String password,
+        String[] nodes,
+        Optional<Attributes> attributes,
+        Optional<Boolean> enableSoftwareEncryptionAtRest
+    )
+    {
+        this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
+        this.serialNumber = (serialNumber == null) ? Optional.<String>empty() : serialNumber;
+        this.orderNumber = (orderNumber == null) ? Optional.<String>empty() : orderNumber;
+        this.mvip = mvip;
+        this.svip = svip;
+        this.username = username;
+        this.password = password;
+        this.nodes = nodes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.enableSoftwareEncryptionAtRest = (enableSoftwareEncryptionAtRest == null) ? Optional.<Boolean>empty() : enableSoftwareEncryptionAtRest;
     }
 
     /** 
@@ -83,6 +109,24 @@ public class CreateClusterRequest implements Serializable {
    
     public void setAcceptEula(Optional<Boolean> acceptEula) { 
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
+    }
+    /** 
+     * Nine-digit alphanumeric Serial Number.
+     * May be required on software-based platforms.
+     **/
+    public Optional<String> getSerialNumber() { return this.serialNumber; }
+   
+    public void setSerialNumber(Optional<String> serialNumber) { 
+        this.serialNumber = (serialNumber == null) ? Optional.<String>empty() : serialNumber;
+    }
+    /** 
+     * Alphanumeric sales order number.
+     * May be required on software-based platforms.
+     **/
+    public Optional<String> getOrderNumber() { return this.orderNumber; }
+   
+    public void setOrderNumber(Optional<String> orderNumber) { 
+        this.orderNumber = (orderNumber == null) ? Optional.<String>empty() : orderNumber;
     }
     /** 
      * Floating (virtual) IP address for the cluster on the management network.
@@ -99,14 +143,6 @@ public class CreateClusterRequest implements Serializable {
    
     public void setSvip(String svip) { 
         this.svip = svip;
-    }
-    /** 
-     * Number of replicas of each piece of data to store in the cluster. Valid value is "2".
-     **/
-    public Long getRepCount() { return this.repCount; }
-   
-    public void setRepCount(Long repCount) { 
-        this.repCount = repCount;
     }
     /** 
      * Username for the cluster admin.
@@ -140,6 +176,16 @@ public class CreateClusterRequest implements Serializable {
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
+    /** 
+     * Enable this flag to use software-based encryption-at-rest.
+     * Defaults to true on SolidFire software-only clusters.
+     * Defaults to false on all other clusters.
+     **/
+    public Optional<Boolean> getEnableSoftwareEncryptionAtRest() { return this.enableSoftwareEncryptionAtRest; }
+   
+    public void setEnableSoftwareEncryptionAtRest(Optional<Boolean> enableSoftwareEncryptionAtRest) { 
+        this.enableSoftwareEncryptionAtRest = (enableSoftwareEncryptionAtRest == null) ? Optional.<Boolean>empty() : enableSoftwareEncryptionAtRest;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -150,31 +196,35 @@ public class CreateClusterRequest implements Serializable {
 
         return 
             Objects.equals(acceptEula, that.acceptEula) && 
+            Objects.equals(serialNumber, that.serialNumber) && 
+            Objects.equals(orderNumber, that.orderNumber) && 
             Objects.equals(mvip, that.mvip) && 
             Objects.equals(svip, that.svip) && 
-            Objects.equals(repCount, that.repCount) && 
             Objects.equals(username, that.username) && 
             Objects.equals(password, that.password) && 
             Arrays.equals(nodes, that.nodes) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(enableSoftwareEncryptionAtRest, that.enableSoftwareEncryptionAtRest);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( acceptEula,mvip,svip,repCount,username,password,(Object[])nodes,attributes );
+        return Objects.hash( acceptEula,serialNumber,orderNumber,mvip,svip,username,password,(Object[])nodes,attributes,enableSoftwareEncryptionAtRest );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("acceptEula", acceptEula);
+        map.put("serialNumber", serialNumber);
+        map.put("orderNumber", orderNumber);
         map.put("mvip", mvip);
         map.put("svip", svip);
-        map.put("repCount", repCount);
         map.put("username", username);
         map.put("password", password);
         map.put("nodes", nodes);
         map.put("attributes", attributes);
+        map.put("enableSoftwareEncryptionAtRest", enableSoftwareEncryptionAtRest);
         return map;
     }
 
@@ -190,9 +240,20 @@ public class CreateClusterRequest implements Serializable {
         else{
             sb.append(" acceptEula : ").append("null").append(",");
         }
+        if(null != serialNumber && serialNumber.isPresent()){
+            sb.append(" serialNumber : ").append(gson.toJson(serialNumber)).append(",");
+        }
+        else{
+            sb.append(" serialNumber : ").append("null").append(",");
+        }
+        if(null != orderNumber && orderNumber.isPresent()){
+            sb.append(" orderNumber : ").append(gson.toJson(orderNumber)).append(",");
+        }
+        else{
+            sb.append(" orderNumber : ").append("null").append(",");
+        }
         sb.append(" mvip : ").append(gson.toJson(mvip)).append(",");
         sb.append(" svip : ").append(gson.toJson(svip)).append(",");
-        sb.append(" repCount : ").append(gson.toJson(repCount)).append(",");
         sb.append(" username : ").append(gson.toJson(username)).append(",");
         sb.append(" password : ").append(gson.toJson(password)).append(",");
         sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
@@ -201,6 +262,12 @@ public class CreateClusterRequest implements Serializable {
         }
         else{
             sb.append(" attributes : ").append("null").append(",");
+        }
+        if(null != enableSoftwareEncryptionAtRest && enableSoftwareEncryptionAtRest.isPresent()){
+            sb.append(" enableSoftwareEncryptionAtRest : ").append(gson.toJson(enableSoftwareEncryptionAtRest)).append(",");
+        }
+        else{
+            sb.append(" enableSoftwareEncryptionAtRest : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -220,43 +287,59 @@ public class CreateClusterRequest implements Serializable {
 
     public static class Builder {
         private Optional<Boolean> acceptEula;
+        private Optional<String> serialNumber;
+        private Optional<String> orderNumber;
         private String mvip;
         private String svip;
-        private Long repCount;
         private String username;
         private String password;
         private String[] nodes;
         private Optional<Attributes> attributes;
+        private Optional<Boolean> enableSoftwareEncryptionAtRest;
 
         private Builder() { }
 
         public CreateClusterRequest build() {
             return new CreateClusterRequest (
                          this.acceptEula,
+                         this.serialNumber,
+                         this.orderNumber,
                          this.mvip,
                          this.svip,
-                         this.repCount,
                          this.username,
                          this.password,
                          this.nodes,
-                         this.attributes);
+                         this.attributes,
+                         this.enableSoftwareEncryptionAtRest);
         }
 
         private CreateClusterRequest.Builder buildFrom(final CreateClusterRequest req) {
             this.acceptEula = req.acceptEula;
+            this.serialNumber = req.serialNumber;
+            this.orderNumber = req.orderNumber;
             this.mvip = req.mvip;
             this.svip = req.svip;
-            this.repCount = req.repCount;
             this.username = req.username;
             this.password = req.password;
             this.nodes = req.nodes;
             this.attributes = req.attributes;
+            this.enableSoftwareEncryptionAtRest = req.enableSoftwareEncryptionAtRest;
 
             return this;
         }
 
         public CreateClusterRequest.Builder optionalAcceptEula(final Boolean acceptEula) {
             this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : Optional.of(acceptEula);
+            return this;
+        }
+
+        public CreateClusterRequest.Builder optionalSerialNumber(final String serialNumber) {
+            this.serialNumber = (serialNumber == null) ? Optional.<String>empty() : Optional.of(serialNumber);
+            return this;
+        }
+
+        public CreateClusterRequest.Builder optionalOrderNumber(final String orderNumber) {
+            this.orderNumber = (orderNumber == null) ? Optional.<String>empty() : Optional.of(orderNumber);
             return this;
         }
 
@@ -267,11 +350,6 @@ public class CreateClusterRequest implements Serializable {
 
         public CreateClusterRequest.Builder svip(final String svip) {
             this.svip = svip;
-            return this;
-        }
-
-        public CreateClusterRequest.Builder repCount(final Long repCount) {
-            this.repCount = repCount;
             return this;
         }
 
@@ -292,6 +370,11 @@ public class CreateClusterRequest implements Serializable {
 
         public CreateClusterRequest.Builder optionalAttributes(final Attributes attributes) {
             this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
+            return this;
+        }
+
+        public CreateClusterRequest.Builder optionalEnableSoftwareEncryptionAtRest(final Boolean enableSoftwareEncryptionAtRest) {
+            this.enableSoftwareEncryptionAtRest = (enableSoftwareEncryptionAtRest == null) ? Optional.<Boolean>empty() : Optional.of(enableSoftwareEncryptionAtRest);
             return this;
         }
 

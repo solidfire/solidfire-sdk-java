@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class GetNodeHardwareInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 3013874737035295479L;
+    public static final long serialVersionUID = -1876910081049078781L;
     @SerializedName("nodeID") private Long nodeID;
     // empty constructor
     @Since("7.0")

@@ -35,25 +35,10 @@ import java.util.Objects;
 
 public class GroupSnapshotMembers implements Serializable {
 
-    public static final long serialVersionUID = 4785362642461122102L;
+    public static final long serialVersionUID = 7684475734946497784L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Long snapshotID;
-    @SerializedName("snapshotUUID") private java.util.UUID snapshotUUID;
     @SerializedName("checksum") private String checksum;
-    @SerializedName("attributes") private Optional<Attributes> attributes;
-    @SerializedName("createTime") private Optional<String> createTime;
-    @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
-    @SerializedName("expirationReason") private Optional<String> expirationReason;
-    @SerializedName("expirationTime") private Optional<String> expirationTime;
-    @SerializedName("groupID") private Optional<Long> groupID;
-    @SerializedName("groupSnapshotUUID") private Optional<java.util.UUID> groupSnapshotUUID;
-    @SerializedName("name") private Optional<String> name;
-    @SerializedName("remoteStatus") private Optional<String> remoteStatus;
-    @SerializedName("remoteStatuses") private Optional<Attributes[]> remoteStatuses;
-    @SerializedName("status") private Optional<String> status;
-    @SerializedName("totalSize") private Optional<Long> totalSize;
-    @SerializedName("virtualVolumeID") private Optional<Long> virtualVolumeID;
-    @SerializedName("volumePairUUID") private Optional<java.util.UUID> volumePairUUID;
     // empty constructor
     @Since("7.0")
     public GroupSnapshotMembers() {}
@@ -64,82 +49,12 @@ public class GroupSnapshotMembers implements Serializable {
     public GroupSnapshotMembers(
         Long volumeID,
         Long snapshotID,
-        String checksum,
-        Optional<Attributes> attributes,
-        Optional<String> createTime,
-        Optional<Boolean> enableRemoteReplication,
-        Optional<String> expirationReason,
-        Optional<String> expirationTime,
-        Optional<Long> groupID,
-        Optional<java.util.UUID> groupSnapshotUUID,
-        Optional<String> name,
-        Optional<String> remoteStatus,
-        Optional<Attributes[]> remoteStatuses,
-        Optional<String> status,
-        Optional<Long> totalSize,
-        Optional<Long> virtualVolumeID,
-        Optional<java.util.UUID> volumePairUUID
+        String checksum
     )
     {
         this.volumeID = volumeID;
         this.snapshotID = snapshotID;
         this.checksum = checksum;
-        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
-        this.createTime = (createTime == null) ? Optional.<String>empty() : createTime;
-        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
-        this.expirationReason = (expirationReason == null) ? Optional.<String>empty() : expirationReason;
-        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
-        this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
-        this.groupSnapshotUUID = (groupSnapshotUUID == null) ? Optional.<java.util.UUID>empty() : groupSnapshotUUID;
-        this.name = (name == null) ? Optional.<String>empty() : name;
-        this.remoteStatus = (remoteStatus == null) ? Optional.<String>empty() : remoteStatus;
-        this.remoteStatuses = (remoteStatuses == null) ? Optional.<Attributes[]>empty() : remoteStatuses;
-        this.status = (status == null) ? Optional.<String>empty() : status;
-        this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
-        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<Long>empty() : virtualVolumeID;
-        this.volumePairUUID = (volumePairUUID == null) ? Optional.<java.util.UUID>empty() : volumePairUUID;
-    }
-    // parameterized constructor
-    @Since("8.0")
-    public GroupSnapshotMembers(
-        Long volumeID,
-        Long snapshotID,
-        java.util.UUID snapshotUUID,
-        String checksum,
-        Optional<Attributes> attributes,
-        Optional<String> createTime,
-        Optional<Boolean> enableRemoteReplication,
-        Optional<String> expirationReason,
-        Optional<String> expirationTime,
-        Optional<Long> groupID,
-        Optional<java.util.UUID> groupSnapshotUUID,
-        Optional<String> name,
-        Optional<String> remoteStatus,
-        Optional<Attributes[]> remoteStatuses,
-        Optional<String> status,
-        Optional<Long> totalSize,
-        Optional<Long> virtualVolumeID,
-        Optional<java.util.UUID> volumePairUUID
-    )
-    {
-        this.volumeID = volumeID;
-        this.snapshotID = snapshotID;
-        this.snapshotUUID = snapshotUUID;
-        this.checksum = checksum;
-        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
-        this.createTime = (createTime == null) ? Optional.<String>empty() : createTime;
-        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
-        this.expirationReason = (expirationReason == null) ? Optional.<String>empty() : expirationReason;
-        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
-        this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
-        this.groupSnapshotUUID = (groupSnapshotUUID == null) ? Optional.<java.util.UUID>empty() : groupSnapshotUUID;
-        this.name = (name == null) ? Optional.<String>empty() : name;
-        this.remoteStatus = (remoteStatus == null) ? Optional.<String>empty() : remoteStatus;
-        this.remoteStatuses = (remoteStatuses == null) ? Optional.<Attributes[]>empty() : remoteStatuses;
-        this.status = (status == null) ? Optional.<String>empty() : status;
-        this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
-        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<Long>empty() : virtualVolumeID;
-        this.volumePairUUID = (volumePairUUID == null) ? Optional.<java.util.UUID>empty() : volumePairUUID;
     }
 
     /** 
@@ -160,14 +75,6 @@ public class GroupSnapshotMembers implements Serializable {
         this.snapshotID = snapshotID;
     }
     /** 
-     * Universal Unique ID of an existing snapshot.
-     **/
-    public java.util.UUID getSnapshotUUID() { return this.snapshotUUID; }
-   
-    public void setSnapshotUUID(java.util.UUID snapshotUUID) { 
-        this.snapshotUUID = snapshotUUID;
-    }
-    /** 
      * A string that represents the correct digits in the stored snapshot.
      * This checksum can be used later to compare other snapshots to detect errors in the data.
      **/
@@ -175,118 +82,6 @@ public class GroupSnapshotMembers implements Serializable {
    
     public void setChecksum(String checksum) { 
         this.checksum = checksum;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Attributes> getAttributes() { return this.attributes; }
-   
-    public void setAttributes(Optional<Attributes> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
-    }
-    /** 
-     * 
-     **/
-    public Optional<String> getCreateTime() { return this.createTime; }
-   
-    public void setCreateTime(Optional<String> createTime) { 
-        this.createTime = (createTime == null) ? Optional.<String>empty() : createTime;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
-   
-    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 
-        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
-    }
-    /** 
-     * 
-     **/
-    public Optional<String> getExpirationReason() { return this.expirationReason; }
-   
-    public void setExpirationReason(Optional<String> expirationReason) { 
-        this.expirationReason = (expirationReason == null) ? Optional.<String>empty() : expirationReason;
-    }
-    /** 
-     * 
-     **/
-    public Optional<String> getExpirationTime() { return this.expirationTime; }
-   
-    public void setExpirationTime(Optional<String> expirationTime) { 
-        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Long> getGroupID() { return this.groupID; }
-   
-    public void setGroupID(Optional<Long> groupID) { 
-        this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
-    }
-    /** 
-     * 
-     **/
-    public Optional<java.util.UUID> getGroupSnapshotUUID() { return this.groupSnapshotUUID; }
-   
-    public void setGroupSnapshotUUID(Optional<java.util.UUID> groupSnapshotUUID) { 
-        this.groupSnapshotUUID = (groupSnapshotUUID == null) ? Optional.<java.util.UUID>empty() : groupSnapshotUUID;
-    }
-    /** 
-     * 
-     **/
-    public Optional<String> getName() { return this.name; }
-   
-    public void setName(Optional<String> name) { 
-        this.name = (name == null) ? Optional.<String>empty() : name;
-    }
-    /** 
-     * 
-     **/
-    public Optional<String> getRemoteStatus() { return this.remoteStatus; }
-   
-    public void setRemoteStatus(Optional<String> remoteStatus) { 
-        this.remoteStatus = (remoteStatus == null) ? Optional.<String>empty() : remoteStatus;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Attributes[]> getRemoteStatuses() { return this.remoteStatuses; }
-   
-    public void setRemoteStatuses(Optional<Attributes[]> remoteStatuses) { 
-        this.remoteStatuses = (remoteStatuses == null) ? Optional.<Attributes[]>empty() : remoteStatuses;
-    }
-    /** 
-     * 
-     **/
-    public Optional<String> getStatus() { return this.status; }
-   
-    public void setStatus(Optional<String> status) { 
-        this.status = (status == null) ? Optional.<String>empty() : status;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Long> getTotalSize() { return this.totalSize; }
-   
-    public void setTotalSize(Optional<Long> totalSize) { 
-        this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Long> getVirtualVolumeID() { return this.virtualVolumeID; }
-   
-    public void setVirtualVolumeID(Optional<Long> virtualVolumeID) { 
-        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<Long>empty() : virtualVolumeID;
-    }
-    /** 
-     * 
-     **/
-    public Optional<java.util.UUID> getVolumePairUUID() { return this.volumePairUUID; }
-   
-    public void setVolumePairUUID(Optional<java.util.UUID> volumePairUUID) { 
-        this.volumePairUUID = (volumePairUUID == null) ? Optional.<java.util.UUID>empty() : volumePairUUID;
     }
 
     @Override
@@ -299,27 +94,12 @@ public class GroupSnapshotMembers implements Serializable {
         return 
             Objects.equals(volumeID, that.volumeID) && 
             Objects.equals(snapshotID, that.snapshotID) && 
-            Objects.equals(snapshotUUID, that.snapshotUUID) && 
-            Objects.equals(checksum, that.checksum) && 
-            Objects.equals(attributes, that.attributes) && 
-            Objects.equals(createTime, that.createTime) && 
-            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) && 
-            Objects.equals(expirationReason, that.expirationReason) && 
-            Objects.equals(expirationTime, that.expirationTime) && 
-            Objects.equals(groupID, that.groupID) && 
-            Objects.equals(groupSnapshotUUID, that.groupSnapshotUUID) && 
-            Objects.equals(name, that.name) && 
-            Objects.equals(remoteStatus, that.remoteStatus) && 
-            Objects.equals(remoteStatuses, that.remoteStatuses) && 
-            Objects.equals(status, that.status) && 
-            Objects.equals(totalSize, that.totalSize) && 
-            Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
-            Objects.equals(volumePairUUID, that.volumePairUUID);
+            Objects.equals(checksum, that.checksum);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,snapshotID,snapshotUUID,checksum,attributes,createTime,enableRemoteReplication,expirationReason,expirationTime,groupID,groupSnapshotUUID,name,remoteStatus,remoteStatuses,status,totalSize,virtualVolumeID,volumePairUUID );
+        return Objects.hash( volumeID,snapshotID,checksum );
     }
 
 
@@ -327,22 +107,7 @@ public class GroupSnapshotMembers implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volumeID", volumeID);
         map.put("snapshotID", snapshotID);
-        map.put("snapshotUUID", snapshotUUID);
         map.put("checksum", checksum);
-        map.put("attributes", attributes);
-        map.put("createTime", createTime);
-        map.put("enableRemoteReplication", enableRemoteReplication);
-        map.put("expirationReason", expirationReason);
-        map.put("expirationTime", expirationTime);
-        map.put("groupID", groupID);
-        map.put("groupSnapshotUUID", groupSnapshotUUID);
-        map.put("name", name);
-        map.put("remoteStatus", remoteStatus);
-        map.put("remoteStatuses", remoteStatuses);
-        map.put("status", status);
-        map.put("totalSize", totalSize);
-        map.put("virtualVolumeID", virtualVolumeID);
-        map.put("volumePairUUID", volumePairUUID);
         return map;
     }
 
@@ -354,92 +119,7 @@ public class GroupSnapshotMembers implements Serializable {
 
         sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
         sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
-        sb.append(" snapshotUUID : ").append(gson.toJson(snapshotUUID)).append(",");
         sb.append(" checksum : ").append(gson.toJson(checksum)).append(",");
-        if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
-        }
-        else{
-            sb.append(" attributes : ").append("null").append(",");
-        }
-        if(null != createTime && createTime.isPresent()){
-            sb.append(" createTime : ").append(gson.toJson(createTime)).append(",");
-        }
-        else{
-            sb.append(" createTime : ").append("null").append(",");
-        }
-        if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(gson.toJson(enableRemoteReplication)).append(",");
-        }
-        else{
-            sb.append(" enableRemoteReplication : ").append("null").append(",");
-        }
-        if(null != expirationReason && expirationReason.isPresent()){
-            sb.append(" expirationReason : ").append(gson.toJson(expirationReason)).append(",");
-        }
-        else{
-            sb.append(" expirationReason : ").append("null").append(",");
-        }
-        if(null != expirationTime && expirationTime.isPresent()){
-            sb.append(" expirationTime : ").append(gson.toJson(expirationTime)).append(",");
-        }
-        else{
-            sb.append(" expirationTime : ").append("null").append(",");
-        }
-        if(null != groupID && groupID.isPresent()){
-            sb.append(" groupID : ").append(gson.toJson(groupID)).append(",");
-        }
-        else{
-            sb.append(" groupID : ").append("null").append(",");
-        }
-        if(null != groupSnapshotUUID && groupSnapshotUUID.isPresent()){
-            sb.append(" groupSnapshotUUID : ").append(gson.toJson(groupSnapshotUUID)).append(",");
-        }
-        else{
-            sb.append(" groupSnapshotUUID : ").append("null").append(",");
-        }
-        if(null != name && name.isPresent()){
-            sb.append(" name : ").append(gson.toJson(name)).append(",");
-        }
-        else{
-            sb.append(" name : ").append("null").append(",");
-        }
-        if(null != remoteStatus && remoteStatus.isPresent()){
-            sb.append(" remoteStatus : ").append(gson.toJson(remoteStatus)).append(",");
-        }
-        else{
-            sb.append(" remoteStatus : ").append("null").append(",");
-        }
-        if(null != remoteStatuses && remoteStatuses.isPresent()){
-            sb.append(" remoteStatuses : ").append(gson.toJson(remoteStatuses)).append(",");
-        }
-        else{
-            sb.append(" remoteStatuses : ").append("null").append(",");
-        }
-        if(null != status && status.isPresent()){
-            sb.append(" status : ").append(gson.toJson(status)).append(",");
-        }
-        else{
-            sb.append(" status : ").append("null").append(",");
-        }
-        if(null != totalSize && totalSize.isPresent()){
-            sb.append(" totalSize : ").append(gson.toJson(totalSize)).append(",");
-        }
-        else{
-            sb.append(" totalSize : ").append("null").append(",");
-        }
-        if(null != virtualVolumeID && virtualVolumeID.isPresent()){
-            sb.append(" virtualVolumeID : ").append(gson.toJson(virtualVolumeID)).append(",");
-        }
-        else{
-            sb.append(" virtualVolumeID : ").append("null").append(",");
-        }
-        if(null != volumePairUUID && volumePairUUID.isPresent()){
-            sb.append(" volumePairUUID : ").append(gson.toJson(volumePairUUID)).append(",");
-        }
-        else{
-            sb.append(" volumePairUUID : ").append("null").append(",");
-        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -459,22 +139,7 @@ public class GroupSnapshotMembers implements Serializable {
     public static class Builder {
         private Long volumeID;
         private Long snapshotID;
-        private java.util.UUID snapshotUUID;
         private String checksum;
-        private Optional<Attributes> attributes;
-        private Optional<String> createTime;
-        private Optional<Boolean> enableRemoteReplication;
-        private Optional<String> expirationReason;
-        private Optional<String> expirationTime;
-        private Optional<Long> groupID;
-        private Optional<java.util.UUID> groupSnapshotUUID;
-        private Optional<String> name;
-        private Optional<String> remoteStatus;
-        private Optional<Attributes[]> remoteStatuses;
-        private Optional<String> status;
-        private Optional<Long> totalSize;
-        private Optional<Long> virtualVolumeID;
-        private Optional<java.util.UUID> volumePairUUID;
 
         private Builder() { }
 
@@ -482,43 +147,13 @@ public class GroupSnapshotMembers implements Serializable {
             return new GroupSnapshotMembers (
                          this.volumeID,
                          this.snapshotID,
-                         this.snapshotUUID,
-                         this.checksum,
-                         this.attributes,
-                         this.createTime,
-                         this.enableRemoteReplication,
-                         this.expirationReason,
-                         this.expirationTime,
-                         this.groupID,
-                         this.groupSnapshotUUID,
-                         this.name,
-                         this.remoteStatus,
-                         this.remoteStatuses,
-                         this.status,
-                         this.totalSize,
-                         this.virtualVolumeID,
-                         this.volumePairUUID);
+                         this.checksum);
         }
 
         private GroupSnapshotMembers.Builder buildFrom(final GroupSnapshotMembers req) {
             this.volumeID = req.volumeID;
             this.snapshotID = req.snapshotID;
-            this.snapshotUUID = req.snapshotUUID;
             this.checksum = req.checksum;
-            this.attributes = req.attributes;
-            this.createTime = req.createTime;
-            this.enableRemoteReplication = req.enableRemoteReplication;
-            this.expirationReason = req.expirationReason;
-            this.expirationTime = req.expirationTime;
-            this.groupID = req.groupID;
-            this.groupSnapshotUUID = req.groupSnapshotUUID;
-            this.name = req.name;
-            this.remoteStatus = req.remoteStatus;
-            this.remoteStatuses = req.remoteStatuses;
-            this.status = req.status;
-            this.totalSize = req.totalSize;
-            this.virtualVolumeID = req.virtualVolumeID;
-            this.volumePairUUID = req.volumePairUUID;
 
             return this;
         }
@@ -533,83 +168,8 @@ public class GroupSnapshotMembers implements Serializable {
             return this;
         }
 
-        public GroupSnapshotMembers.Builder snapshotUUID(final java.util.UUID snapshotUUID) {
-            this.snapshotUUID = snapshotUUID;
-            return this;
-        }
-
         public GroupSnapshotMembers.Builder checksum(final String checksum) {
             this.checksum = checksum;
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalAttributes(final Attributes attributes) {
-            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalCreateTime(final String createTime) {
-            this.createTime = (createTime == null) ? Optional.<String>empty() : Optional.of(createTime);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
-            this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalExpirationReason(final String expirationReason) {
-            this.expirationReason = (expirationReason == null) ? Optional.<String>empty() : Optional.of(expirationReason);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalExpirationTime(final String expirationTime) {
-            this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : Optional.of(expirationTime);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalGroupID(final Long groupID) {
-            this.groupID = (groupID == null) ? Optional.<Long>empty() : Optional.of(groupID);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalGroupSnapshotUUID(final java.util.UUID groupSnapshotUUID) {
-            this.groupSnapshotUUID = (groupSnapshotUUID == null) ? Optional.<java.util.UUID>empty() : Optional.of(groupSnapshotUUID);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalName(final String name) {
-            this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalRemoteStatus(final String remoteStatus) {
-            this.remoteStatus = (remoteStatus == null) ? Optional.<String>empty() : Optional.of(remoteStatus);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalRemoteStatuses(final Attributes[] remoteStatuses) {
-            this.remoteStatuses = (remoteStatuses == null) ? Optional.<Attributes[]>empty() : Optional.of(remoteStatuses);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalStatus(final String status) {
-            this.status = (status == null) ? Optional.<String>empty() : Optional.of(status);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalTotalSize(final Long totalSize) {
-            this.totalSize = (totalSize == null) ? Optional.<Long>empty() : Optional.of(totalSize);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalVirtualVolumeID(final Long virtualVolumeID) {
-            this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<Long>empty() : Optional.of(virtualVolumeID);
-            return this;
-        }
-
-        public GroupSnapshotMembers.Builder optionalVolumePairUUID(final java.util.UUID volumePairUUID) {
-            this.volumePairUUID = (volumePairUUID == null) ? Optional.<java.util.UUID>empty() : Optional.of(volumePairUUID);
             return this;
         }
 

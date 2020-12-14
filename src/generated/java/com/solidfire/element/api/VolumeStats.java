@@ -35,14 +35,14 @@ import java.util.Objects;
 
 public class VolumeStats implements Serializable {
 
-    public static final long serialVersionUID = -3367989483107432160L;
+    public static final long serialVersionUID = 358240369886125949L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("actualIOPS") private Optional<Long> actualIOPS;
     @SerializedName("averageIOPSize") private Optional<Long> averageIOPSize;
     @SerializedName("burstIOPSCredit") private Optional<Long> burstIOPSCredit;
     @SerializedName("clientQueueDepth") private Optional<Long> clientQueueDepth;
     @SerializedName("latencyUSec") private Optional<Long> latencyUSec;
-    @SerializedName("asyncDelay") private Optional<Long> asyncDelay;
+    @SerializedName("asyncDelay") private Optional<String> asyncDelay;
     @SerializedName("metadataHosts") private Optional<MetadataHosts> metadataHosts;
     @SerializedName("desiredMetadataHosts") private Optional<MetadataHosts> desiredMetadataHosts;
     @SerializedName("nonZeroBlocks") private Long nonZeroBlocks;
@@ -81,7 +81,7 @@ public class VolumeStats implements Serializable {
         Optional<Long> burstIOPSCredit,
         Optional<Long> clientQueueDepth,
         Optional<Long> latencyUSec,
-        Optional<Long> asyncDelay,
+        Optional<String> asyncDelay,
         Optional<MetadataHosts> metadataHosts,
         Optional<MetadataHosts> desiredMetadataHosts,
         Long nonZeroBlocks,
@@ -114,7 +114,7 @@ public class VolumeStats implements Serializable {
         this.burstIOPSCredit = (burstIOPSCredit == null) ? Optional.<Long>empty() : burstIOPSCredit;
         this.clientQueueDepth = (clientQueueDepth == null) ? Optional.<Long>empty() : clientQueueDepth;
         this.latencyUSec = (latencyUSec == null) ? Optional.<Long>empty() : latencyUSec;
-        this.asyncDelay = (asyncDelay == null) ? Optional.<Long>empty() : asyncDelay;
+        this.asyncDelay = (asyncDelay == null) ? Optional.<String>empty() : asyncDelay;
         this.metadataHosts = (metadataHosts == null) ? Optional.<MetadataHosts>empty() : metadataHosts;
         this.desiredMetadataHosts = (desiredMetadataHosts == null) ? Optional.<MetadataHosts>empty() : desiredMetadataHosts;
         this.nonZeroBlocks = nonZeroBlocks;
@@ -193,10 +193,10 @@ public class VolumeStats implements Serializable {
     }
     /** 
      **/
-    public Optional<Long> getAsyncDelay() { return this.asyncDelay; }
+    public Optional<String> getAsyncDelay() { return this.asyncDelay; }
    
-    public void setAsyncDelay(Optional<Long> asyncDelay) { 
-        this.asyncDelay = (asyncDelay == null) ? Optional.<Long>empty() : asyncDelay;
+    public void setAsyncDelay(Optional<String> asyncDelay) { 
+        this.asyncDelay = (asyncDelay == null) ? Optional.<String>empty() : asyncDelay;
     }
     /** 
      * The volume services on which the volume metadata resides.
@@ -631,7 +631,7 @@ public class VolumeStats implements Serializable {
         private Optional<Long> burstIOPSCredit;
         private Optional<Long> clientQueueDepth;
         private Optional<Long> latencyUSec;
-        private Optional<Long> asyncDelay;
+        private Optional<String> asyncDelay;
         private Optional<MetadataHosts> metadataHosts;
         private Optional<MetadataHosts> desiredMetadataHosts;
         private Long nonZeroBlocks;
@@ -760,8 +760,8 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder optionalAsyncDelay(final Long asyncDelay) {
-            this.asyncDelay = (asyncDelay == null) ? Optional.<Long>empty() : Optional.of(asyncDelay);
+        public VolumeStats.Builder optionalAsyncDelay(final String asyncDelay) {
+            this.asyncDelay = (asyncDelay == null) ? Optional.<String>empty() : Optional.of(asyncDelay);
             return this;
         }
 

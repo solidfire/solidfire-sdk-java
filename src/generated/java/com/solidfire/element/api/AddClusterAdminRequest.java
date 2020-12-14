@@ -37,11 +37,11 @@ import java.util.Objects;
 
 public class AddClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = -198981678144562959L;
+    public static final long serialVersionUID = 2302484283389373014L;
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("access") private String[] access;
-    @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
+    @SerializedName("acceptEula") private Boolean acceptEula;
     @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
@@ -54,14 +54,14 @@ public class AddClusterAdminRequest implements Serializable {
         String username,
         String password,
         String[] access,
-        Optional<Boolean> acceptEula,
+        Boolean acceptEula,
         Optional<Attributes> attributes
     )
     {
         this.username = username;
         this.password = password;
         this.access = access;
-        this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
+        this.acceptEula = acceptEula;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
@@ -94,10 +94,10 @@ public class AddClusterAdminRequest implements Serializable {
      * Agreement when creating this cluster. To accept the EULA,
      * set this parameter to true.
      **/
-    public Optional<Boolean> getAcceptEula() { return this.acceptEula; }
+    public Boolean getAcceptEula() { return this.acceptEula; }
    
-    public void setAcceptEula(Optional<Boolean> acceptEula) { 
-        this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
+    public void setAcceptEula(Boolean acceptEula) { 
+        this.acceptEula = acceptEula;
     }
     /** 
      * List of name-value pairs in JSON object format.
@@ -148,12 +148,7 @@ public class AddClusterAdminRequest implements Serializable {
         sb.append(" username : ").append(gson.toJson(username)).append(",");
         sb.append(" password : ").append(gson.toJson(password)).append(",");
         sb.append(" access : ").append(gson.toJson(Arrays.toString(access))).append(",");
-        if(null != acceptEula && acceptEula.isPresent()){
-            sb.append(" acceptEula : ").append(gson.toJson(acceptEula)).append(",");
-        }
-        else{
-            sb.append(" acceptEula : ").append("null").append(",");
-        }
+        sb.append(" acceptEula : ").append(gson.toJson(acceptEula)).append(",");
         if(null != attributes && attributes.isPresent()){
             sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         }
@@ -180,7 +175,7 @@ public class AddClusterAdminRequest implements Serializable {
         private String username;
         private String password;
         private String[] access;
-        private Optional<Boolean> acceptEula;
+        private Boolean acceptEula;
         private Optional<Attributes> attributes;
 
         private Builder() { }
@@ -219,8 +214,8 @@ public class AddClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public AddClusterAdminRequest.Builder optionalAcceptEula(final Boolean acceptEula) {
-            this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : Optional.of(acceptEula);
+        public AddClusterAdminRequest.Builder acceptEula(final Boolean acceptEula) {
+            this.acceptEula = acceptEula;
             return this;
         }
 

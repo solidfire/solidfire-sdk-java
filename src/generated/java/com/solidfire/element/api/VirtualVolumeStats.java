@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class VirtualVolumeStats implements Serializable {
 
-    public static final long serialVersionUID = -3385831606443470618L;
+    public static final long serialVersionUID = 4835109153650231692L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("actualIOPS") private Optional<Long> actualIOPS;
     @SerializedName("asyncDelay") private Optional<String> asyncDelay;

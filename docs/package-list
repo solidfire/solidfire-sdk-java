@@ -7,4 +7,5 @@ com.solidfire.core.reflection
 com.solidfire.core.serialization
 com.solidfire.element.api
 com.solidfire.element.apiactual
+com.solidfire.examples
 com.solidfire.serialization

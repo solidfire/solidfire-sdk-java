@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class GetQoSPolicyRequest implements Serializable {
 
-    public static final long serialVersionUID = -185877445579367227L;
+    public static final long serialVersionUID = 8588360523902443711L;
     @SerializedName("qosPolicyID") private Long qosPolicyID;
 
     

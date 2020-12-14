@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ClusterCapacity implements Serializable {
 
-    public static final long serialVersionUID = -9123859184117899227L;
+    public static final long serialVersionUID = 4368089658175769320L;
     @SerializedName("activeBlockSpace") private Long activeBlockSpace;
     @SerializedName("activeSessions") private Long activeSessions;
     @SerializedName("averageIOPS") private Long averageIOPS;
@@ -66,56 +66,6 @@ public class ClusterCapacity implements Serializable {
     
     // parameterized constructor
     @Since("7.0")
-    public ClusterCapacity(
-        Long activeBlockSpace,
-        Long activeSessions,
-        Long averageIOPS,
-        Long clusterRecentIOSize,
-        Long currentIOPS,
-        Long maxIOPS,
-        Long maxOverProvisionableSpace,
-        Long maxProvisionedSpace,
-        Long maxUsedMetadataSpace,
-        Long maxUsedSpace,
-        Long nonZeroBlocks,
-        Long peakActiveSessions,
-        Long peakIOPS,
-        Long provisionedSpace,
-        String timestamp,
-        Long totalOps,
-        Long uniqueBlocks,
-        Long uniqueBlocksUsedSpace,
-        Long usedMetadataSpace,
-        Long usedMetadataSpaceInSnapshots,
-        Long usedSpace,
-        Long zeroBlocks
-    )
-    {
-        this.activeBlockSpace = activeBlockSpace;
-        this.activeSessions = activeSessions;
-        this.averageIOPS = averageIOPS;
-        this.clusterRecentIOSize = clusterRecentIOSize;
-        this.currentIOPS = currentIOPS;
-        this.maxIOPS = maxIOPS;
-        this.maxOverProvisionableSpace = maxOverProvisionableSpace;
-        this.maxProvisionedSpace = maxProvisionedSpace;
-        this.maxUsedMetadataSpace = maxUsedMetadataSpace;
-        this.maxUsedSpace = maxUsedSpace;
-        this.nonZeroBlocks = nonZeroBlocks;
-        this.peakActiveSessions = peakActiveSessions;
-        this.peakIOPS = peakIOPS;
-        this.provisionedSpace = provisionedSpace;
-        this.timestamp = timestamp;
-        this.totalOps = totalOps;
-        this.uniqueBlocks = uniqueBlocks;
-        this.uniqueBlocksUsedSpace = uniqueBlocksUsedSpace;
-        this.usedMetadataSpace = usedMetadataSpace;
-        this.usedMetadataSpaceInSnapshots = usedMetadataSpaceInSnapshots;
-        this.usedSpace = usedSpace;
-        this.zeroBlocks = zeroBlocks;
-    }
-    // parameterized constructor
-    @Since("8.0")
     public ClusterCapacity(
         Long activeBlockSpace,
         Long activeSessions,

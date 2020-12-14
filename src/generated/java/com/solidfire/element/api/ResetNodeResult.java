@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ResetNodeResult implements Serializable {
 
-    public static final long serialVersionUID = 1741204150018515933L;
+    public static final long serialVersionUID = -7910425704274370019L;
     @SerializedName("details") private Optional<ResetNodeDetails> details;
     @SerializedName("duration") private Optional<String> duration;
     @SerializedName("result") private Optional<String> result;

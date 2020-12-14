@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListSnapshotsResult implements Serializable {
 
-    public static final long serialVersionUID = 3190994173877911303L;
+    public static final long serialVersionUID = -8073195742592333678L;
     @SerializedName("snapshots") private Snapshot[] snapshots;
     // empty constructor
     @Since("7.0")
@@ -52,9 +52,7 @@ public class ListSnapshotsResult implements Serializable {
 
     /** 
      * Information about each snapshot for each volume.
-     * If volumeID is not provided, all snapshots for all volumes is returned.
      * Snapshots that are in a group will be returned with a "groupID".
-     * Snapshots that are enabled for replication.
      **/
     public Snapshot[] getSnapshots() { return this.snapshots; }
    

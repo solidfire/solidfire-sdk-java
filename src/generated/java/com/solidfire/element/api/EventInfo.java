@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class EventInfo implements Serializable {
 
-    public static final long serialVersionUID = 848178818129099493L;
+    public static final long serialVersionUID = -5607512056379947030L;
     @SerializedName("eventID") private Long eventID;
     @SerializedName("severity") private Long severity;
     @SerializedName("eventInfoType") private String eventInfoType;
@@ -81,7 +81,7 @@ public class EventInfo implements Serializable {
     }
 
     /** 
-     * 
+     * ID of event.
      **/
     public Long getEventID() { return this.eventID; }
    
@@ -89,7 +89,7 @@ public class EventInfo implements Serializable {
         this.eventID = eventID;
     }
     /** 
-     * 
+     * Unused
      **/
     public Long getSeverity() { return this.severity; }
    
@@ -97,7 +97,7 @@ public class EventInfo implements Serializable {
         this.severity = severity;
     }
     /** 
-     * 
+     * Event type.
      **/
     public String getEventInfoType() { return this.eventInfoType; }
    
@@ -105,7 +105,7 @@ public class EventInfo implements Serializable {
         this.eventInfoType = eventInfoType;
     }
     /** 
-     * 
+     * The message associated with the event.
      **/
     public String getMessage() { return this.message; }
    
@@ -113,7 +113,7 @@ public class EventInfo implements Serializable {
         this.message = message;
     }
     /** 
-     * 
+     * ServiceID associated with the event.
      **/
     public Long getServiceID() { return this.serviceID; }
    
@@ -121,7 +121,7 @@ public class EventInfo implements Serializable {
         this.serviceID = serviceID;
     }
     /** 
-     * 
+     * NodeID associated with the event.
      **/
     public Long getNodeID() { return this.nodeID; }
    
@@ -129,7 +129,7 @@ public class EventInfo implements Serializable {
         this.nodeID = nodeID;
     }
     /** 
-     * 
+     * Derived from driveIDs field. Either the first item in driveIDs array, or empty.
      **/
     public Long getDriveID() { return this.driveID; }
    
@@ -137,7 +137,7 @@ public class EventInfo implements Serializable {
         this.driveID = driveID;
     }
     /** 
-     * 
+     * Drive IDs associated with the event.
      **/
     public Long[] getDriveIDs() { return this.driveIDs; }
    
@@ -145,7 +145,7 @@ public class EventInfo implements Serializable {
         this.driveIDs = driveIDs;
     }
     /** 
-     * 
+     * The time this event was reported.
      **/
     public String getTimeOfReport() { return this.timeOfReport; }
    
@@ -153,7 +153,7 @@ public class EventInfo implements Serializable {
         this.timeOfReport = timeOfReport;
     }
     /** 
-     * 
+     * The time this event was published into the database.
      **/
     public String getTimeOfPublish() { return this.timeOfPublish; }
    
@@ -161,7 +161,7 @@ public class EventInfo implements Serializable {
         this.timeOfPublish = timeOfPublish;
     }
     /** 
-     * 
+     * Data assoicated with the event, such as data report or exception details.
      **/
     public Optional<Object> getDetails() { return this.details; }
    

@@ -34,8 +34,8 @@ import java.util.Objects;
 
 public class GetIpmiInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 1403269724168093299L;
-    @SerializedName("nodes") private GetIpmiInfoNodesResult[] nodes;
+    public static final long serialVersionUID = 4345881838093851726L;
+    @SerializedName("ipmiInfo") private IpmiInfo ipmiInfo;
     // empty constructor
     @Since("7.0")
     public GetIpmiInfoResult() {}
@@ -44,19 +44,19 @@ public class GetIpmiInfoResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetIpmiInfoResult(
-        GetIpmiInfoNodesResult[] nodes
+        IpmiInfo ipmiInfo
     )
     {
-        this.nodes = nodes;
+        this.ipmiInfo = ipmiInfo;
     }
 
     /** 
-     * Detailed information from each sensor within a node. 
+     * 
      **/
-    public GetIpmiInfoNodesResult[] getNodes() { return this.nodes; }
+    public IpmiInfo getIpmiInfo() { return this.ipmiInfo; }
    
-    public void setNodes(GetIpmiInfoNodesResult[] nodes) { 
-        this.nodes = nodes;
+    public void setIpmiInfo(IpmiInfo ipmiInfo) { 
+        this.ipmiInfo = ipmiInfo;
     }
 
     @Override
@@ -67,18 +67,18 @@ public class GetIpmiInfoResult implements Serializable {
         GetIpmiInfoResult that = (GetIpmiInfoResult) o;
 
         return 
-            Arrays.equals(nodes, that.nodes);
+            Objects.equals(ipmiInfo, that.ipmiInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])nodes );
+        return Objects.hash( ipmiInfo );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("nodes", nodes);
+        map.put("ipmiInfo", ipmiInfo);
         return map;
     }
 
@@ -88,7 +88,7 @@ public class GetIpmiInfoResult implements Serializable {
         Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
+        sb.append(" ipmiInfo : ").append(gson.toJson(ipmiInfo)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -106,23 +106,23 @@ public class GetIpmiInfoResult implements Serializable {
     }
 
     public static class Builder {
-        private GetIpmiInfoNodesResult[] nodes;
+        private IpmiInfo ipmiInfo;
 
         private Builder() { }
 
         public GetIpmiInfoResult build() {
             return new GetIpmiInfoResult (
-                         this.nodes);
+                         this.ipmiInfo);
         }
 
         private GetIpmiInfoResult.Builder buildFrom(final GetIpmiInfoResult req) {
-            this.nodes = req.nodes;
+            this.ipmiInfo = req.ipmiInfo;
 
             return this;
         }
 
-        public GetIpmiInfoResult.Builder nodes(final GetIpmiInfoNodesResult[] nodes) {
-            this.nodes = nodes;
+        public GetIpmiInfoResult.Builder ipmiInfo(final IpmiInfo ipmiInfo) {
+            this.ipmiInfo = ipmiInfo;
             return this;
         }
 

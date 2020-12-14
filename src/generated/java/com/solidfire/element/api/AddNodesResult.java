@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class AddNodesResult implements Serializable {
 
-    public static final long serialVersionUID = 2922145517052875853L;
+    public static final long serialVersionUID = 8358443344556194963L;
     @SerializedName("autoInstall") private Optional<Boolean> autoInstall;
     @SerializedName("nodes") private AddedNode[] nodes;
     // empty constructor

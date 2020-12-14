@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ClusterFaultInfo implements Serializable {
 
-    public static final long serialVersionUID = -5303506460547294310L;
+    public static final long serialVersionUID = 9081587400798078557L;
     @SerializedName("driveIDs") private Optional<Long[]> driveIDs;
     @SerializedName("networkInterface") private Optional<String> networkInterface;
     @SerializedName("severity") private String severity;
@@ -50,6 +50,7 @@ public class ClusterFaultInfo implements Serializable {
     @SerializedName("date") private String date;
     @SerializedName("resolvedDate") private String resolvedDate;
     @SerializedName("data") private Optional<Attributes> data;
+    @SerializedName("externalSource") private Optional<String> externalSource;
     // empty constructor
     @Since("7.0")
     public ClusterFaultInfo() {}
@@ -90,6 +91,44 @@ public class ClusterFaultInfo implements Serializable {
         this.date = date;
         this.resolvedDate = resolvedDate;
         this.data = (data == null) ? Optional.<Attributes>empty() : data;
+    }
+    // parameterized constructor
+    @Since("10.0")
+    public ClusterFaultInfo(
+        Optional<Long[]> driveIDs,
+        Optional<String> networkInterface,
+        String severity,
+        String type,
+        String code,
+        String details,
+        Long nodeHardwareFaultID,
+        Long nodeID,
+        Long serviceID,
+        Long driveID,
+        Boolean resolved,
+        Long clusterFaultID,
+        String date,
+        String resolvedDate,
+        Optional<Attributes> data,
+        Optional<String> externalSource
+    )
+    {
+        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
+        this.networkInterface = (networkInterface == null) ? Optional.<String>empty() : networkInterface;
+        this.severity = severity;
+        this.type = type;
+        this.code = code;
+        this.details = details;
+        this.nodeHardwareFaultID = nodeHardwareFaultID;
+        this.nodeID = nodeID;
+        this.serviceID = serviceID;
+        this.driveID = driveID;
+        this.resolved = resolved;
+        this.clusterFaultID = clusterFaultID;
+        this.date = date;
+        this.resolvedDate = resolvedDate;
+        this.data = (data == null) ? Optional.<Attributes>empty() : data;
+        this.externalSource = (externalSource == null) ? Optional.<String>empty() : externalSource;
     }
 
     /** 
@@ -212,6 +251,14 @@ public class ClusterFaultInfo implements Serializable {
     public void setData(Optional<Attributes> data) { 
         this.data = (data == null) ? Optional.<Attributes>empty() : data;
     }
+    /** 
+     * 
+     **/
+    public Optional<String> getExternalSource() { return this.externalSource; }
+   
+    public void setExternalSource(Optional<String> externalSource) { 
+        this.externalSource = (externalSource == null) ? Optional.<String>empty() : externalSource;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -235,12 +282,13 @@ public class ClusterFaultInfo implements Serializable {
             Objects.equals(clusterFaultID, that.clusterFaultID) && 
             Objects.equals(date, that.date) && 
             Objects.equals(resolvedDate, that.resolvedDate) && 
-            Objects.equals(data, that.data);
+            Objects.equals(data, that.data) && 
+            Objects.equals(externalSource, that.externalSource);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( driveIDs,networkInterface,severity,type,code,details,nodeHardwareFaultID,nodeID,serviceID,driveID,resolved,clusterFaultID,date,resolvedDate,data );
+        return Objects.hash( driveIDs,networkInterface,severity,type,code,details,nodeHardwareFaultID,nodeID,serviceID,driveID,resolved,clusterFaultID,date,resolvedDate,data,externalSource );
     }
 
 
@@ -261,6 +309,7 @@ public class ClusterFaultInfo implements Serializable {
         map.put("date", date);
         map.put("resolvedDate", resolvedDate);
         map.put("data", data);
+        map.put("externalSource", externalSource);
         return map;
     }
 
@@ -300,6 +349,12 @@ public class ClusterFaultInfo implements Serializable {
         else{
             sb.append(" data : ").append("null").append(",");
         }
+        if(null != externalSource && externalSource.isPresent()){
+            sb.append(" externalSource : ").append(gson.toJson(externalSource)).append(",");
+        }
+        else{
+            sb.append(" externalSource : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -332,6 +387,7 @@ public class ClusterFaultInfo implements Serializable {
         private String date;
         private String resolvedDate;
         private Optional<Attributes> data;
+        private Optional<String> externalSource;
 
         private Builder() { }
 
@@ -351,7 +407,8 @@ public class ClusterFaultInfo implements Serializable {
                          this.clusterFaultID,
                          this.date,
                          this.resolvedDate,
-                         this.data);
+                         this.data,
+                         this.externalSource);
         }
 
         private ClusterFaultInfo.Builder buildFrom(final ClusterFaultInfo req) {
@@ -370,6 +427,7 @@ public class ClusterFaultInfo implements Serializable {
             this.date = req.date;
             this.resolvedDate = req.resolvedDate;
             this.data = req.data;
+            this.externalSource = req.externalSource;
 
             return this;
         }
@@ -446,6 +504,11 @@ public class ClusterFaultInfo implements Serializable {
 
         public ClusterFaultInfo.Builder optionalData(final Attributes data) {
             this.data = (data == null) ? Optional.<Attributes>empty() : Optional.of(data);
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder optionalExternalSource(final String externalSource) {
+            this.externalSource = (externalSource == null) ? Optional.<String>empty() : Optional.of(externalSource);
             return this;
         }
 

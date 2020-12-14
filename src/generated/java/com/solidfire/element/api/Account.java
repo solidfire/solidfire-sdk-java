@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class Account implements Serializable {
 
-    public static final long serialVersionUID = 6182745512723579970L;
+    public static final long serialVersionUID = -5001194202040979403L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("username") private String username;
     @SerializedName("status") private String status;
@@ -45,6 +45,7 @@ public class Account implements Serializable {
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
     @SerializedName("storageContainerID") private Optional<java.util.UUID> storageContainerID;
     @SerializedName("attributes") private Optional<Attributes> attributes;
+    @SerializedName("enableChap") private Optional<Boolean> enableChap;
     // empty constructor
     @Since("7.0")
     public Account() {}
@@ -71,6 +72,30 @@ public class Account implements Serializable {
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
         this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : storageContainerID;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public Account(
+        Long accountID,
+        String username,
+        String status,
+        Long[] volumes,
+        Optional<CHAPSecret> initiatorSecret,
+        Optional<CHAPSecret> targetSecret,
+        Optional<java.util.UUID> storageContainerID,
+        Optional<Attributes> attributes,
+        Optional<Boolean> enableChap
+    )
+    {
+        this.accountID = accountID;
+        this.username = username;
+        this.status = status;
+        this.volumes = volumes;
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
+        this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : storageContainerID;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.enableChap = (enableChap == null) ? Optional.<Boolean>empty() : enableChap;
     }
 
     /** 
@@ -137,6 +162,14 @@ public class Account implements Serializable {
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
+    /** 
+     * Specify if chap account credentials can be used by an initiator to access volumes.
+     **/
+    public Optional<Boolean> getEnableChap() { return this.enableChap; }
+   
+    public void setEnableChap(Optional<Boolean> enableChap) { 
+        this.enableChap = (enableChap == null) ? Optional.<Boolean>empty() : enableChap;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -153,12 +186,13 @@ public class Account implements Serializable {
             Objects.equals(initiatorSecret, that.initiatorSecret) && 
             Objects.equals(targetSecret, that.targetSecret) && 
             Objects.equals(storageContainerID, that.storageContainerID) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(enableChap, that.enableChap);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID,username,status,(Object[])volumes,initiatorSecret,targetSecret,storageContainerID,attributes );
+        return Objects.hash( accountID,username,status,(Object[])volumes,initiatorSecret,targetSecret,storageContainerID,attributes,enableChap );
     }
 
 
@@ -172,6 +206,7 @@ public class Account implements Serializable {
         map.put("targetSecret", targetSecret);
         map.put("storageContainerID", storageContainerID);
         map.put("attributes", attributes);
+        map.put("enableChap", enableChap);
         return map;
     }
 
@@ -209,6 +244,12 @@ public class Account implements Serializable {
         else{
             sb.append(" attributes : ").append("null").append(",");
         }
+        if(null != enableChap && enableChap.isPresent()){
+            sb.append(" enableChap : ").append(gson.toJson(enableChap)).append(",");
+        }
+        else{
+            sb.append(" enableChap : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -234,6 +275,7 @@ public class Account implements Serializable {
         private Optional<CHAPSecret> targetSecret;
         private Optional<java.util.UUID> storageContainerID;
         private Optional<Attributes> attributes;
+        private Optional<Boolean> enableChap;
 
         private Builder() { }
 
@@ -246,7 +288,8 @@ public class Account implements Serializable {
                          this.initiatorSecret,
                          this.targetSecret,
                          this.storageContainerID,
-                         this.attributes);
+                         this.attributes,
+                         this.enableChap);
         }
 
         private Account.Builder buildFrom(final Account req) {
@@ -258,6 +301,7 @@ public class Account implements Serializable {
             this.targetSecret = req.targetSecret;
             this.storageContainerID = req.storageContainerID;
             this.attributes = req.attributes;
+            this.enableChap = req.enableChap;
 
             return this;
         }
@@ -299,6 +343,11 @@ public class Account implements Serializable {
 
         public Account.Builder optionalAttributes(final Attributes attributes) {
             this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
+            return this;
+        }
+
+        public Account.Builder optionalEnableChap(final Boolean enableChap) {
+            this.enableChap = (enableChap == null) ? Optional.<Boolean>empty() : Optional.of(enableChap);
             return this;
         }
 

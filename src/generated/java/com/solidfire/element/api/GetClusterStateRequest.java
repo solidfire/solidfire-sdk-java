@@ -40,7 +40,7 @@ import java.util.Objects;
 
 public class GetClusterStateRequest implements Serializable {
 
-    public static final long serialVersionUID = 7409607116677991350L;
+    public static final long serialVersionUID = 144831895181505888L;
     @SerializedName("force") private Boolean force;
     // empty constructor
     @Since("7.0")

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListVolumeStatsByAccountResult implements Serializable {
 
-    public static final long serialVersionUID = 6149147754051418212L;
+    public static final long serialVersionUID = -5814293544986589072L;
     @SerializedName("volumeStats") private VolumeStats[] volumeStats;
     // empty constructor
     @Since("7.0")

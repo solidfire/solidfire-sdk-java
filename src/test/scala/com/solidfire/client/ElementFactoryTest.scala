@@ -72,11 +72,11 @@ class TestFactorySuite extends WordSpec with BeforeAndAfterAll with MockitoSugar
 
   "checkVersion" should {
     when( mockDispatcher.dispatchRequest( any[String] ) )
-      .thenReturn("""{"id":1,"result":{"currentVersion":"11.0","supportedVersions":["1.0","2.0","3.0","4.0","5.0","6.0","7.0","8.0","9.0","10.0","11.0","12.0"]}}""" )
+      .thenReturn("""{"id":1,"result":{"currentVersion":"12.0","supportedVersions":["1.0","2.0","3.0","4.0","5.0","6.0","7.0","8.0","9.0","10.0","11.0","12.0"]}}""" )
 
     def getEndpoint( serviceBase: client.ServiceBase ): String = serviceBase.getRequestDispatcher.asInstanceOf[client.HttpsRequestDispatcher].getEndpoint.toString
     "assign max version when version is not passed and current version is greater" in {
-      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Empty[String], false ) ) should endWith( "/json-rpc/10.0" )
+      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Empty[String], false ) ) should endWith( "/json-rpc/12.0" )
     }
     "assign greater then max version when valid version is supplied" in {
       getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of( "12.0" ), false ) ) should endWith( "/json-rpc/12.0" )

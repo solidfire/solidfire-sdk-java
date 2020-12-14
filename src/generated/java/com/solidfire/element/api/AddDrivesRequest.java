@@ -44,10 +44,8 @@ import java.util.Objects;
 
 public class AddDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = -3122822977530475421L;
+    public static final long serialVersionUID = -6730445307389270217L;
     @SerializedName("drives") private NewDrive[] drives;
-    @SerializedName("forceDuringUpgrade") private Optional<Boolean> forceDuringUpgrade;
-    @SerializedName("forceDuringBinSync") private Optional<Boolean> forceDuringBinSync;
     // empty constructor
     @Since("7.0")
     public AddDrivesRequest() {}
@@ -56,24 +54,10 @@ public class AddDrivesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddDrivesRequest(
-        NewDrive[] drives,
-        Optional<Boolean> forceDuringUpgrade
+        NewDrive[] drives
     )
     {
         this.drives = drives;
-        this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
-    }
-    // parameterized constructor
-    @Since("10.0")
-    public AddDrivesRequest(
-        NewDrive[] drives,
-        Optional<Boolean> forceDuringUpgrade,
-        Optional<Boolean> forceDuringBinSync
-    )
-    {
-        this.drives = drives;
-        this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
-        this.forceDuringBinSync = (forceDuringBinSync == null) ? Optional.<Boolean>empty() : forceDuringBinSync;
     }
 
     /** 
@@ -91,22 +75,6 @@ public class AddDrivesRequest implements Serializable {
     public void setDrives(NewDrive[] drives) { 
         this.drives = drives;
     }
-    /** 
-     * Allows the user to force the addition of drives during an upgrade.
-     **/
-    public Optional<Boolean> getForceDuringUpgrade() { return this.forceDuringUpgrade; }
-   
-    public void setForceDuringUpgrade(Optional<Boolean> forceDuringUpgrade) { 
-        this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
-    }
-    /** 
-     * Allows the user to force the addition of drives during a bin sync operation.
-     **/
-    public Optional<Boolean> getForceDuringBinSync() { return this.forceDuringBinSync; }
-   
-    public void setForceDuringBinSync(Optional<Boolean> forceDuringBinSync) { 
-        this.forceDuringBinSync = (forceDuringBinSync == null) ? Optional.<Boolean>empty() : forceDuringBinSync;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -116,22 +84,18 @@ public class AddDrivesRequest implements Serializable {
         AddDrivesRequest that = (AddDrivesRequest) o;
 
         return 
-            Arrays.equals(drives, that.drives) && 
-            Objects.equals(forceDuringUpgrade, that.forceDuringUpgrade) && 
-            Objects.equals(forceDuringBinSync, that.forceDuringBinSync);
+            Arrays.equals(drives, that.drives);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])drives,forceDuringUpgrade,forceDuringBinSync );
+        return Objects.hash( (Object[])drives );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("drives", drives);
-        map.put("forceDuringUpgrade", forceDuringUpgrade);
-        map.put("forceDuringBinSync", forceDuringBinSync);
         return map;
     }
 
@@ -142,18 +106,6 @@ public class AddDrivesRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" drives : ").append(gson.toJson(Arrays.toString(drives))).append(",");
-        if(null != forceDuringUpgrade && forceDuringUpgrade.isPresent()){
-            sb.append(" forceDuringUpgrade : ").append(gson.toJson(forceDuringUpgrade)).append(",");
-        }
-        else{
-            sb.append(" forceDuringUpgrade : ").append("null").append(",");
-        }
-        if(null != forceDuringBinSync && forceDuringBinSync.isPresent()){
-            sb.append(" forceDuringBinSync : ").append(gson.toJson(forceDuringBinSync)).append(",");
-        }
-        else{
-            sb.append(" forceDuringBinSync : ").append("null").append(",");
-        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -172,38 +124,22 @@ public class AddDrivesRequest implements Serializable {
 
     public static class Builder {
         private NewDrive[] drives;
-        private Optional<Boolean> forceDuringUpgrade;
-        private Optional<Boolean> forceDuringBinSync;
 
         private Builder() { }
 
         public AddDrivesRequest build() {
             return new AddDrivesRequest (
-                         this.drives,
-                         this.forceDuringUpgrade,
-                         this.forceDuringBinSync);
+                         this.drives);
         }
 
         private AddDrivesRequest.Builder buildFrom(final AddDrivesRequest req) {
             this.drives = req.drives;
-            this.forceDuringUpgrade = req.forceDuringUpgrade;
-            this.forceDuringBinSync = req.forceDuringBinSync;
 
             return this;
         }
 
         public AddDrivesRequest.Builder drives(final NewDrive[] drives) {
             this.drives = drives;
-            return this;
-        }
-
-        public AddDrivesRequest.Builder optionalForceDuringUpgrade(final Boolean forceDuringUpgrade) {
-            this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : Optional.of(forceDuringUpgrade);
-            return this;
-        }
-
-        public AddDrivesRequest.Builder optionalForceDuringBinSync(final Boolean forceDuringBinSync) {
-            this.forceDuringBinSync = (forceDuringBinSync == null) ? Optional.<Boolean>empty() : Optional.of(forceDuringBinSync);
             return this;
         }
 

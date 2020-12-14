@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class Origin implements Serializable {
 
-    public static final long serialVersionUID = -7308266263206371232L;
+    public static final long serialVersionUID = 3955882842214778931L;
     @SerializedName("<signature>") private Signature signature;
     @SerializedName("contract-date") private String contractDate;
     @SerializedName("contract-name") private String contractName;

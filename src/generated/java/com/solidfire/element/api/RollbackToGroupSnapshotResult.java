@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class RollbackToGroupSnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = 3810566776539006574L;
+    public static final long serialVersionUID = -4267470482090937700L;
     @SerializedName("groupSnapshot") private Optional<GroupSnapshot> groupSnapshot;
     @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
     @SerializedName("members") private Optional<GroupSnapshotMembers[]> members;

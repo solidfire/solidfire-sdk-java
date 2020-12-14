@@ -11,7 +11,7 @@ The SolidFire Java SDK is a collection of software modules and libraries that fa
 | Component    | Version             |
 | ------------ | ------------------- |
 | Java         | 7.0 & 8.0           |
-| SolidFire OS | Element 7.0 - 10.0  |
+| SolidFire OS | Element 10.0 - 12.2 |
 
 ## Getting Help
 
@@ -20,14 +20,14 @@ If you have any questions or comments about this product, submit an issue on git
 
 ## Download
 
-[Download](http://mvnrepository.com/artifact/com.solidfire) the latest JAR or grab via Maven:
+[Download](jar/solidfire-sdk-java-1.7.0.65.jar) the latest jar:
 
 ~~~ xml
 
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
-  <version>1.5.0.89</version>
+  <version>1.7.0.65</version>
 </dependency>
 
 ~~~
@@ -36,7 +36,7 @@ or SBT:
 
 ~~~ scala
 
-libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.5"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.7"
 
 ~~~
 
@@ -44,7 +44,7 @@ or Gradle:
 
 ~~~ groovy
 
-compile 'com.solidfire:solidfire-sdk-java:1.5'
+compile 'com.solidfire:solidfire-sdk-java:1.7'
 
 ~~~
 
@@ -278,14 +278,8 @@ Read timeout (useful for extending time for a service call to return):
 ~~~
 
 ### [More Examples](examples) 
-<<<<<<< HEAD
- 
-For more examples check out the tutorials in the [examples folder](examples) of this repo.^M
-
-=======
 
 For more examples check out the tutorials in the [examples folder](examples) of this repo.
->>>>>>> develop
 
 ## Logging and Logback
 
@@ -326,7 +320,7 @@ You also need to add the appropriate SLF4J dependency. Continuing with the logba
         
 ## License
 
-Copyright © 2016, 2017 NetApp, Inc. All rights reserved.
+Copyright © 2020, 2021 NetApp, Inc. All rights reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

@@ -34,11 +34,13 @@ import java.util.Objects;
 
 public class GetBootstrapConfigResult implements Serializable {
 
-    public static final long serialVersionUID = 7635078735348945319L;
+    public static final long serialVersionUID = -4016213893997193144L;
     @SerializedName("clusterName") private String clusterName;
     @SerializedName("nodeName") private String nodeName;
     @SerializedName("nodes") private NodeWaitingToJoin[] nodes;
     @SerializedName("version") private String version;
+    @SerializedName("mvip") private String mvip;
+    @SerializedName("svip") private String svip;
     // empty constructor
     @Since("7.0")
     public GetBootstrapConfigResult() {}
@@ -57,6 +59,24 @@ public class GetBootstrapConfigResult implements Serializable {
         this.nodeName = nodeName;
         this.nodes = nodes;
         this.version = version;
+    }
+    // parameterized constructor
+    @Since("11.0")
+    public GetBootstrapConfigResult(
+        String clusterName,
+        String nodeName,
+        NodeWaitingToJoin[] nodes,
+        String version,
+        String mvip,
+        String svip
+    )
+    {
+        this.clusterName = clusterName;
+        this.nodeName = nodeName;
+        this.nodes = nodes;
+        this.version = version;
+        this.mvip = mvip;
+        this.svip = svip;
     }
 
     /** 
@@ -91,6 +111,22 @@ public class GetBootstrapConfigResult implements Serializable {
     public void setVersion(String version) { 
         this.version = version;
     }
+    /** 
+     * Cluster MVIP address.  This will be null if the node is not in a cluster.
+     **/
+    public String getMvip() { return this.mvip; }
+   
+    public void setMvip(String mvip) { 
+        this.mvip = mvip;
+    }
+    /** 
+     * Cluster SVIP address.  This will be null if the node is not in a cluster.
+     **/
+    public String getSvip() { return this.svip; }
+   
+    public void setSvip(String svip) { 
+        this.svip = svip;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -103,12 +139,14 @@ public class GetBootstrapConfigResult implements Serializable {
             Objects.equals(clusterName, that.clusterName) && 
             Objects.equals(nodeName, that.nodeName) && 
             Arrays.equals(nodes, that.nodes) && 
-            Objects.equals(version, that.version);
+            Objects.equals(version, that.version) && 
+            Objects.equals(mvip, that.mvip) && 
+            Objects.equals(svip, that.svip);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterName,nodeName,(Object[])nodes,version );
+        return Objects.hash( clusterName,nodeName,(Object[])nodes,version,mvip,svip );
     }
 
 
@@ -118,6 +156,8 @@ public class GetBootstrapConfigResult implements Serializable {
         map.put("nodeName", nodeName);
         map.put("nodes", nodes);
         map.put("version", version);
+        map.put("mvip", mvip);
+        map.put("svip", svip);
         return map;
     }
 
@@ -131,6 +171,8 @@ public class GetBootstrapConfigResult implements Serializable {
         sb.append(" nodeName : ").append(gson.toJson(nodeName)).append(",");
         sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
         sb.append(" version : ").append(gson.toJson(version)).append(",");
+        sb.append(" mvip : ").append(gson.toJson(mvip)).append(",");
+        sb.append(" svip : ").append(gson.toJson(svip)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -152,6 +194,8 @@ public class GetBootstrapConfigResult implements Serializable {
         private String nodeName;
         private NodeWaitingToJoin[] nodes;
         private String version;
+        private String mvip;
+        private String svip;
 
         private Builder() { }
 
@@ -160,7 +204,9 @@ public class GetBootstrapConfigResult implements Serializable {
                          this.clusterName,
                          this.nodeName,
                          this.nodes,
-                         this.version);
+                         this.version,
+                         this.mvip,
+                         this.svip);
         }
 
         private GetBootstrapConfigResult.Builder buildFrom(final GetBootstrapConfigResult req) {
@@ -168,6 +214,8 @@ public class GetBootstrapConfigResult implements Serializable {
             this.nodeName = req.nodeName;
             this.nodes = req.nodes;
             this.version = req.version;
+            this.mvip = req.mvip;
+            this.svip = req.svip;
 
             return this;
         }
@@ -189,6 +237,16 @@ public class GetBootstrapConfigResult implements Serializable {
 
         public GetBootstrapConfigResult.Builder version(final String version) {
             this.version = version;
+            return this;
+        }
+
+        public GetBootstrapConfigResult.Builder mvip(final String mvip) {
+            this.mvip = mvip;
+            return this;
+        }
+
+        public GetBootstrapConfigResult.Builder svip(final String svip) {
+            this.svip = svip;
             return this;
         }
 

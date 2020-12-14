@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class EnableLdapAuthenticationRequest implements Serializable {
 
-    public static final long serialVersionUID = 2976054419327822022L;
+    public static final long serialVersionUID = -9050234892680710495L;
     @SerializedName("authType") private Optional<String> authType;
     @SerializedName("groupSearchBaseDN") private Optional<String> groupSearchBaseDN;
     @SerializedName("groupSearchCustomFilter") private Optional<String> groupSearchCustomFilter;

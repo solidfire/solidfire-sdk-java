@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ClusterConfig implements Serializable {
 
-    public static final long serialVersionUID = 3884387958155246889L;
+    public static final long serialVersionUID = -4522968764399170603L;
     @SerializedName("cipi") private Optional<String> cipi;
     @SerializedName("cluster") private Optional<String> cluster;
     @SerializedName("ensemble") private Optional<String[]> ensemble;
@@ -47,6 +47,7 @@ public class ClusterConfig implements Serializable {
     @SerializedName("sipi") private Optional<String> sipi;
     @SerializedName("state") private Optional<String> state;
     @SerializedName("encryptionCapable") private Optional<Boolean> encryptionCapable;
+    @SerializedName("fipsDriveConfiguration") private Optional<Boolean> fipsDriveConfiguration;
     @SerializedName("hasLocalAdmin") private Optional<Boolean> hasLocalAdmin;
     @SerializedName("version") private Optional<String> version;
     // empty constructor
@@ -68,6 +69,7 @@ public class ClusterConfig implements Serializable {
         Optional<String> sipi,
         Optional<String> state,
         Optional<Boolean> encryptionCapable,
+        Optional<Boolean> fipsDriveConfiguration,
         Optional<Boolean> hasLocalAdmin,
         Optional<String> version
     )
@@ -83,6 +85,7 @@ public class ClusterConfig implements Serializable {
         this.sipi = (sipi == null) ? Optional.<String>empty() : sipi;
         this.state = (state == null) ? Optional.<String>empty() : state;
         this.encryptionCapable = (encryptionCapable == null) ? Optional.<Boolean>empty() : encryptionCapable;
+        this.fipsDriveConfiguration = (fipsDriveConfiguration == null) ? Optional.<Boolean>empty() : fipsDriveConfiguration;
         this.hasLocalAdmin = (hasLocalAdmin == null) ? Optional.<Boolean>empty() : hasLocalAdmin;
         this.version = (version == null) ? Optional.<String>empty() : version;
     }
@@ -168,12 +171,20 @@ public class ClusterConfig implements Serializable {
         this.state = (state == null) ? Optional.<String>empty() : state;
     }
     /** 
-     * 
+     * This field indicates whether the node supports encryption.
      **/
     public Optional<Boolean> getEncryptionCapable() { return this.encryptionCapable; }
    
     public void setEncryptionCapable(Optional<Boolean> encryptionCapable) { 
         this.encryptionCapable = (encryptionCapable == null) ? Optional.<Boolean>empty() : encryptionCapable;
+    }
+    /** 
+     * This field indicates whether the node supports FIPS 140-2 certified drives.
+     **/
+    public Optional<Boolean> getFipsDriveConfiguration() { return this.fipsDriveConfiguration; }
+   
+    public void setFipsDriveConfiguration(Optional<Boolean> fipsDriveConfiguration) { 
+        this.fipsDriveConfiguration = (fipsDriveConfiguration == null) ? Optional.<Boolean>empty() : fipsDriveConfiguration;
     }
     /** 
      * 
@@ -211,13 +222,14 @@ public class ClusterConfig implements Serializable {
             Objects.equals(sipi, that.sipi) && 
             Objects.equals(state, that.state) && 
             Objects.equals(encryptionCapable, that.encryptionCapable) && 
+            Objects.equals(fipsDriveConfiguration, that.fipsDriveConfiguration) && 
             Objects.equals(hasLocalAdmin, that.hasLocalAdmin) && 
             Objects.equals(version, that.version);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( cipi,cluster,ensemble,mipi,name,nodeID,pendingNodeID,role,sipi,state,encryptionCapable,hasLocalAdmin,version );
+        return Objects.hash( cipi,cluster,ensemble,mipi,name,nodeID,pendingNodeID,role,sipi,state,encryptionCapable,fipsDriveConfiguration,hasLocalAdmin,version );
     }
 
 
@@ -234,6 +246,7 @@ public class ClusterConfig implements Serializable {
         map.put("sipi", sipi);
         map.put("state", state);
         map.put("encryptionCapable", encryptionCapable);
+        map.put("fipsDriveConfiguration", fipsDriveConfiguration);
         map.put("hasLocalAdmin", hasLocalAdmin);
         map.put("version", version);
         return map;
@@ -311,6 +324,12 @@ public class ClusterConfig implements Serializable {
         else{
             sb.append(" encryptionCapable : ").append("null").append(",");
         }
+        if(null != fipsDriveConfiguration && fipsDriveConfiguration.isPresent()){
+            sb.append(" fipsDriveConfiguration : ").append(gson.toJson(fipsDriveConfiguration)).append(",");
+        }
+        else{
+            sb.append(" fipsDriveConfiguration : ").append("null").append(",");
+        }
         if(null != hasLocalAdmin && hasLocalAdmin.isPresent()){
             sb.append(" hasLocalAdmin : ").append(gson.toJson(hasLocalAdmin)).append(",");
         }
@@ -351,6 +370,7 @@ public class ClusterConfig implements Serializable {
         private Optional<String> sipi;
         private Optional<String> state;
         private Optional<Boolean> encryptionCapable;
+        private Optional<Boolean> fipsDriveConfiguration;
         private Optional<Boolean> hasLocalAdmin;
         private Optional<String> version;
 
@@ -369,6 +389,7 @@ public class ClusterConfig implements Serializable {
                          this.sipi,
                          this.state,
                          this.encryptionCapable,
+                         this.fipsDriveConfiguration,
                          this.hasLocalAdmin,
                          this.version);
         }
@@ -385,6 +406,7 @@ public class ClusterConfig implements Serializable {
             this.sipi = req.sipi;
             this.state = req.state;
             this.encryptionCapable = req.encryptionCapable;
+            this.fipsDriveConfiguration = req.fipsDriveConfiguration;
             this.hasLocalAdmin = req.hasLocalAdmin;
             this.version = req.version;
 
@@ -443,6 +465,11 @@ public class ClusterConfig implements Serializable {
 
         public ClusterConfig.Builder optionalEncryptionCapable(final Boolean encryptionCapable) {
             this.encryptionCapable = (encryptionCapable == null) ? Optional.<Boolean>empty() : Optional.of(encryptionCapable);
+            return this;
+        }
+
+        public ClusterConfig.Builder optionalFipsDriveConfiguration(final Boolean fipsDriveConfiguration) {
+            this.fipsDriveConfiguration = (fipsDriveConfiguration == null) ? Optional.<Boolean>empty() : Optional.of(fipsDriveConfiguration);
             return this;
         }
 

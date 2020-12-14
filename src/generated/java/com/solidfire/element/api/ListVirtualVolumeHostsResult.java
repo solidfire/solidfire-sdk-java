@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumeHostsResult implements Serializable {
 
-    public static final long serialVersionUID = -8007463979747334133L;
+    public static final long serialVersionUID = 900036340447125212L;
     @SerializedName("hosts") private VirtualVolumeHost[] hosts;
     // empty constructor
     @Since("7.0")

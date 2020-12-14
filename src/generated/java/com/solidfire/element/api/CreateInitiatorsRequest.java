@@ -38,7 +38,7 @@ import java.util.Objects;
 
 public class CreateInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 2102559985920445326L;
+    public static final long serialVersionUID = 2835388684329996087L;
     @SerializedName("initiators") private CreateInitiator[] initiators;
     // empty constructor
     @Since("7.0")
@@ -55,14 +55,7 @@ public class CreateInitiatorsRequest implements Serializable {
     }
 
     /** 
-     * A list of objects containing characteristics of each new initiator. Values are:
-     * name: (Required) The name of the initiator (IQN or WWPN) to create.
-     * (String)
-     * alias: (Optional) The friendly name to assign to this initiator. (String)
-     * attributes: (Optional) A set of JSON attributes to assign to this initiator.
-     * (JSON Object)
-     * volumeAccessGroupID: (Optional) The ID of the volume access group
-     * into to which this newly created initiator will be added. (Integer)
+     * A list of objects containing characteristics of each new initiator.
      **/
     public CreateInitiator[] getInitiators() { return this.initiators; }
    

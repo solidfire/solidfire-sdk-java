@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SetRemoteLoggingHostsRequest implements Serializable {
 
-    public static final long serialVersionUID = 6117895380745509791L;
+    public static final long serialVersionUID = -5079321353589053674L;
     @SerializedName("remoteHosts") private LoggingServer[] remoteHosts;
     // empty constructor
     @Since("7.0")

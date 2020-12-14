@@ -34,12 +34,13 @@ import java.util.Objects;
 
 public class Platform implements Serializable {
 
-    public static final long serialVersionUID = -6612096304691711343L;
+    public static final long serialVersionUID = -3330001958338224238L;
     @SerializedName("nodeType") private String nodeType;
     @SerializedName("chassisType") private String chassisType;
     @SerializedName("cpuModel") private String cpuModel;
     @SerializedName("nodeMemoryGB") private Long nodeMemoryGB;
     @SerializedName("platformConfigVersion") private Optional<String> platformConfigVersion;
+    @SerializedName("containerized") private Optional<Boolean> containerized;
     // empty constructor
     @Since("7.0")
     public Platform() {}
@@ -60,6 +61,24 @@ public class Platform implements Serializable {
         this.cpuModel = cpuModel;
         this.nodeMemoryGB = nodeMemoryGB;
         this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : platformConfigVersion;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public Platform(
+        String nodeType,
+        String chassisType,
+        String cpuModel,
+        Long nodeMemoryGB,
+        Optional<String> platformConfigVersion,
+        Optional<Boolean> containerized
+    )
+    {
+        this.nodeType = nodeType;
+        this.chassisType = chassisType;
+        this.cpuModel = cpuModel;
+        this.nodeMemoryGB = nodeMemoryGB;
+        this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : platformConfigVersion;
+        this.containerized = (containerized == null) ? Optional.<Boolean>empty() : containerized;
     }
 
     /** 
@@ -102,6 +121,14 @@ public class Platform implements Serializable {
     public void setPlatformConfigVersion(Optional<String> platformConfigVersion) { 
         this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : platformConfigVersion;
     }
+    /** 
+     * Whether Element software is running inside a container.
+     **/
+    public Optional<Boolean> getContainerized() { return this.containerized; }
+   
+    public void setContainerized(Optional<Boolean> containerized) { 
+        this.containerized = (containerized == null) ? Optional.<Boolean>empty() : containerized;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -115,12 +142,13 @@ public class Platform implements Serializable {
             Objects.equals(chassisType, that.chassisType) && 
             Objects.equals(cpuModel, that.cpuModel) && 
             Objects.equals(nodeMemoryGB, that.nodeMemoryGB) && 
-            Objects.equals(platformConfigVersion, that.platformConfigVersion);
+            Objects.equals(platformConfigVersion, that.platformConfigVersion) && 
+            Objects.equals(containerized, that.containerized);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeType,chassisType,cpuModel,nodeMemoryGB,platformConfigVersion );
+        return Objects.hash( nodeType,chassisType,cpuModel,nodeMemoryGB,platformConfigVersion,containerized );
     }
 
 
@@ -131,6 +159,7 @@ public class Platform implements Serializable {
         map.put("cpuModel", cpuModel);
         map.put("nodeMemoryGB", nodeMemoryGB);
         map.put("platformConfigVersion", platformConfigVersion);
+        map.put("containerized", containerized);
         return map;
     }
 
@@ -149,6 +178,12 @@ public class Platform implements Serializable {
         }
         else{
             sb.append(" platformConfigVersion : ").append("null").append(",");
+        }
+        if(null != containerized && containerized.isPresent()){
+            sb.append(" containerized : ").append(gson.toJson(containerized)).append(",");
+        }
+        else{
+            sb.append(" containerized : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -172,6 +207,7 @@ public class Platform implements Serializable {
         private String cpuModel;
         private Long nodeMemoryGB;
         private Optional<String> platformConfigVersion;
+        private Optional<Boolean> containerized;
 
         private Builder() { }
 
@@ -181,7 +217,8 @@ public class Platform implements Serializable {
                          this.chassisType,
                          this.cpuModel,
                          this.nodeMemoryGB,
-                         this.platformConfigVersion);
+                         this.platformConfigVersion,
+                         this.containerized);
         }
 
         private Platform.Builder buildFrom(final Platform req) {
@@ -190,6 +227,7 @@ public class Platform implements Serializable {
             this.cpuModel = req.cpuModel;
             this.nodeMemoryGB = req.nodeMemoryGB;
             this.platformConfigVersion = req.platformConfigVersion;
+            this.containerized = req.containerized;
 
             return this;
         }
@@ -216,6 +254,11 @@ public class Platform implements Serializable {
 
         public Platform.Builder optionalPlatformConfigVersion(final String platformConfigVersion) {
             this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : Optional.of(platformConfigVersion);
+            return this;
+        }
+
+        public Platform.Builder optionalContainerized(final Boolean containerized) {
+            this.containerized = (containerized == null) ? Optional.<Boolean>empty() : Optional.of(containerized);
             return this;
         }
 

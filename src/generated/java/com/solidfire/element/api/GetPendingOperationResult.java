@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetPendingOperationResult implements Serializable {
 
-    public static final long serialVersionUID = -8676903301719004010L;
+    public static final long serialVersionUID = -6882206241913690903L;
     @SerializedName("pendingOperation") private PendingOperation pendingOperation;
     // empty constructor
     @Since("7.0")
