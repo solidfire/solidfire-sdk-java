@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CopyVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = 837371064447947130L;
+    public static final long serialVersionUID = -6705582306401453845L;
     @SerializedName("cloneID") private Long cloneID;
     @SerializedName("asyncHandle") private Long asyncHandle;
     // empty constructor

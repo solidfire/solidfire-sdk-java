@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ModifyGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 4256425839858469480L;
+    public static final long serialVersionUID = 8910084486119464059L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;

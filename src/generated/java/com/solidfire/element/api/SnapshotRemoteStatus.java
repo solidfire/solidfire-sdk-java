@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SnapshotRemoteStatus implements Serializable {
 
-    public static final long serialVersionUID = 6049293383257307136L;
+    public static final long serialVersionUID = -4990635423113042060L;
     @SerializedName("remoteStatus") private String remoteStatus;
     @SerializedName("volumePairUUID") private java.util.UUID volumePairUUID;
     // empty constructor
@@ -54,7 +54,7 @@ public class SnapshotRemoteStatus implements Serializable {
     }
 
     /** 
-     * 
+     * Current status of the remote snapshot on the target cluster as seen on the source cluster
      **/
     public String getRemoteStatus() { return this.remoteStatus; }
    
@@ -62,7 +62,7 @@ public class SnapshotRemoteStatus implements Serializable {
         this.remoteStatus = remoteStatus;
     }
     /** 
-     * The snapshot is done and is writable (the active branch of the slice).
+     * Universal identifier of the volume pair
      **/
     public java.util.UUID getVolumePairUUID() { return this.volumePairUUID; }
    

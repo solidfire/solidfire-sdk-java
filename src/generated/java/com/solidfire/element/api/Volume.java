@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class Volume implements Serializable {
 
-    public static final long serialVersionUID = -7686354995119743056L;
+    public static final long serialVersionUID = -2186369715018079297L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
@@ -64,6 +64,8 @@ public class Volume implements Serializable {
     @SerializedName("blockSize") private Long blockSize;
     @SerializedName("virtualVolumeID") private Optional<java.util.UUID> virtualVolumeID;
     @SerializedName("attributes") private Attributes attributes;
+    @SerializedName("currentProtectionScheme") private String currentProtectionScheme;
+    @SerializedName("previousProtectionScheme") private Optional<String> previousProtectionScheme;
     // empty constructor
     @Since("7.0")
     public Volume() {}
@@ -71,108 +73,6 @@ public class Volume implements Serializable {
     
     // parameterized constructor
     @Since("7.0")
-    public Volume(
-        Long volumeID,
-        String name,
-        Long accountID,
-        String createTime,
-        java.util.UUID volumeConsistencyGroupUUID,
-        java.util.UUID volumeUUID,
-        Boolean enableSnapMirrorReplication,
-        String status,
-        String access,
-        Boolean enable512e,
-        Optional<String> iqn,
-        String scsiEUIDeviceID,
-        String scsiNAADeviceID,
-        VolumeQOS qos,
-        Long[] volumeAccessGroups,
-        VolumePair[] volumePairs,
-        Optional<String> deleteTime,
-        Optional<String> purgeTime,
-        Long sliceCount,
-        Long totalSize,
-        Optional<java.util.UUID> virtualVolumeID,
-        Attributes attributes
-    )
-    {
-        this.volumeID = volumeID;
-        this.name = name;
-        this.accountID = accountID;
-        this.createTime = createTime;
-        this.volumeConsistencyGroupUUID = volumeConsistencyGroupUUID;
-        this.volumeUUID = volumeUUID;
-        this.enableSnapMirrorReplication = enableSnapMirrorReplication;
-        this.status = status;
-        this.access = access;
-        this.enable512e = enable512e;
-        this.iqn = (iqn == null) ? Optional.<String>empty() : iqn;
-        this.scsiEUIDeviceID = scsiEUIDeviceID;
-        this.scsiNAADeviceID = scsiNAADeviceID;
-        this.qos = qos;
-        this.volumeAccessGroups = volumeAccessGroups;
-        this.volumePairs = volumePairs;
-        this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : deleteTime;
-        this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
-        this.sliceCount = sliceCount;
-        this.totalSize = totalSize;
-        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
-        this.attributes = attributes;
-    }
-    // parameterized constructor
-    @Since("8.0")
-    public Volume(
-        Long volumeID,
-        String name,
-        Long accountID,
-        String createTime,
-        java.util.UUID volumeConsistencyGroupUUID,
-        java.util.UUID volumeUUID,
-        Boolean enableSnapMirrorReplication,
-        String status,
-        String access,
-        Boolean enable512e,
-        Optional<String> iqn,
-        String scsiEUIDeviceID,
-        String scsiNAADeviceID,
-        VolumeQOS qos,
-        Long[] volumeAccessGroups,
-        VolumePair[] volumePairs,
-        Optional<String> deleteTime,
-        Optional<String> purgeTime,
-        Long sliceCount,
-        Long totalSize,
-        Long blockSize,
-        Optional<java.util.UUID> virtualVolumeID,
-        Attributes attributes
-    )
-    {
-        this.volumeID = volumeID;
-        this.name = name;
-        this.accountID = accountID;
-        this.createTime = createTime;
-        this.volumeConsistencyGroupUUID = volumeConsistencyGroupUUID;
-        this.volumeUUID = volumeUUID;
-        this.enableSnapMirrorReplication = enableSnapMirrorReplication;
-        this.status = status;
-        this.access = access;
-        this.enable512e = enable512e;
-        this.iqn = (iqn == null) ? Optional.<String>empty() : iqn;
-        this.scsiEUIDeviceID = scsiEUIDeviceID;
-        this.scsiNAADeviceID = scsiNAADeviceID;
-        this.qos = qos;
-        this.volumeAccessGroups = volumeAccessGroups;
-        this.volumePairs = volumePairs;
-        this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : deleteTime;
-        this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
-        this.sliceCount = sliceCount;
-        this.totalSize = totalSize;
-        this.blockSize = blockSize;
-        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
-        this.attributes = attributes;
-    }
-    // parameterized constructor
-    @Since("10.0")
     public Volume(
         Long volumeID,
         String name,
@@ -199,7 +99,9 @@ public class Volume implements Serializable {
         Long totalSize,
         Long blockSize,
         Optional<java.util.UUID> virtualVolumeID,
-        Attributes attributes
+        Attributes attributes,
+        String currentProtectionScheme,
+        Optional<String> previousProtectionScheme
     )
     {
         this.volumeID = volumeID;
@@ -228,6 +130,8 @@ public class Volume implements Serializable {
         this.blockSize = blockSize;
         this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
         this.attributes = attributes;
+        this.currentProtectionScheme = currentProtectionScheme;
+        this.previousProtectionScheme = (previousProtectionScheme == null) ? Optional.<String>empty() : previousProtectionScheme;
     }
 
     /** 
@@ -298,10 +202,6 @@ public class Volume implements Serializable {
     }
     /** 
      * Access allowed for the volume
-     * readOnly: Only read operations are allowed.
-     * readWrite: Reads and writes are allowed.
-     * locked: No reads or writes are allowed.
-     * replicationTarget: Designated as a target volume in a replicated volume pair.
      **/
     public String getAccess() { return this.access; }
    
@@ -452,6 +352,27 @@ public class Volume implements Serializable {
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
+    /** 
+     * Protection scheme that is being used for this volume
+     * If a volume is converting from one protection scheme to another, 
+     * this field will be set to the protection scheme that the volume is converting to.
+     **/
+    public String getCurrentProtectionScheme() { return this.currentProtectionScheme; }
+   
+    public void setCurrentProtectionScheme(String currentProtectionScheme) { 
+        this.currentProtectionScheme = currentProtectionScheme;
+    }
+    /** 
+     * If a volume is converting from one protection scheme to another, 
+     * this field will be set to the protection scheme the volume is converting from.
+     * This field will not change until another conversion is started.
+     * If a volume has never been converted, this field will be null.
+     **/
+    public Optional<String> getPreviousProtectionScheme() { return this.previousProtectionScheme; }
+   
+    public void setPreviousProtectionScheme(Optional<String> previousProtectionScheme) { 
+        this.previousProtectionScheme = (previousProtectionScheme == null) ? Optional.<String>empty() : previousProtectionScheme;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -486,12 +407,14 @@ public class Volume implements Serializable {
             Objects.equals(totalSize, that.totalSize) && 
             Objects.equals(blockSize, that.blockSize) && 
             Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(currentProtectionScheme, that.currentProtectionScheme) && 
+            Objects.equals(previousProtectionScheme, that.previousProtectionScheme);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,name,accountID,createTime,volumeConsistencyGroupUUID,volumeUUID,enableSnapMirrorReplication,status,access,enable512e,iqn,scsiEUIDeviceID,scsiNAADeviceID,qos,qosPolicyID,(Object[])volumeAccessGroups,(Object[])volumePairs,deleteTime,purgeTime,lastAccessTime,lastAccessTimeIO,sliceCount,totalSize,blockSize,virtualVolumeID,attributes );
+        return Objects.hash( volumeID,name,accountID,createTime,volumeConsistencyGroupUUID,volumeUUID,enableSnapMirrorReplication,status,access,enable512e,iqn,scsiEUIDeviceID,scsiNAADeviceID,qos,qosPolicyID,(Object[])volumeAccessGroups,(Object[])volumePairs,deleteTime,purgeTime,lastAccessTime,lastAccessTimeIO,sliceCount,totalSize,blockSize,virtualVolumeID,attributes,currentProtectionScheme,previousProtectionScheme );
     }
 
 
@@ -523,6 +446,8 @@ public class Volume implements Serializable {
         map.put("blockSize", blockSize);
         map.put("virtualVolumeID", virtualVolumeID);
         map.put("attributes", attributes);
+        map.put("currentProtectionScheme", currentProtectionScheme);
+        map.put("previousProtectionScheme", previousProtectionScheme);
         return map;
     }
 
@@ -593,6 +518,13 @@ public class Volume implements Serializable {
             sb.append(" virtualVolumeID : ").append("null").append(",");
         }
         sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        sb.append(" currentProtectionScheme : ").append(gson.toJson(currentProtectionScheme)).append(",");
+        if(null != previousProtectionScheme && previousProtectionScheme.isPresent()){
+            sb.append(" previousProtectionScheme : ").append(gson.toJson(previousProtectionScheme)).append(",");
+        }
+        else{
+            sb.append(" previousProtectionScheme : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -636,6 +568,8 @@ public class Volume implements Serializable {
         private Long blockSize;
         private Optional<java.util.UUID> virtualVolumeID;
         private Attributes attributes;
+        private String currentProtectionScheme;
+        private Optional<String> previousProtectionScheme;
 
         private Builder() { }
 
@@ -666,7 +600,9 @@ public class Volume implements Serializable {
                          this.totalSize,
                          this.blockSize,
                          this.virtualVolumeID,
-                         this.attributes);
+                         this.attributes,
+                         this.currentProtectionScheme,
+                         this.previousProtectionScheme);
         }
 
         private Volume.Builder buildFrom(final Volume req) {
@@ -696,6 +632,8 @@ public class Volume implements Serializable {
             this.blockSize = req.blockSize;
             this.virtualVolumeID = req.virtualVolumeID;
             this.attributes = req.attributes;
+            this.currentProtectionScheme = req.currentProtectionScheme;
+            this.previousProtectionScheme = req.previousProtectionScheme;
 
             return this;
         }
@@ -827,6 +765,16 @@ public class Volume implements Serializable {
 
         public Volume.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
+            return this;
+        }
+
+        public Volume.Builder currentProtectionScheme(final String currentProtectionScheme) {
+            this.currentProtectionScheme = currentProtectionScheme;
+            return this;
+        }
+
+        public Volume.Builder optionalPreviousProtectionScheme(final String previousProtectionScheme) {
+            this.previousProtectionScheme = (previousProtectionScheme == null) ? Optional.<String>empty() : Optional.of(previousProtectionScheme);
             return this;
         }
 

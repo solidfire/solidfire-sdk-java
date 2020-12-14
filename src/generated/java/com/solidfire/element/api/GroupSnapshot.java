@@ -35,13 +35,15 @@ import java.util.Objects;
 
 public class GroupSnapshot implements Serializable {
 
-    public static final long serialVersionUID = 7672350438056052972L;
+    public static final long serialVersionUID = -7882252378219486264L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
-    @SerializedName("members") private GroupSnapshotMembers[] members;
+    @SerializedName("members") private Snapshot[] members;
     @SerializedName("name") private String name;
     @SerializedName("createTime") private String createTime;
     @SerializedName("status") private String status;
+    @SerializedName("enableRemoteReplication") private Boolean enableRemoteReplication;
+    @SerializedName("remoteStatuses") private Optional<GroupSnapshotRemoteStatus[]> remoteStatuses;
     @SerializedName("attributes") private Attributes attributes;
     // empty constructor
     @Since("7.0")
@@ -53,10 +55,12 @@ public class GroupSnapshot implements Serializable {
     public GroupSnapshot(
         Long groupSnapshotID,
         java.util.UUID groupSnapshotUUID,
-        GroupSnapshotMembers[] members,
+        Snapshot[] members,
         String name,
         String createTime,
         String status,
+        Boolean enableRemoteReplication,
+        Optional<GroupSnapshotRemoteStatus[]> remoteStatuses,
         Attributes attributes
     )
     {
@@ -66,6 +70,8 @@ public class GroupSnapshot implements Serializable {
         this.name = name;
         this.createTime = createTime;
         this.status = status;
+        this.enableRemoteReplication = enableRemoteReplication;
+        this.remoteStatuses = (remoteStatuses == null) ? Optional.<GroupSnapshotRemoteStatus[]>empty() : remoteStatuses;
         this.attributes = attributes;
     }
 
@@ -86,11 +92,11 @@ public class GroupSnapshot implements Serializable {
         this.groupSnapshotUUID = groupSnapshotUUID;
     }
     /** 
-     * List of volumeIDs and snapshotIDs for each member of the group.
+     * List of snapshots that are members of the group.
      **/
-    public GroupSnapshotMembers[] getMembers() { return this.members; }
+    public Snapshot[] getMembers() { return this.members; }
    
-    public void setMembers(GroupSnapshotMembers[] members) { 
+    public void setMembers(Snapshot[] members) { 
         this.members = members;
     }
     /** 
@@ -121,6 +127,24 @@ public class GroupSnapshot implements Serializable {
         this.status = status;
     }
     /** 
+     * Identifies if group snapshot is enabled for remote replication.
+     **/
+    public Boolean getEnableRemoteReplication() { return this.enableRemoteReplication; }
+   
+    public void setEnableRemoteReplication(Boolean enableRemoteReplication) { 
+        this.enableRemoteReplication = enableRemoteReplication;
+    }
+    /** 
+     * Replication status of the group snapshot as seen on the source cluster.
+     * Shows if the group snapshot replication is currently in progress, or
+     * has successfully completed.
+     **/
+    public Optional<GroupSnapshotRemoteStatus[]> getRemoteStatuses() { return this.remoteStatuses; }
+   
+    public void setRemoteStatuses(Optional<GroupSnapshotRemoteStatus[]> remoteStatuses) { 
+        this.remoteStatuses = (remoteStatuses == null) ? Optional.<GroupSnapshotRemoteStatus[]>empty() : remoteStatuses;
+    }
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
     public Attributes getAttributes() { return this.attributes; }
@@ -143,12 +167,14 @@ public class GroupSnapshot implements Serializable {
             Objects.equals(name, that.name) && 
             Objects.equals(createTime, that.createTime) && 
             Objects.equals(status, that.status) && 
+            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) && 
+            Objects.equals(remoteStatuses, that.remoteStatuses) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( groupSnapshotID,groupSnapshotUUID,(Object[])members,name,createTime,status,attributes );
+        return Objects.hash( groupSnapshotID,groupSnapshotUUID,(Object[])members,name,createTime,status,enableRemoteReplication,remoteStatuses,attributes );
     }
 
 
@@ -160,6 +186,8 @@ public class GroupSnapshot implements Serializable {
         map.put("name", name);
         map.put("createTime", createTime);
         map.put("status", status);
+        map.put("enableRemoteReplication", enableRemoteReplication);
+        map.put("remoteStatuses", remoteStatuses);
         map.put("attributes", attributes);
         return map;
     }
@@ -176,6 +204,13 @@ public class GroupSnapshot implements Serializable {
         sb.append(" name : ").append(gson.toJson(name)).append(",");
         sb.append(" createTime : ").append(gson.toJson(createTime)).append(",");
         sb.append(" status : ").append(gson.toJson(status)).append(",");
+        sb.append(" enableRemoteReplication : ").append(gson.toJson(enableRemoteReplication)).append(",");
+        if(null != remoteStatuses && remoteStatuses.isPresent()){
+            sb.append(" remoteStatuses : ").append(gson.toJson(remoteStatuses)).append(",");
+        }
+        else{
+            sb.append(" remoteStatuses : ").append("null").append(",");
+        }
         sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
 
@@ -196,10 +231,12 @@ public class GroupSnapshot implements Serializable {
     public static class Builder {
         private Long groupSnapshotID;
         private java.util.UUID groupSnapshotUUID;
-        private GroupSnapshotMembers[] members;
+        private Snapshot[] members;
         private String name;
         private String createTime;
         private String status;
+        private Boolean enableRemoteReplication;
+        private Optional<GroupSnapshotRemoteStatus[]> remoteStatuses;
         private Attributes attributes;
 
         private Builder() { }
@@ -212,6 +249,8 @@ public class GroupSnapshot implements Serializable {
                          this.name,
                          this.createTime,
                          this.status,
+                         this.enableRemoteReplication,
+                         this.remoteStatuses,
                          this.attributes);
         }
 
@@ -222,6 +261,8 @@ public class GroupSnapshot implements Serializable {
             this.name = req.name;
             this.createTime = req.createTime;
             this.status = req.status;
+            this.enableRemoteReplication = req.enableRemoteReplication;
+            this.remoteStatuses = req.remoteStatuses;
             this.attributes = req.attributes;
 
             return this;
@@ -237,7 +278,7 @@ public class GroupSnapshot implements Serializable {
             return this;
         }
 
-        public GroupSnapshot.Builder members(final GroupSnapshotMembers[] members) {
+        public GroupSnapshot.Builder members(final Snapshot[] members) {
             this.members = members;
             return this;
         }
@@ -254,6 +295,16 @@ public class GroupSnapshot implements Serializable {
 
         public GroupSnapshot.Builder status(final String status) {
             this.status = status;
+            return this;
+        }
+
+        public GroupSnapshot.Builder enableRemoteReplication(final Boolean enableRemoteReplication) {
+            this.enableRemoteReplication = enableRemoteReplication;
+            return this;
+        }
+
+        public GroupSnapshot.Builder optionalRemoteStatuses(final GroupSnapshotRemoteStatus[] remoteStatuses) {
+            this.remoteStatuses = (remoteStatuses == null) ? Optional.<GroupSnapshotRemoteStatus[]>empty() : Optional.of(remoteStatuses);
             return this;
         }
 

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CompleteVolumePairingResult implements Serializable {
 
-    public static final long serialVersionUID = 7173541992712303221L;
+    public static final long serialVersionUID = -4997643646794501141L;
     // empty constructor
     @Since("7.0")
     public CompleteVolumePairingResult() {}

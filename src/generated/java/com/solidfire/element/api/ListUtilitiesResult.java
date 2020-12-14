@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListUtilitiesResult implements Serializable {
 
-    public static final long serialVersionUID = 7811487745346679708L;
+    public static final long serialVersionUID = 8257054112204351246L;
     @SerializedName("utilities") private Object utilities;
     // empty constructor
     @Since("7.0")

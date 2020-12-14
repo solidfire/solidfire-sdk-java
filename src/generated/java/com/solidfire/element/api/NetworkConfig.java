@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class NetworkConfig implements Serializable {
 
-    public static final long serialVersionUID = -6490718356259567027L;
+    public static final long serialVersionUID = 1500794885102466786L;
     @SerializedName("#default") private Optional<Boolean> _default;
     @SerializedName("bond-master") private Optional<String> bondMaster;
     @SerializedName("virtualNetworkTag") private Optional<String> virtualNetworkTag;
@@ -65,6 +65,7 @@ public class NetworkConfig implements Serializable {
     @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
     @SerializedName("bond-xmit_hash_policy") private Optional<String> bondXmitHashPolicy;
     @SerializedName("bond-ad_num_ports") private Optional<String> bondAdNumPorts;
+    @SerializedName("interfaceName") private Optional<String> interfaceName;
     // empty constructor
     @Since("7.0")
     public NetworkConfig() {}
@@ -102,7 +103,8 @@ public class NetworkConfig implements Serializable {
         Optional<String[]> symmetricRouteRules,
         Optional<Boolean> upAndRunning,
         Optional<String> bondXmitHashPolicy,
-        Optional<String> bondAdNumPorts
+        Optional<String> bondAdNumPorts,
+        Optional<String> interfaceName
     )
     {
         this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
@@ -135,6 +137,7 @@ public class NetworkConfig implements Serializable {
         this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
         this.bondXmitHashPolicy = (bondXmitHashPolicy == null) ? Optional.<String>empty() : bondXmitHashPolicy;
         this.bondAdNumPorts = (bondAdNumPorts == null) ? Optional.<String>empty() : bondAdNumPorts;
+        this.interfaceName = (interfaceName == null) ? Optional.<String>empty() : interfaceName;
     }
 
     /** 
@@ -377,6 +380,14 @@ public class NetworkConfig implements Serializable {
     public void setBondAdNumPorts(Optional<String> bondAdNumPorts) { 
         this.bondAdNumPorts = (bondAdNumPorts == null) ? Optional.<String>empty() : bondAdNumPorts;
     }
+    /** 
+     * The name of the interface.
+     **/
+    public Optional<String> getInterfaceName() { return this.interfaceName; }
+   
+    public void setInterfaceName(Optional<String> interfaceName) { 
+        this.interfaceName = (interfaceName == null) ? Optional.<String>empty() : interfaceName;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -415,12 +426,13 @@ public class NetworkConfig implements Serializable {
             Objects.equals(symmetricRouteRules, that.symmetricRouteRules) && 
             Objects.equals(upAndRunning, that.upAndRunning) && 
             Objects.equals(bondXmitHashPolicy, that.bondXmitHashPolicy) && 
-            Objects.equals(bondAdNumPorts, that.bondAdNumPorts);
+            Objects.equals(bondAdNumPorts, that.bondAdNumPorts) && 
+            Objects.equals(interfaceName, that.interfaceName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( _default,bondMaster,virtualNetworkTag,address,auto,bondDowndelay,bondFailOverMac,bondPrimaryReselect,bondLacpRate,bondMiimon,bondMode,bondSlaves,bondUpdelay,dnsNameservers,dnsSearch,family,gateway,macAddress,macAddressPermanent,method,mtu,netmask,network,physical,routes,status,symmetricRouteRules,upAndRunning,bondXmitHashPolicy,bondAdNumPorts );
+        return Objects.hash( _default,bondMaster,virtualNetworkTag,address,auto,bondDowndelay,bondFailOverMac,bondPrimaryReselect,bondLacpRate,bondMiimon,bondMode,bondSlaves,bondUpdelay,dnsNameservers,dnsSearch,family,gateway,macAddress,macAddressPermanent,method,mtu,netmask,network,physical,routes,status,symmetricRouteRules,upAndRunning,bondXmitHashPolicy,bondAdNumPorts,interfaceName );
     }
 
 
@@ -456,6 +468,7 @@ public class NetworkConfig implements Serializable {
         map.put("upAndRunning", upAndRunning);
         map.put("bondXmitHashPolicy", bondXmitHashPolicy);
         map.put("bondAdNumPorts", bondAdNumPorts);
+        map.put("interfaceName", interfaceName);
         return map;
     }
 
@@ -645,6 +658,12 @@ public class NetworkConfig implements Serializable {
         else{
             sb.append(" bondAdNumPorts : ").append("null").append(",");
         }
+        if(null != interfaceName && interfaceName.isPresent()){
+            sb.append(" interfaceName : ").append(gson.toJson(interfaceName)).append(",");
+        }
+        else{
+            sb.append(" interfaceName : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -692,6 +711,7 @@ public class NetworkConfig implements Serializable {
         private Optional<Boolean> upAndRunning;
         private Optional<String> bondXmitHashPolicy;
         private Optional<String> bondAdNumPorts;
+        private Optional<String> interfaceName;
 
         private Builder() { }
 
@@ -726,7 +746,8 @@ public class NetworkConfig implements Serializable {
                          this.symmetricRouteRules,
                          this.upAndRunning,
                          this.bondXmitHashPolicy,
-                         this.bondAdNumPorts);
+                         this.bondAdNumPorts,
+                         this.interfaceName);
         }
 
         private NetworkConfig.Builder buildFrom(final NetworkConfig req) {
@@ -760,6 +781,7 @@ public class NetworkConfig implements Serializable {
             this.upAndRunning = req.upAndRunning;
             this.bondXmitHashPolicy = req.bondXmitHashPolicy;
             this.bondAdNumPorts = req.bondAdNumPorts;
+            this.interfaceName = req.interfaceName;
 
             return this;
         }
@@ -911,6 +933,11 @@ public class NetworkConfig implements Serializable {
 
         public NetworkConfig.Builder optionalBondAdNumPorts(final String bondAdNumPorts) {
             this.bondAdNumPorts = (bondAdNumPorts == null) ? Optional.<String>empty() : Optional.of(bondAdNumPorts);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalInterfaceName(final String interfaceName) {
+            this.interfaceName = (interfaceName == null) ? Optional.<String>empty() : Optional.of(interfaceName);
             return this;
         }
 

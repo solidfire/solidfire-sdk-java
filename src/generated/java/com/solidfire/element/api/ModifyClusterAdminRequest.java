@@ -30,12 +30,14 @@ import java.util.Objects;
 
 /**
  * ModifyClusterAdminRequest  
- * You can use ModifyClusterAdmin to change the settings for a cluster admin or LDAP cluster admin. You cannot change access for the administrator cluster admin account.
+ * You can use ModifyClusterAdmin to change the settings for a cluster admin, LDAP cluster admin, 
+ * or third party Identity Provider (IdP) cluster admin.  You cannot change access for the 
+ * administrator cluster admin account.
  **/
 
 public class ModifyClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 4400919580991586247L;
+    public static final long serialVersionUID = 5069209326101258221L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("password") private Optional<String> password;
     @SerializedName("access") private Optional<String[]> access;
@@ -61,7 +63,7 @@ public class ModifyClusterAdminRequest implements Serializable {
     }
 
     /** 
-     * ClusterAdminID for the cluster admin or LDAP cluster admin to modify.
+     * ClusterAdminID for the cluster admin, LDAP cluster admin, or IdP cluster admin to modify.
      **/
     public Long getClusterAdminID() { return this.clusterAdminID; }
    
@@ -70,6 +72,7 @@ public class ModifyClusterAdminRequest implements Serializable {
     }
     /** 
      * Password used to authenticate this cluster admin.
+     * This parameter does not apply for an LDAP or IdP cluster admin.
      **/
     public Optional<String> getPassword() { return this.password; }
    

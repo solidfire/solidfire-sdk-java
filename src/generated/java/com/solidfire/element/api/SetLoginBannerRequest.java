@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SetLoginBannerRequest implements Serializable {
 
-    public static final long serialVersionUID = -1546643152030142445L;
+    public static final long serialVersionUID = -2973251334058156000L;
     @SerializedName("banner") private Optional<String> banner;
     @SerializedName("enabled") private Optional<Boolean> enabled;
 

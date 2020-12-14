@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class TestPingResult implements Serializable {
 
-    public static final long serialVersionUID = -5573014009870116151L;
+    public static final long serialVersionUID = -2302876140449496063L;
     @SerializedName("result") private String result;
     @SerializedName("duration") private String duration;
     @SerializedName("details") private Attributes details;

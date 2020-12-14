@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListActiveNodesResult implements Serializable {
 
-    public static final long serialVersionUID = 6747928319889012415L;
+    public static final long serialVersionUID = -8225215758007945891L;
     @SerializedName("nodes") private Node[] nodes;
     // empty constructor
     @Since("7.0")

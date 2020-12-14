@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class CloneVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 5788489168458713078L;
+    public static final long serialVersionUID = -3538025534910142360L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("newAccountID") private Optional<Long> newAccountID;
@@ -46,6 +46,7 @@ public class CloneVolumeRequest implements Serializable {
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("attributes") private Optional<Attributes> attributes;
     @SerializedName("enable512e") private Optional<Boolean> enable512e;
+    @SerializedName("enableSnapMirrorReplication") private Optional<Boolean> enableSnapMirrorReplication;
     // empty constructor
     @Since("7.0")
     public CloneVolumeRequest() {}
@@ -73,6 +74,30 @@ public class CloneVolumeRequest implements Serializable {
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
         this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
     }
+    // parameterized constructor
+    @Since("10.0")
+    public CloneVolumeRequest(
+        Long volumeID,
+        String name,
+        Optional<Long> newAccountID,
+        Optional<Long> newSize,
+        Optional<String> access,
+        Optional<Long> snapshotID,
+        Optional<Attributes> attributes,
+        Optional<Boolean> enable512e,
+        Optional<Boolean> enableSnapMirrorReplication
+    )
+    {
+        this.volumeID = volumeID;
+        this.name = name;
+        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
+        this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
+        this.access = (access == null) ? Optional.<String>empty() : access;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
+        this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : enableSnapMirrorReplication;
+    }
 
     /** 
      * VolumeID for the volume to be cloned.
@@ -83,7 +108,7 @@ public class CloneVolumeRequest implements Serializable {
         this.volumeID = volumeID;
     }
     /** 
-     * The name of the new cloned volume. Might be 1 to 64 characters in length.
+     * The name of the new cloned volume. Must be 1 to 64 characters in length.
      **/
     public String getName() { return this.name; }
    
@@ -100,7 +125,7 @@ public class CloneVolumeRequest implements Serializable {
         this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
     /** 
-     * New size of the volume, in bytes. Might be greater or less than the size of
+     * New size of the volume, in bytes. Must be greater or less than the size of
      * the volume being cloned. If unspecified, the volume size is not
      * changed. Size is rounded to the nearest 1MB.
      **/
@@ -110,14 +135,9 @@ public class CloneVolumeRequest implements Serializable {
         this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
     }
     /** 
-     * Specifies the level of access allowed for the new volume. Possible values are:
-     * readOnly: Only read operations are allowed.
-     * readWrite: Reads and writes are allowed.
-     * locked: No reads or writes are allowed. If unspecified, the level of access of the volume being cloned is used.
-     * replicationTarget: Identify a volume as the target volume for a
-     * paired set of volumes. If the volume is not paired, the access status is
-     * locked.
-     * If a value is not specified, the access value does not change.
+     * Specifies the level of access allowed for the new volume. If unspecified, the
+     * level of access of the volume being cloned is used. If replicationTarget is
+     * is passed and the volume is not paired, the access gets set to locked.
      **/
     public Optional<String> getAccess() { return this.access; }
    
@@ -142,12 +162,21 @@ public class CloneVolumeRequest implements Serializable {
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     /** 
-     * Should the volume provide 512-byte sector emulation?
+     * Specifies whether the new volume should use 512-byte sector emulation.
+     * If unspecified, the setting of the volume being cloned is used.
      **/
     public Optional<Boolean> getEnable512e() { return this.enable512e; }
    
     public void setEnable512e(Optional<Boolean> enable512e) { 
         this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
+    }
+    /** 
+     * Specifies whether SnapMirror replication is enabled or not. Defaults to false.
+     **/
+    public Optional<Boolean> getEnableSnapMirrorReplication() { return this.enableSnapMirrorReplication; }
+   
+    public void setEnableSnapMirrorReplication(Optional<Boolean> enableSnapMirrorReplication) { 
+        this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : enableSnapMirrorReplication;
     }
 
     @Override
@@ -165,12 +194,13 @@ public class CloneVolumeRequest implements Serializable {
             Objects.equals(access, that.access) && 
             Objects.equals(snapshotID, that.snapshotID) && 
             Objects.equals(attributes, that.attributes) && 
-            Objects.equals(enable512e, that.enable512e);
+            Objects.equals(enable512e, that.enable512e) && 
+            Objects.equals(enableSnapMirrorReplication, that.enableSnapMirrorReplication);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,name,newAccountID,newSize,access,snapshotID,attributes,enable512e );
+        return Objects.hash( volumeID,name,newAccountID,newSize,access,snapshotID,attributes,enable512e,enableSnapMirrorReplication );
     }
 
 
@@ -184,6 +214,7 @@ public class CloneVolumeRequest implements Serializable {
         map.put("snapshotID", snapshotID);
         map.put("attributes", attributes);
         map.put("enable512e", enable512e);
+        map.put("enableSnapMirrorReplication", enableSnapMirrorReplication);
         return map;
     }
 
@@ -231,6 +262,12 @@ public class CloneVolumeRequest implements Serializable {
         else{
             sb.append(" enable512e : ").append("null").append(",");
         }
+        if(null != enableSnapMirrorReplication && enableSnapMirrorReplication.isPresent()){
+            sb.append(" enableSnapMirrorReplication : ").append(gson.toJson(enableSnapMirrorReplication)).append(",");
+        }
+        else{
+            sb.append(" enableSnapMirrorReplication : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -256,6 +293,7 @@ public class CloneVolumeRequest implements Serializable {
         private Optional<Long> snapshotID;
         private Optional<Attributes> attributes;
         private Optional<Boolean> enable512e;
+        private Optional<Boolean> enableSnapMirrorReplication;
 
         private Builder() { }
 
@@ -268,7 +306,8 @@ public class CloneVolumeRequest implements Serializable {
                          this.access,
                          this.snapshotID,
                          this.attributes,
-                         this.enable512e);
+                         this.enable512e,
+                         this.enableSnapMirrorReplication);
         }
 
         private CloneVolumeRequest.Builder buildFrom(final CloneVolumeRequest req) {
@@ -280,6 +319,7 @@ public class CloneVolumeRequest implements Serializable {
             this.snapshotID = req.snapshotID;
             this.attributes = req.attributes;
             this.enable512e = req.enable512e;
+            this.enableSnapMirrorReplication = req.enableSnapMirrorReplication;
 
             return this;
         }
@@ -321,6 +361,11 @@ public class CloneVolumeRequest implements Serializable {
 
         public CloneVolumeRequest.Builder optionalEnable512e(final Boolean enable512e) {
             this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : Optional.of(enable512e);
+            return this;
+        }
+
+        public CloneVolumeRequest.Builder optionalEnableSnapMirrorReplication(final Boolean enableSnapMirrorReplication) {
+            this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableSnapMirrorReplication);
             return this;
         }
 

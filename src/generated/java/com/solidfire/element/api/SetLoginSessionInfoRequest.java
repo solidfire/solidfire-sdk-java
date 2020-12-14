@@ -35,8 +35,8 @@ import java.util.Objects;
 
 public class SetLoginSessionInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 1280173479845571914L;
-    @SerializedName("timeout") private String timeout;
+    public static final long serialVersionUID = 7529097864225273307L;
+    @SerializedName("timeout") private Optional<String> timeout;
     // empty constructor
     @Since("7.0")
     public SetLoginSessionInfoRequest() {}
@@ -45,10 +45,10 @@ public class SetLoginSessionInfoRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public SetLoginSessionInfoRequest(
-        String timeout
+        Optional<String> timeout
     )
     {
-        this.timeout = timeout;
+        this.timeout = (timeout == null) ? Optional.<String>empty() : timeout;
     }
 
     /** 
@@ -57,10 +57,10 @@ public class SetLoginSessionInfoRequest implements Serializable {
      * be used to equal a 90 minute timeout period. The default value is 30 minutes.
      * The minimum value is 1 minute.
      **/
-    public String getTimeout() { return this.timeout; }
+    public Optional<String> getTimeout() { return this.timeout; }
    
-    public void setTimeout(String timeout) { 
-        this.timeout = timeout;
+    public void setTimeout(Optional<String> timeout) { 
+        this.timeout = (timeout == null) ? Optional.<String>empty() : timeout;
     }
 
     @Override
@@ -92,7 +92,12 @@ public class SetLoginSessionInfoRequest implements Serializable {
         Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" timeout : ").append(gson.toJson(timeout)).append(",");
+        if(null != timeout && timeout.isPresent()){
+            sb.append(" timeout : ").append(gson.toJson(timeout)).append(",");
+        }
+        else{
+            sb.append(" timeout : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -110,7 +115,7 @@ public class SetLoginSessionInfoRequest implements Serializable {
     }
 
     public static class Builder {
-        private String timeout;
+        private Optional<String> timeout;
 
         private Builder() { }
 
@@ -125,8 +130,8 @@ public class SetLoginSessionInfoRequest implements Serializable {
             return this;
         }
 
-        public SetLoginSessionInfoRequest.Builder timeout(final String timeout) {
-            this.timeout = timeout;
+        public SetLoginSessionInfoRequest.Builder optionalTimeout(final String timeout) {
+            this.timeout = (timeout == null) ? Optional.<String>empty() : Optional.of(timeout);
             return this;
         }
 

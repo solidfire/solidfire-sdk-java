@@ -30,12 +30,21 @@ import java.util.Objects;
 
 /**
  * RemoveClusterAdminRequest  
- * You can use RemoveClusterAdmin to remove a Cluster Admin. You cannot remove the administrator cluster admin account.
+ * One can use this API to remove a local cluster admin, an LDAP cluster admin, or a third 
+ * party Identity Provider (IdP) cluster admin.  
+ * One cannot remove the administrator cluster admin account.  
+ * When an IdP Admin is removed that has authenticated sessions associated with a third party 
+ * Identity Provider (IdP), those sessions will either logout or possibly experience a loss of 
+ * access rights within their current session.  The access rights loss will depend on whether the 
+ * removed IdP cluster admin matched one of multiple IdP cluster admins from a given user's 
+ * SAML Attributes and the remaining set of matching IdP cluster admins results in a reduced 
+ * set of aggregate access rights.  
+ * Other cluster admin user types will be logged out upon their cluster admin removal.
  **/
 
 public class RemoveClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = -3802184349571466111L;
+    public static final long serialVersionUID = -8686765444087178008L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     // empty constructor
     @Since("7.0")

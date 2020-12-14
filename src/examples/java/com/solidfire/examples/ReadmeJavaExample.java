@@ -3,6 +3,7 @@ package com.solidfire.examples;
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.core.client.Attributes;
 
 // Import Optional common empty types (String, Long, & Map)
 import static com.solidfire.core.javautil.Optional.*;
@@ -22,9 +23,10 @@ public class ReadmeJavaExample {
         //* --------- EXAMPLE 2 - CREATE A VOLUME ------------- *//
         // Construct a request with parameters using the constructor.
         CreateVolumeRequest createVolumeRequest = new CreateVolumeRequest("volumeName", accountId,
-                1000000000l, false,
+        		1000000000l, Optional.of(false),
                 Optional.<QoS>empty(),
-                EMPTY_MAP);
+                Optional.<Attributes>empty(),
+                Optional.<String>empty());
 
         // Send the "CreateVolume" request pull the VolumeID off the result object
         Long volumeId = sf.createVolume(createVolumeRequest).getVolumeID();
@@ -33,11 +35,11 @@ public class ReadmeJavaExample {
         // Send the "ListVolume" request with desired parameters inline and pull the first volume in the result
         Volume volume = sf.listVolumesForAccount(accountId, of(volumeId), of(1l)).getVolumes()[0];
         // Pull the iqn from the volume
-        String iqn = volume.getIqn();
+        Optional<String> iqn = (Optional<String>) volume.getIqn();
 
         //* --------- EXAMPLE 3 - MODIFY A VOLUME ------------- *//
         // Change Min and Burst QoS while keeping Max and Burst Time the same
-        QoS qos = new QoS(of(5000l), EMPTY_LONG, of(30000l), EMPTY_LONG);
+        QoS qos = new QoS(of(5000l), EMPTY_LONG, of(30000l), EMPTY_LONG, Optional.<Attributes>empty());
 
         // Construct request to modify the volume size and QoS using the builder
         ModifyVolumeRequest modifyVolumeRequest = ModifyVolumeRequest.builder()

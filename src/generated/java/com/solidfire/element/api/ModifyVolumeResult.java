@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ModifyVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = 7716152308587193073L;
+    public static final long serialVersionUID = -3505262719450046669L;
     @SerializedName("volume") private Optional<Volume> volume;
     // empty constructor
     @Since("7.0")

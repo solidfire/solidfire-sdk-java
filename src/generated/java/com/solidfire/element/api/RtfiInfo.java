@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class RtfiInfo implements Serializable {
 
-    public static final long serialVersionUID = 2818977902491736813L;
+    public static final long serialVersionUID = 6355107823431287205L;
     @SerializedName("mipi") private Optional<String> mipi;
     @SerializedName("generation") private Object generation;
     @SerializedName("statusUrlLogfile") private Optional<String> statusUrlLogfile;

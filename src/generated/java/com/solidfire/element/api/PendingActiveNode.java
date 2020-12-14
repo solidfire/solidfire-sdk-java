@@ -30,19 +30,23 @@ import java.util.Objects;
 
 /**
  * PendingActiveNode  
+ * A pending active node refers to a pending node that is in the process of joining a cluster as an active node.
+ * When the node becomes active, any drives associated with the node will become available for addition to the cluster.
  **/
 
 public class PendingActiveNode implements Serializable {
 
-    public static final long serialVersionUID = 6847418537242966542L;
+    public static final long serialVersionUID = 607604195770745450L;
     @SerializedName("activeNodeKey") private String activeNodeKey;
+    @SerializedName("pendingActiveNodeID") private Long pendingActiveNodeID;
+    @SerializedName("pendingNodeID") private Long pendingNodeID;
     @SerializedName("assignedNodeID") private Long assignedNodeID;
     @SerializedName("asyncHandle") private Long asyncHandle;
     @SerializedName("cip") private String cip;
     @SerializedName("mip") private String mip;
-    @SerializedName("pendingNodeID") private Long pendingNodeID;
-    @SerializedName("platformInfo") private Platform platformInfo;
     @SerializedName("sip") private String sip;
+    @SerializedName("platformInfo") private Platform platformInfo;
+    @SerializedName("role") private String role;
     @SerializedName("softwareVersion") private String softwareVersion;
     // empty constructor
     @Since("7.0")
@@ -53,24 +57,28 @@ public class PendingActiveNode implements Serializable {
     @Since("7.0")
     public PendingActiveNode(
         String activeNodeKey,
+        Long pendingActiveNodeID,
+        Long pendingNodeID,
         Long assignedNodeID,
         Long asyncHandle,
         String cip,
         String mip,
-        Long pendingNodeID,
-        Platform platformInfo,
         String sip,
+        Platform platformInfo,
+        String role,
         String softwareVersion
     )
     {
         this.activeNodeKey = activeNodeKey;
+        this.pendingActiveNodeID = pendingActiveNodeID;
+        this.pendingNodeID = pendingNodeID;
         this.assignedNodeID = assignedNodeID;
         this.asyncHandle = asyncHandle;
         this.cip = cip;
         this.mip = mip;
-        this.pendingNodeID = pendingNodeID;
-        this.platformInfo = platformInfo;
         this.sip = sip;
+        this.platformInfo = platformInfo;
+        this.role = role;
         this.softwareVersion = softwareVersion;
     }
 
@@ -81,6 +89,22 @@ public class PendingActiveNode implements Serializable {
    
     public void setActiveNodeKey(String activeNodeKey) { 
         this.activeNodeKey = activeNodeKey;
+    }
+    /** 
+     * 
+     **/
+    public Long getPendingActiveNodeID() { return this.pendingActiveNodeID; }
+   
+    public void setPendingActiveNodeID(Long pendingActiveNodeID) { 
+        this.pendingActiveNodeID = pendingActiveNodeID;
+    }
+    /** 
+     * 
+     **/
+    public Long getPendingNodeID() { return this.pendingNodeID; }
+   
+    public void setPendingNodeID(Long pendingNodeID) { 
+        this.pendingNodeID = pendingNodeID;
     }
     /** 
      * 
@@ -99,7 +123,7 @@ public class PendingActiveNode implements Serializable {
         this.asyncHandle = asyncHandle;
     }
     /** 
-     * 
+     * IP address used for both intra-cluster and inter-cluster communication.
      **/
     public String getCip() { return this.cip; }
    
@@ -107,7 +131,7 @@ public class PendingActiveNode implements Serializable {
         this.cip = cip;
     }
     /** 
-     * 
+     * IP address used for the per-node API and UI.
      **/
     public String getMip() { return this.mip; }
    
@@ -115,23 +139,7 @@ public class PendingActiveNode implements Serializable {
         this.mip = mip;
     }
     /** 
-     * 
-     **/
-    public Long getPendingNodeID() { return this.pendingNodeID; }
-   
-    public void setPendingNodeID(Long pendingNodeID) { 
-        this.pendingNodeID = pendingNodeID;
-    }
-    /** 
-     * 
-     **/
-    public Platform getPlatformInfo() { return this.platformInfo; }
-   
-    public void setPlatformInfo(Platform platformInfo) { 
-        this.platformInfo = platformInfo;
-    }
-    /** 
-     * 
+     * IP address used for iSCSI traffic.
      **/
     public String getSip() { return this.sip; }
    
@@ -139,7 +147,23 @@ public class PendingActiveNode implements Serializable {
         this.sip = sip;
     }
     /** 
-     * 
+     * Information about the node's hardware.
+     **/
+    public Platform getPlatformInfo() { return this.platformInfo; }
+   
+    public void setPlatformInfo(Platform platformInfo) { 
+        this.platformInfo = platformInfo;
+    }
+    /** 
+     * The node's role in the cluster. Possible values are Management, Storage, Compute, and Witness.
+     **/
+    public String getRole() { return this.role; }
+   
+    public void setRole(String role) { 
+        this.role = role;
+    }
+    /** 
+     * The version of SolidFire software currently running on this node.
      **/
     public String getSoftwareVersion() { return this.softwareVersion; }
    
@@ -156,32 +180,36 @@ public class PendingActiveNode implements Serializable {
 
         return 
             Objects.equals(activeNodeKey, that.activeNodeKey) && 
+            Objects.equals(pendingActiveNodeID, that.pendingActiveNodeID) && 
+            Objects.equals(pendingNodeID, that.pendingNodeID) && 
             Objects.equals(assignedNodeID, that.assignedNodeID) && 
             Objects.equals(asyncHandle, that.asyncHandle) && 
             Objects.equals(cip, that.cip) && 
             Objects.equals(mip, that.mip) && 
-            Objects.equals(pendingNodeID, that.pendingNodeID) && 
-            Objects.equals(platformInfo, that.platformInfo) && 
             Objects.equals(sip, that.sip) && 
+            Objects.equals(platformInfo, that.platformInfo) && 
+            Objects.equals(role, that.role) && 
             Objects.equals(softwareVersion, that.softwareVersion);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( activeNodeKey,assignedNodeID,asyncHandle,cip,mip,pendingNodeID,platformInfo,sip,softwareVersion );
+        return Objects.hash( activeNodeKey,pendingActiveNodeID,pendingNodeID,assignedNodeID,asyncHandle,cip,mip,sip,platformInfo,role,softwareVersion );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("activeNodeKey", activeNodeKey);
+        map.put("pendingActiveNodeID", pendingActiveNodeID);
+        map.put("pendingNodeID", pendingNodeID);
         map.put("assignedNodeID", assignedNodeID);
         map.put("asyncHandle", asyncHandle);
         map.put("cip", cip);
         map.put("mip", mip);
-        map.put("pendingNodeID", pendingNodeID);
-        map.put("platformInfo", platformInfo);
         map.put("sip", sip);
+        map.put("platformInfo", platformInfo);
+        map.put("role", role);
         map.put("softwareVersion", softwareVersion);
         return map;
     }
@@ -193,13 +221,15 @@ public class PendingActiveNode implements Serializable {
         sb.append( "{ " );
 
         sb.append(" activeNodeKey : ").append(gson.toJson(activeNodeKey)).append(",");
+        sb.append(" pendingActiveNodeID : ").append(gson.toJson(pendingActiveNodeID)).append(",");
+        sb.append(" pendingNodeID : ").append(gson.toJson(pendingNodeID)).append(",");
         sb.append(" assignedNodeID : ").append(gson.toJson(assignedNodeID)).append(",");
         sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
         sb.append(" cip : ").append(gson.toJson(cip)).append(",");
         sb.append(" mip : ").append(gson.toJson(mip)).append(",");
-        sb.append(" pendingNodeID : ").append(gson.toJson(pendingNodeID)).append(",");
-        sb.append(" platformInfo : ").append(gson.toJson(platformInfo)).append(",");
         sb.append(" sip : ").append(gson.toJson(sip)).append(",");
+        sb.append(" platformInfo : ").append(gson.toJson(platformInfo)).append(",");
+        sb.append(" role : ").append(gson.toJson(role)).append(",");
         sb.append(" softwareVersion : ").append(gson.toJson(softwareVersion)).append(",");
         sb.append( " }" );
 
@@ -219,13 +249,15 @@ public class PendingActiveNode implements Serializable {
 
     public static class Builder {
         private String activeNodeKey;
+        private Long pendingActiveNodeID;
+        private Long pendingNodeID;
         private Long assignedNodeID;
         private Long asyncHandle;
         private String cip;
         private String mip;
-        private Long pendingNodeID;
-        private Platform platformInfo;
         private String sip;
+        private Platform platformInfo;
+        private String role;
         private String softwareVersion;
 
         private Builder() { }
@@ -233,25 +265,29 @@ public class PendingActiveNode implements Serializable {
         public PendingActiveNode build() {
             return new PendingActiveNode (
                          this.activeNodeKey,
+                         this.pendingActiveNodeID,
+                         this.pendingNodeID,
                          this.assignedNodeID,
                          this.asyncHandle,
                          this.cip,
                          this.mip,
-                         this.pendingNodeID,
-                         this.platformInfo,
                          this.sip,
+                         this.platformInfo,
+                         this.role,
                          this.softwareVersion);
         }
 
         private PendingActiveNode.Builder buildFrom(final PendingActiveNode req) {
             this.activeNodeKey = req.activeNodeKey;
+            this.pendingActiveNodeID = req.pendingActiveNodeID;
+            this.pendingNodeID = req.pendingNodeID;
             this.assignedNodeID = req.assignedNodeID;
             this.asyncHandle = req.asyncHandle;
             this.cip = req.cip;
             this.mip = req.mip;
-            this.pendingNodeID = req.pendingNodeID;
-            this.platformInfo = req.platformInfo;
             this.sip = req.sip;
+            this.platformInfo = req.platformInfo;
+            this.role = req.role;
             this.softwareVersion = req.softwareVersion;
 
             return this;
@@ -259,6 +295,16 @@ public class PendingActiveNode implements Serializable {
 
         public PendingActiveNode.Builder activeNodeKey(final String activeNodeKey) {
             this.activeNodeKey = activeNodeKey;
+            return this;
+        }
+
+        public PendingActiveNode.Builder pendingActiveNodeID(final Long pendingActiveNodeID) {
+            this.pendingActiveNodeID = pendingActiveNodeID;
+            return this;
+        }
+
+        public PendingActiveNode.Builder pendingNodeID(final Long pendingNodeID) {
+            this.pendingNodeID = pendingNodeID;
             return this;
         }
 
@@ -282,8 +328,8 @@ public class PendingActiveNode implements Serializable {
             return this;
         }
 
-        public PendingActiveNode.Builder pendingNodeID(final Long pendingNodeID) {
-            this.pendingNodeID = pendingNodeID;
+        public PendingActiveNode.Builder sip(final String sip) {
+            this.sip = sip;
             return this;
         }
 
@@ -292,8 +338,8 @@ public class PendingActiveNode implements Serializable {
             return this;
         }
 
-        public PendingActiveNode.Builder sip(final String sip) {
-            this.sip = sip;
+        public PendingActiveNode.Builder role(final String role) {
+            this.role = role;
             return this;
         }
 

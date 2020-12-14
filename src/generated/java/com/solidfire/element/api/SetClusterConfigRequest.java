@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class SetClusterConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = 3612210251242528660L;
+    public static final long serialVersionUID = -1288858540767609614L;
     @SerializedName("cluster") private ClusterConfig cluster;
     // empty constructor
     @Since("7.0")

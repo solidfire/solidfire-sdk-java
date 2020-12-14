@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetVolumeAccessGroupLunAssignmentsResult implements Serializable {
 
-    public static final long serialVersionUID = 7463507992215591007L;
+    public static final long serialVersionUID = 4744634059049847020L;
     @SerializedName("volumeAccessGroupLunAssignments") private VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments;
     // empty constructor
     @Since("7.0")

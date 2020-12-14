@@ -94,11 +94,17 @@ object Config {
     )
   )
 
-  lazy val repositories = List(
-    "Maven Central" at "http://repo1.maven.org/maven2/",
-    "Sonatype Snapshots" at "https://oss.sonatype.org/content/groups/public/",
-    "Sonatype Snapshots Staging" at "https://oss.sonatype.org/content/groups/staging/"
-  )
+  lazy val site = sys.env.getOrElse("SITE", "")
+  lazy val repositories = if (site != "")
+    List(
+      "Maven Central" at "http://repoproxy-" + site + ".eng.netapp.com:8081/artifactory/maven-central/"
+    )
+  else
+    List(
+     "Maven Central" at "https://repo1.maven.org/maven2/",
+     "Sonatype Snapshots" at "https://oss.sonatype.org/content/groups/public/",
+     "Sonatype Snapshots Staging" at "https://oss.sonatype.org/content/groups/staging/"
+    )
 
   lazy val junitReports = testOptions in Test <+= (target in Test) map { target =>
     val reportTarget = target / "test-reports"
@@ -152,7 +158,7 @@ object SDKBuild extends Build {
       Dependencies.jodaConvert,
       Dependencies.base64
     ),
-    OsgiKeys.exportPackage := Seq( "com.solidfire.adaptor", "com.solidfire.client", "com.solidfire.javautil", "com.solidfire.serialization", "com.solidfire.annotation", "com.solidfire.element.api" ),
+    OsgiKeys.exportPackage := Seq( "com.solidfire.adaptor", "com.solidfire.client", "com.solidfire.javautil", "com.solidfire.serialization", "com.solidfire.annotation", "com.solidfire.element.api", "com.solidfire.core.annotation", "com.solidfire.core.client", "com.solidfire.core.javautil", "com.solidfire.core.reflection", "com.solidfire.core.serialization", "com.solidfire.element.apiactual" ),
     OsgiKeys.additionalHeaders := Map( Constants.NOEE -> "true", Constants.REQUIRE_CAPABILITY -> "" ),
     // Here we redefine the "package" task to generate the OSGi Bundle.
     Keys.`package` in Compile <<= OsgiKeys.bundle

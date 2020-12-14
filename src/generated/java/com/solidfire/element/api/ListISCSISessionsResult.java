@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListISCSISessionsResult implements Serializable {
 
-    public static final long serialVersionUID = 3301056024020204128L;
+    public static final long serialVersionUID = 4948073438825846784L;
     @SerializedName("sessions") private ISCSISession[] sessions;
     // empty constructor
     @Since("7.0")

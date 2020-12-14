@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class EnableFeatureRequest implements Serializable {
 
-    public static final long serialVersionUID = 7567376194938407164L;
+    public static final long serialVersionUID = -6585098956252878445L;
     @SerializedName("feature") private String feature;
     // empty constructor
     @Since("7.0")
@@ -52,8 +52,11 @@ public class EnableFeatureRequest implements Serializable {
     }
 
     /** 
-     * Indicates which feature to enable. Valid value is:
+     * Indicates which feature to enable. Valid values are:
      * vvols: Enable the NetApp SolidFire VVols cluster feature.
+     * FipsDrives: Enable the NetApp SolidFire cluster FIPS 140-2 drive support.
+     * Fips: Enable FIPS 140-2 certified encryption for HTTPS communications.
+     * SnapMirror: Enable the SnapMirror replication cluster feature.
      **/
     public String getFeature() { return this.feature; }
    

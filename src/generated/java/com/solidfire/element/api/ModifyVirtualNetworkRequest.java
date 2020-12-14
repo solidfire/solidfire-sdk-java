@@ -41,7 +41,7 @@ import java.util.Objects;
 
 public class ModifyVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = 9179598987773624731L;
+    public static final long serialVersionUID = -5951988628125731270L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
     @SerializedName("name") private Optional<String> name;
@@ -167,7 +167,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         this.svip = (svip == null) ? Optional.<String>empty() : svip;
     }
     /** 
-     * The IP address of a gateway of the virtual network. This parameter is only valid if the "namespace" parameter is set to true.
+     * The IP address of a gateway of the virtual network. This parameter is valid only if the namespace parameter is set to true (meaning VRF is enabled).
      **/
     public Optional<String> getGateway() { return this.gateway; }
    
@@ -175,7 +175,9 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
     }
     /** 
-     * When set to true, enables Routable Storage VLANs functionality by recreating the virtual network and configuring a namespace to contain it. When set to false, disables the VRF functionality for the virtual network. Changing this value disrupts traffic running through this virtual network.
+     * When set to true, enables the Routable Storage VLANs functionality by recreating the virtual network and configuring a namespace to contain it.
+     * When set to false, disables the VRF functionality for the virtual network.
+     * Changing this value disrupts traffic running through this virtual network.
      **/
     public Optional<Boolean> getNamespace() { return this.namespace; }
    

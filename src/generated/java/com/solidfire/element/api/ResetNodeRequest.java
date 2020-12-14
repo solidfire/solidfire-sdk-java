@@ -41,7 +41,7 @@ import java.util.Objects;
 
 public class ResetNodeRequest implements Serializable {
 
-    public static final long serialVersionUID = 7770460626963941644L;
+    public static final long serialVersionUID = -1754403665715752057L;
     @SerializedName("build") private String build;
     @SerializedName("force") private Boolean force;
     @SerializedName("reboot") private Optional<Boolean> reboot;

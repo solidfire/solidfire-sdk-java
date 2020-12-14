@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ClusterAdmin implements Serializable {
 
-    public static final long serialVersionUID = 5002497716622301063L;
+    public static final long serialVersionUID = 1414885579893568425L;
     @SerializedName("authMethod") private String authMethod;
     @SerializedName("access") private String[] access;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
@@ -63,7 +63,7 @@ public class ClusterAdmin implements Serializable {
     }
 
     /** 
-     * 
+     * Method in which the cluster admin can be authenticated.
      **/
     public String getAuthMethod() { return this.authMethod; }
    
@@ -71,7 +71,7 @@ public class ClusterAdmin implements Serializable {
         this.authMethod = authMethod;
     }
     /** 
-     * 
+     * Controls which methods this cluster admin can use. For more details, see Access Control in the Element API Reference Guide.
      **/
     public String[] getAccess() { return this.access; }
    
@@ -79,7 +79,7 @@ public class ClusterAdmin implements Serializable {
         this.access = access;
     }
     /** 
-     * 
+     * Unique identifier for the cluster admin
      **/
     public Long getClusterAdminID() { return this.clusterAdminID; }
    
@@ -87,7 +87,7 @@ public class ClusterAdmin implements Serializable {
         this.clusterAdminID = clusterAdminID;
     }
     /** 
-     * 
+     * Username, LDAP DN, or SAML Attribute for the cluster admin.
      **/
     public String getUsername() { return this.username; }
    

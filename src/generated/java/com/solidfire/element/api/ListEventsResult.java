@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListEventsResult implements Serializable {
 
-    public static final long serialVersionUID = 2761767569186265400L;
+    public static final long serialVersionUID = 2943308851231016205L;
     @SerializedName("eventQueueType") private String eventQueueType;
     @SerializedName("events") private EventInfo[] events;
     // empty constructor
@@ -54,7 +54,7 @@ public class ListEventsResult implements Serializable {
     }
 
     /** 
-     * 
+     * event queue type
      **/
     public String getEventQueueType() { return this.eventQueueType; }
    
@@ -62,7 +62,7 @@ public class ListEventsResult implements Serializable {
         this.eventQueueType = eventQueueType;
     }
     /** 
-     * 
+     * list of events
      **/
     public EventInfo[] getEvents() { return this.events; }
    

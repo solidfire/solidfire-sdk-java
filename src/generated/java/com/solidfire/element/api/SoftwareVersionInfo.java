@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SoftwareVersionInfo implements Serializable {
 
-    public static final long serialVersionUID = -4210356135559607214L;
+    public static final long serialVersionUID = -6760757640330603036L;
     @SerializedName("currentVersion") private String currentVersion;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("packageName") private String packageName;

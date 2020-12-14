@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class InvokeSFApiRequest implements Serializable {
 
-    public static final long serialVersionUID = -3644984175863972914L;
+    public static final long serialVersionUID = -8967861730174076239L;
     @SerializedName("method") private String method;
     @SerializedName("parameters") private Optional<Object> parameters;
     // empty constructor

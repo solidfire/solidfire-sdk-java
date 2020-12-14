@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class GetAccountEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = 5822006002710065522L;
+    public static final long serialVersionUID = -4524621752751401164L;
     @SerializedName("accountID") private Long accountID;
     // empty constructor
     @Since("7.0")

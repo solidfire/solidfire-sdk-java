@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class NodeStateResult implements Serializable {
 
-    public static final long serialVersionUID = 1253365030459376831L;
+    public static final long serialVersionUID = -3097130718420360426L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("result") private Optional<NodeStateInfo> result;
     // empty constructor

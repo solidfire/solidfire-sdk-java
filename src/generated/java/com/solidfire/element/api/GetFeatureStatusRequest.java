@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class GetFeatureStatusRequest implements Serializable {
 
-    public static final long serialVersionUID = -6557742284592325892L;
+    public static final long serialVersionUID = 7938752140849566624L;
     @SerializedName("feature") private Optional<String> feature;
     // empty constructor
     @Since("7.0")
@@ -52,9 +52,11 @@ public class GetFeatureStatusRequest implements Serializable {
     }
 
     /** 
-     * Specifies the feature for which the status is returned. Valid value is:
-     * vvols: Retrieve status for the NetApp SolidFire VVols
-     * cluster feature.
+     * Specifies the feature for which the status is returned. Valid values are:
+     * vvols: Retrieve status for the NetApp SolidFire VVols cluster feature.
+     * FipsDrives: Retrieve status for the FIPS 140-2 drive encryption feature.
+     * Fips: Retrieve status for the FIPS 140-2 encryption for HTTPS communication feature.
+     * SnapMirror: Retrieve status for the SnapMirror replication cluster feature.
      **/
     public Optional<String> getFeature() { return this.feature; }
    

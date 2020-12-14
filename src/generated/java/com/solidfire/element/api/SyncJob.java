@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SyncJob implements Serializable {
 
-    public static final long serialVersionUID = -4209032567051207727L;
+    public static final long serialVersionUID = 4824212650855022569L;
     @SerializedName("bytesPerSecond") private Double bytesPerSecond;
     @SerializedName("currentBytes") private Long currentBytes;
     @SerializedName("dstServiceID") private Long dstServiceID;
@@ -174,7 +174,7 @@ public class SyncJob implements Serializable {
         this.totalBytes = totalBytes;
     }
     /** 
-     * 
+     * The type of syncing taking place. It will be one of block, slice, clone, or remote.
      **/
     public String getType() { return this.type; }
    

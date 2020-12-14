@@ -35,12 +35,17 @@ import java.util.Objects;
 
 public class Initiator implements Serializable {
 
-    public static final long serialVersionUID = -3345742751132381246L;
+    public static final long serialVersionUID = 587103886562021696L;
     @SerializedName("alias") private String alias;
     @SerializedName("initiatorID") private Long initiatorID;
     @SerializedName("initiatorName") private String initiatorName;
     @SerializedName("volumeAccessGroups") private Long[] volumeAccessGroups;
     @SerializedName("attributes") private Attributes attributes;
+    @SerializedName("requireChap") private Boolean requireChap;
+    @SerializedName("chapUsername") private Optional<String> chapUsername;
+    @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
+    @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
+    @SerializedName("virtualNetworkIDs") private Long[] virtualNetworkIDs;
     // empty constructor
     @Since("7.0")
     public Initiator() {}
@@ -53,7 +58,11 @@ public class Initiator implements Serializable {
         Long initiatorID,
         String initiatorName,
         Long[] volumeAccessGroups,
-        Attributes attributes
+        Attributes attributes,
+        Boolean requireChap,
+        Optional<String> chapUsername,
+        Optional<CHAPSecret> initiatorSecret,
+        Optional<CHAPSecret> targetSecret
     )
     {
         this.alias = alias;
@@ -61,10 +70,40 @@ public class Initiator implements Serializable {
         this.initiatorName = initiatorName;
         this.volumeAccessGroups = volumeAccessGroups;
         this.attributes = attributes;
+        this.requireChap = requireChap;
+        this.chapUsername = (chapUsername == null) ? Optional.<String>empty() : chapUsername;
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public Initiator(
+        String alias,
+        Long initiatorID,
+        String initiatorName,
+        Long[] volumeAccessGroups,
+        Attributes attributes,
+        Boolean requireChap,
+        Optional<String> chapUsername,
+        Optional<CHAPSecret> initiatorSecret,
+        Optional<CHAPSecret> targetSecret,
+        Long[] virtualNetworkIDs
+    )
+    {
+        this.alias = alias;
+        this.initiatorID = initiatorID;
+        this.initiatorName = initiatorName;
+        this.volumeAccessGroups = volumeAccessGroups;
+        this.attributes = attributes;
+        this.requireChap = requireChap;
+        this.chapUsername = (chapUsername == null) ? Optional.<String>empty() : chapUsername;
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
+        this.virtualNetworkIDs = virtualNetworkIDs;
     }
 
     /** 
-     * The friendly name assigned to this initiator. (String)
+     * The friendly name assigned to this initiator.
      **/
     public String getAlias() { return this.alias; }
    
@@ -72,7 +111,7 @@ public class Initiator implements Serializable {
         this.alias = alias;
     }
     /** 
-     * The numeric ID of the initiator that has been created. (Integer)
+     * The numeric ID of the initiator that has been created.
      **/
     public Long getInitiatorID() { return this.initiatorID; }
    
@@ -80,7 +119,7 @@ public class Initiator implements Serializable {
         this.initiatorID = initiatorID;
     }
     /** 
-     * The name of the initiator that has been created. (String)
+     * The name of the initiator that has been created.
      **/
     public String getInitiatorName() { return this.initiatorName; }
    
@@ -88,7 +127,7 @@ public class Initiator implements Serializable {
         this.initiatorName = initiatorName;
     }
     /** 
-     * A list of volumeAccessGroupIDs to which this initiator beintegers. (Array of Integers)
+     * A list of volumeAccessGroupIDs to which this initiator belongs.
      **/
     public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
    
@@ -96,12 +135,54 @@ public class Initiator implements Serializable {
         this.volumeAccessGroups = volumeAccessGroups;
     }
     /** 
-     * A set of JSON attributes assigned to this initiator. (JSON Object)
+     * A set of JSON attributes assigned to this initiator.
      **/
     public Attributes getAttributes() { return this.attributes; }
    
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
+    }
+    /** 
+     * True if CHAP is required for this Initiator.
+     **/
+    public Boolean getRequireChap() { return this.requireChap; }
+   
+    public void setRequireChap(Boolean requireChap) { 
+        this.requireChap = requireChap;
+    }
+    /** 
+     * The unique CHAP username for this initiator.
+     **/
+    public Optional<String> getChapUsername() { return this.chapUsername; }
+   
+    public void setChapUsername(Optional<String> chapUsername) { 
+        this.chapUsername = (chapUsername == null) ? Optional.<String>empty() : chapUsername;
+    }
+    /** 
+     * The CHAP secret used to authenticate the initiator.
+     **/
+    public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
+   
+    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
+    }
+    /** 
+     * The CHAP secret used to authenticate the target (mutual CHAP authentication).
+     **/
+    public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
+   
+    public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
+    }
+    /** 
+     * The list of virtual network identifiers associated with this initiator.
+     * If one or more are defined, this initiator will only be able to login to the specified virtual networks.
+     * If no virtual networks are defined this initiator can login to all networks.
+     **/
+    public Long[] getVirtualNetworkIDs() { return this.virtualNetworkIDs; }
+   
+    public void setVirtualNetworkIDs(Long[] virtualNetworkIDs) { 
+        this.virtualNetworkIDs = virtualNetworkIDs;
     }
 
     @Override
@@ -116,12 +197,17 @@ public class Initiator implements Serializable {
             Objects.equals(initiatorID, that.initiatorID) && 
             Objects.equals(initiatorName, that.initiatorName) && 
             Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(requireChap, that.requireChap) && 
+            Objects.equals(chapUsername, that.chapUsername) && 
+            Objects.equals(initiatorSecret, that.initiatorSecret) && 
+            Objects.equals(targetSecret, that.targetSecret) && 
+            Arrays.equals(virtualNetworkIDs, that.virtualNetworkIDs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( alias,initiatorID,initiatorName,(Object[])volumeAccessGroups,attributes );
+        return Objects.hash( alias,initiatorID,initiatorName,(Object[])volumeAccessGroups,attributes,requireChap,chapUsername,initiatorSecret,targetSecret,(Object[])virtualNetworkIDs );
     }
 
 
@@ -132,6 +218,11 @@ public class Initiator implements Serializable {
         map.put("initiatorName", initiatorName);
         map.put("volumeAccessGroups", volumeAccessGroups);
         map.put("attributes", attributes);
+        map.put("requireChap", requireChap);
+        map.put("chapUsername", chapUsername);
+        map.put("initiatorSecret", initiatorSecret);
+        map.put("targetSecret", targetSecret);
+        map.put("virtualNetworkIDs", virtualNetworkIDs);
         return map;
     }
 
@@ -146,6 +237,26 @@ public class Initiator implements Serializable {
         sb.append(" initiatorName : ").append(gson.toJson(initiatorName)).append(",");
         sb.append(" volumeAccessGroups : ").append(gson.toJson(Arrays.toString(volumeAccessGroups))).append(",");
         sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        sb.append(" requireChap : ").append(gson.toJson(requireChap)).append(",");
+        if(null != chapUsername && chapUsername.isPresent()){
+            sb.append(" chapUsername : ").append(gson.toJson(chapUsername)).append(",");
+        }
+        else{
+            sb.append(" chapUsername : ").append("null").append(",");
+        }
+        if(null != initiatorSecret && initiatorSecret.isPresent()){
+            sb.append(" initiatorSecret : ").append(gson.toJson(initiatorSecret)).append(",");
+        }
+        else{
+            sb.append(" initiatorSecret : ").append("null").append(",");
+        }
+        if(null != targetSecret && targetSecret.isPresent()){
+            sb.append(" targetSecret : ").append(gson.toJson(targetSecret)).append(",");
+        }
+        else{
+            sb.append(" targetSecret : ").append("null").append(",");
+        }
+        sb.append(" virtualNetworkIDs : ").append(gson.toJson(Arrays.toString(virtualNetworkIDs))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -168,6 +279,11 @@ public class Initiator implements Serializable {
         private String initiatorName;
         private Long[] volumeAccessGroups;
         private Attributes attributes;
+        private Boolean requireChap;
+        private Optional<String> chapUsername;
+        private Optional<CHAPSecret> initiatorSecret;
+        private Optional<CHAPSecret> targetSecret;
+        private Long[] virtualNetworkIDs;
 
         private Builder() { }
 
@@ -177,7 +293,12 @@ public class Initiator implements Serializable {
                          this.initiatorID,
                          this.initiatorName,
                          this.volumeAccessGroups,
-                         this.attributes);
+                         this.attributes,
+                         this.requireChap,
+                         this.chapUsername,
+                         this.initiatorSecret,
+                         this.targetSecret,
+                         this.virtualNetworkIDs);
         }
 
         private Initiator.Builder buildFrom(final Initiator req) {
@@ -186,6 +307,11 @@ public class Initiator implements Serializable {
             this.initiatorName = req.initiatorName;
             this.volumeAccessGroups = req.volumeAccessGroups;
             this.attributes = req.attributes;
+            this.requireChap = req.requireChap;
+            this.chapUsername = req.chapUsername;
+            this.initiatorSecret = req.initiatorSecret;
+            this.targetSecret = req.targetSecret;
+            this.virtualNetworkIDs = req.virtualNetworkIDs;
 
             return this;
         }
@@ -212,6 +338,31 @@ public class Initiator implements Serializable {
 
         public Initiator.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
+            return this;
+        }
+
+        public Initiator.Builder requireChap(final Boolean requireChap) {
+            this.requireChap = requireChap;
+            return this;
+        }
+
+        public Initiator.Builder optionalChapUsername(final String chapUsername) {
+            this.chapUsername = (chapUsername == null) ? Optional.<String>empty() : Optional.of(chapUsername);
+            return this;
+        }
+
+        public Initiator.Builder optionalInitiatorSecret(final CHAPSecret initiatorSecret) {
+            this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
+            return this;
+        }
+
+        public Initiator.Builder optionalTargetSecret(final CHAPSecret targetSecret) {
+            this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
+            return this;
+        }
+
+        public Initiator.Builder virtualNetworkIDs(final Long[] virtualNetworkIDs) {
+            this.virtualNetworkIDs = virtualNetworkIDs;
             return this;
         }
 

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class DeleteSnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = -6902200979161604494L;
+    public static final long serialVersionUID = -8395217289062968120L;
     // empty constructor
     @Since("7.0")
     public DeleteSnapshotResult() {}

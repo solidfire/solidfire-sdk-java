@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class ModifySnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 8623027884659838680L;
+    public static final long serialVersionUID = 8355605441290960766L;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;

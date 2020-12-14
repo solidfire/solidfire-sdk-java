@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class VirtualNetwork implements Serializable {
 
-    public static final long serialVersionUID = 8407011142643317951L;
+    public static final long serialVersionUID = 7809377060126321420L;
     @SerializedName("virtualNetworkID") private Long virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
     @SerializedName("addressBlocks") private AddressBlock[] addressBlocks;
@@ -44,6 +44,7 @@ public class VirtualNetwork implements Serializable {
     @SerializedName("gateway") private Optional<String> gateway;
     @SerializedName("namespace") private Optional<Boolean> namespace;
     @SerializedName("attributes") private Optional<Attributes> attributes;
+    @SerializedName("initiatorIDs") private Long[] initiatorIDs;
     // empty constructor
     @Since("7.0")
     public VirtualNetwork() {}
@@ -51,26 +52,6 @@ public class VirtualNetwork implements Serializable {
     
     // parameterized constructor
     @Since("7.0")
-    public VirtualNetwork(
-        Long virtualNetworkID,
-        Long virtualNetworkTag,
-        AddressBlock[] addressBlocks,
-        String name,
-        String netmask,
-        String svip,
-        Optional<Attributes> attributes
-    )
-    {
-        this.virtualNetworkID = virtualNetworkID;
-        this.virtualNetworkTag = virtualNetworkTag;
-        this.addressBlocks = addressBlocks;
-        this.name = name;
-        this.netmask = netmask;
-        this.svip = svip;
-        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
-    }
-    // parameterized constructor
-    @Since("9.0")
     public VirtualNetwork(
         Long virtualNetworkID,
         Long virtualNetworkTag,
@@ -92,6 +73,32 @@ public class VirtualNetwork implements Serializable {
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public VirtualNetwork(
+        Long virtualNetworkID,
+        Long virtualNetworkTag,
+        AddressBlock[] addressBlocks,
+        String name,
+        String netmask,
+        String svip,
+        Optional<String> gateway,
+        Optional<Boolean> namespace,
+        Optional<Attributes> attributes,
+        Long[] initiatorIDs
+    )
+    {
+        this.virtualNetworkID = virtualNetworkID;
+        this.virtualNetworkTag = virtualNetworkTag;
+        this.addressBlocks = addressBlocks;
+        this.name = name;
+        this.netmask = netmask;
+        this.svip = svip;
+        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
+        this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.initiatorIDs = initiatorIDs;
     }
 
     /** 
@@ -169,6 +176,15 @@ public class VirtualNetwork implements Serializable {
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
+    /** 
+     * The list of numeric IDs of the initiators associated with this VirtualNetwork.
+     * This VirtualNetwork cannot be removed until the initiators are disassociated.
+     **/
+    public Long[] getInitiatorIDs() { return this.initiatorIDs; }
+   
+    public void setInitiatorIDs(Long[] initiatorIDs) { 
+        this.initiatorIDs = initiatorIDs;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -186,12 +202,13 @@ public class VirtualNetwork implements Serializable {
             Objects.equals(svip, that.svip) && 
             Objects.equals(gateway, that.gateway) && 
             Objects.equals(namespace, that.namespace) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Arrays.equals(initiatorIDs, that.initiatorIDs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkID,virtualNetworkTag,(Object[])addressBlocks,name,netmask,svip,gateway,namespace,attributes );
+        return Objects.hash( virtualNetworkID,virtualNetworkTag,(Object[])addressBlocks,name,netmask,svip,gateway,namespace,attributes,(Object[])initiatorIDs );
     }
 
 
@@ -206,6 +223,7 @@ public class VirtualNetwork implements Serializable {
         map.put("gateway", gateway);
         map.put("namespace", namespace);
         map.put("attributes", attributes);
+        map.put("initiatorIDs", initiatorIDs);
         return map;
     }
 
@@ -239,6 +257,7 @@ public class VirtualNetwork implements Serializable {
         else{
             sb.append(" attributes : ").append("null").append(",");
         }
+        sb.append(" initiatorIDs : ").append(gson.toJson(Arrays.toString(initiatorIDs))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -265,6 +284,7 @@ public class VirtualNetwork implements Serializable {
         private Optional<String> gateway;
         private Optional<Boolean> namespace;
         private Optional<Attributes> attributes;
+        private Long[] initiatorIDs;
 
         private Builder() { }
 
@@ -278,7 +298,8 @@ public class VirtualNetwork implements Serializable {
                          this.svip,
                          this.gateway,
                          this.namespace,
-                         this.attributes);
+                         this.attributes,
+                         this.initiatorIDs);
         }
 
         private VirtualNetwork.Builder buildFrom(final VirtualNetwork req) {
@@ -291,6 +312,7 @@ public class VirtualNetwork implements Serializable {
             this.gateway = req.gateway;
             this.namespace = req.namespace;
             this.attributes = req.attributes;
+            this.initiatorIDs = req.initiatorIDs;
 
             return this;
         }
@@ -337,6 +359,11 @@ public class VirtualNetwork implements Serializable {
 
         public VirtualNetwork.Builder optionalAttributes(final Attributes attributes) {
             this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
+            return this;
+        }
+
+        public VirtualNetwork.Builder initiatorIDs(final Long[] initiatorIDs) {
+            this.initiatorIDs = initiatorIDs;
             return this;
         }
 

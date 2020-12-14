@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class Snapshot implements Serializable {
 
-    public static final long serialVersionUID = -3853847877971082924L;
+    public static final long serialVersionUID = 2428104660025438959L;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
@@ -64,82 +64,6 @@ public class Snapshot implements Serializable {
     
     // parameterized constructor
     @Since("7.0")
-    public Snapshot(
-        Long snapshotID,
-        Long volumeID,
-        String name,
-        String checksum,
-        String status,
-        Long totalSize,
-        Optional<Long> groupID,
-        String createTime,
-        String instanceCreateTime,
-        String volumeName,
-        java.util.UUID instanceSnapshotUUID,
-        Optional<java.util.UUID> virtualVolumeID,
-        Attributes attributes
-    )
-    {
-        this.snapshotID = snapshotID;
-        this.volumeID = volumeID;
-        this.name = name;
-        this.checksum = checksum;
-        this.status = status;
-        this.totalSize = totalSize;
-        this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
-        this.createTime = createTime;
-        this.instanceCreateTime = instanceCreateTime;
-        this.volumeName = volumeName;
-        this.instanceSnapshotUUID = instanceSnapshotUUID;
-        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
-        this.attributes = attributes;
-    }
-    // parameterized constructor
-    @Since("8.0")
-    public Snapshot(
-        Long snapshotID,
-        Long volumeID,
-        String name,
-        String checksum,
-        Boolean enableRemoteReplication,
-        String expirationReason,
-        Optional<String> expirationTime,
-        Optional<SnapshotRemoteStatus[]> remoteStatuses,
-        String status,
-        java.util.UUID snapshotUUID,
-        Long totalSize,
-        Optional<Long> groupID,
-        java.util.UUID groupSnapshotUUID,
-        String createTime,
-        String instanceCreateTime,
-        String volumeName,
-        java.util.UUID instanceSnapshotUUID,
-        Optional<java.util.UUID> virtualVolumeID,
-        Attributes attributes
-    )
-    {
-        this.snapshotID = snapshotID;
-        this.volumeID = volumeID;
-        this.name = name;
-        this.checksum = checksum;
-        this.enableRemoteReplication = enableRemoteReplication;
-        this.expirationReason = expirationReason;
-        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
-        this.remoteStatuses = (remoteStatuses == null) ? Optional.<SnapshotRemoteStatus[]>empty() : remoteStatuses;
-        this.status = status;
-        this.snapshotUUID = snapshotUUID;
-        this.totalSize = totalSize;
-        this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
-        this.groupSnapshotUUID = groupSnapshotUUID;
-        this.createTime = createTime;
-        this.instanceCreateTime = instanceCreateTime;
-        this.volumeName = volumeName;
-        this.instanceSnapshotUUID = instanceSnapshotUUID;
-        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
-        this.attributes = attributes;
-    }
-    // parameterized constructor
-    @Since("10.0")
     public Snapshot(
         Long snapshotID,
         Long volumeID,
@@ -247,12 +171,7 @@ public class Snapshot implements Serializable {
         this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
     }
     /** 
-     * Current remote status of the snapshot remoteStatus: Possible values:
-     * Present: Snapshot exists on a remote cluster
-     * Not Present: Snapshot does not exist on remote cluster
-     * Syncing: This is a target cluster and it is currently replicating the snapshot
-     * Deleted: This is a target cluster, the snapshot has been deleted, and it still exists on the source.
-     * volumePairUUID: universal identifier of the volume pair
+     * Replication status details of the snapshot as seen on the source cluster.
      **/
     public Optional<SnapshotRemoteStatus[]> getRemoteStatuses() { return this.remoteStatuses; }
    
@@ -297,8 +216,7 @@ public class Snapshot implements Serializable {
         this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
     }
     /** 
-     * The current "members" results contains information about each snapshot in the group.
-     * Each of these members will have a "uuid" parameter for the snapshot's UUID.
+     * Universal Unique ID of the group this snapshot is part of.
      **/
     public java.util.UUID getGroupSnapshotUUID() { return this.groupSnapshotUUID; }
    

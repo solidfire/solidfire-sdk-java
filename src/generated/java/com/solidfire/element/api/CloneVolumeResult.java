@@ -34,10 +34,11 @@ import java.util.Objects;
 
 public class CloneVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = 7651196543218505931L;
+    public static final long serialVersionUID = -5588460642636882962L;
     @SerializedName("volume") private Optional<Volume> volume;
     @SerializedName("cloneID") private Long cloneID;
     @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("curve") private java.util.Map<String,Long> curve;
     @SerializedName("asyncHandle") private Long asyncHandle;
     // empty constructor
     @Since("7.0")
@@ -56,6 +57,22 @@ public class CloneVolumeResult implements Serializable {
         this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
         this.cloneID = cloneID;
         this.volumeID = volumeID;
+        this.asyncHandle = asyncHandle;
+    }
+    // parameterized constructor
+    @Since("10.0")
+    public CloneVolumeResult(
+        Optional<Volume> volume,
+        Long cloneID,
+        Long volumeID,
+        java.util.Map<String,Long> curve,
+        Long asyncHandle
+    )
+    {
+        this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
+        this.cloneID = cloneID;
+        this.volumeID = volumeID;
+        this.curve = curve;
         this.asyncHandle = asyncHandle;
     }
 
@@ -84,6 +101,17 @@ public class CloneVolumeResult implements Serializable {
         this.volumeID = volumeID;
     }
     /** 
+     * The curve is a set of key-value pairs.
+     * The keys are I/O sizes in bytes.
+     * The values represent the cost of performing an IOP at a specific I/O size.
+     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
+     **/
+    public java.util.Map<String,Long> getCurve() { return this.curve; }
+   
+    public void setCurve(java.util.Map<String,Long> curve) { 
+        this.curve = curve;
+    }
+    /** 
      * Handle value used to track the progress of the clone.
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
@@ -103,12 +131,13 @@ public class CloneVolumeResult implements Serializable {
             Objects.equals(volume, that.volume) && 
             Objects.equals(cloneID, that.cloneID) && 
             Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(curve, that.curve) && 
             Objects.equals(asyncHandle, that.asyncHandle);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volume,cloneID,volumeID,asyncHandle );
+        return Objects.hash( volume,cloneID,volumeID,curve,asyncHandle );
     }
 
 
@@ -117,6 +146,7 @@ public class CloneVolumeResult implements Serializable {
         map.put("volume", volume);
         map.put("cloneID", cloneID);
         map.put("volumeID", volumeID);
+        map.put("curve", curve);
         map.put("asyncHandle", asyncHandle);
         return map;
     }
@@ -135,6 +165,7 @@ public class CloneVolumeResult implements Serializable {
         }
         sb.append(" cloneID : ").append(gson.toJson(cloneID)).append(",");
         sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" curve : ").append(gson.toJson(curve)).append(",");
         sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
         sb.append( " }" );
 
@@ -156,6 +187,7 @@ public class CloneVolumeResult implements Serializable {
         private Optional<Volume> volume;
         private Long cloneID;
         private Long volumeID;
+        private java.util.Map<String,Long> curve;
         private Long asyncHandle;
 
         private Builder() { }
@@ -165,6 +197,7 @@ public class CloneVolumeResult implements Serializable {
                          this.volume,
                          this.cloneID,
                          this.volumeID,
+                         this.curve,
                          this.asyncHandle);
         }
 
@@ -172,6 +205,7 @@ public class CloneVolumeResult implements Serializable {
             this.volume = req.volume;
             this.cloneID = req.cloneID;
             this.volumeID = req.volumeID;
+            this.curve = req.curve;
             this.asyncHandle = req.asyncHandle;
 
             return this;
@@ -189,6 +223,11 @@ public class CloneVolumeResult implements Serializable {
 
         public CloneVolumeResult.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
+            return this;
+        }
+
+        public CloneVolumeResult.Builder curve(final java.util.Map<String,Long> curve) {
+            this.curve = curve;
             return this;
         }
 

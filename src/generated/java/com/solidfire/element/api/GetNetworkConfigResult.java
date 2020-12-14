@@ -34,8 +34,9 @@ import java.util.Objects;
 
 public class GetNetworkConfigResult implements Serializable {
 
-    public static final long serialVersionUID = 2684112230164911537L;
+    public static final long serialVersionUID = 7398421192911408063L;
     @SerializedName("network") private Network network;
+    @SerializedName("networkInterfaces") private Optional<NetworkConfig[]> networkInterfaces;
     // empty constructor
     @Since("7.0")
     public GetNetworkConfigResult() {}
@@ -44,10 +45,12 @@ public class GetNetworkConfigResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetNetworkConfigResult(
-        Network network
+        Network network,
+        Optional<NetworkConfig[]> networkInterfaces
     )
     {
         this.network = network;
+        this.networkInterfaces = (networkInterfaces == null) ? Optional.<NetworkConfig[]>empty() : networkInterfaces;
     }
 
     /** 
@@ -58,6 +61,14 @@ public class GetNetworkConfigResult implements Serializable {
     public void setNetwork(Network network) { 
         this.network = network;
     }
+    /** 
+     * 
+     **/
+    public Optional<NetworkConfig[]> getNetworkInterfaces() { return this.networkInterfaces; }
+   
+    public void setNetworkInterfaces(Optional<NetworkConfig[]> networkInterfaces) { 
+        this.networkInterfaces = (networkInterfaces == null) ? Optional.<NetworkConfig[]>empty() : networkInterfaces;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -67,18 +78,20 @@ public class GetNetworkConfigResult implements Serializable {
         GetNetworkConfigResult that = (GetNetworkConfigResult) o;
 
         return 
-            Objects.equals(network, that.network);
+            Objects.equals(network, that.network) && 
+            Objects.equals(networkInterfaces, that.networkInterfaces);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( network );
+        return Objects.hash( network,networkInterfaces );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("network", network);
+        map.put("networkInterfaces", networkInterfaces);
         return map;
     }
 
@@ -89,6 +102,12 @@ public class GetNetworkConfigResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" network : ").append(gson.toJson(network)).append(",");
+        if(null != networkInterfaces && networkInterfaces.isPresent()){
+            sb.append(" networkInterfaces : ").append(gson.toJson(networkInterfaces)).append(",");
+        }
+        else{
+            sb.append(" networkInterfaces : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,22 +126,30 @@ public class GetNetworkConfigResult implements Serializable {
 
     public static class Builder {
         private Network network;
+        private Optional<NetworkConfig[]> networkInterfaces;
 
         private Builder() { }
 
         public GetNetworkConfigResult build() {
             return new GetNetworkConfigResult (
-                         this.network);
+                         this.network,
+                         this.networkInterfaces);
         }
 
         private GetNetworkConfigResult.Builder buildFrom(final GetNetworkConfigResult req) {
             this.network = req.network;
+            this.networkInterfaces = req.networkInterfaces;
 
             return this;
         }
 
         public GetNetworkConfigResult.Builder network(final Network network) {
             this.network = network;
+            return this;
+        }
+
+        public GetNetworkConfigResult.Builder optionalNetworkInterfaces(final NetworkConfig[] networkInterfaces) {
+            this.networkInterfaces = (networkInterfaces == null) ? Optional.<NetworkConfig[]>empty() : Optional.of(networkInterfaces);
             return this;
         }
 

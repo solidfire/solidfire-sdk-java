@@ -33,7 +33,7 @@ class SolidFireElementTests extends WordSpec with BeforeAndAfterAll with Mockito
 
       val request = CreateVolumeRequest.builder()
         .accountID(1l)
-        .enable512e(true)
+        .optionalEnable512e(true)
         .name("name")
         .totalSize(10l)
         .optionalAttributes(attributes)
@@ -49,7 +49,7 @@ class SolidFireElementTests extends WordSpec with BeforeAndAfterAll with Mockito
 
       val request = CreateVolumeRequest.builder()
         .accountID(1l)
-        .enable512e(true)
+        .optionalEnable512e(true)
         .name("name")
         .totalSize(10l)
         .optionalAttributes(attributes)
@@ -65,7 +65,7 @@ class SolidFireElementTests extends WordSpec with BeforeAndAfterAll with Mockito
 
       val request = CreateVolumeRequest.builder()
         .accountID(1l)
-        .enable512e(true)
+        .optionalEnable512e(true)
         .name("name")
         .totalSize(10l)
         .optionalAttributes(attributes)

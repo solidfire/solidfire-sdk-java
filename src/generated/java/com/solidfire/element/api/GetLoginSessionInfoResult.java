@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetLoginSessionInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -6655572921788426733L;
+    public static final long serialVersionUID = 3794102338056400772L;
     @SerializedName("loginSessionInfo") private LoginSessionInfo loginSessionInfo;
     // empty constructor
     @Since("7.0")

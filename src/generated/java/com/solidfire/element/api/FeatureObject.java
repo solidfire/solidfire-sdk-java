@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class FeatureObject implements Serializable {
 
-    public static final long serialVersionUID = -1569252747237563646L;
+    public static final long serialVersionUID = 8653714157908435091L;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("feature") private String feature;
     // empty constructor

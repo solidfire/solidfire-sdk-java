@@ -31,19 +31,20 @@ import java.util.Objects;
 /**
  * Node  
  * A node refers to an individual machine in a cluster.
- * Each active node hosts a master service, which is responsible for managing the drives and other services on its node.
- * After a node is made active, its drives will become available for addition to the cluster.
+ * Each active node hosts a master service, which is responsible for managing any drives or other services for that node.
+ * After a node becomes active, any drives associated with the node will become available for addition to the cluster.
  **/
 
 public class Node implements Serializable {
 
-    public static final long serialVersionUID = -7985492147846592224L;
+    public static final long serialVersionUID = -8162532113261048982L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("associatedMasterServiceID") private Long associatedMasterServiceID;
     @SerializedName("associatedFServiceID") private Long associatedFServiceID;
     @SerializedName("fibreChannelTargetPortGroup") private Optional<Long> fibreChannelTargetPortGroup;
     @SerializedName("name") private String name;
     @SerializedName("platformInfo") private Platform platformInfo;
+    @SerializedName("role") private String role;
     @SerializedName("softwareVersion") private String softwareVersion;
     @SerializedName("cip") private String cip;
     @SerializedName("cipi") private String cipi;
@@ -55,6 +56,9 @@ public class Node implements Serializable {
     @SerializedName("virtualNetworks") private VirtualNetworkAddress[] virtualNetworks;
     @SerializedName("attributes") private Attributes attributes;
     @SerializedName("nodeSlot") private Optional<String> nodeSlot;
+    @SerializedName("chassisName") private String chassisName;
+    @SerializedName("customProtectionDomainName") private String customProtectionDomainName;
+    @SerializedName("maintenanceMode") private String maintenanceMode;
     // empty constructor
     @Since("7.0")
     public Node() {}
@@ -69,6 +73,7 @@ public class Node implements Serializable {
         Optional<Long> fibreChannelTargetPortGroup,
         String name,
         Platform platformInfo,
+        String role,
         String softwareVersion,
         String cip,
         String cipi,
@@ -79,7 +84,10 @@ public class Node implements Serializable {
         java.util.UUID uuid,
         VirtualNetworkAddress[] virtualNetworks,
         Attributes attributes,
-        Optional<String> nodeSlot
+        Optional<String> nodeSlot,
+        String chassisName,
+        String customProtectionDomainName,
+        String maintenanceMode
     )
     {
         this.nodeID = nodeID;
@@ -88,6 +96,7 @@ public class Node implements Serializable {
         this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<Long>empty() : fibreChannelTargetPortGroup;
         this.name = name;
         this.platformInfo = platformInfo;
+        this.role = role;
         this.softwareVersion = softwareVersion;
         this.cip = cip;
         this.cipi = cipi;
@@ -99,6 +108,9 @@ public class Node implements Serializable {
         this.virtualNetworks = virtualNetworks;
         this.attributes = attributes;
         this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : nodeSlot;
+        this.chassisName = chassisName;
+        this.customProtectionDomainName = customProtectionDomainName;
+        this.maintenanceMode = maintenanceMode;
     }
 
     /** 
@@ -142,7 +154,7 @@ public class Node implements Serializable {
         this.name = name;
     }
     /** 
-     * Information about the platform this node is.
+     * Information about the node's hardware.
      **/
     public Platform getPlatformInfo() { return this.platformInfo; }
    
@@ -150,7 +162,15 @@ public class Node implements Serializable {
         this.platformInfo = platformInfo;
     }
     /** 
-     * The version of SolidFire software this node is currently running.
+     * The node's role in the cluster. Possible values are Management, Storage, Compute, and Witness.
+     **/
+    public String getRole() { return this.role; }
+   
+    public void setRole(String role) { 
+        this.role = role;
+    }
+    /** 
+     * The version of SolidFire software currently running on this node.
      **/
     public String getSoftwareVersion() { return this.softwareVersion; }
    
@@ -158,7 +178,7 @@ public class Node implements Serializable {
         this.softwareVersion = softwareVersion;
     }
     /** 
-     * IP address used for both intra- and inter-cluster communication.
+     * IP address used for both intra-cluster and inter-cluster communication.
      **/
     public String getCip() { return this.cip; }
    
@@ -174,7 +194,7 @@ public class Node implements Serializable {
         this.cipi = cipi;
     }
     /** 
-     * IP address used for cluster management (hosting the API and web site).
+     * IP address used for the per-node API and UI.
      **/
     public String getMip() { return this.mip; }
    
@@ -237,6 +257,30 @@ public class Node implements Serializable {
     public void setNodeSlot(Optional<String> nodeSlot) { 
         this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : nodeSlot;
     }
+    /** 
+     * Uniquely identifies a chassis, and identical for all nodes in a given chassis.
+     **/
+    public String getChassisName() { return this.chassisName; }
+   
+    public void setChassisName(String chassisName) { 
+        this.chassisName = chassisName;
+    }
+    /** 
+     * Uniquely identifies a custom protection domain, identical for all nodes within all chassis in a given custom protection domain.
+     **/
+    public String getCustomProtectionDomainName() { return this.customProtectionDomainName; }
+   
+    public void setCustomProtectionDomainName(String customProtectionDomainName) { 
+        this.customProtectionDomainName = customProtectionDomainName;
+    }
+    /** 
+     * Indicates which mode a node is in for maintenance.
+     **/
+    public String getMaintenanceMode() { return this.maintenanceMode; }
+   
+    public void setMaintenanceMode(String maintenanceMode) { 
+        this.maintenanceMode = maintenanceMode;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -252,6 +296,7 @@ public class Node implements Serializable {
             Objects.equals(fibreChannelTargetPortGroup, that.fibreChannelTargetPortGroup) && 
             Objects.equals(name, that.name) && 
             Objects.equals(platformInfo, that.platformInfo) && 
+            Objects.equals(role, that.role) && 
             Objects.equals(softwareVersion, that.softwareVersion) && 
             Objects.equals(cip, that.cip) && 
             Objects.equals(cipi, that.cipi) && 
@@ -262,12 +307,15 @@ public class Node implements Serializable {
             Objects.equals(uuid, that.uuid) && 
             Arrays.equals(virtualNetworks, that.virtualNetworks) && 
             Objects.equals(attributes, that.attributes) && 
-            Objects.equals(nodeSlot, that.nodeSlot);
+            Objects.equals(nodeSlot, that.nodeSlot) && 
+            Objects.equals(chassisName, that.chassisName) && 
+            Objects.equals(customProtectionDomainName, that.customProtectionDomainName) && 
+            Objects.equals(maintenanceMode, that.maintenanceMode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID,associatedMasterServiceID,associatedFServiceID,fibreChannelTargetPortGroup,name,platformInfo,softwareVersion,cip,cipi,mip,mipi,sip,sipi,uuid,(Object[])virtualNetworks,attributes,nodeSlot );
+        return Objects.hash( nodeID,associatedMasterServiceID,associatedFServiceID,fibreChannelTargetPortGroup,name,platformInfo,role,softwareVersion,cip,cipi,mip,mipi,sip,sipi,uuid,(Object[])virtualNetworks,attributes,nodeSlot,chassisName,customProtectionDomainName,maintenanceMode );
     }
 
 
@@ -279,6 +327,7 @@ public class Node implements Serializable {
         map.put("fibreChannelTargetPortGroup", fibreChannelTargetPortGroup);
         map.put("name", name);
         map.put("platformInfo", platformInfo);
+        map.put("role", role);
         map.put("softwareVersion", softwareVersion);
         map.put("cip", cip);
         map.put("cipi", cipi);
@@ -290,6 +339,9 @@ public class Node implements Serializable {
         map.put("virtualNetworks", virtualNetworks);
         map.put("attributes", attributes);
         map.put("nodeSlot", nodeSlot);
+        map.put("chassisName", chassisName);
+        map.put("customProtectionDomainName", customProtectionDomainName);
+        map.put("maintenanceMode", maintenanceMode);
         return map;
     }
 
@@ -310,6 +362,7 @@ public class Node implements Serializable {
         }
         sb.append(" name : ").append(gson.toJson(name)).append(",");
         sb.append(" platformInfo : ").append(gson.toJson(platformInfo)).append(",");
+        sb.append(" role : ").append(gson.toJson(role)).append(",");
         sb.append(" softwareVersion : ").append(gson.toJson(softwareVersion)).append(",");
         sb.append(" cip : ").append(gson.toJson(cip)).append(",");
         sb.append(" cipi : ").append(gson.toJson(cipi)).append(",");
@@ -326,6 +379,9 @@ public class Node implements Serializable {
         else{
             sb.append(" nodeSlot : ").append("null").append(",");
         }
+        sb.append(" chassisName : ").append(gson.toJson(chassisName)).append(",");
+        sb.append(" customProtectionDomainName : ").append(gson.toJson(customProtectionDomainName)).append(",");
+        sb.append(" maintenanceMode : ").append(gson.toJson(maintenanceMode)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -349,6 +405,7 @@ public class Node implements Serializable {
         private Optional<Long> fibreChannelTargetPortGroup;
         private String name;
         private Platform platformInfo;
+        private String role;
         private String softwareVersion;
         private String cip;
         private String cipi;
@@ -360,6 +417,9 @@ public class Node implements Serializable {
         private VirtualNetworkAddress[] virtualNetworks;
         private Attributes attributes;
         private Optional<String> nodeSlot;
+        private String chassisName;
+        private String customProtectionDomainName;
+        private String maintenanceMode;
 
         private Builder() { }
 
@@ -371,6 +431,7 @@ public class Node implements Serializable {
                          this.fibreChannelTargetPortGroup,
                          this.name,
                          this.platformInfo,
+                         this.role,
                          this.softwareVersion,
                          this.cip,
                          this.cipi,
@@ -381,7 +442,10 @@ public class Node implements Serializable {
                          this.uuid,
                          this.virtualNetworks,
                          this.attributes,
-                         this.nodeSlot);
+                         this.nodeSlot,
+                         this.chassisName,
+                         this.customProtectionDomainName,
+                         this.maintenanceMode);
         }
 
         private Node.Builder buildFrom(final Node req) {
@@ -391,6 +455,7 @@ public class Node implements Serializable {
             this.fibreChannelTargetPortGroup = req.fibreChannelTargetPortGroup;
             this.name = req.name;
             this.platformInfo = req.platformInfo;
+            this.role = req.role;
             this.softwareVersion = req.softwareVersion;
             this.cip = req.cip;
             this.cipi = req.cipi;
@@ -402,6 +467,9 @@ public class Node implements Serializable {
             this.virtualNetworks = req.virtualNetworks;
             this.attributes = req.attributes;
             this.nodeSlot = req.nodeSlot;
+            this.chassisName = req.chassisName;
+            this.customProtectionDomainName = req.customProtectionDomainName;
+            this.maintenanceMode = req.maintenanceMode;
 
             return this;
         }
@@ -433,6 +501,11 @@ public class Node implements Serializable {
 
         public Node.Builder platformInfo(final Platform platformInfo) {
             this.platformInfo = platformInfo;
+            return this;
+        }
+
+        public Node.Builder role(final String role) {
+            this.role = role;
             return this;
         }
 
@@ -488,6 +561,21 @@ public class Node implements Serializable {
 
         public Node.Builder optionalNodeSlot(final String nodeSlot) {
             this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : Optional.of(nodeSlot);
+            return this;
+        }
+
+        public Node.Builder chassisName(final String chassisName) {
+            this.chassisName = chassisName;
+            return this;
+        }
+
+        public Node.Builder customProtectionDomainName(final String customProtectionDomainName) {
+            this.customProtectionDomainName = customProtectionDomainName;
+            return this;
+        }
+
+        public Node.Builder maintenanceMode(final String maintenanceMode) {
+            this.maintenanceMode = maintenanceMode;
             return this;
         }
 

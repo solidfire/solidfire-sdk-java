@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ShutdownResult implements Serializable {
 
-    public static final long serialVersionUID = 2741035782715848783L;
+    public static final long serialVersionUID = 8499365030441127123L;
     @SerializedName("failed") private Long[] failed;
     @SerializedName("successful") private Long[] successful;
     // empty constructor

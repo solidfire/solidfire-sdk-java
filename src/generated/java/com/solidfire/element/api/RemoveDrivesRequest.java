@@ -44,9 +44,8 @@ import java.util.Objects;
 
 public class RemoveDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 131252405671668047L;
+    public static final long serialVersionUID = 112482750499585057L;
     @SerializedName("drives") private Long[] drives;
-    @SerializedName("forceDuringUpgrade") private Optional<Boolean> forceDuringUpgrade;
     // empty constructor
     @Since("7.0")
     public RemoveDrivesRequest() {}
@@ -55,12 +54,10 @@ public class RemoveDrivesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RemoveDrivesRequest(
-        Long[] drives,
-        Optional<Boolean> forceDuringUpgrade
+        Long[] drives
     )
     {
         this.drives = drives;
-        this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
     }
 
     /** 
@@ -71,14 +68,6 @@ public class RemoveDrivesRequest implements Serializable {
     public void setDrives(Long[] drives) { 
         this.drives = drives;
     }
-    /** 
-     * If you want to remove a drive during upgrade, this must be set to true.
-     **/
-    public Optional<Boolean> getForceDuringUpgrade() { return this.forceDuringUpgrade; }
-   
-    public void setForceDuringUpgrade(Optional<Boolean> forceDuringUpgrade) { 
-        this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -88,20 +77,18 @@ public class RemoveDrivesRequest implements Serializable {
         RemoveDrivesRequest that = (RemoveDrivesRequest) o;
 
         return 
-            Arrays.equals(drives, that.drives) && 
-            Objects.equals(forceDuringUpgrade, that.forceDuringUpgrade);
+            Arrays.equals(drives, that.drives);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])drives,forceDuringUpgrade );
+        return Objects.hash( (Object[])drives );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("drives", drives);
-        map.put("forceDuringUpgrade", forceDuringUpgrade);
         return map;
     }
 
@@ -112,12 +99,6 @@ public class RemoveDrivesRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" drives : ").append(gson.toJson(Arrays.toString(drives))).append(",");
-        if(null != forceDuringUpgrade && forceDuringUpgrade.isPresent()){
-            sb.append(" forceDuringUpgrade : ").append(gson.toJson(forceDuringUpgrade)).append(",");
-        }
-        else{
-            sb.append(" forceDuringUpgrade : ").append("null").append(",");
-        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -136,30 +117,22 @@ public class RemoveDrivesRequest implements Serializable {
 
     public static class Builder {
         private Long[] drives;
-        private Optional<Boolean> forceDuringUpgrade;
 
         private Builder() { }
 
         public RemoveDrivesRequest build() {
             return new RemoveDrivesRequest (
-                         this.drives,
-                         this.forceDuringUpgrade);
+                         this.drives);
         }
 
         private RemoveDrivesRequest.Builder buildFrom(final RemoveDrivesRequest req) {
             this.drives = req.drives;
-            this.forceDuringUpgrade = req.forceDuringUpgrade;
 
             return this;
         }
 
         public RemoveDrivesRequest.Builder drives(final Long[] drives) {
             this.drives = drives;
-            return this;
-        }
-
-        public RemoveDrivesRequest.Builder optionalForceDuringUpgrade(final Boolean forceDuringUpgrade) {
-            this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : Optional.of(forceDuringUpgrade);
             return this;
         }
 

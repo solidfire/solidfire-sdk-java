@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class AddLdapClusterAdminResult implements Serializable {
 
-    public static final long serialVersionUID = -211857056885111049L;
+    public static final long serialVersionUID = -5566746910134757802L;
     @SerializedName("clusterAdminID") private Optional<Long> clusterAdminID;
     // empty constructor
     @Since("7.0")

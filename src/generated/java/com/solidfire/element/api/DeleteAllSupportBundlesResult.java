@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class DeleteAllSupportBundlesResult implements Serializable {
 
-    public static final long serialVersionUID = 7732374151828081164L;
+    public static final long serialVersionUID = -9044412570964558477L;
     @SerializedName("duration") private String duration;
     @SerializedName("details") private Attributes details;
     @SerializedName("result") private String result;

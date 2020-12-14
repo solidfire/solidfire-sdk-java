@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class RemoveNodesResult implements Serializable {
 
-    public static final long serialVersionUID = -4847037615091738051L;
+    public static final long serialVersionUID = 6583877723437919951L;
     // empty constructor
     @Since("7.0")
     public RemoveNodesResult() {}
