@@ -30,24 +30,24 @@ import java.util.Objects;
 
 /**
  * Schedule  
- * Schedule is an object containing information about each schedule created to autonomously make a snapshot of a volume. The return object includes information for all schedules. If scheduleID is used to identify a specific schedule then only information for that scheduleID is returned. Schedules information is returned with the API method, see ListSchedules on the SolidFire API guide page 245.
+ * Schedule is an object containing information about each schedule created to autonomously make a snapshot of a volume. The return object includes information for all schedules. If scheduleID is used to identify a specific schedule then only information for that scheduleID is returned. Schedules information is returned with the API method, see ListSchedules on the SolidFire API guide.
  **/
 
 public class Schedule implements Serializable {
 
-    public static final long serialVersionUID = -5892117456652543449L;
-    @SerializedName("lastRunTimeStarted") private Optional<String> lastRunTimeStarted;
-    @SerializedName("hasError") private Optional<Boolean> hasError;
-    @SerializedName("scheduleInfo") private ScheduleInfo scheduleInfo;
-    @SerializedName("runNextInterval") private Optional<Boolean> runNextInterval;
-    @SerializedName("name") private String name;
-    @SerializedName("lastRunStatus") private Optional<String> lastRunStatus;
-    @SerializedName("scheduleID") private Optional<Long> scheduleID;
-    @SerializedName("paused") private Optional<Boolean> paused;
-    @SerializedName("toBeDeleted") private Optional<Boolean> toBeDeleted;
+    public static final long serialVersionUID = 7148660063768788601L;
     @SerializedName("frequency") private Frequency frequency;
-    @SerializedName("startingDate") private Optional<String> startingDate;
+    @SerializedName("hasError") private Optional<Boolean> hasError;
+    @SerializedName("lastRunStatus") private Optional<String> lastRunStatus;
+    @SerializedName("lastRunTimeStarted") private Optional<String> lastRunTimeStarted;
+    @SerializedName("name") private String name;
+    @SerializedName("paused") private Optional<Boolean> paused;
     @SerializedName("recurring") private Optional<Boolean> recurring;
+    @SerializedName("runNextInterval") private Optional<Boolean> runNextInterval;
+    @SerializedName("scheduleID") private Optional<Long> scheduleID;
+    @SerializedName("scheduleInfo") private ScheduleInfo scheduleInfo;
+    @SerializedName("startingDate") private Optional<String> startingDate;
+    @SerializedName("toBeDeleted") private Optional<Boolean> toBeDeleted;
     // empty constructor
     @Since("7.0")
     public Schedule() {}
@@ -56,112 +56,34 @@ public class Schedule implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public Schedule(
-        Optional<String> lastRunTimeStarted,
-        Optional<Boolean> hasError,
-        ScheduleInfo scheduleInfo,
-        Optional<Boolean> runNextInterval,
-        String name,
-        Optional<String> lastRunStatus,
-        Optional<Long> scheduleID,
-        Optional<Boolean> paused,
-        Optional<Boolean> toBeDeleted,
         Frequency frequency,
+        Optional<Boolean> hasError,
+        Optional<String> lastRunStatus,
+        Optional<String> lastRunTimeStarted,
+        String name,
+        Optional<Boolean> paused,
+        Optional<Boolean> recurring,
+        Optional<Boolean> runNextInterval,
+        Optional<Long> scheduleID,
+        ScheduleInfo scheduleInfo,
         Optional<String> startingDate,
-        Optional<Boolean> recurring
+        Optional<Boolean> toBeDeleted
     )
     {
-        this.lastRunTimeStarted = (lastRunTimeStarted == null) ? Optional.<String>empty() : lastRunTimeStarted;
-        this.hasError = (hasError == null) ? Optional.<Boolean>empty() : hasError;
-        this.scheduleInfo = scheduleInfo;
-        this.runNextInterval = (runNextInterval == null) ? Optional.<Boolean>empty() : runNextInterval;
-        this.name = name;
-        this.lastRunStatus = (lastRunStatus == null) ? Optional.<String>empty() : lastRunStatus;
-        this.scheduleID = (scheduleID == null) ? Optional.<Long>empty() : scheduleID;
-        this.paused = (paused == null) ? Optional.<Boolean>empty() : paused;
-        this.toBeDeleted = (toBeDeleted == null) ? Optional.<Boolean>empty() : toBeDeleted;
         this.frequency = frequency;
-        this.startingDate = (startingDate == null) ? Optional.<String>empty() : startingDate;
+        this.hasError = (hasError == null) ? Optional.<Boolean>empty() : hasError;
+        this.lastRunStatus = (lastRunStatus == null) ? Optional.<String>empty() : lastRunStatus;
+        this.lastRunTimeStarted = (lastRunTimeStarted == null) ? Optional.<String>empty() : lastRunTimeStarted;
+        this.name = name;
+        this.paused = (paused == null) ? Optional.<Boolean>empty() : paused;
         this.recurring = (recurring == null) ? Optional.<Boolean>empty() : recurring;
+        this.runNextInterval = (runNextInterval == null) ? Optional.<Boolean>empty() : runNextInterval;
+        this.scheduleID = (scheduleID == null) ? Optional.<Long>empty() : scheduleID;
+        this.scheduleInfo = scheduleInfo;
+        this.startingDate = (startingDate == null) ? Optional.<String>empty() : startingDate;
+        this.toBeDeleted = (toBeDeleted == null) ? Optional.<Boolean>empty() : toBeDeleted;
     }
 
-    /** 
-     * Indicates the last time the schedule started n ISO 8601 date string.
-     * Valid values are:
-     * Success
-     * Failed
-     **/
-    public Optional<String> getLastRunTimeStarted() { return this.lastRunTimeStarted; }
-   
-    public void setLastRunTimeStarted(Optional<String> lastRunTimeStarted) { 
-        this.lastRunTimeStarted = (lastRunTimeStarted == null) ? Optional.<String>empty() : lastRunTimeStarted;
-    }
-    /** 
-     * Indicates whether or not the schedule has errors.
-     **/
-    public Optional<Boolean> getHasError() { return this.hasError; }
-   
-    public void setHasError(Optional<Boolean> hasError) { 
-        this.hasError = (hasError == null) ? Optional.<Boolean>empty() : hasError;
-    }
-    /** 
-     * Includes the unique name given to the schedule, the retention period for the snapshot that was created, and the volume ID of the volume from which the snapshot was created.
-     **/
-    public ScheduleInfo getScheduleInfo() { return this.scheduleInfo; }
-   
-    public void setScheduleInfo(ScheduleInfo scheduleInfo) { 
-        this.scheduleInfo = scheduleInfo;
-    }
-    /** 
-     * Indicates whether or not the schedule will run the next time the scheduler is active. When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
-     **/
-    public Optional<Boolean> getRunNextInterval() { return this.runNextInterval; }
-   
-    public void setRunNextInterval(Optional<Boolean> runNextInterval) { 
-        this.runNextInterval = (runNextInterval == null) ? Optional.<Boolean>empty() : runNextInterval;
-    }
-    /** 
-     * Unique name assigned to the schedule.
-     **/
-    public String getName() { return this.name; }
-   
-    public void setName(String name) { 
-        this.name = name;
-    }
-    /** 
-     * Indicates the status of the last scheduled snapshot.
-     * Valid values are:
-     * Success
-     * Failed
-     **/
-    public Optional<String> getLastRunStatus() { return this.lastRunStatus; }
-   
-    public void setLastRunStatus(Optional<String> lastRunStatus) { 
-        this.lastRunStatus = (lastRunStatus == null) ? Optional.<String>empty() : lastRunStatus;
-    }
-    /** 
-     * Unique ID of the schedule
-     **/
-    public Optional<Long> getScheduleID() { return this.scheduleID; }
-   
-    public void setScheduleID(Optional<Long> scheduleID) { 
-        this.scheduleID = (scheduleID == null) ? Optional.<Long>empty() : scheduleID;
-    }
-    /** 
-     * Indicates whether or not the schedule is paused.
-     **/
-    public Optional<Boolean> getPaused() { return this.paused; }
-   
-    public void setPaused(Optional<Boolean> paused) { 
-        this.paused = (paused == null) ? Optional.<Boolean>empty() : paused;
-    }
-    /** 
-     * Indicates if the schedule is marked for deletion.
-     **/
-    public Optional<Boolean> getToBeDeleted() { return this.toBeDeleted; }
-   
-    public void setToBeDeleted(Optional<Boolean> toBeDeleted) { 
-        this.toBeDeleted = (toBeDeleted == null) ? Optional.<Boolean>empty() : toBeDeleted;
-    }
     /** 
      * Indicates the frequency of the schedule occurrence. Set this to a type that inherits from Frequency.
      * Valid types are:
@@ -175,12 +97,50 @@ public class Schedule implements Serializable {
         this.frequency = frequency;
     }
     /** 
-     * Indicates the date the first time the schedule began of will begin. Formatted in UTC time.
+     * Indicates whether or not the schedule has errors.
      **/
-    public Optional<String> getStartingDate() { return this.startingDate; }
+    public Optional<Boolean> getHasError() { return this.hasError; }
    
-    public void setStartingDate(Optional<String> startingDate) { 
-        this.startingDate = (startingDate == null) ? Optional.<String>empty() : startingDate;
+    public void setHasError(Optional<Boolean> hasError) { 
+        this.hasError = (hasError == null) ? Optional.<Boolean>empty() : hasError;
+    }
+    /** 
+     * Indicates the status of the last scheduled snapshot.
+     * Valid values are:
+     * Success
+     * Failed
+     **/
+    public Optional<String> getLastRunStatus() { return this.lastRunStatus; }
+   
+    public void setLastRunStatus(Optional<String> lastRunStatus) { 
+        this.lastRunStatus = (lastRunStatus == null) ? Optional.<String>empty() : lastRunStatus;
+    }
+    /** 
+     * Indicates the last time the schedule started n ISO 8601 date string.
+     * Valid values are:
+     * Success
+     * Failed
+     **/
+    public Optional<String> getLastRunTimeStarted() { return this.lastRunTimeStarted; }
+   
+    public void setLastRunTimeStarted(Optional<String> lastRunTimeStarted) { 
+        this.lastRunTimeStarted = (lastRunTimeStarted == null) ? Optional.<String>empty() : lastRunTimeStarted;
+    }
+    /** 
+     * Unique name assigned to the schedule.
+     **/
+    public String getName() { return this.name; }
+   
+    public void setName(String name) { 
+        this.name = name;
+    }
+    /** 
+     * Indicates whether or not the schedule is paused.
+     **/
+    public Optional<Boolean> getPaused() { return this.paused; }
+   
+    public void setPaused(Optional<Boolean> paused) { 
+        this.paused = (paused == null) ? Optional.<Boolean>empty() : paused;
     }
     /** 
      * Indicates whether or not the schedule is recurring.
@@ -189,6 +149,46 @@ public class Schedule implements Serializable {
    
     public void setRecurring(Optional<Boolean> recurring) { 
         this.recurring = (recurring == null) ? Optional.<Boolean>empty() : recurring;
+    }
+    /** 
+     * Indicates whether or not the schedule will run the next time the scheduler is active. When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
+     **/
+    public Optional<Boolean> getRunNextInterval() { return this.runNextInterval; }
+   
+    public void setRunNextInterval(Optional<Boolean> runNextInterval) { 
+        this.runNextInterval = (runNextInterval == null) ? Optional.<Boolean>empty() : runNextInterval;
+    }
+    /** 
+     * Unique ID of the schedule
+     **/
+    public Optional<Long> getScheduleID() { return this.scheduleID; }
+   
+    public void setScheduleID(Optional<Long> scheduleID) { 
+        this.scheduleID = (scheduleID == null) ? Optional.<Long>empty() : scheduleID;
+    }
+    /** 
+     * Includes the unique name given to the schedule, the retention period for the snapshot that was created, and the volume ID of the volume from which the snapshot was created.
+     **/
+    public ScheduleInfo getScheduleInfo() { return this.scheduleInfo; }
+   
+    public void setScheduleInfo(ScheduleInfo scheduleInfo) { 
+        this.scheduleInfo = scheduleInfo;
+    }
+    /** 
+     * Indicates the date the first time the schedule began of will begin. Formatted in UTC time.
+     **/
+    public Optional<String> getStartingDate() { return this.startingDate; }
+   
+    public void setStartingDate(Optional<String> startingDate) { 
+        this.startingDate = (startingDate == null) ? Optional.<String>empty() : startingDate;
+    }
+    /** 
+     * Indicates if the schedule is marked for deletion.
+     **/
+    public Optional<Boolean> getToBeDeleted() { return this.toBeDeleted; }
+   
+    public void setToBeDeleted(Optional<Boolean> toBeDeleted) { 
+        this.toBeDeleted = (toBeDeleted == null) ? Optional.<Boolean>empty() : toBeDeleted;
     }
 
     @Override
@@ -199,40 +199,40 @@ public class Schedule implements Serializable {
         Schedule that = (Schedule) o;
 
         return 
-            Objects.equals(lastRunTimeStarted, that.lastRunTimeStarted) && 
-            Objects.equals(hasError, that.hasError) && 
-            Objects.equals(scheduleInfo, that.scheduleInfo) && 
-            Objects.equals(runNextInterval, that.runNextInterval) && 
-            Objects.equals(name, that.name) && 
-            Objects.equals(lastRunStatus, that.lastRunStatus) && 
-            Objects.equals(scheduleID, that.scheduleID) && 
-            Objects.equals(paused, that.paused) && 
-            Objects.equals(toBeDeleted, that.toBeDeleted) && 
             Objects.equals(frequency, that.frequency) && 
+            Objects.equals(hasError, that.hasError) && 
+            Objects.equals(lastRunStatus, that.lastRunStatus) && 
+            Objects.equals(lastRunTimeStarted, that.lastRunTimeStarted) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(paused, that.paused) && 
+            Objects.equals(recurring, that.recurring) && 
+            Objects.equals(runNextInterval, that.runNextInterval) && 
+            Objects.equals(scheduleID, that.scheduleID) && 
+            Objects.equals(scheduleInfo, that.scheduleInfo) && 
             Objects.equals(startingDate, that.startingDate) && 
-            Objects.equals(recurring, that.recurring);
+            Objects.equals(toBeDeleted, that.toBeDeleted);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( lastRunTimeStarted,hasError,scheduleInfo,runNextInterval,name,lastRunStatus,scheduleID,paused,toBeDeleted,frequency,startingDate,recurring );
+        return Objects.hash( frequency,hasError,lastRunStatus,lastRunTimeStarted,name,paused,recurring,runNextInterval,scheduleID,scheduleInfo,startingDate,toBeDeleted );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("lastRunTimeStarted", lastRunTimeStarted);
-        map.put("hasError", hasError);
-        map.put("scheduleInfo", scheduleInfo);
-        map.put("runNextInterval", runNextInterval);
-        map.put("name", name);
-        map.put("lastRunStatus", lastRunStatus);
-        map.put("scheduleID", scheduleID);
-        map.put("paused", paused);
-        map.put("toBeDeleted", toBeDeleted);
         map.put("frequency", frequency);
-        map.put("startingDate", startingDate);
+        map.put("hasError", hasError);
+        map.put("lastRunStatus", lastRunStatus);
+        map.put("lastRunTimeStarted", lastRunTimeStarted);
+        map.put("name", name);
+        map.put("paused", paused);
         map.put("recurring", recurring);
+        map.put("runNextInterval", runNextInterval);
+        map.put("scheduleID", scheduleID);
+        map.put("scheduleInfo", scheduleInfo);
+        map.put("startingDate", startingDate);
+        map.put("toBeDeleted", toBeDeleted);
         return map;
     }
 
@@ -242,31 +242,43 @@ public class Schedule implements Serializable {
         Gson gson = new Gson();
         sb.append( "{ " );
 
-        if(null != lastRunTimeStarted && lastRunTimeStarted.isPresent()){
-            sb.append(" lastRunTimeStarted : ").append(gson.toJson(lastRunTimeStarted)).append(",");
-        }
-        else{
-            sb.append(" lastRunTimeStarted : ").append("null").append(",");
-        }
+        sb.append(" frequency : ").append(gson.toJson(frequency)).append(",");
         if(null != hasError && hasError.isPresent()){
             sb.append(" hasError : ").append(gson.toJson(hasError)).append(",");
         }
         else{
             sb.append(" hasError : ").append("null").append(",");
         }
-        sb.append(" scheduleInfo : ").append(gson.toJson(scheduleInfo)).append(",");
-        if(null != runNextInterval && runNextInterval.isPresent()){
-            sb.append(" runNextInterval : ").append(gson.toJson(runNextInterval)).append(",");
-        }
-        else{
-            sb.append(" runNextInterval : ").append("null").append(",");
-        }
-        sb.append(" name : ").append(gson.toJson(name)).append(",");
         if(null != lastRunStatus && lastRunStatus.isPresent()){
             sb.append(" lastRunStatus : ").append(gson.toJson(lastRunStatus)).append(",");
         }
         else{
             sb.append(" lastRunStatus : ").append("null").append(",");
+        }
+        if(null != lastRunTimeStarted && lastRunTimeStarted.isPresent()){
+            sb.append(" lastRunTimeStarted : ").append(gson.toJson(lastRunTimeStarted)).append(",");
+        }
+        else{
+            sb.append(" lastRunTimeStarted : ").append("null").append(",");
+        }
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        if(null != paused && paused.isPresent()){
+            sb.append(" paused : ").append(gson.toJson(paused)).append(",");
+        }
+        else{
+            sb.append(" paused : ").append("null").append(",");
+        }
+        if(null != recurring && recurring.isPresent()){
+            sb.append(" recurring : ").append(gson.toJson(recurring)).append(",");
+        }
+        else{
+            sb.append(" recurring : ").append("null").append(",");
+        }
+        if(null != runNextInterval && runNextInterval.isPresent()){
+            sb.append(" runNextInterval : ").append(gson.toJson(runNextInterval)).append(",");
+        }
+        else{
+            sb.append(" runNextInterval : ").append("null").append(",");
         }
         if(null != scheduleID && scheduleID.isPresent()){
             sb.append(" scheduleID : ").append(gson.toJson(scheduleID)).append(",");
@@ -274,30 +286,18 @@ public class Schedule implements Serializable {
         else{
             sb.append(" scheduleID : ").append("null").append(",");
         }
-        if(null != paused && paused.isPresent()){
-            sb.append(" paused : ").append(gson.toJson(paused)).append(",");
-        }
-        else{
-            sb.append(" paused : ").append("null").append(",");
-        }
-        if(null != toBeDeleted && toBeDeleted.isPresent()){
-            sb.append(" toBeDeleted : ").append(gson.toJson(toBeDeleted)).append(",");
-        }
-        else{
-            sb.append(" toBeDeleted : ").append("null").append(",");
-        }
-        sb.append(" frequency : ").append(gson.toJson(frequency)).append(",");
+        sb.append(" scheduleInfo : ").append(gson.toJson(scheduleInfo)).append(",");
         if(null != startingDate && startingDate.isPresent()){
             sb.append(" startingDate : ").append(gson.toJson(startingDate)).append(",");
         }
         else{
             sb.append(" startingDate : ").append("null").append(",");
         }
-        if(null != recurring && recurring.isPresent()){
-            sb.append(" recurring : ").append(gson.toJson(recurring)).append(",");
+        if(null != toBeDeleted && toBeDeleted.isPresent()){
+            sb.append(" toBeDeleted : ").append(gson.toJson(toBeDeleted)).append(",");
         }
         else{
-            sb.append(" recurring : ").append("null").append(",");
+            sb.append(" toBeDeleted : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -316,96 +316,51 @@ public class Schedule implements Serializable {
     }
 
     public static class Builder {
-        private Optional<String> lastRunTimeStarted;
-        private Optional<Boolean> hasError;
-        private ScheduleInfo scheduleInfo;
-        private Optional<Boolean> runNextInterval;
-        private String name;
-        private Optional<String> lastRunStatus;
-        private Optional<Long> scheduleID;
-        private Optional<Boolean> paused;
-        private Optional<Boolean> toBeDeleted;
         private Frequency frequency;
-        private Optional<String> startingDate;
+        private Optional<Boolean> hasError;
+        private Optional<String> lastRunStatus;
+        private Optional<String> lastRunTimeStarted;
+        private String name;
+        private Optional<Boolean> paused;
         private Optional<Boolean> recurring;
+        private Optional<Boolean> runNextInterval;
+        private Optional<Long> scheduleID;
+        private ScheduleInfo scheduleInfo;
+        private Optional<String> startingDate;
+        private Optional<Boolean> toBeDeleted;
 
         private Builder() { }
 
         public Schedule build() {
             return new Schedule (
-                         this.lastRunTimeStarted,
-                         this.hasError,
-                         this.scheduleInfo,
-                         this.runNextInterval,
-                         this.name,
-                         this.lastRunStatus,
-                         this.scheduleID,
-                         this.paused,
-                         this.toBeDeleted,
                          this.frequency,
+                         this.hasError,
+                         this.lastRunStatus,
+                         this.lastRunTimeStarted,
+                         this.name,
+                         this.paused,
+                         this.recurring,
+                         this.runNextInterval,
+                         this.scheduleID,
+                         this.scheduleInfo,
                          this.startingDate,
-                         this.recurring);
+                         this.toBeDeleted);
         }
 
         private Schedule.Builder buildFrom(final Schedule req) {
-            this.lastRunTimeStarted = req.lastRunTimeStarted;
-            this.hasError = req.hasError;
-            this.scheduleInfo = req.scheduleInfo;
-            this.runNextInterval = req.runNextInterval;
-            this.name = req.name;
-            this.lastRunStatus = req.lastRunStatus;
-            this.scheduleID = req.scheduleID;
-            this.paused = req.paused;
-            this.toBeDeleted = req.toBeDeleted;
             this.frequency = req.frequency;
-            this.startingDate = req.startingDate;
+            this.hasError = req.hasError;
+            this.lastRunStatus = req.lastRunStatus;
+            this.lastRunTimeStarted = req.lastRunTimeStarted;
+            this.name = req.name;
+            this.paused = req.paused;
             this.recurring = req.recurring;
+            this.runNextInterval = req.runNextInterval;
+            this.scheduleID = req.scheduleID;
+            this.scheduleInfo = req.scheduleInfo;
+            this.startingDate = req.startingDate;
+            this.toBeDeleted = req.toBeDeleted;
 
-            return this;
-        }
-
-        public Schedule.Builder optionalLastRunTimeStarted(final String lastRunTimeStarted) {
-            this.lastRunTimeStarted = (lastRunTimeStarted == null) ? Optional.<String>empty() : Optional.of(lastRunTimeStarted);
-            return this;
-        }
-
-        public Schedule.Builder optionalHasError(final Boolean hasError) {
-            this.hasError = (hasError == null) ? Optional.<Boolean>empty() : Optional.of(hasError);
-            return this;
-        }
-
-        public Schedule.Builder scheduleInfo(final ScheduleInfo scheduleInfo) {
-            this.scheduleInfo = scheduleInfo;
-            return this;
-        }
-
-        public Schedule.Builder optionalRunNextInterval(final Boolean runNextInterval) {
-            this.runNextInterval = (runNextInterval == null) ? Optional.<Boolean>empty() : Optional.of(runNextInterval);
-            return this;
-        }
-
-        public Schedule.Builder name(final String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Schedule.Builder optionalLastRunStatus(final String lastRunStatus) {
-            this.lastRunStatus = (lastRunStatus == null) ? Optional.<String>empty() : Optional.of(lastRunStatus);
-            return this;
-        }
-
-        public Schedule.Builder optionalScheduleID(final Long scheduleID) {
-            this.scheduleID = (scheduleID == null) ? Optional.<Long>empty() : Optional.of(scheduleID);
-            return this;
-        }
-
-        public Schedule.Builder optionalPaused(final Boolean paused) {
-            this.paused = (paused == null) ? Optional.<Boolean>empty() : Optional.of(paused);
-            return this;
-        }
-
-        public Schedule.Builder optionalToBeDeleted(final Boolean toBeDeleted) {
-            this.toBeDeleted = (toBeDeleted == null) ? Optional.<Boolean>empty() : Optional.of(toBeDeleted);
             return this;
         }
 
@@ -414,13 +369,58 @@ public class Schedule implements Serializable {
             return this;
         }
 
-        public Schedule.Builder optionalStartingDate(final String startingDate) {
-            this.startingDate = (startingDate == null) ? Optional.<String>empty() : Optional.of(startingDate);
+        public Schedule.Builder optionalHasError(final Boolean hasError) {
+            this.hasError = (hasError == null) ? Optional.<Boolean>empty() : Optional.of(hasError);
+            return this;
+        }
+
+        public Schedule.Builder optionalLastRunStatus(final String lastRunStatus) {
+            this.lastRunStatus = (lastRunStatus == null) ? Optional.<String>empty() : Optional.of(lastRunStatus);
+            return this;
+        }
+
+        public Schedule.Builder optionalLastRunTimeStarted(final String lastRunTimeStarted) {
+            this.lastRunTimeStarted = (lastRunTimeStarted == null) ? Optional.<String>empty() : Optional.of(lastRunTimeStarted);
+            return this;
+        }
+
+        public Schedule.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Schedule.Builder optionalPaused(final Boolean paused) {
+            this.paused = (paused == null) ? Optional.<Boolean>empty() : Optional.of(paused);
             return this;
         }
 
         public Schedule.Builder optionalRecurring(final Boolean recurring) {
             this.recurring = (recurring == null) ? Optional.<Boolean>empty() : Optional.of(recurring);
+            return this;
+        }
+
+        public Schedule.Builder optionalRunNextInterval(final Boolean runNextInterval) {
+            this.runNextInterval = (runNextInterval == null) ? Optional.<Boolean>empty() : Optional.of(runNextInterval);
+            return this;
+        }
+
+        public Schedule.Builder optionalScheduleID(final Long scheduleID) {
+            this.scheduleID = (scheduleID == null) ? Optional.<Long>empty() : Optional.of(scheduleID);
+            return this;
+        }
+
+        public Schedule.Builder scheduleInfo(final ScheduleInfo scheduleInfo) {
+            this.scheduleInfo = scheduleInfo;
+            return this;
+        }
+
+        public Schedule.Builder optionalStartingDate(final String startingDate) {
+            this.startingDate = (startingDate == null) ? Optional.<String>empty() : Optional.of(startingDate);
+            return this;
+        }
+
+        public Schedule.Builder optionalToBeDeleted(final Boolean toBeDeleted) {
+            this.toBeDeleted = (toBeDeleted == null) ? Optional.<Boolean>empty() : Optional.of(toBeDeleted);
             return this;
         }
 

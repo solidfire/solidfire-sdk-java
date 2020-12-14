@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListClusterAdminsResult implements Serializable {
 
-    public static final long serialVersionUID = 7677046371408387626L;
+    public static final long serialVersionUID = -3872427133342729945L;
     @SerializedName("clusterAdmins") private ClusterAdmin[] clusterAdmins;
     // empty constructor
     @Since("7.0")

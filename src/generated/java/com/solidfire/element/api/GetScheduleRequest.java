@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class GetScheduleRequest implements Serializable {
 
-    public static final long serialVersionUID = 7033439912061223312L;
+    public static final long serialVersionUID = 3697205245276402028L;
     @SerializedName("scheduleID") private Long scheduleID;
     // empty constructor
     @Since("7.0")

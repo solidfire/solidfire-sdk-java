@@ -34,8 +34,8 @@ import java.util.Objects;
 
 public class GetNvramInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 8380977530507768205L;
-    @SerializedName("nvramInfo") private Attributes nvramInfo;
+    public static final long serialVersionUID = 5094856078964943836L;
+    @SerializedName("nvramInfo") private NvramInfo nvramInfo;
     // empty constructor
     @Since("7.0")
     public GetNvramInfoResult() {}
@@ -44,7 +44,7 @@ public class GetNvramInfoResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetNvramInfoResult(
-        Attributes nvramInfo
+        NvramInfo nvramInfo
     )
     {
         this.nvramInfo = nvramInfo;
@@ -53,9 +53,9 @@ public class GetNvramInfoResult implements Serializable {
     /** 
      * Arrays of events and errors detected on the NVRAM card.
      **/
-    public Attributes getNvramInfo() { return this.nvramInfo; }
+    public NvramInfo getNvramInfo() { return this.nvramInfo; }
    
-    public void setNvramInfo(Attributes nvramInfo) { 
+    public void setNvramInfo(NvramInfo nvramInfo) { 
         this.nvramInfo = nvramInfo;
     }
 
@@ -106,7 +106,7 @@ public class GetNvramInfoResult implements Serializable {
     }
 
     public static class Builder {
-        private Attributes nvramInfo;
+        private NvramInfo nvramInfo;
 
         private Builder() { }
 
@@ -121,7 +121,7 @@ public class GetNvramInfoResult implements Serializable {
             return this;
         }
 
-        public GetNvramInfoResult.Builder nvramInfo(final Attributes nvramInfo) {
+        public GetNvramInfoResult.Builder nvramInfo(final NvramInfo nvramInfo) {
             this.nvramInfo = nvramInfo;
             return this;
         }

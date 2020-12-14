@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SnmpNetwork implements Serializable {
 
-    public static final long serialVersionUID = 867099654301027681L;
+    public static final long serialVersionUID = -3289066549411336547L;
     @SerializedName("access") private String access;
     @SerializedName("cidr") private Long cidr;
     @SerializedName("community") private String community;
@@ -61,10 +61,10 @@ public class SnmpNetwork implements Serializable {
     }
 
     /** 
-     * ro: read-only access.*
+     * ro: read-only access.
      * rw: for read-write access.
      * rosys: for read-only access to a restricted set of system information
-     * *SolidFire recommends that all networks other than the default "localhost" be set to "ro" access, because all SolidFire MIB objects are read-only.
+     * SolidFire recommends that all networks other than the default "localhost" be set to "ro" access, because all SolidFire MIB objects are read-only.
      **/
     public String getAccess() { return this.access; }
    

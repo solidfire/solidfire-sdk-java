@@ -38,13 +38,13 @@ import java.util.Objects;
  * to prevent replication errors:
  *    Increase the size of the "Replication Target" volume.
  *    Increase the size of the source or "Read / Write" volume.
- * Recommend that both the target and source volumes be the same size.
+ * Both the target and source volumes must be of the same size.
  * NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
  **/
 
 public class ModifyVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 2213958253693979054L;
+    public static final long serialVersionUID = 7282354359061091888L;
     @SerializedName("volumeIDs") private Long[] volumeIDs;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
@@ -53,6 +53,7 @@ public class ModifyVolumesRequest implements Serializable {
     @SerializedName("associateWithQoSPolicy") private Optional<Boolean> associateWithQoSPolicy;
     @SerializedName("qosPolicyID") private Optional<Long> qosPolicyID;
     @SerializedName("attributes") private Optional<Attributes> attributes;
+    @SerializedName("enableSnapMirrorReplication") private Optional<Boolean> enableSnapMirrorReplication;
     // empty constructor
     @Since("7.0")
     public ModifyVolumesRequest() {}
@@ -86,7 +87,8 @@ public class ModifyVolumesRequest implements Serializable {
         Optional<Long> totalSize,
         Optional<Boolean> associateWithQoSPolicy,
         Optional<Long> qosPolicyID,
-        Optional<Attributes> attributes
+        Optional<Attributes> attributes,
+        Optional<Boolean> enableSnapMirrorReplication
     )
     {
         this.volumeIDs = volumeIDs;
@@ -97,6 +99,7 @@ public class ModifyVolumesRequest implements Serializable {
         this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : associateWithQoSPolicy;
         this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : enableSnapMirrorReplication;
     }
 
     /** 
@@ -167,6 +170,17 @@ public class ModifyVolumesRequest implements Serializable {
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
+    /** 
+     * Determines whether the volume can be used for replication with SnapMirror endpoints.
+     * Possible values:
+     * true
+     * false
+     **/
+    public Optional<Boolean> getEnableSnapMirrorReplication() { return this.enableSnapMirrorReplication; }
+   
+    public void setEnableSnapMirrorReplication(Optional<Boolean> enableSnapMirrorReplication) { 
+        this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : enableSnapMirrorReplication;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -183,12 +197,13 @@ public class ModifyVolumesRequest implements Serializable {
             Objects.equals(totalSize, that.totalSize) && 
             Objects.equals(associateWithQoSPolicy, that.associateWithQoSPolicy) && 
             Objects.equals(qosPolicyID, that.qosPolicyID) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(enableSnapMirrorReplication, that.enableSnapMirrorReplication);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])volumeIDs,accountID,access,qos,totalSize,associateWithQoSPolicy,qosPolicyID,attributes );
+        return Objects.hash( (Object[])volumeIDs,accountID,access,qos,totalSize,associateWithQoSPolicy,qosPolicyID,attributes,enableSnapMirrorReplication );
     }
 
 
@@ -202,6 +217,7 @@ public class ModifyVolumesRequest implements Serializable {
         map.put("associateWithQoSPolicy", associateWithQoSPolicy);
         map.put("qosPolicyID", qosPolicyID);
         map.put("attributes", attributes);
+        map.put("enableSnapMirrorReplication", enableSnapMirrorReplication);
         return map;
     }
 
@@ -254,6 +270,12 @@ public class ModifyVolumesRequest implements Serializable {
         else{
             sb.append(" attributes : ").append("null").append(",");
         }
+        if(null != enableSnapMirrorReplication && enableSnapMirrorReplication.isPresent()){
+            sb.append(" enableSnapMirrorReplication : ").append(gson.toJson(enableSnapMirrorReplication)).append(",");
+        }
+        else{
+            sb.append(" enableSnapMirrorReplication : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -279,6 +301,7 @@ public class ModifyVolumesRequest implements Serializable {
         private Optional<Boolean> associateWithQoSPolicy;
         private Optional<Long> qosPolicyID;
         private Optional<Attributes> attributes;
+        private Optional<Boolean> enableSnapMirrorReplication;
 
         private Builder() { }
 
@@ -291,7 +314,8 @@ public class ModifyVolumesRequest implements Serializable {
                          this.totalSize,
                          this.associateWithQoSPolicy,
                          this.qosPolicyID,
-                         this.attributes);
+                         this.attributes,
+                         this.enableSnapMirrorReplication);
         }
 
         private ModifyVolumesRequest.Builder buildFrom(final ModifyVolumesRequest req) {
@@ -303,6 +327,7 @@ public class ModifyVolumesRequest implements Serializable {
             this.associateWithQoSPolicy = req.associateWithQoSPolicy;
             this.qosPolicyID = req.qosPolicyID;
             this.attributes = req.attributes;
+            this.enableSnapMirrorReplication = req.enableSnapMirrorReplication;
 
             return this;
         }
@@ -344,6 +369,11 @@ public class ModifyVolumesRequest implements Serializable {
 
         public ModifyVolumesRequest.Builder optionalAttributes(final Attributes attributes) {
             this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
+            return this;
+        }
+
+        public ModifyVolumesRequest.Builder optionalEnableSnapMirrorReplication(final Boolean enableSnapMirrorReplication) {
+            this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableSnapMirrorReplication);
             return this;
         }
 

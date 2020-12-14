@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SetNtpInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 4866518125016200349L;
+    public static final long serialVersionUID = -5553062926398467888L;
     // empty constructor
     @Since("7.0")
     public SetNtpInfoResult() {}

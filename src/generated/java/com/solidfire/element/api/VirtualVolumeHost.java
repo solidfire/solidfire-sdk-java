@@ -34,13 +34,13 @@ import java.util.Objects;
 
 public class VirtualVolumeHost implements Serializable {
 
-    public static final long serialVersionUID = -2100377211988292460L;
+    public static final long serialVersionUID = 3388453493580999423L;
     @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
-    @SerializedName("clusterID") private java.util.UUID clusterID;
+    @SerializedName("clusterID") private Optional<java.util.UUID> clusterID;
     @SerializedName("visibleProtocolEndpointIDs") private java.util.UUID[] visibleProtocolEndpointIDs;
     @SerializedName("bindings") private Long[] bindings;
     @SerializedName("initiatorNames") private String[] initiatorNames;
-    @SerializedName("hostAddress") private String hostAddress;
+    @SerializedName("hostAddress") private Optional<String> hostAddress;
     // empty constructor
     @Since("7.0")
     public VirtualVolumeHost() {}
@@ -50,19 +50,19 @@ public class VirtualVolumeHost implements Serializable {
     @Since("7.0")
     public VirtualVolumeHost(
         java.util.UUID virtualVolumeHostID,
-        java.util.UUID clusterID,
+        Optional<java.util.UUID> clusterID,
         java.util.UUID[] visibleProtocolEndpointIDs,
         Long[] bindings,
         String[] initiatorNames,
-        String hostAddress
+        Optional<String> hostAddress
     )
     {
         this.virtualVolumeHostID = virtualVolumeHostID;
-        this.clusterID = clusterID;
+        this.clusterID = (clusterID == null) ? Optional.<java.util.UUID>empty() : clusterID;
         this.visibleProtocolEndpointIDs = visibleProtocolEndpointIDs;
         this.bindings = bindings;
         this.initiatorNames = initiatorNames;
-        this.hostAddress = hostAddress;
+        this.hostAddress = (hostAddress == null) ? Optional.<String>empty() : hostAddress;
     }
 
     /** 
@@ -76,10 +76,10 @@ public class VirtualVolumeHost implements Serializable {
     /** 
      * 
      **/
-    public java.util.UUID getClusterID() { return this.clusterID; }
+    public Optional<java.util.UUID> getClusterID() { return this.clusterID; }
    
-    public void setClusterID(java.util.UUID clusterID) { 
-        this.clusterID = clusterID;
+    public void setClusterID(Optional<java.util.UUID> clusterID) { 
+        this.clusterID = (clusterID == null) ? Optional.<java.util.UUID>empty() : clusterID;
     }
     /** 
      * 
@@ -108,10 +108,10 @@ public class VirtualVolumeHost implements Serializable {
     /** 
      * 
      **/
-    public String getHostAddress() { return this.hostAddress; }
+    public Optional<String> getHostAddress() { return this.hostAddress; }
    
-    public void setHostAddress(String hostAddress) { 
-        this.hostAddress = hostAddress;
+    public void setHostAddress(Optional<String> hostAddress) { 
+        this.hostAddress = (hostAddress == null) ? Optional.<String>empty() : hostAddress;
     }
 
     @Override
@@ -154,11 +154,21 @@ public class VirtualVolumeHost implements Serializable {
         sb.append( "{ " );
 
         sb.append(" virtualVolumeHostID : ").append(gson.toJson(virtualVolumeHostID)).append(",");
-        sb.append(" clusterID : ").append(gson.toJson(clusterID)).append(",");
+        if(null != clusterID && clusterID.isPresent()){
+            sb.append(" clusterID : ").append(gson.toJson(clusterID)).append(",");
+        }
+        else{
+            sb.append(" clusterID : ").append("null").append(",");
+        }
         sb.append(" visibleProtocolEndpointIDs : ").append(gson.toJson(Arrays.toString(visibleProtocolEndpointIDs))).append(",");
         sb.append(" bindings : ").append(gson.toJson(Arrays.toString(bindings))).append(",");
         sb.append(" initiatorNames : ").append(gson.toJson(Arrays.toString(initiatorNames))).append(",");
-        sb.append(" hostAddress : ").append(gson.toJson(hostAddress)).append(",");
+        if(null != hostAddress && hostAddress.isPresent()){
+            sb.append(" hostAddress : ").append(gson.toJson(hostAddress)).append(",");
+        }
+        else{
+            sb.append(" hostAddress : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -177,11 +187,11 @@ public class VirtualVolumeHost implements Serializable {
 
     public static class Builder {
         private java.util.UUID virtualVolumeHostID;
-        private java.util.UUID clusterID;
+        private Optional<java.util.UUID> clusterID;
         private java.util.UUID[] visibleProtocolEndpointIDs;
         private Long[] bindings;
         private String[] initiatorNames;
-        private String hostAddress;
+        private Optional<String> hostAddress;
 
         private Builder() { }
 
@@ -211,8 +221,8 @@ public class VirtualVolumeHost implements Serializable {
             return this;
         }
 
-        public VirtualVolumeHost.Builder clusterID(final java.util.UUID clusterID) {
-            this.clusterID = clusterID;
+        public VirtualVolumeHost.Builder optionalClusterID(final java.util.UUID clusterID) {
+            this.clusterID = (clusterID == null) ? Optional.<java.util.UUID>empty() : Optional.of(clusterID);
             return this;
         }
 
@@ -231,8 +241,8 @@ public class VirtualVolumeHost implements Serializable {
             return this;
         }
 
-        public VirtualVolumeHost.Builder hostAddress(final String hostAddress) {
-            this.hostAddress = hostAddress;
+        public VirtualVolumeHost.Builder optionalHostAddress(final String hostAddress) {
+            this.hostAddress = (hostAddress == null) ? Optional.<String>empty() : Optional.of(hostAddress);
             return this;
         }
 

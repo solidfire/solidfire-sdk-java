@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ModifySnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = -406933401919485379L;
+    public static final long serialVersionUID = -7508467246879404250L;
     @SerializedName("snapshot") private Optional<Snapshot> snapshot;
     // empty constructor
     @Since("8.0")

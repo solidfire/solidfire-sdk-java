@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class ListVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 5183986509019868242L;
+    public static final long serialVersionUID = 4477616755359195912L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("volumeStatus") private Optional<String> volumeStatus;
@@ -45,6 +45,7 @@ public class ListVolumesRequest implements Serializable {
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
     @SerializedName("volumeName") private Optional<String> volumeName;
     @SerializedName("includeVirtualVolumes") private Optional<Boolean> includeVirtualVolumes;
+    @SerializedName("protectionSchemes") private Optional<String[]> protectionSchemes;
     // empty constructor
     @Since("7.0")
     public ListVolumesRequest() {}
@@ -58,7 +59,9 @@ public class ListVolumesRequest implements Serializable {
         Optional<String> volumeStatus,
         Optional<Long[]> accounts,
         Optional<Boolean> isPaired,
-        Optional<String> volumeName
+        Optional<Long[]> volumeIDs,
+        Optional<String> volumeName,
+        Optional<String[]> protectionSchemes
     )
     {
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
@@ -66,7 +69,9 @@ public class ListVolumesRequest implements Serializable {
         this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
         this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
         this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
+        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
         this.volumeName = (volumeName == null) ? Optional.<String>empty() : volumeName;
+        this.protectionSchemes = (protectionSchemes == null) ? Optional.<String[]>empty() : protectionSchemes;
     }
     // parameterized constructor
     @Since("9.0")
@@ -78,7 +83,8 @@ public class ListVolumesRequest implements Serializable {
         Optional<Boolean> isPaired,
         Optional<Long[]> volumeIDs,
         Optional<String> volumeName,
-        Optional<Boolean> includeVirtualVolumes
+        Optional<Boolean> includeVirtualVolumes,
+        Optional<String[]> protectionSchemes
     )
     {
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
@@ -89,6 +95,7 @@ public class ListVolumesRequest implements Serializable {
         this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
         this.volumeName = (volumeName == null) ? Optional.<String>empty() : volumeName;
         this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
+        this.protectionSchemes = (protectionSchemes == null) ? Optional.<String[]>empty() : protectionSchemes;
     }
 
     /** 
@@ -173,6 +180,14 @@ public class ListVolumesRequest implements Serializable {
     public void setIncludeVirtualVolumes(Optional<Boolean> includeVirtualVolumes) { 
         this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
     }
+    /** 
+     * Only volumes that are using one of the protection schemes in this set are returned.
+     **/
+    public Optional<String[]> getProtectionSchemes() { return this.protectionSchemes; }
+   
+    public void setProtectionSchemes(Optional<String[]> protectionSchemes) { 
+        this.protectionSchemes = (protectionSchemes == null) ? Optional.<String[]>empty() : protectionSchemes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -189,12 +204,13 @@ public class ListVolumesRequest implements Serializable {
             Objects.equals(isPaired, that.isPaired) && 
             Objects.equals(volumeIDs, that.volumeIDs) && 
             Objects.equals(volumeName, that.volumeName) && 
-            Objects.equals(includeVirtualVolumes, that.includeVirtualVolumes);
+            Objects.equals(includeVirtualVolumes, that.includeVirtualVolumes) && 
+            Objects.equals(protectionSchemes, that.protectionSchemes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startVolumeID,limit,volumeStatus,accounts,isPaired,volumeIDs,volumeName,includeVirtualVolumes );
+        return Objects.hash( startVolumeID,limit,volumeStatus,accounts,isPaired,volumeIDs,volumeName,includeVirtualVolumes,protectionSchemes );
     }
 
 
@@ -208,6 +224,7 @@ public class ListVolumesRequest implements Serializable {
         map.put("volumeIDs", volumeIDs);
         map.put("volumeName", volumeName);
         map.put("includeVirtualVolumes", includeVirtualVolumes);
+        map.put("protectionSchemes", protectionSchemes);
         return map;
     }
 
@@ -265,6 +282,12 @@ public class ListVolumesRequest implements Serializable {
         else{
             sb.append(" includeVirtualVolumes : ").append("null").append(",");
         }
+        if(null != protectionSchemes && protectionSchemes.isPresent()){
+            sb.append(" protectionSchemes : ").append(gson.toJson(protectionSchemes)).append(",");
+        }
+        else{
+            sb.append(" protectionSchemes : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -290,6 +313,7 @@ public class ListVolumesRequest implements Serializable {
         private Optional<Long[]> volumeIDs;
         private Optional<String> volumeName;
         private Optional<Boolean> includeVirtualVolumes;
+        private Optional<String[]> protectionSchemes;
 
         private Builder() { }
 
@@ -302,7 +326,8 @@ public class ListVolumesRequest implements Serializable {
                          this.isPaired,
                          this.volumeIDs,
                          this.volumeName,
-                         this.includeVirtualVolumes);
+                         this.includeVirtualVolumes,
+                         this.protectionSchemes);
         }
 
         private ListVolumesRequest.Builder buildFrom(final ListVolumesRequest req) {
@@ -314,6 +339,7 @@ public class ListVolumesRequest implements Serializable {
             this.volumeIDs = req.volumeIDs;
             this.volumeName = req.volumeName;
             this.includeVirtualVolumes = req.includeVirtualVolumes;
+            this.protectionSchemes = req.protectionSchemes;
 
             return this;
         }
@@ -355,6 +381,11 @@ public class ListVolumesRequest implements Serializable {
 
         public ListVolumesRequest.Builder optionalIncludeVirtualVolumes(final Boolean includeVirtualVolumes) {
             this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : Optional.of(includeVirtualVolumes);
+            return this;
+        }
+
+        public ListVolumesRequest.Builder optionalProtectionSchemes(final String[] protectionSchemes) {
+            this.protectionSchemes = (protectionSchemes == null) ? Optional.<String[]>empty() : Optional.of(protectionSchemes);
             return this;
         }
 

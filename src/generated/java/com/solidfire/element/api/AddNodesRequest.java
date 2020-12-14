@@ -36,9 +36,9 @@ import java.util.Objects;
 
 public class AddNodesRequest implements Serializable {
 
-    public static final long serialVersionUID = -3701373756118626536L;
+    public static final long serialVersionUID = -3092835269751313022L;
     @SerializedName("pendingNodes") private Long[] pendingNodes;
-    @SerializedName("autoInstall") private Optional<Boolean> autoInstall;
+    @SerializedName("autoInstall") private Optional<Boolean> autoInstall = Optional.of(true);
     // empty constructor
     @Since("7.0")
     public AddNodesRequest() {}
@@ -64,7 +64,7 @@ public class AddNodesRequest implements Serializable {
         this.pendingNodes = pendingNodes;
     }
     /** 
-     * Whether these nodes should be autoinstalled
+     * If true, RTFI will be performed on the nodes.  The default behavior is to perform RTFI.
      **/
     public Optional<Boolean> getAutoInstall() { return this.autoInstall; }
    

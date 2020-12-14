@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetOriginNodeResult implements Serializable {
 
-    public static final long serialVersionUID = 5036944606698284938L;
+    public static final long serialVersionUID = -1571533281945394953L;
     @SerializedName("origin") private Optional<Origin> origin;
     // empty constructor
     @Since("7.0")

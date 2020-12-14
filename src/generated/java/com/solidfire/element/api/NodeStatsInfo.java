@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class NodeStatsInfo implements Serializable {
 
-    public static final long serialVersionUID = 7349711922328450412L;
+    public static final long serialVersionUID = -6825704105612754618L;
     @SerializedName("cBytesIn") private Long cBytesIn;
     @SerializedName("cBytesOut") private Long cBytesOut;
     @SerializedName("count") private Long count;
@@ -49,6 +49,7 @@ public class NodeStatsInfo implements Serializable {
     @SerializedName("readLatencyUSecTotal") private Long readLatencyUSecTotal;
     @SerializedName("sBytesIn") private Long sBytesIn;
     @SerializedName("sBytesOut") private Long sBytesOut;
+    @SerializedName("ssLoadHistogram") private QuintileHistogram ssLoadHistogram;
     @SerializedName("timestamp") private String timestamp;
     @SerializedName("usedMemory") private Long usedMemory;
     @SerializedName("writeLatencyUSecTotal") private Long writeLatencyUSecTotal;
@@ -95,6 +96,50 @@ public class NodeStatsInfo implements Serializable {
         this.readLatencyUSecTotal = readLatencyUSecTotal;
         this.sBytesIn = sBytesIn;
         this.sBytesOut = sBytesOut;
+        this.timestamp = timestamp;
+        this.usedMemory = usedMemory;
+        this.writeLatencyUSecTotal = writeLatencyUSecTotal;
+        this.writeOps = writeOps;
+    }
+    // parameterized constructor
+    @Since("11.0")
+    public NodeStatsInfo(
+        Long cBytesIn,
+        Long cBytesOut,
+        Long count,
+        Long cpu,
+        Long cpuTotal,
+        Long mBytesIn,
+        Long mBytesOut,
+        Long networkUtilizationCluster,
+        Long networkUtilizationStorage,
+        Long nodeID,
+        Long readOps,
+        Long readLatencyUSecTotal,
+        Long sBytesIn,
+        Long sBytesOut,
+        QuintileHistogram ssLoadHistogram,
+        String timestamp,
+        Long usedMemory,
+        Long writeLatencyUSecTotal,
+        Long writeOps
+    )
+    {
+        this.cBytesIn = cBytesIn;
+        this.cBytesOut = cBytesOut;
+        this.count = count;
+        this.cpu = cpu;
+        this.cpuTotal = cpuTotal;
+        this.mBytesIn = mBytesIn;
+        this.mBytesOut = mBytesOut;
+        this.networkUtilizationCluster = networkUtilizationCluster;
+        this.networkUtilizationStorage = networkUtilizationStorage;
+        this.nodeID = nodeID;
+        this.readOps = readOps;
+        this.readLatencyUSecTotal = readLatencyUSecTotal;
+        this.sBytesIn = sBytesIn;
+        this.sBytesOut = sBytesOut;
+        this.ssLoadHistogram = ssLoadHistogram;
         this.timestamp = timestamp;
         this.usedMemory = usedMemory;
         this.writeLatencyUSecTotal = writeLatencyUSecTotal;
@@ -214,6 +259,14 @@ public class NodeStatsInfo implements Serializable {
         this.sBytesOut = sBytesOut;
     }
     /** 
+     * A histogram of SS load measurements.
+     **/
+    public QuintileHistogram getSsLoadHistogram() { return this.ssLoadHistogram; }
+   
+    public void setSsLoadHistogram(QuintileHistogram ssLoadHistogram) { 
+        this.ssLoadHistogram = ssLoadHistogram;
+    }
+    /** 
      * Current time in UTC format ISO 8691 date string.
      **/
     public String getTimestamp() { return this.timestamp; }
@@ -268,6 +321,7 @@ public class NodeStatsInfo implements Serializable {
             Objects.equals(readLatencyUSecTotal, that.readLatencyUSecTotal) && 
             Objects.equals(sBytesIn, that.sBytesIn) && 
             Objects.equals(sBytesOut, that.sBytesOut) && 
+            Objects.equals(ssLoadHistogram, that.ssLoadHistogram) && 
             Objects.equals(timestamp, that.timestamp) && 
             Objects.equals(usedMemory, that.usedMemory) && 
             Objects.equals(writeLatencyUSecTotal, that.writeLatencyUSecTotal) && 
@@ -276,7 +330,7 @@ public class NodeStatsInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( cBytesIn,cBytesOut,count,cpu,cpuTotal,mBytesIn,mBytesOut,networkUtilizationCluster,networkUtilizationStorage,nodeID,readOps,readLatencyUSecTotal,sBytesIn,sBytesOut,timestamp,usedMemory,writeLatencyUSecTotal,writeOps );
+        return Objects.hash( cBytesIn,cBytesOut,count,cpu,cpuTotal,mBytesIn,mBytesOut,networkUtilizationCluster,networkUtilizationStorage,nodeID,readOps,readLatencyUSecTotal,sBytesIn,sBytesOut,ssLoadHistogram,timestamp,usedMemory,writeLatencyUSecTotal,writeOps );
     }
 
 
@@ -296,6 +350,7 @@ public class NodeStatsInfo implements Serializable {
         map.put("readLatencyUSecTotal", readLatencyUSecTotal);
         map.put("sBytesIn", sBytesIn);
         map.put("sBytesOut", sBytesOut);
+        map.put("ssLoadHistogram", ssLoadHistogram);
         map.put("timestamp", timestamp);
         map.put("usedMemory", usedMemory);
         map.put("writeLatencyUSecTotal", writeLatencyUSecTotal);
@@ -323,6 +378,7 @@ public class NodeStatsInfo implements Serializable {
         sb.append(" readLatencyUSecTotal : ").append(gson.toJson(readLatencyUSecTotal)).append(",");
         sb.append(" sBytesIn : ").append(gson.toJson(sBytesIn)).append(",");
         sb.append(" sBytesOut : ").append(gson.toJson(sBytesOut)).append(",");
+        sb.append(" ssLoadHistogram : ").append(gson.toJson(ssLoadHistogram)).append(",");
         sb.append(" timestamp : ").append(gson.toJson(timestamp)).append(",");
         sb.append(" usedMemory : ").append(gson.toJson(usedMemory)).append(",");
         sb.append(" writeLatencyUSecTotal : ").append(gson.toJson(writeLatencyUSecTotal)).append(",");
@@ -358,6 +414,7 @@ public class NodeStatsInfo implements Serializable {
         private Long readLatencyUSecTotal;
         private Long sBytesIn;
         private Long sBytesOut;
+        private QuintileHistogram ssLoadHistogram;
         private String timestamp;
         private Long usedMemory;
         private Long writeLatencyUSecTotal;
@@ -381,6 +438,7 @@ public class NodeStatsInfo implements Serializable {
                          this.readLatencyUSecTotal,
                          this.sBytesIn,
                          this.sBytesOut,
+                         this.ssLoadHistogram,
                          this.timestamp,
                          this.usedMemory,
                          this.writeLatencyUSecTotal,
@@ -402,6 +460,7 @@ public class NodeStatsInfo implements Serializable {
             this.readLatencyUSecTotal = req.readLatencyUSecTotal;
             this.sBytesIn = req.sBytesIn;
             this.sBytesOut = req.sBytesOut;
+            this.ssLoadHistogram = req.ssLoadHistogram;
             this.timestamp = req.timestamp;
             this.usedMemory = req.usedMemory;
             this.writeLatencyUSecTotal = req.writeLatencyUSecTotal;
@@ -477,6 +536,11 @@ public class NodeStatsInfo implements Serializable {
 
         public NodeStatsInfo.Builder sBytesOut(final Long sBytesOut) {
             this.sBytesOut = sBytesOut;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder ssLoadHistogram(final QuintileHistogram ssLoadHistogram) {
+            this.ssLoadHistogram = ssLoadHistogram;
             return this;
         }
 

@@ -34,9 +34,9 @@ import java.util.Objects;
 
 public class GetAPIResult implements Serializable {
 
-    public static final long serialVersionUID = -334735413474527149L;
-    @SerializedName("supportedVersions") private Double[] supportedVersions;
+    public static final long serialVersionUID = 7818974360192562254L;
     @SerializedName("currentVersion") private Double currentVersion;
+    @SerializedName("supportedVersions") private Double[] supportedVersions;
     // empty constructor
     @Since("7.0")
     public GetAPIResult() {}
@@ -45,22 +45,14 @@ public class GetAPIResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetAPIResult(
-        Double[] supportedVersions,
-        Double currentVersion
+        Double currentVersion,
+        Double[] supportedVersions
     )
     {
-        this.supportedVersions = supportedVersions;
         this.currentVersion = currentVersion;
+        this.supportedVersions = supportedVersions;
     }
 
-    /** 
-     * 
-     **/
-    public Double[] getSupportedVersions() { return this.supportedVersions; }
-   
-    public void setSupportedVersions(Double[] supportedVersions) { 
-        this.supportedVersions = supportedVersions;
-    }
     /** 
      * 
      **/
@@ -68,6 +60,14 @@ public class GetAPIResult implements Serializable {
    
     public void setCurrentVersion(Double currentVersion) { 
         this.currentVersion = currentVersion;
+    }
+    /** 
+     * 
+     **/
+    public Double[] getSupportedVersions() { return this.supportedVersions; }
+   
+    public void setSupportedVersions(Double[] supportedVersions) { 
+        this.supportedVersions = supportedVersions;
     }
 
     @Override
@@ -78,20 +78,20 @@ public class GetAPIResult implements Serializable {
         GetAPIResult that = (GetAPIResult) o;
 
         return 
-            Arrays.equals(supportedVersions, that.supportedVersions) && 
-            Objects.equals(currentVersion, that.currentVersion);
+            Objects.equals(currentVersion, that.currentVersion) && 
+            Arrays.equals(supportedVersions, that.supportedVersions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])supportedVersions,currentVersion );
+        return Objects.hash( currentVersion,(Object[])supportedVersions );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("supportedVersions", supportedVersions);
         map.put("currentVersion", currentVersion);
+        map.put("supportedVersions", supportedVersions);
         return map;
     }
 
@@ -101,8 +101,8 @@ public class GetAPIResult implements Serializable {
         Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" supportedVersions : ").append(gson.toJson(Arrays.toString(supportedVersions))).append(",");
         sb.append(" currentVersion : ").append(gson.toJson(currentVersion)).append(",");
+        sb.append(" supportedVersions : ").append(gson.toJson(Arrays.toString(supportedVersions))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -120,31 +120,31 @@ public class GetAPIResult implements Serializable {
     }
 
     public static class Builder {
-        private Double[] supportedVersions;
         private Double currentVersion;
+        private Double[] supportedVersions;
 
         private Builder() { }
 
         public GetAPIResult build() {
             return new GetAPIResult (
-                         this.supportedVersions,
-                         this.currentVersion);
+                         this.currentVersion,
+                         this.supportedVersions);
         }
 
         private GetAPIResult.Builder buildFrom(final GetAPIResult req) {
-            this.supportedVersions = req.supportedVersions;
             this.currentVersion = req.currentVersion;
+            this.supportedVersions = req.supportedVersions;
 
-            return this;
-        }
-
-        public GetAPIResult.Builder supportedVersions(final Double[] supportedVersions) {
-            this.supportedVersions = supportedVersions;
             return this;
         }
 
         public GetAPIResult.Builder currentVersion(final Double currentVersion) {
             this.currentVersion = currentVersion;
+            return this;
+        }
+
+        public GetAPIResult.Builder supportedVersions(final Double[] supportedVersions) {
+            this.supportedVersions = supportedVersions;
             return this;
         }
 

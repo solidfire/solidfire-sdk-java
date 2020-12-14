@@ -30,18 +30,19 @@ import java.util.Objects;
 
 /**
  * PendingNode  
- * A "pending node" is one that has not yet joined the cluster.
- * It can be added to a cluster using the AddNode method.
+ * A "pending node" is a node that has not yet joined the cluster.
+ * Pending nodes can be added to a cluster using the AddNode method.
  **/
 
 public class PendingNode implements Serializable {
 
-    public static final long serialVersionUID = -930850330231659742L;
+    public static final long serialVersionUID = 6516433508282856115L;
     @SerializedName("pendingNodeID") private Long pendingNodeID;
     @SerializedName("assignedNodeID") private Long assignedNodeID;
     @SerializedName("name") private String name;
     @SerializedName("compatible") private Boolean compatible;
     @SerializedName("platformInfo") private Platform platformInfo;
+    @SerializedName("role") private String role;
     @SerializedName("cip") private String cip;
     @SerializedName("cipi") private String cipi;
     @SerializedName("mip") private String mip;
@@ -51,6 +52,8 @@ public class PendingNode implements Serializable {
     @SerializedName("softwareVersion") private String softwareVersion;
     @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("nodeSlot") private Optional<String> nodeSlot;
+    @SerializedName("chassisName") private String chassisName;
+    @SerializedName("customProtectionDomainName") private String customProtectionDomainName;
     // empty constructor
     @Since("7.0")
     public PendingNode() {}
@@ -64,6 +67,7 @@ public class PendingNode implements Serializable {
         String name,
         Boolean compatible,
         Platform platformInfo,
+        String role,
         String cip,
         String cipi,
         String mip,
@@ -72,7 +76,9 @@ public class PendingNode implements Serializable {
         String sipi,
         String softwareVersion,
         java.util.UUID uuid,
-        Optional<String> nodeSlot
+        Optional<String> nodeSlot,
+        String chassisName,
+        String customProtectionDomainName
     )
     {
         this.pendingNodeID = pendingNodeID;
@@ -80,6 +86,7 @@ public class PendingNode implements Serializable {
         this.name = name;
         this.compatible = compatible;
         this.platformInfo = platformInfo;
+        this.role = role;
         this.cip = cip;
         this.cipi = cipi;
         this.mip = mip;
@@ -89,6 +96,8 @@ public class PendingNode implements Serializable {
         this.softwareVersion = softwareVersion;
         this.uuid = uuid;
         this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : nodeSlot;
+        this.chassisName = chassisName;
+        this.customProtectionDomainName = customProtectionDomainName;
     }
 
     /** 
@@ -116,7 +125,7 @@ public class PendingNode implements Serializable {
         this.name = name;
     }
     /** 
-     * 
+     * Indicates whether the pending node's software version is compatible with the cluster.
      **/
     public Boolean getCompatible() { return this.compatible; }
    
@@ -124,7 +133,7 @@ public class PendingNode implements Serializable {
         this.compatible = compatible;
     }
     /** 
-     * Information about the platform this node is.
+     * Information about the node's hardware.
      **/
     public Platform getPlatformInfo() { return this.platformInfo; }
    
@@ -132,7 +141,15 @@ public class PendingNode implements Serializable {
         this.platformInfo = platformInfo;
     }
     /** 
-     * IP address used for both intra- and inter-cluster communication.
+     * The node's role in the cluster. Possible values are Management, Storage, Compute, and Witness.
+     **/
+    public String getRole() { return this.role; }
+   
+    public void setRole(String role) { 
+        this.role = role;
+    }
+    /** 
+     * IP address used for both intra-cluster and inter-cluster communication.
      **/
     public String getCip() { return this.cip; }
    
@@ -148,7 +165,7 @@ public class PendingNode implements Serializable {
         this.cipi = cipi;
     }
     /** 
-     * IP address used for cluster management (hosting the API and web site).
+     * IP address used for the per-node API and UI.
      **/
     public String getMip() { return this.mip; }
    
@@ -180,7 +197,7 @@ public class PendingNode implements Serializable {
         this.sipi = sipi;
     }
     /** 
-     * The version of SolidFire software this node is currently running.
+     * The version of SolidFire software currently running on this node.
      **/
     public String getSoftwareVersion() { return this.softwareVersion; }
    
@@ -196,12 +213,28 @@ public class PendingNode implements Serializable {
         this.uuid = uuid;
     }
     /** 
-     * UUID of node.
+     * 
      **/
     public Optional<String> getNodeSlot() { return this.nodeSlot; }
    
     public void setNodeSlot(Optional<String> nodeSlot) { 
         this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : nodeSlot;
+    }
+    /** 
+     * Uniquely identifies a chassis, and identical for all nodes in a given chassis.
+     **/
+    public String getChassisName() { return this.chassisName; }
+   
+    public void setChassisName(String chassisName) { 
+        this.chassisName = chassisName;
+    }
+    /** 
+     * Uniquely identifies a custom protection domain, identical for all nodes within all chassis in a given custom protection domain.
+     **/
+    public String getCustomProtectionDomainName() { return this.customProtectionDomainName; }
+   
+    public void setCustomProtectionDomainName(String customProtectionDomainName) { 
+        this.customProtectionDomainName = customProtectionDomainName;
     }
 
     @Override
@@ -217,6 +250,7 @@ public class PendingNode implements Serializable {
             Objects.equals(name, that.name) && 
             Objects.equals(compatible, that.compatible) && 
             Objects.equals(platformInfo, that.platformInfo) && 
+            Objects.equals(role, that.role) && 
             Objects.equals(cip, that.cip) && 
             Objects.equals(cipi, that.cipi) && 
             Objects.equals(mip, that.mip) && 
@@ -225,12 +259,14 @@ public class PendingNode implements Serializable {
             Objects.equals(sipi, that.sipi) && 
             Objects.equals(softwareVersion, that.softwareVersion) && 
             Objects.equals(uuid, that.uuid) && 
-            Objects.equals(nodeSlot, that.nodeSlot);
+            Objects.equals(nodeSlot, that.nodeSlot) && 
+            Objects.equals(chassisName, that.chassisName) && 
+            Objects.equals(customProtectionDomainName, that.customProtectionDomainName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( pendingNodeID,assignedNodeID,name,compatible,platformInfo,cip,cipi,mip,mipi,sip,sipi,softwareVersion,uuid,nodeSlot );
+        return Objects.hash( pendingNodeID,assignedNodeID,name,compatible,platformInfo,role,cip,cipi,mip,mipi,sip,sipi,softwareVersion,uuid,nodeSlot,chassisName,customProtectionDomainName );
     }
 
 
@@ -241,6 +277,7 @@ public class PendingNode implements Serializable {
         map.put("name", name);
         map.put("compatible", compatible);
         map.put("platformInfo", platformInfo);
+        map.put("role", role);
         map.put("cip", cip);
         map.put("cipi", cipi);
         map.put("mip", mip);
@@ -250,6 +287,8 @@ public class PendingNode implements Serializable {
         map.put("softwareVersion", softwareVersion);
         map.put("uuid", uuid);
         map.put("nodeSlot", nodeSlot);
+        map.put("chassisName", chassisName);
+        map.put("customProtectionDomainName", customProtectionDomainName);
         return map;
     }
 
@@ -264,6 +303,7 @@ public class PendingNode implements Serializable {
         sb.append(" name : ").append(gson.toJson(name)).append(",");
         sb.append(" compatible : ").append(gson.toJson(compatible)).append(",");
         sb.append(" platformInfo : ").append(gson.toJson(platformInfo)).append(",");
+        sb.append(" role : ").append(gson.toJson(role)).append(",");
         sb.append(" cip : ").append(gson.toJson(cip)).append(",");
         sb.append(" cipi : ").append(gson.toJson(cipi)).append(",");
         sb.append(" mip : ").append(gson.toJson(mip)).append(",");
@@ -278,6 +318,8 @@ public class PendingNode implements Serializable {
         else{
             sb.append(" nodeSlot : ").append("null").append(",");
         }
+        sb.append(" chassisName : ").append(gson.toJson(chassisName)).append(",");
+        sb.append(" customProtectionDomainName : ").append(gson.toJson(customProtectionDomainName)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -300,6 +342,7 @@ public class PendingNode implements Serializable {
         private String name;
         private Boolean compatible;
         private Platform platformInfo;
+        private String role;
         private String cip;
         private String cipi;
         private String mip;
@@ -309,6 +352,8 @@ public class PendingNode implements Serializable {
         private String softwareVersion;
         private java.util.UUID uuid;
         private Optional<String> nodeSlot;
+        private String chassisName;
+        private String customProtectionDomainName;
 
         private Builder() { }
 
@@ -319,6 +364,7 @@ public class PendingNode implements Serializable {
                          this.name,
                          this.compatible,
                          this.platformInfo,
+                         this.role,
                          this.cip,
                          this.cipi,
                          this.mip,
@@ -327,7 +373,9 @@ public class PendingNode implements Serializable {
                          this.sipi,
                          this.softwareVersion,
                          this.uuid,
-                         this.nodeSlot);
+                         this.nodeSlot,
+                         this.chassisName,
+                         this.customProtectionDomainName);
         }
 
         private PendingNode.Builder buildFrom(final PendingNode req) {
@@ -336,6 +384,7 @@ public class PendingNode implements Serializable {
             this.name = req.name;
             this.compatible = req.compatible;
             this.platformInfo = req.platformInfo;
+            this.role = req.role;
             this.cip = req.cip;
             this.cipi = req.cipi;
             this.mip = req.mip;
@@ -345,6 +394,8 @@ public class PendingNode implements Serializable {
             this.softwareVersion = req.softwareVersion;
             this.uuid = req.uuid;
             this.nodeSlot = req.nodeSlot;
+            this.chassisName = req.chassisName;
+            this.customProtectionDomainName = req.customProtectionDomainName;
 
             return this;
         }
@@ -371,6 +422,11 @@ public class PendingNode implements Serializable {
 
         public PendingNode.Builder platformInfo(final Platform platformInfo) {
             this.platformInfo = platformInfo;
+            return this;
+        }
+
+        public PendingNode.Builder role(final String role) {
+            this.role = role;
             return this;
         }
 
@@ -416,6 +472,16 @@ public class PendingNode implements Serializable {
 
         public PendingNode.Builder optionalNodeSlot(final String nodeSlot) {
             this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : Optional.of(nodeSlot);
+            return this;
+        }
+
+        public PendingNode.Builder chassisName(final String chassisName) {
+            this.chassisName = chassisName;
+            return this;
+        }
+
+        public PendingNode.Builder customProtectionDomainName(final String customProtectionDomainName) {
+            this.customProtectionDomainName = customProtectionDomainName;
             return this;
         }
 

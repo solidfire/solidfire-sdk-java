@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class RemoveAccountResult implements Serializable {
 
-    public static final long serialVersionUID = 4844582034988593737L;
+    public static final long serialVersionUID = -1089791950293417333L;
     // empty constructor
     @Since("7.0")
     public RemoveAccountResult() {}

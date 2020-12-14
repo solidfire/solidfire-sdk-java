@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ModifyClusterFullThresholdResult implements Serializable {
 
-    public static final long serialVersionUID = -5398984931028221773L;
+    public static final long serialVersionUID = -3474505603386852051L;
     @SerializedName("blockFullness") private String blockFullness;
     @SerializedName("fullness") private String fullness;
     @SerializedName("maxMetadataOverProvisionFactor") private Long maxMetadataOverProvisionFactor;
@@ -44,6 +44,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
     @SerializedName("stage2BlockThresholdBytes") private Long stage2BlockThresholdBytes;
     @SerializedName("stage3BlockThresholdBytes") private Long stage3BlockThresholdBytes;
     @SerializedName("stage3BlockThresholdPercent") private Long stage3BlockThresholdPercent;
+    @SerializedName("stage3MetadataThresholdPercent") private Long stage3MetadataThresholdPercent;
     @SerializedName("stage3LowThreshold") private Long stage3LowThreshold;
     @SerializedName("stage4CriticalThreshold") private Long stage4CriticalThreshold;
     @SerializedName("stage4BlockThresholdBytes") private Long stage4BlockThresholdBytes;
@@ -52,6 +53,10 @@ public class ModifyClusterFullThresholdResult implements Serializable {
     @SerializedName("sumTotalMetadataClusterBytes") private Long sumTotalMetadataClusterBytes;
     @SerializedName("sumUsedClusterBytes") private Long sumUsedClusterBytes;
     @SerializedName("sumUsedMetadataClusterBytes") private Long sumUsedMetadataClusterBytes;
+    @SerializedName("stage2MetadataThresholdBytes") private Long stage2MetadataThresholdBytes;
+    @SerializedName("stage3MetadataThresholdBytes") private Long stage3MetadataThresholdBytes;
+    @SerializedName("stage4MetadataThresholdBytes") private Long stage4MetadataThresholdBytes;
+    @SerializedName("stage5MetadataThresholdBytes") private Long stage5MetadataThresholdBytes;
     // empty constructor
     @Since("7.0")
     public ModifyClusterFullThresholdResult() {}
@@ -69,6 +74,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
         Long stage2BlockThresholdBytes,
         Long stage3BlockThresholdBytes,
         Long stage3BlockThresholdPercent,
+        Long stage3MetadataThresholdPercent,
         Long stage3LowThreshold,
         Long stage4CriticalThreshold,
         Long stage4BlockThresholdBytes,
@@ -76,7 +82,11 @@ public class ModifyClusterFullThresholdResult implements Serializable {
         Long sumTotalClusterBytes,
         Long sumTotalMetadataClusterBytes,
         Long sumUsedClusterBytes,
-        Long sumUsedMetadataClusterBytes
+        Long sumUsedMetadataClusterBytes,
+        Long stage2MetadataThresholdBytes,
+        Long stage3MetadataThresholdBytes,
+        Long stage4MetadataThresholdBytes,
+        Long stage5MetadataThresholdBytes
     )
     {
         this.blockFullness = blockFullness;
@@ -88,6 +98,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
         this.stage2BlockThresholdBytes = stage2BlockThresholdBytes;
         this.stage3BlockThresholdBytes = stage3BlockThresholdBytes;
         this.stage3BlockThresholdPercent = stage3BlockThresholdPercent;
+        this.stage3MetadataThresholdPercent = stage3MetadataThresholdPercent;
         this.stage3LowThreshold = stage3LowThreshold;
         this.stage4CriticalThreshold = stage4CriticalThreshold;
         this.stage4BlockThresholdBytes = stage4BlockThresholdBytes;
@@ -96,6 +107,10 @@ public class ModifyClusterFullThresholdResult implements Serializable {
         this.sumTotalMetadataClusterBytes = sumTotalMetadataClusterBytes;
         this.sumUsedClusterBytes = sumUsedClusterBytes;
         this.sumUsedMetadataClusterBytes = sumUsedMetadataClusterBytes;
+        this.stage2MetadataThresholdBytes = stage2MetadataThresholdBytes;
+        this.stage3MetadataThresholdBytes = stage3MetadataThresholdBytes;
+        this.stage4MetadataThresholdBytes = stage4MetadataThresholdBytes;
+        this.stage5MetadataThresholdBytes = stage5MetadataThresholdBytes;
     }
 
     /** 
@@ -164,12 +179,20 @@ public class ModifyClusterFullThresholdResult implements Serializable {
         this.stage3BlockThresholdBytes = stage3BlockThresholdBytes;
     }
     /** 
-     * The percent value set for stage3. At this percent full, a warning will be posted in the Alerts log.
+     * The percent value set for stage3 of block fullness. At this percent full, a warning will be posted in the Alerts log.
      **/
     public Long getStage3BlockThresholdPercent() { return this.stage3BlockThresholdPercent; }
    
     public void setStage3BlockThresholdPercent(Long stage3BlockThresholdPercent) { 
         this.stage3BlockThresholdPercent = stage3BlockThresholdPercent;
+    }
+    /** 
+     * The percent value set for stage3 of metadata fullness. At this percent full, a warning will be posted in the Alerts log.
+     **/
+    public Long getStage3MetadataThresholdPercent() { return this.stage3MetadataThresholdPercent; }
+   
+    public void setStage3MetadataThresholdPercent(Long stage3MetadataThresholdPercent) { 
+        this.stage3MetadataThresholdPercent = stage3MetadataThresholdPercent;
     }
     /** 
      * Error condition; message sent to "Alerts" that capacity on a cluster is getting low.
@@ -235,6 +258,38 @@ public class ModifyClusterFullThresholdResult implements Serializable {
     public void setSumUsedMetadataClusterBytes(Long sumUsedMetadataClusterBytes) { 
         this.sumUsedMetadataClusterBytes = sumUsedMetadataClusterBytes;
     }
+    /** 
+     * Number of metadata bytes being used by the cluster at which a stage2 condition will exist.
+     **/
+    public Long getStage2MetadataThresholdBytes() { return this.stage2MetadataThresholdBytes; }
+   
+    public void setStage2MetadataThresholdBytes(Long stage2MetadataThresholdBytes) { 
+        this.stage2MetadataThresholdBytes = stage2MetadataThresholdBytes;
+    }
+    /** 
+     * Number of metadata bytes being used by the cluster at which a stage3 condition will exist.
+     **/
+    public Long getStage3MetadataThresholdBytes() { return this.stage3MetadataThresholdBytes; }
+   
+    public void setStage3MetadataThresholdBytes(Long stage3MetadataThresholdBytes) { 
+        this.stage3MetadataThresholdBytes = stage3MetadataThresholdBytes;
+    }
+    /** 
+     * Number of metadata bytes being used by the cluster at which a stage4 condition will exist.
+     **/
+    public Long getStage4MetadataThresholdBytes() { return this.stage4MetadataThresholdBytes; }
+   
+    public void setStage4MetadataThresholdBytes(Long stage4MetadataThresholdBytes) { 
+        this.stage4MetadataThresholdBytes = stage4MetadataThresholdBytes;
+    }
+    /** 
+     * Number of metadata bytes being used by the cluster at which a stage5 condition will exist.
+     **/
+    public Long getStage5MetadataThresholdBytes() { return this.stage5MetadataThresholdBytes; }
+   
+    public void setStage5MetadataThresholdBytes(Long stage5MetadataThresholdBytes) { 
+        this.stage5MetadataThresholdBytes = stage5MetadataThresholdBytes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -253,6 +308,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
             Objects.equals(stage2BlockThresholdBytes, that.stage2BlockThresholdBytes) && 
             Objects.equals(stage3BlockThresholdBytes, that.stage3BlockThresholdBytes) && 
             Objects.equals(stage3BlockThresholdPercent, that.stage3BlockThresholdPercent) && 
+            Objects.equals(stage3MetadataThresholdPercent, that.stage3MetadataThresholdPercent) && 
             Objects.equals(stage3LowThreshold, that.stage3LowThreshold) && 
             Objects.equals(stage4CriticalThreshold, that.stage4CriticalThreshold) && 
             Objects.equals(stage4BlockThresholdBytes, that.stage4BlockThresholdBytes) && 
@@ -260,12 +316,16 @@ public class ModifyClusterFullThresholdResult implements Serializable {
             Objects.equals(sumTotalClusterBytes, that.sumTotalClusterBytes) && 
             Objects.equals(sumTotalMetadataClusterBytes, that.sumTotalMetadataClusterBytes) && 
             Objects.equals(sumUsedClusterBytes, that.sumUsedClusterBytes) && 
-            Objects.equals(sumUsedMetadataClusterBytes, that.sumUsedMetadataClusterBytes);
+            Objects.equals(sumUsedMetadataClusterBytes, that.sumUsedMetadataClusterBytes) && 
+            Objects.equals(stage2MetadataThresholdBytes, that.stage2MetadataThresholdBytes) && 
+            Objects.equals(stage3MetadataThresholdBytes, that.stage3MetadataThresholdBytes) && 
+            Objects.equals(stage4MetadataThresholdBytes, that.stage4MetadataThresholdBytes) && 
+            Objects.equals(stage5MetadataThresholdBytes, that.stage5MetadataThresholdBytes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( blockFullness,fullness,maxMetadataOverProvisionFactor,metadataFullness,sliceReserveUsedThresholdPct,stage2AwareThreshold,stage2BlockThresholdBytes,stage3BlockThresholdBytes,stage3BlockThresholdPercent,stage3LowThreshold,stage4CriticalThreshold,stage4BlockThresholdBytes,stage5BlockThresholdBytes,sumTotalClusterBytes,sumTotalMetadataClusterBytes,sumUsedClusterBytes,sumUsedMetadataClusterBytes );
+        return Objects.hash( blockFullness,fullness,maxMetadataOverProvisionFactor,metadataFullness,sliceReserveUsedThresholdPct,stage2AwareThreshold,stage2BlockThresholdBytes,stage3BlockThresholdBytes,stage3BlockThresholdPercent,stage3MetadataThresholdPercent,stage3LowThreshold,stage4CriticalThreshold,stage4BlockThresholdBytes,stage5BlockThresholdBytes,sumTotalClusterBytes,sumTotalMetadataClusterBytes,sumUsedClusterBytes,sumUsedMetadataClusterBytes,stage2MetadataThresholdBytes,stage3MetadataThresholdBytes,stage4MetadataThresholdBytes,stage5MetadataThresholdBytes );
     }
 
 
@@ -280,6 +340,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
         map.put("stage2BlockThresholdBytes", stage2BlockThresholdBytes);
         map.put("stage3BlockThresholdBytes", stage3BlockThresholdBytes);
         map.put("stage3BlockThresholdPercent", stage3BlockThresholdPercent);
+        map.put("stage3MetadataThresholdPercent", stage3MetadataThresholdPercent);
         map.put("stage3LowThreshold", stage3LowThreshold);
         map.put("stage4CriticalThreshold", stage4CriticalThreshold);
         map.put("stage4BlockThresholdBytes", stage4BlockThresholdBytes);
@@ -288,6 +349,10 @@ public class ModifyClusterFullThresholdResult implements Serializable {
         map.put("sumTotalMetadataClusterBytes", sumTotalMetadataClusterBytes);
         map.put("sumUsedClusterBytes", sumUsedClusterBytes);
         map.put("sumUsedMetadataClusterBytes", sumUsedMetadataClusterBytes);
+        map.put("stage2MetadataThresholdBytes", stage2MetadataThresholdBytes);
+        map.put("stage3MetadataThresholdBytes", stage3MetadataThresholdBytes);
+        map.put("stage4MetadataThresholdBytes", stage4MetadataThresholdBytes);
+        map.put("stage5MetadataThresholdBytes", stage5MetadataThresholdBytes);
         return map;
     }
 
@@ -306,6 +371,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
         sb.append(" stage2BlockThresholdBytes : ").append(gson.toJson(stage2BlockThresholdBytes)).append(",");
         sb.append(" stage3BlockThresholdBytes : ").append(gson.toJson(stage3BlockThresholdBytes)).append(",");
         sb.append(" stage3BlockThresholdPercent : ").append(gson.toJson(stage3BlockThresholdPercent)).append(",");
+        sb.append(" stage3MetadataThresholdPercent : ").append(gson.toJson(stage3MetadataThresholdPercent)).append(",");
         sb.append(" stage3LowThreshold : ").append(gson.toJson(stage3LowThreshold)).append(",");
         sb.append(" stage4CriticalThreshold : ").append(gson.toJson(stage4CriticalThreshold)).append(",");
         sb.append(" stage4BlockThresholdBytes : ").append(gson.toJson(stage4BlockThresholdBytes)).append(",");
@@ -314,6 +380,10 @@ public class ModifyClusterFullThresholdResult implements Serializable {
         sb.append(" sumTotalMetadataClusterBytes : ").append(gson.toJson(sumTotalMetadataClusterBytes)).append(",");
         sb.append(" sumUsedClusterBytes : ").append(gson.toJson(sumUsedClusterBytes)).append(",");
         sb.append(" sumUsedMetadataClusterBytes : ").append(gson.toJson(sumUsedMetadataClusterBytes)).append(",");
+        sb.append(" stage2MetadataThresholdBytes : ").append(gson.toJson(stage2MetadataThresholdBytes)).append(",");
+        sb.append(" stage3MetadataThresholdBytes : ").append(gson.toJson(stage3MetadataThresholdBytes)).append(",");
+        sb.append(" stage4MetadataThresholdBytes : ").append(gson.toJson(stage4MetadataThresholdBytes)).append(",");
+        sb.append(" stage5MetadataThresholdBytes : ").append(gson.toJson(stage5MetadataThresholdBytes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -340,6 +410,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
         private Long stage2BlockThresholdBytes;
         private Long stage3BlockThresholdBytes;
         private Long stage3BlockThresholdPercent;
+        private Long stage3MetadataThresholdPercent;
         private Long stage3LowThreshold;
         private Long stage4CriticalThreshold;
         private Long stage4BlockThresholdBytes;
@@ -348,6 +419,10 @@ public class ModifyClusterFullThresholdResult implements Serializable {
         private Long sumTotalMetadataClusterBytes;
         private Long sumUsedClusterBytes;
         private Long sumUsedMetadataClusterBytes;
+        private Long stage2MetadataThresholdBytes;
+        private Long stage3MetadataThresholdBytes;
+        private Long stage4MetadataThresholdBytes;
+        private Long stage5MetadataThresholdBytes;
 
         private Builder() { }
 
@@ -362,6 +437,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
                          this.stage2BlockThresholdBytes,
                          this.stage3BlockThresholdBytes,
                          this.stage3BlockThresholdPercent,
+                         this.stage3MetadataThresholdPercent,
                          this.stage3LowThreshold,
                          this.stage4CriticalThreshold,
                          this.stage4BlockThresholdBytes,
@@ -369,7 +445,11 @@ public class ModifyClusterFullThresholdResult implements Serializable {
                          this.sumTotalClusterBytes,
                          this.sumTotalMetadataClusterBytes,
                          this.sumUsedClusterBytes,
-                         this.sumUsedMetadataClusterBytes);
+                         this.sumUsedMetadataClusterBytes,
+                         this.stage2MetadataThresholdBytes,
+                         this.stage3MetadataThresholdBytes,
+                         this.stage4MetadataThresholdBytes,
+                         this.stage5MetadataThresholdBytes);
         }
 
         private ModifyClusterFullThresholdResult.Builder buildFrom(final ModifyClusterFullThresholdResult req) {
@@ -382,6 +462,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
             this.stage2BlockThresholdBytes = req.stage2BlockThresholdBytes;
             this.stage3BlockThresholdBytes = req.stage3BlockThresholdBytes;
             this.stage3BlockThresholdPercent = req.stage3BlockThresholdPercent;
+            this.stage3MetadataThresholdPercent = req.stage3MetadataThresholdPercent;
             this.stage3LowThreshold = req.stage3LowThreshold;
             this.stage4CriticalThreshold = req.stage4CriticalThreshold;
             this.stage4BlockThresholdBytes = req.stage4BlockThresholdBytes;
@@ -390,6 +471,10 @@ public class ModifyClusterFullThresholdResult implements Serializable {
             this.sumTotalMetadataClusterBytes = req.sumTotalMetadataClusterBytes;
             this.sumUsedClusterBytes = req.sumUsedClusterBytes;
             this.sumUsedMetadataClusterBytes = req.sumUsedMetadataClusterBytes;
+            this.stage2MetadataThresholdBytes = req.stage2MetadataThresholdBytes;
+            this.stage3MetadataThresholdBytes = req.stage3MetadataThresholdBytes;
+            this.stage4MetadataThresholdBytes = req.stage4MetadataThresholdBytes;
+            this.stage5MetadataThresholdBytes = req.stage5MetadataThresholdBytes;
 
             return this;
         }
@@ -439,6 +524,11 @@ public class ModifyClusterFullThresholdResult implements Serializable {
             return this;
         }
 
+        public ModifyClusterFullThresholdResult.Builder stage3MetadataThresholdPercent(final Long stage3MetadataThresholdPercent) {
+            this.stage3MetadataThresholdPercent = stage3MetadataThresholdPercent;
+            return this;
+        }
+
         public ModifyClusterFullThresholdResult.Builder stage3LowThreshold(final Long stage3LowThreshold) {
             this.stage3LowThreshold = stage3LowThreshold;
             return this;
@@ -476,6 +566,26 @@ public class ModifyClusterFullThresholdResult implements Serializable {
 
         public ModifyClusterFullThresholdResult.Builder sumUsedMetadataClusterBytes(final Long sumUsedMetadataClusterBytes) {
             this.sumUsedMetadataClusterBytes = sumUsedMetadataClusterBytes;
+            return this;
+        }
+
+        public ModifyClusterFullThresholdResult.Builder stage2MetadataThresholdBytes(final Long stage2MetadataThresholdBytes) {
+            this.stage2MetadataThresholdBytes = stage2MetadataThresholdBytes;
+            return this;
+        }
+
+        public ModifyClusterFullThresholdResult.Builder stage3MetadataThresholdBytes(final Long stage3MetadataThresholdBytes) {
+            this.stage3MetadataThresholdBytes = stage3MetadataThresholdBytes;
+            return this;
+        }
+
+        public ModifyClusterFullThresholdResult.Builder stage4MetadataThresholdBytes(final Long stage4MetadataThresholdBytes) {
+            this.stage4MetadataThresholdBytes = stage4MetadataThresholdBytes;
+            return this;
+        }
+
+        public ModifyClusterFullThresholdResult.Builder stage5MetadataThresholdBytes(final Long stage5MetadataThresholdBytes) {
+            this.stage5MetadataThresholdBytes = stage5MetadataThresholdBytes;
             return this;
         }
 

@@ -39,7 +39,7 @@ import java.util.Objects;
 
 public class ModifyInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = -2269498454565308820L;
+    public static final long serialVersionUID = -5036830547740039993L;
     @SerializedName("initiators") private ModifyInitiator[] initiators;
     // empty constructor
     @Since("7.0")
@@ -56,18 +56,7 @@ public class ModifyInitiatorsRequest implements Serializable {
     }
 
     /** 
-     * A list of objects containing characteristics of each initiator to modify. Values are:
-     * initiatorID: (Required) The ID of the initiator to modify. (Integer)
-     * alias: (Optional) A new friendly name to assign to the initiator.
-     * (String)
-     * attributes: (Optional) A new set of JSON attributes to assign to the
-     * initiator. (JSON Object)
-     * volumeAccessGroupID: (Optional) The ID of the volume access
-     * group into to which the initiator should be added. If the initiator was
-     * previously in a different volume access group, it is removed from the
-     * old volume access group. If this key is present but null, the initiator is
-     * removed from its current volume access group, but not placed in any
-     * new volume access group. (Integer)
+     * A list of objects containing characteristics of each initiator to modify.
      **/
     public ModifyInitiator[] getInitiators() { return this.initiators; }
    

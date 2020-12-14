@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class VolumeQOS implements Serializable {
 
-    public static final long serialVersionUID = 677275932188527448L;
+    public static final long serialVersionUID = -930006543962958433L;
     @SerializedName("minIOPS") private Long minIOPS;
     @SerializedName("maxIOPS") private Long maxIOPS;
     @SerializedName("burstIOPS") private Long burstIOPS;
@@ -103,7 +103,7 @@ public class VolumeQOS implements Serializable {
     /** 
      * The curve is a set of key-value pairs.
      * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
+     * The values represent the cost of performing an IOP at a specific I/O size.
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
     public java.util.Map<String,Long> getCurve() { return this.curve; }

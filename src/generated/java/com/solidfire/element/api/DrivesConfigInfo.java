@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class DrivesConfigInfo implements Serializable {
 
-    public static final long serialVersionUID = -5022669741868595811L;
+    public static final long serialVersionUID = -5052460652591843420L;
     @SerializedName("drives") private DriveConfigInfo[] drives;
     @SerializedName("numBlockActual") private Long numBlockActual;
     @SerializedName("numBlockExpected") private Long numBlockExpected;

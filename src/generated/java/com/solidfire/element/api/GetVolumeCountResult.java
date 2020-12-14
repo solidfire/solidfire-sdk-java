@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetVolumeCountResult implements Serializable {
 
-    public static final long serialVersionUID = -1120969743003135408L;
+    public static final long serialVersionUID = -261267861561456268L;
     @SerializedName("count") private Long count;
     // empty constructor
     @Since("7.0")

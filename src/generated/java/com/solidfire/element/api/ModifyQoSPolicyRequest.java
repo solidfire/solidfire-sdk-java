@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ModifyQoSPolicyRequest implements Serializable {
 
-    public static final long serialVersionUID = 1250654012959627524L;
+    public static final long serialVersionUID = 3210103704516410501L;
     @SerializedName("qosPolicyID") private Long qosPolicyID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("qos") private Optional<QoS> qos;

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetBackupTargetResult implements Serializable {
 
-    public static final long serialVersionUID = 7998273560012190411L;
+    public static final long serialVersionUID = -669719928512449295L;
     @SerializedName("backupTarget") private BackupTarget backupTarget;
     // empty constructor
     @Since("7.0")

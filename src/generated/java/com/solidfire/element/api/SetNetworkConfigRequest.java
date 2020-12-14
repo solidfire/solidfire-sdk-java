@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class SetNetworkConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = 3614304076097092528L;
+    public static final long serialVersionUID = -2919017005794669355L;
     @SerializedName("network") private NetworkParams network;
     // empty constructor
     @Since("7.0")

@@ -30,14 +30,19 @@ import java.util.Objects;
 
 /**
  * RemoveNodesRequest  
- * You can use RemoveNodes to remove one or more nodes that should no longer participate in the cluster. Before removing a node, you must remove all drives the node contains using the RemoveDrives method. You cannot remove a node until the RemoveDrives process has completed and all data has been migrated away from the node.
- * After you remove a node, it registers itself as a pending node. You can add the node again or shut it down (shutting the node down removes it from the Pending Node list).
+ * RemoveNodes can be used to remove one or more nodes from the cluster. Before removing a node, you must remove all drives from the node using the RemoveDrives method. You cannot remove a node until the RemoveDrives process has completed and all data has been migrated off of the node's drives.
+ * After removing a node, the removed node registers itself as a pending node. You can add the pending node again or shut it down (shutting the node down removes it from the Pending Node list).
+ * 
+ * RemoveNodes can fail with xEnsembleInvalidSize if removing the nodes would violate ensemble size restrictions.
+ * RemoveNodes can fail with xEnsembleQuorumLoss if removing the nodes would cause a loss of quorum.
+ * RemoveNodes can fail with xEnsembleToleranceChange if there are enabled data protection schemes that can tolerate multiple node failures and removing the nodes would decrease the ensemble's node failure tolerance. The optional ignoreEnsembleToleranceChange parameter can be set true to disable the ensemble tolerance check.
  **/
 
 public class RemoveNodesRequest implements Serializable {
 
-    public static final long serialVersionUID = 2891888305959375772L;
+    public static final long serialVersionUID = -386993213044315411L;
     @SerializedName("nodes") private Long[] nodes;
+    @SerializedName("ignoreEnsembleToleranceChange") private Optional<Boolean> ignoreEnsembleToleranceChange = Optional.of(false);
     // empty constructor
     @Since("7.0")
     public RemoveNodesRequest() {}
@@ -46,10 +51,12 @@ public class RemoveNodesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RemoveNodesRequest(
-        Long[] nodes
+        Long[] nodes,
+        Optional<Boolean> ignoreEnsembleToleranceChange
     )
     {
         this.nodes = nodes;
+        this.ignoreEnsembleToleranceChange = (ignoreEnsembleToleranceChange == null) ? Optional.<Boolean>empty() : ignoreEnsembleToleranceChange;
     }
 
     /** 
@@ -60,6 +67,14 @@ public class RemoveNodesRequest implements Serializable {
     public void setNodes(Long[] nodes) { 
         this.nodes = nodes;
     }
+    /** 
+     * Ignore changes to the ensemble's node failure tolerance when removing nodes.
+     **/
+    public Optional<Boolean> getIgnoreEnsembleToleranceChange() { return this.ignoreEnsembleToleranceChange; }
+   
+    public void setIgnoreEnsembleToleranceChange(Optional<Boolean> ignoreEnsembleToleranceChange) { 
+        this.ignoreEnsembleToleranceChange = (ignoreEnsembleToleranceChange == null) ? Optional.<Boolean>empty() : ignoreEnsembleToleranceChange;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -69,18 +84,20 @@ public class RemoveNodesRequest implements Serializable {
         RemoveNodesRequest that = (RemoveNodesRequest) o;
 
         return 
-            Arrays.equals(nodes, that.nodes);
+            Arrays.equals(nodes, that.nodes) && 
+            Objects.equals(ignoreEnsembleToleranceChange, that.ignoreEnsembleToleranceChange);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])nodes );
+        return Objects.hash( (Object[])nodes,ignoreEnsembleToleranceChange );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("nodes", nodes);
+        map.put("ignoreEnsembleToleranceChange", ignoreEnsembleToleranceChange);
         return map;
     }
 
@@ -91,6 +108,12 @@ public class RemoveNodesRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
+        if(null != ignoreEnsembleToleranceChange && ignoreEnsembleToleranceChange.isPresent()){
+            sb.append(" ignoreEnsembleToleranceChange : ").append(gson.toJson(ignoreEnsembleToleranceChange)).append(",");
+        }
+        else{
+            sb.append(" ignoreEnsembleToleranceChange : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -109,22 +132,30 @@ public class RemoveNodesRequest implements Serializable {
 
     public static class Builder {
         private Long[] nodes;
+        private Optional<Boolean> ignoreEnsembleToleranceChange;
 
         private Builder() { }
 
         public RemoveNodesRequest build() {
             return new RemoveNodesRequest (
-                         this.nodes);
+                         this.nodes,
+                         this.ignoreEnsembleToleranceChange);
         }
 
         private RemoveNodesRequest.Builder buildFrom(final RemoveNodesRequest req) {
             this.nodes = req.nodes;
+            this.ignoreEnsembleToleranceChange = req.ignoreEnsembleToleranceChange;
 
             return this;
         }
 
         public RemoveNodesRequest.Builder nodes(final Long[] nodes) {
             this.nodes = nodes;
+            return this;
+        }
+
+        public RemoveNodesRequest.Builder optionalIgnoreEnsembleToleranceChange(final Boolean ignoreEnsembleToleranceChange) {
+            this.ignoreEnsembleToleranceChange = (ignoreEnsembleToleranceChange == null) ? Optional.<Boolean>empty() : Optional.of(ignoreEnsembleToleranceChange);
             return this;
         }
 

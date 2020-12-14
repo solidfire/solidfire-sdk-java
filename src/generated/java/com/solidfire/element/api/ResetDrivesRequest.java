@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class ResetDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = -8699379922010603427L;
+    public static final long serialVersionUID = 6555188550383991662L;
     @SerializedName("drives") private String drives;
     @SerializedName("force") private Boolean force;
     // empty constructor

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CreateVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = 2889880193310552919L;
+    public static final long serialVersionUID = -6744747607326127942L;
     @SerializedName("volume") private Optional<Volume> volume;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("curve") private java.util.Map<String,Long> curve;
@@ -75,7 +75,7 @@ public class CreateVolumeResult implements Serializable {
     /** 
      * The curve is a set of key-value pairs.
      * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
+     * The values represent the cost of performing an IOP at a specific I/O size.
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
     public java.util.Map<String,Long> getCurve() { return this.curve; }

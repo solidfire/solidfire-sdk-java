@@ -36,15 +36,18 @@ import java.util.Objects;
 
 public class CreateVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -2940272812178167538L;
+    public static final long serialVersionUID = -1631247672231045882L;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("totalSize") private Long totalSize;
-    @SerializedName("enable512e") private Boolean enable512e;
+    @SerializedName("enable512e") private Optional<Boolean> enable512e;
     @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("attributes") private Optional<Attributes> attributes;
     @SerializedName("associateWithQoSPolicy") private Optional<Boolean> associateWithQoSPolicy;
+    @SerializedName("access") private Optional<String> access;
+    @SerializedName("enableSnapMirrorReplication") private Optional<Boolean> enableSnapMirrorReplication;
     @SerializedName("qosPolicyID") private Optional<Long> qosPolicyID;
+    @SerializedName("protectionScheme") private Optional<String> protectionScheme;
     // empty constructor
     @Since("7.0")
     public CreateVolumeRequest() {}
@@ -56,17 +59,19 @@ public class CreateVolumeRequest implements Serializable {
         String name,
         Long accountID,
         Long totalSize,
-        Boolean enable512e,
+        Optional<Boolean> enable512e,
         Optional<QoS> qos,
-        Optional<Attributes> attributes
+        Optional<Attributes> attributes,
+        Optional<String> protectionScheme
     )
     {
         this.name = name;
         this.accountID = accountID;
         this.totalSize = totalSize;
-        this.enable512e = enable512e;
+        this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.protectionScheme = (protectionScheme == null) ? Optional.<String>empty() : protectionScheme;
     }
     // parameterized constructor
     @Since("10.0")
@@ -74,21 +79,27 @@ public class CreateVolumeRequest implements Serializable {
         String name,
         Long accountID,
         Long totalSize,
-        Boolean enable512e,
+        Optional<Boolean> enable512e,
         Optional<QoS> qos,
         Optional<Attributes> attributes,
         Optional<Boolean> associateWithQoSPolicy,
-        Optional<Long> qosPolicyID
+        Optional<String> access,
+        Optional<Boolean> enableSnapMirrorReplication,
+        Optional<Long> qosPolicyID,
+        Optional<String> protectionScheme
     )
     {
         this.name = name;
         this.accountID = accountID;
         this.totalSize = totalSize;
-        this.enable512e = enable512e;
+        this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
         this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : associateWithQoSPolicy;
+        this.access = (access == null) ? Optional.<String>empty() : access;
+        this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : enableSnapMirrorReplication;
         this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
+        this.protectionScheme = (protectionScheme == null) ? Optional.<String>empty() : protectionScheme;
     }
 
     /** 
@@ -123,10 +134,10 @@ public class CreateVolumeRequest implements Serializable {
      * true: The volume provides 512-byte sector emulation.
      * false: 512e emulation is not enabled.
      **/
-    public Boolean getEnable512e() { return this.enable512e; }
+    public Optional<Boolean> getEnable512e() { return this.enable512e; }
    
-    public void setEnable512e(Boolean enable512e) { 
-        this.enable512e = enable512e;
+    public void setEnable512e(Optional<Boolean> enable512e) { 
+        this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
     }
     /** 
      * Initial quality of service settings for this volume. Default
@@ -163,6 +174,22 @@ public class CreateVolumeRequest implements Serializable {
         this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : associateWithQoSPolicy;
     }
     /** 
+     * The access mode for the volume. Only snapMirrorTarget is allowed.
+     **/
+    public Optional<String> getAccess() { return this.access; }
+   
+    public void setAccess(Optional<String> access) { 
+        this.access = (access == null) ? Optional.<String>empty() : access;
+    }
+    /** 
+     * Specifies whether SnapMirror replication is enabled or not.
+     **/
+    public Optional<Boolean> getEnableSnapMirrorReplication() { return this.enableSnapMirrorReplication; }
+   
+    public void setEnableSnapMirrorReplication(Optional<Boolean> enableSnapMirrorReplication) { 
+        this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : enableSnapMirrorReplication;
+    }
+    /** 
      * The ID for the policy whose QoS settings should be applied to the specified volumes.
      * This parameter is mutually exclusive with the qos parameter.
      **/
@@ -170,6 +197,15 @@ public class CreateVolumeRequest implements Serializable {
    
     public void setQosPolicyID(Optional<Long> qosPolicyID) { 
         this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
+    }
+    /** 
+     * Protection scheme that should be used for this volume.
+     * The default value is the defaultProtectionScheme stored in the ClusterInfo object.
+     **/
+    public Optional<String> getProtectionScheme() { return this.protectionScheme; }
+   
+    public void setProtectionScheme(Optional<String> protectionScheme) { 
+        this.protectionScheme = (protectionScheme == null) ? Optional.<String>empty() : protectionScheme;
     }
 
     @Override
@@ -187,12 +223,15 @@ public class CreateVolumeRequest implements Serializable {
             Objects.equals(qos, that.qos) && 
             Objects.equals(attributes, that.attributes) && 
             Objects.equals(associateWithQoSPolicy, that.associateWithQoSPolicy) && 
-            Objects.equals(qosPolicyID, that.qosPolicyID);
+            Objects.equals(access, that.access) && 
+            Objects.equals(enableSnapMirrorReplication, that.enableSnapMirrorReplication) && 
+            Objects.equals(qosPolicyID, that.qosPolicyID) && 
+            Objects.equals(protectionScheme, that.protectionScheme);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name,accountID,totalSize,enable512e,qos,attributes,associateWithQoSPolicy,qosPolicyID );
+        return Objects.hash( name,accountID,totalSize,enable512e,qos,attributes,associateWithQoSPolicy,access,enableSnapMirrorReplication,qosPolicyID,protectionScheme );
     }
 
 
@@ -205,7 +244,10 @@ public class CreateVolumeRequest implements Serializable {
         map.put("qos", qos);
         map.put("attributes", attributes);
         map.put("associateWithQoSPolicy", associateWithQoSPolicy);
+        map.put("access", access);
+        map.put("enableSnapMirrorReplication", enableSnapMirrorReplication);
         map.put("qosPolicyID", qosPolicyID);
+        map.put("protectionScheme", protectionScheme);
         return map;
     }
 
@@ -218,7 +260,12 @@ public class CreateVolumeRequest implements Serializable {
         sb.append(" name : ").append(gson.toJson(name)).append(",");
         sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
         sb.append(" totalSize : ").append(gson.toJson(totalSize)).append(",");
-        sb.append(" enable512e : ").append(gson.toJson(enable512e)).append(",");
+        if(null != enable512e && enable512e.isPresent()){
+            sb.append(" enable512e : ").append(gson.toJson(enable512e)).append(",");
+        }
+        else{
+            sb.append(" enable512e : ").append("null").append(",");
+        }
         if(null != qos && qos.isPresent()){
             sb.append(" qos : ").append(gson.toJson(qos)).append(",");
         }
@@ -237,11 +284,29 @@ public class CreateVolumeRequest implements Serializable {
         else{
             sb.append(" associateWithQoSPolicy : ").append("null").append(",");
         }
+        if(null != access && access.isPresent()){
+            sb.append(" access : ").append(gson.toJson(access)).append(",");
+        }
+        else{
+            sb.append(" access : ").append("null").append(",");
+        }
+        if(null != enableSnapMirrorReplication && enableSnapMirrorReplication.isPresent()){
+            sb.append(" enableSnapMirrorReplication : ").append(gson.toJson(enableSnapMirrorReplication)).append(",");
+        }
+        else{
+            sb.append(" enableSnapMirrorReplication : ").append("null").append(",");
+        }
         if(null != qosPolicyID && qosPolicyID.isPresent()){
             sb.append(" qosPolicyID : ").append(gson.toJson(qosPolicyID)).append(",");
         }
         else{
             sb.append(" qosPolicyID : ").append("null").append(",");
+        }
+        if(null != protectionScheme && protectionScheme.isPresent()){
+            sb.append(" protectionScheme : ").append(gson.toJson(protectionScheme)).append(",");
+        }
+        else{
+            sb.append(" protectionScheme : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -263,11 +328,14 @@ public class CreateVolumeRequest implements Serializable {
         private String name;
         private Long accountID;
         private Long totalSize;
-        private Boolean enable512e;
+        private Optional<Boolean> enable512e;
         private Optional<QoS> qos;
         private Optional<Attributes> attributes;
         private Optional<Boolean> associateWithQoSPolicy;
+        private Optional<String> access;
+        private Optional<Boolean> enableSnapMirrorReplication;
         private Optional<Long> qosPolicyID;
+        private Optional<String> protectionScheme;
 
         private Builder() { }
 
@@ -280,7 +348,10 @@ public class CreateVolumeRequest implements Serializable {
                          this.qos,
                          this.attributes,
                          this.associateWithQoSPolicy,
-                         this.qosPolicyID);
+                         this.access,
+                         this.enableSnapMirrorReplication,
+                         this.qosPolicyID,
+                         this.protectionScheme);
         }
 
         private CreateVolumeRequest.Builder buildFrom(final CreateVolumeRequest req) {
@@ -291,7 +362,10 @@ public class CreateVolumeRequest implements Serializable {
             this.qos = req.qos;
             this.attributes = req.attributes;
             this.associateWithQoSPolicy = req.associateWithQoSPolicy;
+            this.access = req.access;
+            this.enableSnapMirrorReplication = req.enableSnapMirrorReplication;
             this.qosPolicyID = req.qosPolicyID;
+            this.protectionScheme = req.protectionScheme;
 
             return this;
         }
@@ -311,8 +385,8 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder enable512e(final Boolean enable512e) {
-            this.enable512e = enable512e;
+        public CreateVolumeRequest.Builder optionalEnable512e(final Boolean enable512e) {
+            this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : Optional.of(enable512e);
             return this;
         }
 
@@ -331,8 +405,23 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
+        public CreateVolumeRequest.Builder optionalAccess(final String access) {
+            this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
+            return this;
+        }
+
+        public CreateVolumeRequest.Builder optionalEnableSnapMirrorReplication(final Boolean enableSnapMirrorReplication) {
+            this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableSnapMirrorReplication);
+            return this;
+        }
+
         public CreateVolumeRequest.Builder optionalQosPolicyID(final Long qosPolicyID) {
             this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : Optional.of(qosPolicyID);
+            return this;
+        }
+
+        public CreateVolumeRequest.Builder optionalProtectionScheme(final String protectionScheme) {
+            this.protectionScheme = (protectionScheme == null) ? Optional.<String>empty() : Optional.of(protectionScheme);
             return this;
         }
 

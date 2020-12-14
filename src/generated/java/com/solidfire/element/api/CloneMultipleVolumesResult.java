@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CloneMultipleVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = 6829236154780075849L;
+    public static final long serialVersionUID = 7075378502022330696L;
     @SerializedName("asyncHandle") private Long asyncHandle;
     @SerializedName("groupCloneID") private Long groupCloneID;
     @SerializedName("members") private GroupCloneVolumeMember[] members;

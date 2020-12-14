@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ModifyStorageContainerResult implements Serializable {
 
-    public static final long serialVersionUID = -1425255919470933463L;
+    public static final long serialVersionUID = -966958762386759333L;
     @SerializedName("storageContainer") private StorageContainer storageContainer;
     // empty constructor
     @Since("7.0")

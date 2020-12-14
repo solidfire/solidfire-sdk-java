@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class PhysicalAdapter implements Serializable {
 
-    public static final long serialVersionUID = -950225984887038109L;
+    public static final long serialVersionUID = -7245546914991354460L;
     @SerializedName("address") private Optional<String> address;
     @SerializedName("macAddress") private Optional<String> macAddress;
     @SerializedName("macAddressPermanent") private Optional<String> macAddressPermanent;

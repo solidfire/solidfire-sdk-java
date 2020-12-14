@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class RemoveClusterPairRequest implements Serializable {
 
-    public static final long serialVersionUID = 7534637187207591071L;
+    public static final long serialVersionUID = -7198902100926913580L;
     @SerializedName("clusterPairID") private Long clusterPairID;
     // empty constructor
     @Since("7.0")

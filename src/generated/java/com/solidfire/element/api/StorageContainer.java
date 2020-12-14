@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class StorageContainer implements Serializable {
 
-    public static final long serialVersionUID = -4235618932443262772L;
+    public static final long serialVersionUID = 6720047062416539457L;
     @SerializedName("name") private String name;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
     @SerializedName("accountID") private Long accountID;

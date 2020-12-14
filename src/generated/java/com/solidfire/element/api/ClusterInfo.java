@@ -35,17 +35,21 @@ import java.util.Objects;
 
 public class ClusterInfo implements Serializable {
 
-    public static final long serialVersionUID = 6937143244161912485L;
+    public static final long serialVersionUID = -7475416716545306140L;
     @SerializedName("mvipInterface") private Optional<String> mvipInterface;
     @SerializedName("mvipVlanTag") private Optional<String> mvipVlanTag;
     @SerializedName("svipInterface") private Optional<String> svipInterface;
     @SerializedName("svipVlanTag") private Optional<String> svipVlanTag;
     @SerializedName("encryptionAtRestState") private String encryptionAtRestState;
+    @SerializedName("softwareEncryptionAtRestState") private String softwareEncryptionAtRestState;
     @SerializedName("ensemble") private String[] ensemble;
     @SerializedName("mvip") private String mvip;
     @SerializedName("mvipNodeID") private Long mvipNodeID;
     @SerializedName("name") private String name;
     @SerializedName("repCount") private Long repCount;
+    @SerializedName("supportedProtectionSchemes") private String[] supportedProtectionSchemes;
+    @SerializedName("enabledProtectionSchemes") private String[] enabledProtectionSchemes;
+    @SerializedName("defaultProtectionScheme") private String defaultProtectionScheme;
     @SerializedName("svip") private String svip;
     @SerializedName("svipNodeID") private Long svipNodeID;
     @SerializedName("uniqueID") private String uniqueID;
@@ -69,6 +73,9 @@ public class ClusterInfo implements Serializable {
         Long mvipNodeID,
         String name,
         Long repCount,
+        String[] supportedProtectionSchemes,
+        String[] enabledProtectionSchemes,
+        String defaultProtectionScheme,
         String svip,
         Long svipNodeID,
         String uniqueID,
@@ -86,6 +93,53 @@ public class ClusterInfo implements Serializable {
         this.mvipNodeID = mvipNodeID;
         this.name = name;
         this.repCount = repCount;
+        this.supportedProtectionSchemes = supportedProtectionSchemes;
+        this.enabledProtectionSchemes = enabledProtectionSchemes;
+        this.defaultProtectionScheme = defaultProtectionScheme;
+        this.svip = svip;
+        this.svipNodeID = svipNodeID;
+        this.uniqueID = uniqueID;
+        this.uuid = uuid;
+        this.attributes = attributes;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public ClusterInfo(
+        Optional<String> mvipInterface,
+        Optional<String> mvipVlanTag,
+        Optional<String> svipInterface,
+        Optional<String> svipVlanTag,
+        String encryptionAtRestState,
+        String softwareEncryptionAtRestState,
+        String[] ensemble,
+        String mvip,
+        Long mvipNodeID,
+        String name,
+        Long repCount,
+        String[] supportedProtectionSchemes,
+        String[] enabledProtectionSchemes,
+        String defaultProtectionScheme,
+        String svip,
+        Long svipNodeID,
+        String uniqueID,
+        java.util.UUID uuid,
+        Attributes attributes
+    )
+    {
+        this.mvipInterface = (mvipInterface == null) ? Optional.<String>empty() : mvipInterface;
+        this.mvipVlanTag = (mvipVlanTag == null) ? Optional.<String>empty() : mvipVlanTag;
+        this.svipInterface = (svipInterface == null) ? Optional.<String>empty() : svipInterface;
+        this.svipVlanTag = (svipVlanTag == null) ? Optional.<String>empty() : svipVlanTag;
+        this.encryptionAtRestState = encryptionAtRestState;
+        this.softwareEncryptionAtRestState = softwareEncryptionAtRestState;
+        this.ensemble = ensemble;
+        this.mvip = mvip;
+        this.mvipNodeID = mvipNodeID;
+        this.name = name;
+        this.repCount = repCount;
+        this.supportedProtectionSchemes = supportedProtectionSchemes;
+        this.enabledProtectionSchemes = enabledProtectionSchemes;
+        this.defaultProtectionScheme = defaultProtectionScheme;
         this.svip = svip;
         this.svipNodeID = svipNodeID;
         this.uniqueID = uniqueID;
@@ -134,6 +188,14 @@ public class ClusterInfo implements Serializable {
         this.encryptionAtRestState = encryptionAtRestState;
     }
     /** 
+     * Software-based encryption-at-rest state.
+     **/
+    public String getSoftwareEncryptionAtRestState() { return this.softwareEncryptionAtRestState; }
+   
+    public void setSoftwareEncryptionAtRestState(String softwareEncryptionAtRestState) { 
+        this.softwareEncryptionAtRestState = softwareEncryptionAtRestState;
+    }
+    /** 
      * Array of Node IP addresses that are participating in the cluster.
      **/
     public String[] getEnsemble() { return this.ensemble; }
@@ -167,12 +229,36 @@ public class ClusterInfo implements Serializable {
     }
     /** 
      * Number of replicas of each piece of data to store in the cluster.
-     * Valid value is 2
      **/
     public Long getRepCount() { return this.repCount; }
    
     public void setRepCount(Long repCount) { 
         this.repCount = repCount;
+    }
+    /** 
+     * A list of all of the protection schemes that are supported on this cluster.
+     **/
+    public String[] getSupportedProtectionSchemes() { return this.supportedProtectionSchemes; }
+   
+    public void setSupportedProtectionSchemes(String[] supportedProtectionSchemes) { 
+        this.supportedProtectionSchemes = supportedProtectionSchemes;
+    }
+    /** 
+     * A list of all of the protection schemes that have been enabled on this cluster.
+     **/
+    public String[] getEnabledProtectionSchemes() { return this.enabledProtectionSchemes; }
+   
+    public void setEnabledProtectionSchemes(String[] enabledProtectionSchemes) { 
+        this.enabledProtectionSchemes = enabledProtectionSchemes;
+    }
+    /** 
+     * If a protection scheme is not provided to the CreateVolume call, this protection scheme will be used for the new volume.
+     * This protection scheme must always be in the set of enabled protection schemes.
+     **/
+    public String getDefaultProtectionScheme() { return this.defaultProtectionScheme; }
+   
+    public void setDefaultProtectionScheme(String defaultProtectionScheme) { 
+        this.defaultProtectionScheme = defaultProtectionScheme;
     }
     /** 
      * Storage virtual IP
@@ -228,11 +314,15 @@ public class ClusterInfo implements Serializable {
             Objects.equals(svipInterface, that.svipInterface) && 
             Objects.equals(svipVlanTag, that.svipVlanTag) && 
             Objects.equals(encryptionAtRestState, that.encryptionAtRestState) && 
+            Objects.equals(softwareEncryptionAtRestState, that.softwareEncryptionAtRestState) && 
             Arrays.equals(ensemble, that.ensemble) && 
             Objects.equals(mvip, that.mvip) && 
             Objects.equals(mvipNodeID, that.mvipNodeID) && 
             Objects.equals(name, that.name) && 
             Objects.equals(repCount, that.repCount) && 
+            Arrays.equals(supportedProtectionSchemes, that.supportedProtectionSchemes) && 
+            Arrays.equals(enabledProtectionSchemes, that.enabledProtectionSchemes) && 
+            Objects.equals(defaultProtectionScheme, that.defaultProtectionScheme) && 
             Objects.equals(svip, that.svip) && 
             Objects.equals(svipNodeID, that.svipNodeID) && 
             Objects.equals(uniqueID, that.uniqueID) && 
@@ -242,7 +332,7 @@ public class ClusterInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( mvipInterface,mvipVlanTag,svipInterface,svipVlanTag,encryptionAtRestState,(Object[])ensemble,mvip,mvipNodeID,name,repCount,svip,svipNodeID,uniqueID,uuid,attributes );
+        return Objects.hash( mvipInterface,mvipVlanTag,svipInterface,svipVlanTag,encryptionAtRestState,softwareEncryptionAtRestState,(Object[])ensemble,mvip,mvipNodeID,name,repCount,(Object[])supportedProtectionSchemes,(Object[])enabledProtectionSchemes,defaultProtectionScheme,svip,svipNodeID,uniqueID,uuid,attributes );
     }
 
 
@@ -253,11 +343,15 @@ public class ClusterInfo implements Serializable {
         map.put("svipInterface", svipInterface);
         map.put("svipVlanTag", svipVlanTag);
         map.put("encryptionAtRestState", encryptionAtRestState);
+        map.put("softwareEncryptionAtRestState", softwareEncryptionAtRestState);
         map.put("ensemble", ensemble);
         map.put("mvip", mvip);
         map.put("mvipNodeID", mvipNodeID);
         map.put("name", name);
         map.put("repCount", repCount);
+        map.put("supportedProtectionSchemes", supportedProtectionSchemes);
+        map.put("enabledProtectionSchemes", enabledProtectionSchemes);
+        map.put("defaultProtectionScheme", defaultProtectionScheme);
         map.put("svip", svip);
         map.put("svipNodeID", svipNodeID);
         map.put("uniqueID", uniqueID);
@@ -297,11 +391,15 @@ public class ClusterInfo implements Serializable {
             sb.append(" svipVlanTag : ").append("null").append(",");
         }
         sb.append(" encryptionAtRestState : ").append(gson.toJson(encryptionAtRestState)).append(",");
+        sb.append(" softwareEncryptionAtRestState : ").append(gson.toJson(softwareEncryptionAtRestState)).append(",");
         sb.append(" ensemble : ").append(gson.toJson(Arrays.toString(ensemble))).append(",");
         sb.append(" mvip : ").append(gson.toJson(mvip)).append(",");
         sb.append(" mvipNodeID : ").append(gson.toJson(mvipNodeID)).append(",");
         sb.append(" name : ").append(gson.toJson(name)).append(",");
         sb.append(" repCount : ").append(gson.toJson(repCount)).append(",");
+        sb.append(" supportedProtectionSchemes : ").append(gson.toJson(Arrays.toString(supportedProtectionSchemes))).append(",");
+        sb.append(" enabledProtectionSchemes : ").append(gson.toJson(Arrays.toString(enabledProtectionSchemes))).append(",");
+        sb.append(" defaultProtectionScheme : ").append(gson.toJson(defaultProtectionScheme)).append(",");
         sb.append(" svip : ").append(gson.toJson(svip)).append(",");
         sb.append(" svipNodeID : ").append(gson.toJson(svipNodeID)).append(",");
         sb.append(" uniqueID : ").append(gson.toJson(uniqueID)).append(",");
@@ -329,11 +427,15 @@ public class ClusterInfo implements Serializable {
         private Optional<String> svipInterface;
         private Optional<String> svipVlanTag;
         private String encryptionAtRestState;
+        private String softwareEncryptionAtRestState;
         private String[] ensemble;
         private String mvip;
         private Long mvipNodeID;
         private String name;
         private Long repCount;
+        private String[] supportedProtectionSchemes;
+        private String[] enabledProtectionSchemes;
+        private String defaultProtectionScheme;
         private String svip;
         private Long svipNodeID;
         private String uniqueID;
@@ -349,11 +451,15 @@ public class ClusterInfo implements Serializable {
                          this.svipInterface,
                          this.svipVlanTag,
                          this.encryptionAtRestState,
+                         this.softwareEncryptionAtRestState,
                          this.ensemble,
                          this.mvip,
                          this.mvipNodeID,
                          this.name,
                          this.repCount,
+                         this.supportedProtectionSchemes,
+                         this.enabledProtectionSchemes,
+                         this.defaultProtectionScheme,
                          this.svip,
                          this.svipNodeID,
                          this.uniqueID,
@@ -367,11 +473,15 @@ public class ClusterInfo implements Serializable {
             this.svipInterface = req.svipInterface;
             this.svipVlanTag = req.svipVlanTag;
             this.encryptionAtRestState = req.encryptionAtRestState;
+            this.softwareEncryptionAtRestState = req.softwareEncryptionAtRestState;
             this.ensemble = req.ensemble;
             this.mvip = req.mvip;
             this.mvipNodeID = req.mvipNodeID;
             this.name = req.name;
             this.repCount = req.repCount;
+            this.supportedProtectionSchemes = req.supportedProtectionSchemes;
+            this.enabledProtectionSchemes = req.enabledProtectionSchemes;
+            this.defaultProtectionScheme = req.defaultProtectionScheme;
             this.svip = req.svip;
             this.svipNodeID = req.svipNodeID;
             this.uniqueID = req.uniqueID;
@@ -406,6 +516,11 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
+        public ClusterInfo.Builder softwareEncryptionAtRestState(final String softwareEncryptionAtRestState) {
+            this.softwareEncryptionAtRestState = softwareEncryptionAtRestState;
+            return this;
+        }
+
         public ClusterInfo.Builder ensemble(final String[] ensemble) {
             this.ensemble = ensemble;
             return this;
@@ -428,6 +543,21 @@ public class ClusterInfo implements Serializable {
 
         public ClusterInfo.Builder repCount(final Long repCount) {
             this.repCount = repCount;
+            return this;
+        }
+
+        public ClusterInfo.Builder supportedProtectionSchemes(final String[] supportedProtectionSchemes) {
+            this.supportedProtectionSchemes = supportedProtectionSchemes;
+            return this;
+        }
+
+        public ClusterInfo.Builder enabledProtectionSchemes(final String[] enabledProtectionSchemes) {
+            this.enabledProtectionSchemes = enabledProtectionSchemes;
+            return this;
+        }
+
+        public ClusterInfo.Builder defaultProtectionScheme(final String defaultProtectionScheme) {
+            this.defaultProtectionScheme = defaultProtectionScheme;
             return this;
         }
 

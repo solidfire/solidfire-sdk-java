@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetLoginBannerResult implements Serializable {
 
-    public static final long serialVersionUID = 4053609890498204106L;
+    public static final long serialVersionUID = 8920204410992816834L;
     @SerializedName("loginBanner") private LoginBanner loginBanner;
 
     

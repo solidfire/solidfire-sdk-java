@@ -3,6 +3,7 @@ package com.solidfire.examples
 import com.solidfire.client.ElementFactory
 import com.solidfire.element.api._
 import com.solidfire.core.javautil.Optional.{empty, of}
+import com.solidfire.core.client.Attributes;
 
 class ReadmeScalaExample {
 
@@ -18,8 +19,7 @@ class ReadmeScalaExample {
 
   //* --------- EXAMPLE 2 - CREATE A VOLUME ------------- *//
   // Construct a "CreateVolume" request with parameters using the constructor.
-  val createVolume = new CreateVolumeRequest( "volumeName", accountId,
-    1000000000L, false, empty[QoS], empty( ) )
+  val createVolume = new CreateVolumeRequest( "volumeName", accountId, 1000000000L, of(false), empty[QoS], empty( ), empty( ))
 
   // Send the request pull the VolumeID off the result object
   val volumeId = sfe.createVolume( createVolume ).getVolumeID
@@ -29,11 +29,11 @@ class ReadmeScalaExample {
   val volume: Volume = sfe.listVolumesForAccount( accountId, of( volumeId ), of( 1L ) ).getVolumes( )( 0 )
 
   // pull the iqn from the volume
-  val iqn: String = volume.getIqn
+ val iqn: com.solidfire.core.javautil.Optional[String] = volume.getIqn
 
   //* --------- EXAMPLE 4 - MODIFY A VOLUME ------------- *//
   // Change Min and Burst QoS while keeping Max and Burst Time the same
-  val qos: QoS = new QoS( of( 5000l ), empty( ), of( 30000l ), empty( ) )
+   val qos: QoS = new QoS( of( 5000l ), empty( ), of( 30000l ), empty( ), empty( ))
 
   // Construct request to modify the volume size and QoS using the builder.
   val modifyVolume = ModifyVolumeRequest.builder

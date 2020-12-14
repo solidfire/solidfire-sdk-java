@@ -35,9 +35,10 @@ import java.util.Objects;
 
 public class AddressBlockParams implements Serializable {
 
-    public static final long serialVersionUID = -8233895487570391649L;
+    public static final long serialVersionUID = -5928047625310106599L;
     @SerializedName("start") private String start;
     @SerializedName("size") private Long size;
+    @SerializedName("available") private String available;
     // empty constructor
     @Since("7.0")
     public AddressBlockParams() {}
@@ -47,11 +48,13 @@ public class AddressBlockParams implements Serializable {
     @Since("7.0")
     public AddressBlockParams(
         String start,
-        Long size
+        Long size,
+        String available
     )
     {
         this.start = start;
         this.size = size;
+        this.available = available;
     }
 
     /** 
@@ -70,6 +73,14 @@ public class AddressBlockParams implements Serializable {
     public void setSize(Long size) { 
         this.size = size;
     }
+    /** 
+     * dynamic bitset
+     **/
+    public String getAvailable() { return this.available; }
+   
+    public void setAvailable(String available) { 
+        this.available = available;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -80,12 +91,13 @@ public class AddressBlockParams implements Serializable {
 
         return 
             Objects.equals(start, that.start) && 
-            Objects.equals(size, that.size);
+            Objects.equals(size, that.size) && 
+            Objects.equals(available, that.available);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( start,size );
+        return Objects.hash( start,size,available );
     }
 
 
@@ -93,6 +105,7 @@ public class AddressBlockParams implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("start", start);
         map.put("size", size);
+        map.put("available", available);
         return map;
     }
 
@@ -104,6 +117,7 @@ public class AddressBlockParams implements Serializable {
 
         sb.append(" start : ").append(gson.toJson(start)).append(",");
         sb.append(" size : ").append(gson.toJson(size)).append(",");
+        sb.append(" available : ").append(gson.toJson(available)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -123,18 +137,21 @@ public class AddressBlockParams implements Serializable {
     public static class Builder {
         private String start;
         private Long size;
+        private String available;
 
         private Builder() { }
 
         public AddressBlockParams build() {
             return new AddressBlockParams (
                          this.start,
-                         this.size);
+                         this.size,
+                         this.available);
         }
 
         private AddressBlockParams.Builder buildFrom(final AddressBlockParams req) {
             this.start = req.start;
             this.size = req.size;
+            this.available = req.available;
 
             return this;
         }
@@ -146,6 +163,11 @@ public class AddressBlockParams implements Serializable {
 
         public AddressBlockParams.Builder size(final Long size) {
             this.size = size;
+            return this;
+        }
+
+        public AddressBlockParams.Builder available(final String available) {
+            this.available = available;
             return this;
         }
 

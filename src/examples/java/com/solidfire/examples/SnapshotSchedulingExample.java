@@ -52,7 +52,7 @@ public class SnapshotSchedulingExample {
                                                   .build());
 
         // When should the schedule start?
-        scheduleBuilder1.startingDate("2016-12-01T00:00:00Z"); // in UTC format
+        scheduleBuilder1.optionalStartingDate("2016-12-01T00:00:00Z"); // in UTC format
 
         Schedule schedule4 = scheduleBuilder1.build();
 

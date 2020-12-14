@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class DeleteQoSPolicyResult implements Serializable {
 
-    public static final long serialVersionUID = -6788672629982744188L;
+    public static final long serialVersionUID = 175970107146634197L;
     // empty constructor
     @Since("7.0")
     public DeleteQoSPolicyResult() {}

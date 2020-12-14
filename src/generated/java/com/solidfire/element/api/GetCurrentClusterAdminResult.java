@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetCurrentClusterAdminResult implements Serializable {
 
-    public static final long serialVersionUID = -6109185927360892441L;
+    public static final long serialVersionUID = 6567210511299293183L;
     @SerializedName("clusterAdmin") private ClusterAdmin clusterAdmin;
     // empty constructor
     @Since("7.0")
@@ -51,7 +51,10 @@ public class GetCurrentClusterAdminResult implements Serializable {
     }
 
     /** 
-     * Information about all cluster and LDAP administrators that exist for a cluster.
+     * Information about the calling ClusterAdmin.
+     * In case the returned ClusterAdmin object has authMethod value of Ldap or Idp: 
+     *         The access field may contain data aggregated from multiple LdapAdmins or IdpAdmins.
+     *         If this is the case, the clusterAdminId will be set to -1 to indicate that there may not be a unique, 1:1 mapping of the calling ClusterAdmin with a ClusterAdmin on the cluster.
      **/
     public ClusterAdmin getClusterAdmin() { return this.clusterAdmin; }
    

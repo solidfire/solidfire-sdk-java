@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class EnableSnmpResult implements Serializable {
 
-    public static final long serialVersionUID = 8747208628507377094L;
+    public static final long serialVersionUID = -3643735567445445995L;
     // empty constructor
     @Since("7.0")
     public EnableSnmpResult() {}

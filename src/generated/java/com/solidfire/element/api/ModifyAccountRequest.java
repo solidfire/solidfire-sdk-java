@@ -39,13 +39,14 @@ import java.util.Objects;
 
 public class ModifyAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = -6173216453977103498L;
+    public static final long serialVersionUID = -7224837056183457854L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("username") private Optional<String> username;
     @SerializedName("status") private Optional<String> status;
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
     @SerializedName("attributes") private Optional<Attributes> attributes;
+    @SerializedName("enableChap") private Optional<Boolean> enableChap;
     // empty constructor
     @Since("7.0")
     public ModifyAccountRequest() {}
@@ -68,6 +69,26 @@ public class ModifyAccountRequest implements Serializable {
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public ModifyAccountRequest(
+        Long accountID,
+        Optional<String> username,
+        Optional<String> status,
+        Optional<CHAPSecret> initiatorSecret,
+        Optional<CHAPSecret> targetSecret,
+        Optional<Attributes> attributes,
+        Optional<Boolean> enableChap
+    )
+    {
+        this.accountID = accountID;
+        this.username = (username == null) ? Optional.<String>empty() : username;
+        this.status = (status == null) ? Optional.<String>empty() : status;
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.enableChap = (enableChap == null) ? Optional.<Boolean>empty() : enableChap;
     }
 
     /** 
@@ -98,10 +119,7 @@ public class ModifyAccountRequest implements Serializable {
         this.status = (status == null) ? Optional.<String>empty() : status;
     }
     /** 
-     * Specifies the CHAP secret to use for the initiator. This secret must
-     * be 12-16 characters in length and should be
-     * impenetrable. The initiator CHAP secret must be unique
-     * and cannot be the same as the target CHAP secret.
+     * The CHAP secret to use for the initiator.
      **/
     public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
    
@@ -109,11 +127,7 @@ public class ModifyAccountRequest implements Serializable {
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
     /** 
-     * Specifies the CHAP secret to use for the target (mutual CHAP
-     * authentication). This secret must be 12-16 characters in
-     * length and should be impenetrable. The target CHAP
-     * secret must be unique and cannot be the same as the
-     * initiator CHAP secret.
+     * The CHAP secret to use for the target (mutual CHAP authentication).
      **/
     public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
    
@@ -127,6 +141,14 @@ public class ModifyAccountRequest implements Serializable {
    
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+    }
+    /** 
+     * Specify if chap account credentials can be used by an initiator to access volumes.
+     **/
+    public Optional<Boolean> getEnableChap() { return this.enableChap; }
+   
+    public void setEnableChap(Optional<Boolean> enableChap) { 
+        this.enableChap = (enableChap == null) ? Optional.<Boolean>empty() : enableChap;
     }
 
     @Override
@@ -142,12 +164,13 @@ public class ModifyAccountRequest implements Serializable {
             Objects.equals(status, that.status) && 
             Objects.equals(initiatorSecret, that.initiatorSecret) && 
             Objects.equals(targetSecret, that.targetSecret) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(enableChap, that.enableChap);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID,username,status,initiatorSecret,targetSecret,attributes );
+        return Objects.hash( accountID,username,status,initiatorSecret,targetSecret,attributes,enableChap );
     }
 
 
@@ -159,6 +182,7 @@ public class ModifyAccountRequest implements Serializable {
         map.put("initiatorSecret", initiatorSecret);
         map.put("targetSecret", targetSecret);
         map.put("attributes", attributes);
+        map.put("enableChap", enableChap);
         return map;
     }
 
@@ -199,6 +223,12 @@ public class ModifyAccountRequest implements Serializable {
         else{
             sb.append(" attributes : ").append("null").append(",");
         }
+        if(null != enableChap && enableChap.isPresent()){
+            sb.append(" enableChap : ").append(gson.toJson(enableChap)).append(",");
+        }
+        else{
+            sb.append(" enableChap : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -222,6 +252,7 @@ public class ModifyAccountRequest implements Serializable {
         private Optional<CHAPSecret> initiatorSecret;
         private Optional<CHAPSecret> targetSecret;
         private Optional<Attributes> attributes;
+        private Optional<Boolean> enableChap;
 
         private Builder() { }
 
@@ -232,7 +263,8 @@ public class ModifyAccountRequest implements Serializable {
                          this.status,
                          this.initiatorSecret,
                          this.targetSecret,
-                         this.attributes);
+                         this.attributes,
+                         this.enableChap);
         }
 
         private ModifyAccountRequest.Builder buildFrom(final ModifyAccountRequest req) {
@@ -242,6 +274,7 @@ public class ModifyAccountRequest implements Serializable {
             this.initiatorSecret = req.initiatorSecret;
             this.targetSecret = req.targetSecret;
             this.attributes = req.attributes;
+            this.enableChap = req.enableChap;
 
             return this;
         }
@@ -273,6 +306,11 @@ public class ModifyAccountRequest implements Serializable {
 
         public ModifyAccountRequest.Builder optionalAttributes(final Attributes attributes) {
             this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
+            return this;
+        }
+
+        public ModifyAccountRequest.Builder optionalEnableChap(final Boolean enableChap) {
+            this.enableChap = (enableChap == null) ? Optional.<Boolean>empty() : Optional.of(enableChap);
             return this;
         }
 

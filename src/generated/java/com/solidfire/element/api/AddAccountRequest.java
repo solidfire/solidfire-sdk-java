@@ -35,11 +35,12 @@ import java.util.Objects;
 
 public class AddAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = 1204889642362951352L;
+    public static final long serialVersionUID = -588788934058232040L;
     @SerializedName("username") private String username;
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
     @SerializedName("attributes") private Optional<Attributes> attributes;
+    @SerializedName("enableChap") private Optional<Boolean> enableChap;
     // empty constructor
     @Since("7.0")
     public AddAccountRequest() {}
@@ -59,6 +60,22 @@ public class AddAccountRequest implements Serializable {
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
+    // parameterized constructor
+    @Since("12.0")
+    public AddAccountRequest(
+        String username,
+        Optional<CHAPSecret> initiatorSecret,
+        Optional<CHAPSecret> targetSecret,
+        Optional<Attributes> attributes,
+        Optional<Boolean> enableChap
+    )
+    {
+        this.username = username;
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.enableChap = (enableChap == null) ? Optional.<Boolean>empty() : enableChap;
+    }
 
     /** 
      * Specifies the username for this account. (Might be 1 to 64 characters in length).
@@ -69,10 +86,8 @@ public class AddAccountRequest implements Serializable {
         this.username = username;
     }
     /** 
-     * The CHAP secret to use for the initiator. This secret must
-     * be 12-16 characters in length and should be
-     * impenetrable. The initiator CHAP secret must be unique
-     * and cannot be the same as the target CHAP secret. If unspecified, a random secret is created.
+     * The CHAP secret to use for the initiator.
+     * If unspecified, a random secret is created.
      **/
     public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
    
@@ -80,12 +95,8 @@ public class AddAccountRequest implements Serializable {
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
     /** 
-     * The CHAP secret to use for the target (mutual CHAP
-     * authentication). This secret must be 12-16 characters in
-     * length and should be impenetrable. The target CHAP
-     * secret must be unique and cannot be the same as the
-     * initiator CHAP secret. If unspecified, a random secret is
-     * created.
+     * The CHAP secret to use for the target (mutual CHAP authentication).
+     * If unspecified, a random secret is created.
      **/
     public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
    
@@ -100,6 +111,14 @@ public class AddAccountRequest implements Serializable {
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
+    /** 
+     * Specify if chap account credentials can be used by an initiator to access volumes.
+     **/
+    public Optional<Boolean> getEnableChap() { return this.enableChap; }
+   
+    public void setEnableChap(Optional<Boolean> enableChap) { 
+        this.enableChap = (enableChap == null) ? Optional.<Boolean>empty() : enableChap;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -112,12 +131,13 @@ public class AddAccountRequest implements Serializable {
             Objects.equals(username, that.username) && 
             Objects.equals(initiatorSecret, that.initiatorSecret) && 
             Objects.equals(targetSecret, that.targetSecret) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(enableChap, that.enableChap);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( username,initiatorSecret,targetSecret,attributes );
+        return Objects.hash( username,initiatorSecret,targetSecret,attributes,enableChap );
     }
 
 
@@ -127,6 +147,7 @@ public class AddAccountRequest implements Serializable {
         map.put("initiatorSecret", initiatorSecret);
         map.put("targetSecret", targetSecret);
         map.put("attributes", attributes);
+        map.put("enableChap", enableChap);
         return map;
     }
 
@@ -155,6 +176,12 @@ public class AddAccountRequest implements Serializable {
         else{
             sb.append(" attributes : ").append("null").append(",");
         }
+        if(null != enableChap && enableChap.isPresent()){
+            sb.append(" enableChap : ").append(gson.toJson(enableChap)).append(",");
+        }
+        else{
+            sb.append(" enableChap : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -176,6 +203,7 @@ public class AddAccountRequest implements Serializable {
         private Optional<CHAPSecret> initiatorSecret;
         private Optional<CHAPSecret> targetSecret;
         private Optional<Attributes> attributes;
+        private Optional<Boolean> enableChap;
 
         private Builder() { }
 
@@ -184,7 +212,8 @@ public class AddAccountRequest implements Serializable {
                          this.username,
                          this.initiatorSecret,
                          this.targetSecret,
-                         this.attributes);
+                         this.attributes,
+                         this.enableChap);
         }
 
         private AddAccountRequest.Builder buildFrom(final AddAccountRequest req) {
@@ -192,6 +221,7 @@ public class AddAccountRequest implements Serializable {
             this.initiatorSecret = req.initiatorSecret;
             this.targetSecret = req.targetSecret;
             this.attributes = req.attributes;
+            this.enableChap = req.enableChap;
 
             return this;
         }
@@ -213,6 +243,11 @@ public class AddAccountRequest implements Serializable {
 
         public AddAccountRequest.Builder optionalAttributes(final Attributes attributes) {
             this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
+            return this;
+        }
+
+        public AddAccountRequest.Builder optionalEnableChap(final Boolean enableChap) {
+            this.enableChap = (enableChap == null) ? Optional.<Boolean>empty() : Optional.of(enableChap);
             return this;
         }
 

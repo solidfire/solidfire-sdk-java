@@ -43,7 +43,7 @@ import java.util.Objects;
 
 public class QoS implements Serializable {
 
-    public static final long serialVersionUID = 1023223855695272644L;
+    public static final long serialVersionUID = -6562989425637054633L;
     @SerializedName("minIOPS") private Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
     @SerializedName("burstIOPS") private Optional<Long> burstIOPS;
@@ -111,7 +111,7 @@ public class QoS implements Serializable {
     /** 
      * The curve is a set of key-value pairs.
      * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
+     * The values represent the cost of performing an IOP at a specific I/O size.
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
     public Optional<Attributes> getCurve() { return this.curve; }

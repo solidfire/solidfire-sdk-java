@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class SetConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = -6082910372309011917L;
+    public static final long serialVersionUID = -1857921894941706537L;
     @SerializedName("config") private ConfigParams config;
     // empty constructor
     @Since("7.0")

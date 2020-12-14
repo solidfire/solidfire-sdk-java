@@ -34,12 +34,13 @@ import java.util.Objects;
 
 public class DriveHardware implements Serializable {
 
-    public static final long serialVersionUID = -2699863894590814659L;
+    public static final long serialVersionUID = 3572504644807186252L;
     @SerializedName("canonicalName") private String canonicalName;
     @SerializedName("connected") private Boolean connected;
     @SerializedName("dev") private Long dev;
     @SerializedName("devPath") private String devPath;
     @SerializedName("driveType") private String driveType;
+    @SerializedName("driveEncryptionCapability") private String driveEncryptionCapability;
     @SerializedName("lifeRemainingPercent") private Long lifeRemainingPercent;
     @SerializedName("lifetimeReadBytes") private Long lifetimeReadBytes;
     @SerializedName("lifetimeWriteBytes") private Long lifetimeWriteBytes;
@@ -77,6 +78,7 @@ public class DriveHardware implements Serializable {
         Long dev,
         String devPath,
         String driveType,
+        String driveEncryptionCapability,
         Long lifeRemainingPercent,
         Long lifetimeReadBytes,
         Long lifetimeWriteBytes,
@@ -108,6 +110,7 @@ public class DriveHardware implements Serializable {
         this.dev = dev;
         this.devPath = devPath;
         this.driveType = driveType;
+        this.driveEncryptionCapability = driveEncryptionCapability;
         this.lifeRemainingPercent = lifeRemainingPercent;
         this.lifetimeReadBytes = lifetimeReadBytes;
         this.lifetimeWriteBytes = lifetimeWriteBytes;
@@ -173,6 +176,14 @@ public class DriveHardware implements Serializable {
    
     public void setDriveType(String driveType) { 
         this.driveType = driveType;
+    }
+    /** 
+     * 
+     **/
+    public String getDriveEncryptionCapability() { return this.driveEncryptionCapability; }
+   
+    public void setDriveEncryptionCapability(String driveEncryptionCapability) { 
+        this.driveEncryptionCapability = driveEncryptionCapability;
     }
     /** 
      * 
@@ -380,6 +391,7 @@ public class DriveHardware implements Serializable {
             Objects.equals(dev, that.dev) && 
             Objects.equals(devPath, that.devPath) && 
             Objects.equals(driveType, that.driveType) && 
+            Objects.equals(driveEncryptionCapability, that.driveEncryptionCapability) && 
             Objects.equals(lifeRemainingPercent, that.lifeRemainingPercent) && 
             Objects.equals(lifetimeReadBytes, that.lifetimeReadBytes) && 
             Objects.equals(lifetimeWriteBytes, that.lifetimeWriteBytes) && 
@@ -408,7 +420,7 @@ public class DriveHardware implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( canonicalName,connected,dev,devPath,driveType,lifeRemainingPercent,lifetimeReadBytes,lifetimeWriteBytes,name,path,pathLink,powerOnHours,product,reallocatedSectors,reserveCapacityPercent,scsiCompatId,scsiState,securityAtMaximum,securityEnabled,securityFrozen,securityLocked,securitySupported,serial,size,slot,smartSsdWriteCapable,uuid,vendor,version );
+        return Objects.hash( canonicalName,connected,dev,devPath,driveType,driveEncryptionCapability,lifeRemainingPercent,lifetimeReadBytes,lifetimeWriteBytes,name,path,pathLink,powerOnHours,product,reallocatedSectors,reserveCapacityPercent,scsiCompatId,scsiState,securityAtMaximum,securityEnabled,securityFrozen,securityLocked,securitySupported,serial,size,slot,smartSsdWriteCapable,uuid,vendor,version );
     }
 
 
@@ -419,6 +431,7 @@ public class DriveHardware implements Serializable {
         map.put("dev", dev);
         map.put("devPath", devPath);
         map.put("driveType", driveType);
+        map.put("driveEncryptionCapability", driveEncryptionCapability);
         map.put("lifeRemainingPercent", lifeRemainingPercent);
         map.put("lifetimeReadBytes", lifetimeReadBytes);
         map.put("lifetimeWriteBytes", lifetimeWriteBytes);
@@ -457,6 +470,7 @@ public class DriveHardware implements Serializable {
         sb.append(" dev : ").append(gson.toJson(dev)).append(",");
         sb.append(" devPath : ").append(gson.toJson(devPath)).append(",");
         sb.append(" driveType : ").append(gson.toJson(driveType)).append(",");
+        sb.append(" driveEncryptionCapability : ").append(gson.toJson(driveEncryptionCapability)).append(",");
         sb.append(" lifeRemainingPercent : ").append(gson.toJson(lifeRemainingPercent)).append(",");
         sb.append(" lifetimeReadBytes : ").append(gson.toJson(lifetimeReadBytes)).append(",");
         sb.append(" lifetimeWriteBytes : ").append(gson.toJson(lifetimeWriteBytes)).append(",");
@@ -508,6 +522,7 @@ public class DriveHardware implements Serializable {
         private Long dev;
         private String devPath;
         private String driveType;
+        private String driveEncryptionCapability;
         private Long lifeRemainingPercent;
         private Long lifetimeReadBytes;
         private Long lifetimeWriteBytes;
@@ -542,6 +557,7 @@ public class DriveHardware implements Serializable {
                          this.dev,
                          this.devPath,
                          this.driveType,
+                         this.driveEncryptionCapability,
                          this.lifeRemainingPercent,
                          this.lifetimeReadBytes,
                          this.lifetimeWriteBytes,
@@ -574,6 +590,7 @@ public class DriveHardware implements Serializable {
             this.dev = req.dev;
             this.devPath = req.devPath;
             this.driveType = req.driveType;
+            this.driveEncryptionCapability = req.driveEncryptionCapability;
             this.lifeRemainingPercent = req.lifeRemainingPercent;
             this.lifetimeReadBytes = req.lifetimeReadBytes;
             this.lifetimeWriteBytes = req.lifetimeWriteBytes;
@@ -624,6 +641,11 @@ public class DriveHardware implements Serializable {
 
         public DriveHardware.Builder driveType(final String driveType) {
             this.driveType = driveType;
+            return this;
+        }
+
+        public DriveHardware.Builder driveEncryptionCapability(final String driveEncryptionCapability) {
+            this.driveEncryptionCapability = driveEncryptionCapability;
             return this;
         }
 

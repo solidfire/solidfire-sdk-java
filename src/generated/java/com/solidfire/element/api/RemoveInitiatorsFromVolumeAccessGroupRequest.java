@@ -37,10 +37,10 @@ import java.util.Objects;
 
 public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 307064900088076518L;
+    public static final long serialVersionUID = 3860118585740244525L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("initiators") private String[] initiators;
-    @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators;
+    @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators = Optional.of(true);
     // empty constructor
     @Since("7.0")
     public RemoveInitiatorsFromVolumeAccessGroupRequest() {}
@@ -48,6 +48,16 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
     
     // parameterized constructor
     @Since("7.0")
+    public RemoveInitiatorsFromVolumeAccessGroupRequest(
+        Long volumeAccessGroupID,
+        String[] initiators
+    )
+    {
+        this.volumeAccessGroupID = volumeAccessGroupID;
+        this.initiators = initiators;
+    }
+    // parameterized constructor
+    @Since("9.0")
     public RemoveInitiatorsFromVolumeAccessGroupRequest(
         Long volumeAccessGroupID,
         String[] initiators,
@@ -78,7 +88,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
         this.initiators = initiators;
     }
     /** 
-     * true: Delete initiator objects after they are removed from a volume access group.
+     * true: Default. Delete initiator objects after they are removed from a volume access group.
      * false: Do not delete initiator objects after they are removed from a volume access group.
      **/
     public Optional<Boolean> getDeleteOrphanInitiators() { return this.deleteOrphanInitiators; }
