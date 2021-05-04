@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListDriveHardwareResult implements Serializable {
 
-    public static final long serialVersionUID = -1725498498848643304L;
+    public static final long serialVersionUID = -7671134716757309905L;
     @SerializedName("nodes") private NodeDriveHardware[] nodes;
     // empty constructor
     @Since("7.0")

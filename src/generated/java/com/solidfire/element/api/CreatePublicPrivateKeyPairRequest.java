@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class CreatePublicPrivateKeyPairRequest implements Serializable {
 
-    public static final long serialVersionUID = -1487017750162282280L;
+    public static final long serialVersionUID = 7689608381520100594L;
     @SerializedName("commonName") private Optional<String> commonName;
     @SerializedName("organization") private Optional<String> organization;
     @SerializedName("organizationalUnit") private Optional<String> organizationalUnit;

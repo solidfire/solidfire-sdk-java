@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SnapMirrorVserverAggregateInfo implements Serializable {
 
-    public static final long serialVersionUID = 8479851520192877912L;
+    public static final long serialVersionUID = 8518537893613435765L;
     @SerializedName("aggrName") private String aggrName;
     @SerializedName("aggrAvailSize") private Long aggrAvailSize;
 

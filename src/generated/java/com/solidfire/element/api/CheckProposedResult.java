@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CheckProposedResult implements Serializable {
 
-    public static final long serialVersionUID = 7751194702425070260L;
+    public static final long serialVersionUID = 3759788654031766531L;
     @SerializedName("proposedClusterValid") private Boolean proposedClusterValid;
     @SerializedName("proposedClusterErrors") private ProposedClusterError[] proposedClusterErrors;
     // empty constructor

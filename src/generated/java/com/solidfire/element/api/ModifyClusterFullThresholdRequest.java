@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ModifyClusterFullThresholdRequest implements Serializable {
 
-    public static final long serialVersionUID = -2734823587529071252L;
+    public static final long serialVersionUID = 6981158956594615197L;
     @SerializedName("stage2AwareThreshold") private Optional<Long> stage2AwareThreshold;
     @SerializedName("stage3BlockThresholdPercent") private Optional<Long> stage3BlockThresholdPercent;
     @SerializedName("stage3MetadataThresholdPercent") private Optional<Long> stage3MetadataThresholdPercent;

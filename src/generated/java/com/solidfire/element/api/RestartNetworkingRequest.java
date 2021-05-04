@@ -38,7 +38,7 @@ import java.util.Objects;
 
 public class RestartNetworkingRequest implements Serializable {
 
-    public static final long serialVersionUID = -9216154470019479423L;
+    public static final long serialVersionUID = -1460113922956526280L;
     @SerializedName("force") private Boolean force;
     // empty constructor
     @Since("7.0")

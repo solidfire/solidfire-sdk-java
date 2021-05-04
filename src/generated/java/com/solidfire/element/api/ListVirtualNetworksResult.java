@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListVirtualNetworksResult implements Serializable {
 
-    public static final long serialVersionUID = -8610433558076761879L;
+    public static final long serialVersionUID = 7593064884478925014L;
     @SerializedName("virtualNetworks") private VirtualNetwork[] virtualNetworks;
     // empty constructor
     @Since("7.0")

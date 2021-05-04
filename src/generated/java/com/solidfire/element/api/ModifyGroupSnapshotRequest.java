@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ModifyGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 8910084486119464059L;
+    public static final long serialVersionUID = -2331163540132065018L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
@@ -81,8 +81,15 @@ public class ModifyGroupSnapshotRequest implements Serializable {
         this.groupSnapshotID = groupSnapshotID;
     }
     /** 
-     * Sets the time when the snapshot should be
-     * removed. If unspecified, the current time is used.
+     * Specify the time after which the group snapshot can be removed.
+     * If neither 'expirationTime' nor 'retention' is specified for the original group snapshot, the snapshot
+     * will be retained until manually deleted.
+     * The format is: 
+     *   ISO 8601 date string for time based expiration, otherwise it will not expire.
+     *   'null', or not specified, the snapshot is to be retained permanently.
+     *   'fifo' causes the snapshot to be preserved on a First-In-First-Out basis, relative to other FIFO
+     *        snapshots on the volume. The API will fail if no FIFO space is available.
+     * Note: The 'retention' option is not supported by ModifyGroupSnapshot.
      **/
     public Optional<String> getExpirationTime() { return this.expirationTime; }
    

@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class AddKeyServerToProviderKmipResult implements Serializable {
 
-    public static final long serialVersionUID = -4789692485330091176L;
+    public static final long serialVersionUID = 5327044866634190628L;
     // empty constructor
     @Since("7.0")
     public AddKeyServerToProviderKmipResult() {}

@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ResyncSnapMirrorRelationshipRequest implements Serializable {
 
-    public static final long serialVersionUID = -1107528488093403175L;
+    public static final long serialVersionUID = -79225262414140926L;
     @SerializedName("snapMirrorEndpointID") private Long snapMirrorEndpointID;
     @SerializedName("destinationVolume") private SnapMirrorVolumeInfo destinationVolume;
     @SerializedName("maxTransferRate") private Optional<Long> maxTransferRate;

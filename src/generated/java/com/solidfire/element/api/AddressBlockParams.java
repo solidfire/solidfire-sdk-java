@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class AddressBlockParams implements Serializable {
 
-    public static final long serialVersionUID = -5928047625310106599L;
+    public static final long serialVersionUID = 8392182782931215065L;
     @SerializedName("start") private String start;
     @SerializedName("size") private Long size;
     @SerializedName("available") private String available;

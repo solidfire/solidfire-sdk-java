@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class TestKeyProviderKmipResult implements Serializable {
 
-    public static final long serialVersionUID = 6202001235182406384L;
+    public static final long serialVersionUID = 5310574783648415681L;
     // empty constructor
     @Since("7.0")
     public TestKeyProviderKmipResult() {}

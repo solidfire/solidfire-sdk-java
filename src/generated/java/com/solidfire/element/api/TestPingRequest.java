@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class TestPingRequest implements Serializable {
 
-    public static final long serialVersionUID = 1396474575042870005L;
+    public static final long serialVersionUID = 1529531461108078410L;
     @SerializedName("attempts") private Optional<Long> attempts;
     @SerializedName("hosts") private Optional<String> hosts;
     @SerializedName("totalTimeoutSec") private Optional<Long> totalTimeoutSec;

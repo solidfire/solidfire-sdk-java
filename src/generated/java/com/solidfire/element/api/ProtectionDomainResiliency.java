@@ -39,7 +39,7 @@ import java.util.Objects;
 
 public class ProtectionDomainResiliency implements Serializable {
 
-    public static final long serialVersionUID = 5224540913933948272L;
+    public static final long serialVersionUID = -6779069831035321079L;
     @SerializedName("sustainableFailuresForEnsemble") private Long sustainableFailuresForEnsemble;
     @SerializedName("singleFailureThresholdBytesForBlockData") private Long singleFailureThresholdBytesForBlockData;
     @SerializedName("protectionSchemeResiliencies") private ProtectionSchemeResiliency[] protectionSchemeResiliencies;

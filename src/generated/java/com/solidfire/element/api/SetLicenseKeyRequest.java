@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SetLicenseKeyRequest implements Serializable {
 
-    public static final long serialVersionUID = -3469730414175973035L;
+    public static final long serialVersionUID = -6254964272454767611L;
     @SerializedName("serialNumber") private String serialNumber;
     @SerializedName("orderNumber") private String orderNumber;
     // empty constructor

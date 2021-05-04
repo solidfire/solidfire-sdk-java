@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class RemoteReplication implements Serializable {
 
-    public static final long serialVersionUID = 7821236145857835431L;
+    public static final long serialVersionUID = -3394807960679489464L;
     @SerializedName("mode") private String mode;
     @SerializedName("pauseLimit") private Long pauseLimit;
     @SerializedName("remoteServiceID") private Long remoteServiceID;

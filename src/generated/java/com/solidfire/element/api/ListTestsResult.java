@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListTestsResult implements Serializable {
 
-    public static final long serialVersionUID = -7391024485219173530L;
+    public static final long serialVersionUID = 7775614332364674220L;
     @SerializedName("tests") private Object tests;
     // empty constructor
     @Since("7.0")

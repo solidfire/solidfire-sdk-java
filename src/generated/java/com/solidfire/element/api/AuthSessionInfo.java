@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class AuthSessionInfo implements Serializable {
 
-    public static final long serialVersionUID = -3004078740507978815L;
+    public static final long serialVersionUID = -4673410720750485385L;
     @SerializedName("clusterAdminIDs") private Long[] clusterAdminIDs;
     @SerializedName("username") private String username;
     @SerializedName("sessionID") private java.util.UUID sessionID;

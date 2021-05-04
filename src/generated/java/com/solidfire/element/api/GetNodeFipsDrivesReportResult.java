@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class GetNodeFipsDrivesReportResult implements Serializable {
 
-    public static final long serialVersionUID = 1516880961761882959L;
+    public static final long serialVersionUID = -208176515481816790L;
     @SerializedName("fipsDrives") private String fipsDrives;
 
     

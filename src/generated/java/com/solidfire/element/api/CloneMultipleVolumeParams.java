@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CloneMultipleVolumeParams implements Serializable {
 
-    public static final long serialVersionUID = 4556985077347933361L;
+    public static final long serialVersionUID = -2560016697884424490L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("name") private Optional<String> name;

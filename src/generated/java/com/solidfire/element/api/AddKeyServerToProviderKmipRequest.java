@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*  
+/*
  * DO NOT EDIT THIS CODE BY HAND! It has been generated with jsvcgen.
  */
 package com.solidfire.element.api;
@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class AddKeyServerToProviderKmipRequest implements Serializable {
 
-    public static final long serialVersionUID = 8973495485180823894L;
+    public static final long serialVersionUID = 8145798172550605840L;
     @SerializedName("keyProviderID") private Long keyProviderID;
     @SerializedName("keyServerID") private Long keyServerID;
     // empty constructor

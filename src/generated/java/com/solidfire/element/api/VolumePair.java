@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class VolumePair implements Serializable {
 
-    public static final long serialVersionUID = 2078440856806668557L;
+    public static final long serialVersionUID = 7430498931209713649L;
     @SerializedName("clusterPairID") private Long clusterPairID;
     @SerializedName("remoteVolumeID") private Long remoteVolumeID;
     @SerializedName("remoteSliceID") private Long remoteSliceID;

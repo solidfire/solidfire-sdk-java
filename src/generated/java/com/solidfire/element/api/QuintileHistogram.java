@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class QuintileHistogram implements Serializable {
 
-    public static final long serialVersionUID = -439651218817153097L;
+    public static final long serialVersionUID = -7647425647282094506L;
     @SerializedName("Bucket0") private Optional<Long> bucket0;
     @SerializedName("Bucket1To19") private Long bucket1To19;
     @SerializedName("Bucket20To39") private Long bucket20To39;

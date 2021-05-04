@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CreateClusterInterfacePreferenceResult implements Serializable {
 
-    public static final long serialVersionUID = -5620701860753018256L;
+    public static final long serialVersionUID = -345803198186012264L;
     // empty constructor
     @Since("7.0")
     public CreateClusterInterfacePreferenceResult() {}

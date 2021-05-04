@@ -42,7 +42,7 @@ import java.util.Objects;
 
 public class VolumeAccessGroup implements Serializable {
 
-    public static final long serialVersionUID = 6034939652738546889L;
+    public static final long serialVersionUID = 1565289845094460378L;
     @SerializedName("deletedVolumes") private Long[] deletedVolumes;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("name") private String name;

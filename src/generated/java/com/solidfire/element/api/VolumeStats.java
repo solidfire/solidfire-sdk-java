@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class VolumeStats implements Serializable {
 
-    public static final long serialVersionUID = 358240369886125949L;
+    public static final long serialVersionUID = -8109535803575668381L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("actualIOPS") private Optional<Long> actualIOPS;
     @SerializedName("averageIOPSize") private Optional<Long> averageIOPSize;

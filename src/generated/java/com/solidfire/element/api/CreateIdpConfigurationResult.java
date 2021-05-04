@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CreateIdpConfigurationResult implements Serializable {
 
-    public static final long serialVersionUID = -8498297990672449945L;
+    public static final long serialVersionUID = 1873784357834586659L;
     @SerializedName("idpConfigInfo") private IdpConfigInfo idpConfigInfo;
     // empty constructor
     @Since("7.0")

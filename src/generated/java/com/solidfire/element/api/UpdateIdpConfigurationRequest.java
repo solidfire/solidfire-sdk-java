@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class UpdateIdpConfigurationRequest implements Serializable {
 
-    public static final long serialVersionUID = -3904100497247730739L;
+    public static final long serialVersionUID = 2500534036989305887L;
     @SerializedName("idpConfigurationID") private Optional<java.util.UUID> idpConfigurationID;
     @SerializedName("idpName") private Optional<String> idpName;
     @SerializedName("newIdpName") private Optional<String> newIdpName;

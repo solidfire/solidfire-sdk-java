@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class GroupSnapshotMembers implements Serializable {
 
-    public static final long serialVersionUID = 7684475734946497784L;
+    public static final long serialVersionUID = 6265402635991976133L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("checksum") private String checksum;

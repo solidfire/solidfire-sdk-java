@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class TestConnectMvipRequest implements Serializable {
 
-    public static final long serialVersionUID = -5213324772956235158L;
+    public static final long serialVersionUID = 5212824486380696307L;
     @SerializedName("mvip") private Optional<String> mvip;
     // empty constructor
     @Since("7.0")

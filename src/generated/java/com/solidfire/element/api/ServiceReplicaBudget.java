@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ServiceReplicaBudget implements Serializable {
 
-    public static final long serialVersionUID = 7050817372731404230L;
+    public static final long serialVersionUID = -5949814656238995766L;
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("budget") private Long budget;
     // empty constructor

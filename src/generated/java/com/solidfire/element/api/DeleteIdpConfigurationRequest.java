@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class DeleteIdpConfigurationRequest implements Serializable {
 
-    public static final long serialVersionUID = 6357297076062080593L;
+    public static final long serialVersionUID = 659817215348678943L;
     @SerializedName("idpConfigurationID") private Optional<java.util.UUID> idpConfigurationID;
     @SerializedName("idpName") private Optional<String> idpName;
     // empty constructor

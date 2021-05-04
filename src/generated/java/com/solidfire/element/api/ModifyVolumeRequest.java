@@ -42,7 +42,7 @@ import java.util.Objects;
 
 public class ModifyVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -5233680507774927833L;
+    public static final long serialVersionUID = -2790085437577927897L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
@@ -52,6 +52,8 @@ public class ModifyVolumeRequest implements Serializable {
     @SerializedName("associateWithQoSPolicy") private Optional<Boolean> associateWithQoSPolicy;
     @SerializedName("qosPolicyID") private Optional<Long> qosPolicyID;
     @SerializedName("enableSnapMirrorReplication") private Optional<Boolean> enableSnapMirrorReplication;
+    @SerializedName("fifoSize") private Optional<Long> fifoSize;
+    @SerializedName("minFifoSize") private Optional<Long> minFifoSize;
     // empty constructor
     @Since("7.0")
     public ModifyVolumeRequest() {}
@@ -98,6 +100,34 @@ public class ModifyVolumeRequest implements Serializable {
         this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : associateWithQoSPolicy;
         this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
         this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : enableSnapMirrorReplication;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public ModifyVolumeRequest(
+        Long volumeID,
+        Optional<Long> accountID,
+        Optional<String> access,
+        Optional<QoS> qos,
+        Optional<Long> totalSize,
+        Optional<Attributes> attributes,
+        Optional<Boolean> associateWithQoSPolicy,
+        Optional<Long> qosPolicyID,
+        Optional<Boolean> enableSnapMirrorReplication,
+        Optional<Long> fifoSize,
+        Optional<Long> minFifoSize
+    )
+    {
+        this.volumeID = volumeID;
+        this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
+        this.access = (access == null) ? Optional.<String>empty() : access;
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
+        this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : associateWithQoSPolicy;
+        this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
+        this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : enableSnapMirrorReplication;
+        this.fifoSize = (fifoSize == null) ? Optional.<Long>empty() : fifoSize;
+        this.minFifoSize = (minFifoSize == null) ? Optional.<Long>empty() : minFifoSize;
     }
 
     /** 
@@ -191,6 +221,28 @@ public class ModifyVolumeRequest implements Serializable {
     public void setEnableSnapMirrorReplication(Optional<Boolean> enableSnapMirrorReplication) { 
         this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : enableSnapMirrorReplication;
     }
+    /** 
+     * Specifies the maximum number of FIFO (First-In-First-Out) snapshots supported by the volume.
+     * Note that FIFO and non-FIFO snapshots both use the same pool of available snapshot slots on a volume.
+     * Use this option to limit FIFO snapshot consumption of the available snapshot slots.
+     * Also note this cannot be modified such that it is less than the current FIFO snapshot count.
+     **/
+    public Optional<Long> getFifoSize() { return this.fifoSize; }
+   
+    public void setFifoSize(Optional<Long> fifoSize) { 
+        this.fifoSize = (fifoSize == null) ? Optional.<Long>empty() : fifoSize;
+    }
+    /** 
+     * Specifies the number of snapshot slots that are reserved for only FIFO (First-In-First-Out) snapshots.
+     * Since FIFO and non-FIFO snapshots share the same pool, the minFifoSize reduces the total number of
+     * possible non-FIFO snapshots by the same amount.
+     * Note this cannot be modified such that it conflicts with the current non-FIFO snapshot count.
+     **/
+    public Optional<Long> getMinFifoSize() { return this.minFifoSize; }
+   
+    public void setMinFifoSize(Optional<Long> minFifoSize) { 
+        this.minFifoSize = (minFifoSize == null) ? Optional.<Long>empty() : minFifoSize;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -208,12 +260,14 @@ public class ModifyVolumeRequest implements Serializable {
             Objects.equals(attributes, that.attributes) && 
             Objects.equals(associateWithQoSPolicy, that.associateWithQoSPolicy) && 
             Objects.equals(qosPolicyID, that.qosPolicyID) && 
-            Objects.equals(enableSnapMirrorReplication, that.enableSnapMirrorReplication);
+            Objects.equals(enableSnapMirrorReplication, that.enableSnapMirrorReplication) && 
+            Objects.equals(fifoSize, that.fifoSize) && 
+            Objects.equals(minFifoSize, that.minFifoSize);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,accountID,access,qos,totalSize,attributes,associateWithQoSPolicy,qosPolicyID,enableSnapMirrorReplication );
+        return Objects.hash( volumeID,accountID,access,qos,totalSize,attributes,associateWithQoSPolicy,qosPolicyID,enableSnapMirrorReplication,fifoSize,minFifoSize );
     }
 
 
@@ -228,6 +282,8 @@ public class ModifyVolumeRequest implements Serializable {
         map.put("associateWithQoSPolicy", associateWithQoSPolicy);
         map.put("qosPolicyID", qosPolicyID);
         map.put("enableSnapMirrorReplication", enableSnapMirrorReplication);
+        map.put("fifoSize", fifoSize);
+        map.put("minFifoSize", minFifoSize);
         return map;
     }
 
@@ -286,6 +342,18 @@ public class ModifyVolumeRequest implements Serializable {
         else{
             sb.append(" enableSnapMirrorReplication : ").append("null").append(",");
         }
+        if(null != fifoSize && fifoSize.isPresent()){
+            sb.append(" fifoSize : ").append(gson.toJson(fifoSize)).append(",");
+        }
+        else{
+            sb.append(" fifoSize : ").append("null").append(",");
+        }
+        if(null != minFifoSize && minFifoSize.isPresent()){
+            sb.append(" minFifoSize : ").append(gson.toJson(minFifoSize)).append(",");
+        }
+        else{
+            sb.append(" minFifoSize : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -312,6 +380,8 @@ public class ModifyVolumeRequest implements Serializable {
         private Optional<Boolean> associateWithQoSPolicy;
         private Optional<Long> qosPolicyID;
         private Optional<Boolean> enableSnapMirrorReplication;
+        private Optional<Long> fifoSize;
+        private Optional<Long> minFifoSize;
 
         private Builder() { }
 
@@ -325,7 +395,9 @@ public class ModifyVolumeRequest implements Serializable {
                          this.attributes,
                          this.associateWithQoSPolicy,
                          this.qosPolicyID,
-                         this.enableSnapMirrorReplication);
+                         this.enableSnapMirrorReplication,
+                         this.fifoSize,
+                         this.minFifoSize);
         }
 
         private ModifyVolumeRequest.Builder buildFrom(final ModifyVolumeRequest req) {
@@ -338,6 +410,8 @@ public class ModifyVolumeRequest implements Serializable {
             this.associateWithQoSPolicy = req.associateWithQoSPolicy;
             this.qosPolicyID = req.qosPolicyID;
             this.enableSnapMirrorReplication = req.enableSnapMirrorReplication;
+            this.fifoSize = req.fifoSize;
+            this.minFifoSize = req.minFifoSize;
 
             return this;
         }
@@ -384,6 +458,16 @@ public class ModifyVolumeRequest implements Serializable {
 
         public ModifyVolumeRequest.Builder optionalEnableSnapMirrorReplication(final Boolean enableSnapMirrorReplication) {
             this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableSnapMirrorReplication);
+            return this;
+        }
+
+        public ModifyVolumeRequest.Builder optionalFifoSize(final Long fifoSize) {
+            this.fifoSize = (fifoSize == null) ? Optional.<Long>empty() : Optional.of(fifoSize);
+            return this;
+        }
+
+        public ModifyVolumeRequest.Builder optionalMinFifoSize(final Long minFifoSize) {
+            this.minFifoSize = (minFifoSize == null) ? Optional.<Long>empty() : Optional.of(minFifoSize);
             return this;
         }
 

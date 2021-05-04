@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetAPIResult implements Serializable {
 
-    public static final long serialVersionUID = 7818974360192562254L;
+    public static final long serialVersionUID = -5838946821690126501L;
     @SerializedName("currentVersion") private Double currentVersion;
     @SerializedName("supportedVersions") private Double[] supportedVersions;
     // empty constructor

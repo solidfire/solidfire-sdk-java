@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SnmpV3UsmUser implements Serializable {
 
-    public static final long serialVersionUID = 7156114663719660830L;
+    public static final long serialVersionUID = -2662187778116495150L;
     @SerializedName("access") private String access;
     @SerializedName("name") private String name;
     @SerializedName("password") private String password;

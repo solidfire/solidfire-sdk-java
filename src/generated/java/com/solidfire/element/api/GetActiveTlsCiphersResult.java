@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetActiveTlsCiphersResult implements Serializable {
 
-    public static final long serialVersionUID = -8499041570118442622L;
+    public static final long serialVersionUID = -809627485867618672L;
     @SerializedName("mandatoryCiphers") private String[] mandatoryCiphers;
     @SerializedName("supplementalCiphers") private String[] supplementalCiphers;
     // empty constructor

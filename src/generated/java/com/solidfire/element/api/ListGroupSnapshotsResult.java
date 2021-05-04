@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListGroupSnapshotsResult implements Serializable {
 
-    public static final long serialVersionUID = -3075535853032987572L;
+    public static final long serialVersionUID = 4671630158619774924L;
     @SerializedName("groupSnapshots") private GroupSnapshot[] groupSnapshots;
     // empty constructor
     @Since("7.0")

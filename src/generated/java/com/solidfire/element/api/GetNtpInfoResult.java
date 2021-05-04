@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetNtpInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 186199812615558262L;
+    public static final long serialVersionUID = 6596975267810820500L;
     @SerializedName("broadcastclient") private Boolean broadcastclient;
     @SerializedName("servers") private String[] servers;
     // empty constructor

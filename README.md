@@ -11,7 +11,7 @@ The SolidFire Java SDK is a collection of software modules and libraries that fa
 | Component    | Version             |
 | ------------ | ------------------- |
 | Java         | 7.0 & 8.0           |
-| SolidFire OS | Element 10.0 - 12.2 |
+| SolidFire OS | Element 11.8 - 12.3 |
 
 ## Getting Help
 
@@ -20,14 +20,14 @@ If you have any questions or comments about this product, submit an issue on git
 
 ## Download
 
-[Download](jar/solidfire-sdk-java-1.7.0.65.jar) the latest jar:
+[Download](jar/solidfire-sdk-java-12.3.0.196.jar) the latest jar:
 
 ~~~ xml
 
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
-  <version>1.7.0.65</version>
+  <version>12.3.0.196</version>
 </dependency>
 
 ~~~
@@ -36,7 +36,7 @@ or SBT:
 
 ~~~ scala
 
-libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.7"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "12.3"
 
 ~~~
 
@@ -44,7 +44,7 @@ or Gradle:
 
 ~~~ groovy
 
-compile 'com.solidfire:solidfire-sdk-java:1.7'
+compile 'com.solidfire:solidfire-sdk-java:12.3'
 
 ~~~
 
@@ -67,7 +67,7 @@ The SDK assembly is signed with a certificate controlled by SolidFire, Inc, assu
 
 [Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/docs/index.html)
 
-[Release Notes](NetApp_Element_Java_SDK_Release_Notes_1_7.pdf)
+[Release Notes](NetApp_Element_Java_SDK_Release_Notes_12.3.pdf)
 
 ## Examples
 
@@ -317,7 +317,7 @@ You also need to add the appropriate SLF4J dependency. Continuing with the logba
         
 ## License
 
-Copyright © 2020, 2021 NetApp, Inc. All rights reserved.
+Copyright © 2021 NetApp, Inc. All rights reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

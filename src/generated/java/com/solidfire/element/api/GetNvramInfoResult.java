@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetNvramInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 5094856078964943836L;
+    public static final long serialVersionUID = 6822224813346764744L;
     @SerializedName("nvramInfo") private NvramInfo nvramInfo;
     // empty constructor
     @Since("7.0")

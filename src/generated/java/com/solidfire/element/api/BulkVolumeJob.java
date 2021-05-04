@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class BulkVolumeJob implements Serializable {
 
-    public static final long serialVersionUID = 4021050040018395753L;
+    public static final long serialVersionUID = 1835487517246678767L;
     @SerializedName("bulkVolumeID") private Long bulkVolumeID;
     @SerializedName("createTime") private String createTime;
     @SerializedName("elapsedTime") private Long elapsedTime;

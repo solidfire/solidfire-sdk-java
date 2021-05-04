@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ModifyInitiator implements Serializable {
 
-    public static final long serialVersionUID = -3704853435781823746L;
+    public static final long serialVersionUID = -7729645372437453800L;
     @SerializedName("initiatorID") private Long initiatorID;
     @SerializedName("alias") private Optional<String> alias;
     @SerializedName("volumeAccessGroupID") private Optional<Long> volumeAccessGroupID;

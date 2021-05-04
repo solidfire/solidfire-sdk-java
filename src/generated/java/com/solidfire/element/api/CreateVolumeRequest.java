@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class CreateVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -1631247672231045882L;
+    public static final long serialVersionUID = 2568081431021428580L;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("totalSize") private Long totalSize;
@@ -48,6 +48,8 @@ public class CreateVolumeRequest implements Serializable {
     @SerializedName("enableSnapMirrorReplication") private Optional<Boolean> enableSnapMirrorReplication;
     @SerializedName("qosPolicyID") private Optional<Long> qosPolicyID;
     @SerializedName("protectionScheme") private Optional<String> protectionScheme;
+    @SerializedName("fifoSize") private Optional<Long> fifoSize;
+    @SerializedName("minFifoSize") private Optional<Long> minFifoSize;
     // empty constructor
     @Since("7.0")
     public CreateVolumeRequest() {}
@@ -100,6 +102,38 @@ public class CreateVolumeRequest implements Serializable {
         this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : enableSnapMirrorReplication;
         this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
         this.protectionScheme = (protectionScheme == null) ? Optional.<String>empty() : protectionScheme;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public CreateVolumeRequest(
+        String name,
+        Long accountID,
+        Long totalSize,
+        Optional<Boolean> enable512e,
+        Optional<QoS> qos,
+        Optional<Attributes> attributes,
+        Optional<Boolean> associateWithQoSPolicy,
+        Optional<String> access,
+        Optional<Boolean> enableSnapMirrorReplication,
+        Optional<Long> qosPolicyID,
+        Optional<String> protectionScheme,
+        Optional<Long> fifoSize,
+        Optional<Long> minFifoSize
+    )
+    {
+        this.name = name;
+        this.accountID = accountID;
+        this.totalSize = totalSize;
+        this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : associateWithQoSPolicy;
+        this.access = (access == null) ? Optional.<String>empty() : access;
+        this.enableSnapMirrorReplication = (enableSnapMirrorReplication == null) ? Optional.<Boolean>empty() : enableSnapMirrorReplication;
+        this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
+        this.protectionScheme = (protectionScheme == null) ? Optional.<String>empty() : protectionScheme;
+        this.fifoSize = (fifoSize == null) ? Optional.<Long>empty() : fifoSize;
+        this.minFifoSize = (minFifoSize == null) ? Optional.<Long>empty() : minFifoSize;
     }
 
     /** 
@@ -207,6 +241,28 @@ public class CreateVolumeRequest implements Serializable {
     public void setProtectionScheme(Optional<String> protectionScheme) { 
         this.protectionScheme = (protectionScheme == null) ? Optional.<String>empty() : protectionScheme;
     }
+    /** 
+     * Specifies the maximum number of FIFO (First-In-First-Out) snapshots supported by the volume.
+     * Note that FIFO and non-FIFO snapshots both use the same pool of available snapshot slots on a volume.
+     * Use this option to limit FIFO snapshot consumption of the available snapshot slots.
+     * If unspecified, a default value of 24 will be used.
+     **/
+    public Optional<Long> getFifoSize() { return this.fifoSize; }
+   
+    public void setFifoSize(Optional<Long> fifoSize) { 
+        this.fifoSize = (fifoSize == null) ? Optional.<Long>empty() : fifoSize;
+    }
+    /** 
+     * Specifies the number of snapshot slots that are reserved for only FIFO (First-In-First-Out) snapshots.
+     * Since FIFO and non-FIFO snapshots share the same pool, the minFifoSize reduces the total number of
+     * possible non-FIFO snapshots by the same amount.
+     * If unspecified, a default value of 0 will be used.
+     **/
+    public Optional<Long> getMinFifoSize() { return this.minFifoSize; }
+   
+    public void setMinFifoSize(Optional<Long> minFifoSize) { 
+        this.minFifoSize = (minFifoSize == null) ? Optional.<Long>empty() : minFifoSize;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -226,12 +282,14 @@ public class CreateVolumeRequest implements Serializable {
             Objects.equals(access, that.access) && 
             Objects.equals(enableSnapMirrorReplication, that.enableSnapMirrorReplication) && 
             Objects.equals(qosPolicyID, that.qosPolicyID) && 
-            Objects.equals(protectionScheme, that.protectionScheme);
+            Objects.equals(protectionScheme, that.protectionScheme) && 
+            Objects.equals(fifoSize, that.fifoSize) && 
+            Objects.equals(minFifoSize, that.minFifoSize);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name,accountID,totalSize,enable512e,qos,attributes,associateWithQoSPolicy,access,enableSnapMirrorReplication,qosPolicyID,protectionScheme );
+        return Objects.hash( name,accountID,totalSize,enable512e,qos,attributes,associateWithQoSPolicy,access,enableSnapMirrorReplication,qosPolicyID,protectionScheme,fifoSize,minFifoSize );
     }
 
 
@@ -248,6 +306,8 @@ public class CreateVolumeRequest implements Serializable {
         map.put("enableSnapMirrorReplication", enableSnapMirrorReplication);
         map.put("qosPolicyID", qosPolicyID);
         map.put("protectionScheme", protectionScheme);
+        map.put("fifoSize", fifoSize);
+        map.put("minFifoSize", minFifoSize);
         return map;
     }
 
@@ -308,6 +368,18 @@ public class CreateVolumeRequest implements Serializable {
         else{
             sb.append(" protectionScheme : ").append("null").append(",");
         }
+        if(null != fifoSize && fifoSize.isPresent()){
+            sb.append(" fifoSize : ").append(gson.toJson(fifoSize)).append(",");
+        }
+        else{
+            sb.append(" fifoSize : ").append("null").append(",");
+        }
+        if(null != minFifoSize && minFifoSize.isPresent()){
+            sb.append(" minFifoSize : ").append(gson.toJson(minFifoSize)).append(",");
+        }
+        else{
+            sb.append(" minFifoSize : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -336,6 +408,8 @@ public class CreateVolumeRequest implements Serializable {
         private Optional<Boolean> enableSnapMirrorReplication;
         private Optional<Long> qosPolicyID;
         private Optional<String> protectionScheme;
+        private Optional<Long> fifoSize;
+        private Optional<Long> minFifoSize;
 
         private Builder() { }
 
@@ -351,7 +425,9 @@ public class CreateVolumeRequest implements Serializable {
                          this.access,
                          this.enableSnapMirrorReplication,
                          this.qosPolicyID,
-                         this.protectionScheme);
+                         this.protectionScheme,
+                         this.fifoSize,
+                         this.minFifoSize);
         }
 
         private CreateVolumeRequest.Builder buildFrom(final CreateVolumeRequest req) {
@@ -366,6 +442,8 @@ public class CreateVolumeRequest implements Serializable {
             this.enableSnapMirrorReplication = req.enableSnapMirrorReplication;
             this.qosPolicyID = req.qosPolicyID;
             this.protectionScheme = req.protectionScheme;
+            this.fifoSize = req.fifoSize;
+            this.minFifoSize = req.minFifoSize;
 
             return this;
         }
@@ -422,6 +500,16 @@ public class CreateVolumeRequest implements Serializable {
 
         public CreateVolumeRequest.Builder optionalProtectionScheme(final String protectionScheme) {
             this.protectionScheme = (protectionScheme == null) ? Optional.<String>empty() : Optional.of(protectionScheme);
+            return this;
+        }
+
+        public CreateVolumeRequest.Builder optionalFifoSize(final Long fifoSize) {
+            this.fifoSize = (fifoSize == null) ? Optional.<Long>empty() : Optional.of(fifoSize);
+            return this;
+        }
+
+        public CreateVolumeRequest.Builder optionalMinFifoSize(final Long minFifoSize) {
+            this.minFifoSize = (minFifoSize == null) ? Optional.<Long>empty() : Optional.of(minFifoSize);
             return this;
         }
 

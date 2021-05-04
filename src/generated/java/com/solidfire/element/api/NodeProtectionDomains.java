@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class NodeProtectionDomains implements Serializable {
 
-    public static final long serialVersionUID = -1285728397965555491L;
+    public static final long serialVersionUID = -6556027201310405464L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("protectionDomains") private ProtectionDomain[] protectionDomains;
     // empty constructor

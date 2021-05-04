@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class RemoveKeyServerFromProviderKmipRequest implements Serializable {
 
-    public static final long serialVersionUID = -6625801809470147969L;
+    public static final long serialVersionUID = 6981751463720330997L;
     @SerializedName("keyServerID") private Long keyServerID;
     // empty constructor
     @Since("7.0")

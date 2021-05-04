@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class CheckProposedNodeAdditionsRequest implements Serializable {
 
-    public static final long serialVersionUID = -4699301317224017396L;
+    public static final long serialVersionUID = 4873354505323098789L;
     @SerializedName("nodes") private String[] nodes;
     // empty constructor
     @Since("7.0")

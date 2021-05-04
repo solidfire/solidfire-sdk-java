@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListDriveStatsRequest implements Serializable {
 
-    public static final long serialVersionUID = 6548811237389337929L;
+    public static final long serialVersionUID = 6025384051192529438L;
     @SerializedName("drives") private Optional<Long[]> drives;
     // empty constructor
     @Since("7.0")

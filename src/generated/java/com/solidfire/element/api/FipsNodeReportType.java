@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class FipsNodeReportType implements Serializable {
 
-    public static final long serialVersionUID = -8100628841740060821L;
+    public static final long serialVersionUID = 6528632256718158705L;
     @SerializedName("httpsEnabled") private Boolean httpsEnabled;
     @SerializedName("fipsDrives") private String fipsDrives;
     @SerializedName("nodeID") private Long nodeID;

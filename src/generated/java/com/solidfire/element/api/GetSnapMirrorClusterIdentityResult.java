@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetSnapMirrorClusterIdentityResult implements Serializable {
 
-    public static final long serialVersionUID = 315517387987356234L;
+    public static final long serialVersionUID = 4007147254632303833L;
     @SerializedName("snapMirrorClusterIdentity") private SnapMirrorClusterIdentity[] snapMirrorClusterIdentity;
 
     

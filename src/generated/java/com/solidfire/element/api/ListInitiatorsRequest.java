@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 8259609841356611556L;
+    public static final long serialVersionUID = 3463392699867112917L;
     @SerializedName("startInitiatorID") private Optional<Long> startInitiatorID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("initiators") private Optional<Long[]> initiators;

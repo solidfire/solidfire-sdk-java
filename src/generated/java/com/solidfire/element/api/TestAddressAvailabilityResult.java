@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class TestAddressAvailabilityResult implements Serializable {
 
-    public static final long serialVersionUID = 9062295799688061666L;
+    public static final long serialVersionUID = 712051842764651300L;
     @SerializedName("address") private String address;
     @SerializedName("available") private Boolean available;
     // empty constructor

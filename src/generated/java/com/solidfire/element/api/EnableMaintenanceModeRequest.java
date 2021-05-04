@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class EnableMaintenanceModeRequest implements Serializable {
 
-    public static final long serialVersionUID = 137538952821791884L;
+    public static final long serialVersionUID = -6509022240681176341L;
     @SerializedName("nodes") private Long[] nodes;
     @SerializedName("perMinutePrimarySwapLimit") private Optional<Long> perMinutePrimarySwapLimit;
     @SerializedName("timeout") private Optional<String> timeout;

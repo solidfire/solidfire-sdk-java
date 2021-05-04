@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetVolumeEfficiencyResult implements Serializable {
 
-    public static final long serialVersionUID = -3619969045830247724L;
+    public static final long serialVersionUID = -4327846525157325071L;
     @SerializedName("compression") private Optional<Double> compression;
     @SerializedName("deduplication") private Double deduplication;
     @SerializedName("missingVolumes") private Long[] missingVolumes;

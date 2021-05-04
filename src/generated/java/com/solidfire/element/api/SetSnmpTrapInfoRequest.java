@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SetSnmpTrapInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 7454630320000285970L;
+    public static final long serialVersionUID = 4903783197412432501L;
     @SerializedName("trapRecipients") private Optional<SnmpTrapRecipient[]> trapRecipients;
     @SerializedName("clusterFaultTrapsEnabled") private Boolean clusterFaultTrapsEnabled;
     @SerializedName("clusterFaultResolvedTrapsEnabled") private Boolean clusterFaultResolvedTrapsEnabled;

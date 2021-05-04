@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class DetailedService implements Serializable {
 
-    public static final long serialVersionUID = -4562141297339901644L;
+    public static final long serialVersionUID = -3401063737694206915L;
     @SerializedName("service") private Service service;
     @SerializedName("node") private Node node;
     @SerializedName("drive") private Optional<Drive> drive;

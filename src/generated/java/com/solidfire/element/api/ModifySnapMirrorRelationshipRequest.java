@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ModifySnapMirrorRelationshipRequest implements Serializable {
 
-    public static final long serialVersionUID = -4979622284910246667L;
+    public static final long serialVersionUID = 219196966177246339L;
     @SerializedName("destinationVolume") private SnapMirrorVolumeInfo destinationVolume;
     @SerializedName("maxTransferRate") private Optional<Long> maxTransferRate;
     @SerializedName("policyName") private Optional<String> policyName;

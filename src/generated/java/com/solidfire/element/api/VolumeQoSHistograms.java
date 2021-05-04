@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class VolumeQoSHistograms implements Serializable {
 
-    public static final long serialVersionUID = -4110995645705638843L;
+    public static final long serialVersionUID = -2495051042643334958L;
     @SerializedName("volumeID") private Long[] volumeID;
     @SerializedName("timestamp") private Long[] timestamp;
     @SerializedName("belowMinIopsPercentages") private QuintileHistogram[] belowMinIopsPercentages;

@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class TestAddressAvailabilityRequest implements Serializable {
 
-    public static final long serialVersionUID = -81238596955278884L;
+    public static final long serialVersionUID = 1645060259247823125L;
     @SerializedName("interface") private String iface;
     @SerializedName("address") private String address;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;

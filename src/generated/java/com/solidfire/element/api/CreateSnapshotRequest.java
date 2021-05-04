@@ -37,14 +37,16 @@ import java.util.Objects;
 
 public class CreateSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 4723711943535958779L;
+    public static final long serialVersionUID = 4517473387969781967L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
+    @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("retention") private Optional<String> retention;
     @SerializedName("attributes") private Optional<Attributes> attributes;
     @SerializedName("snapMirrorLabel") private Optional<String> snapMirrorLabel;
+    @SerializedName("ensureSerialCreation") private Optional<Boolean> ensureSerialCreation;
     // empty constructor
     @Since("7.0")
     public CreateSnapshotRequest() {}
@@ -56,12 +58,14 @@ public class CreateSnapshotRequest implements Serializable {
         Long volumeID,
         Optional<Long> snapshotID,
         Optional<String> name,
+        Optional<String> expirationTime,
         Optional<Attributes> attributes
     )
     {
         this.volumeID = volumeID;
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.name = (name == null) ? Optional.<String>empty() : name;
+        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     // parameterized constructor
@@ -71,6 +75,7 @@ public class CreateSnapshotRequest implements Serializable {
         Optional<Long> snapshotID,
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
+        Optional<String> expirationTime,
         Optional<String> retention,
         Optional<Attributes> attributes
     )
@@ -79,6 +84,7 @@ public class CreateSnapshotRequest implements Serializable {
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
+        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -89,6 +95,7 @@ public class CreateSnapshotRequest implements Serializable {
         Optional<Long> snapshotID,
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
+        Optional<String> expirationTime,
         Optional<String> retention,
         Optional<Attributes> attributes,
         Optional<String> snapMirrorLabel
@@ -98,9 +105,34 @@ public class CreateSnapshotRequest implements Serializable {
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
+        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
         this.snapMirrorLabel = (snapMirrorLabel == null) ? Optional.<String>empty() : snapMirrorLabel;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public CreateSnapshotRequest(
+        Long volumeID,
+        Optional<Long> snapshotID,
+        Optional<String> name,
+        Optional<Boolean> enableRemoteReplication,
+        Optional<String> expirationTime,
+        Optional<String> retention,
+        Optional<Attributes> attributes,
+        Optional<String> snapMirrorLabel,
+        Optional<Boolean> ensureSerialCreation
+    )
+    {
+        this.volumeID = volumeID;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
+        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
+        this.retention = (retention == null) ? Optional.<String>empty() : retention;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.snapMirrorLabel = (snapMirrorLabel == null) ? Optional.<String>empty() : snapMirrorLabel;
+        this.ensureSerialCreation = (ensureSerialCreation == null) ? Optional.<Boolean>empty() : ensureSerialCreation;
     }
 
     /** 
@@ -140,7 +172,25 @@ public class CreateSnapshotRequest implements Serializable {
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
     /** 
-     * Specifies the amount of time for which the snapshot is retained. The format is HH:mm:ss.
+     * Specify the time after which the snapshot can be removed. Cannot be used with retention.
+     * If neither 'expirationTime' nor 'retention' is specified, the snapshot will be retained until
+     * manually deleted.
+     * The format is: 
+     *   ISO 8601 date string for time based expiration, otherwise it will not expire.
+     *   'null' is the snapshot is to be retained permanently.
+     *   'fifo' causes the snapshot to be preserved on a First-In-First-Out basis, relative to other FIFO
+     *        snapshots on the volume. The API will fail if no FIFO space is available.
+     * Warning: Due to a bug, 'expirationTime' does not work correctly prior to magnesium-patch5. Use 'retention' instead.
+     **/
+    public Optional<String> getExpirationTime() { return this.expirationTime; }
+   
+    public void setExpirationTime(Optional<String> expirationTime) { 
+        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
+    }
+    /** 
+     * This operates the same as the expirationTime option, except the time format is HH:MM:SS.
+     * If neither 'expirationTime' nor 'retention' is specified, the snapshot will be retained until
+     * manually deleted.
      **/
     public Optional<String> getRetention() { return this.retention; }
    
@@ -163,6 +213,17 @@ public class CreateSnapshotRequest implements Serializable {
     public void setSnapMirrorLabel(Optional<String> snapMirrorLabel) { 
         this.snapMirrorLabel = (snapMirrorLabel == null) ? Optional.<String>empty() : snapMirrorLabel;
     }
+    /** 
+     * Specify if the snapshot creation should be failed if a previous snapshot replication is in progress.
+     * Possible values are:
+     * true: This ensures only one snapshot is being replicated at a time by failing this snapshot creation.
+     * false: Default. This allows creation of snapshot if another snapshot replication is still in progress.
+     **/
+    public Optional<Boolean> getEnsureSerialCreation() { return this.ensureSerialCreation; }
+   
+    public void setEnsureSerialCreation(Optional<Boolean> ensureSerialCreation) { 
+        this.ensureSerialCreation = (ensureSerialCreation == null) ? Optional.<Boolean>empty() : ensureSerialCreation;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -176,14 +237,16 @@ public class CreateSnapshotRequest implements Serializable {
             Objects.equals(snapshotID, that.snapshotID) && 
             Objects.equals(name, that.name) && 
             Objects.equals(enableRemoteReplication, that.enableRemoteReplication) && 
+            Objects.equals(expirationTime, that.expirationTime) && 
             Objects.equals(retention, that.retention) && 
             Objects.equals(attributes, that.attributes) && 
-            Objects.equals(snapMirrorLabel, that.snapMirrorLabel);
+            Objects.equals(snapMirrorLabel, that.snapMirrorLabel) && 
+            Objects.equals(ensureSerialCreation, that.ensureSerialCreation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,snapshotID,name,enableRemoteReplication,retention,attributes,snapMirrorLabel );
+        return Objects.hash( volumeID,snapshotID,name,enableRemoteReplication,expirationTime,retention,attributes,snapMirrorLabel,ensureSerialCreation );
     }
 
 
@@ -193,9 +256,11 @@ public class CreateSnapshotRequest implements Serializable {
         map.put("snapshotID", snapshotID);
         map.put("name", name);
         map.put("enableRemoteReplication", enableRemoteReplication);
+        map.put("expirationTime", expirationTime);
         map.put("retention", retention);
         map.put("attributes", attributes);
         map.put("snapMirrorLabel", snapMirrorLabel);
+        map.put("ensureSerialCreation", ensureSerialCreation);
         return map;
     }
 
@@ -224,6 +289,12 @@ public class CreateSnapshotRequest implements Serializable {
         else{
             sb.append(" enableRemoteReplication : ").append("null").append(",");
         }
+        if(null != expirationTime && expirationTime.isPresent()){
+            sb.append(" expirationTime : ").append(gson.toJson(expirationTime)).append(",");
+        }
+        else{
+            sb.append(" expirationTime : ").append("null").append(",");
+        }
         if(null != retention && retention.isPresent()){
             sb.append(" retention : ").append(gson.toJson(retention)).append(",");
         }
@@ -241,6 +312,12 @@ public class CreateSnapshotRequest implements Serializable {
         }
         else{
             sb.append(" snapMirrorLabel : ").append("null").append(",");
+        }
+        if(null != ensureSerialCreation && ensureSerialCreation.isPresent()){
+            sb.append(" ensureSerialCreation : ").append(gson.toJson(ensureSerialCreation)).append(",");
+        }
+        else{
+            sb.append(" ensureSerialCreation : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -263,9 +340,11 @@ public class CreateSnapshotRequest implements Serializable {
         private Optional<Long> snapshotID;
         private Optional<String> name;
         private Optional<Boolean> enableRemoteReplication;
+        private Optional<String> expirationTime;
         private Optional<String> retention;
         private Optional<Attributes> attributes;
         private Optional<String> snapMirrorLabel;
+        private Optional<Boolean> ensureSerialCreation;
 
         private Builder() { }
 
@@ -275,9 +354,11 @@ public class CreateSnapshotRequest implements Serializable {
                          this.snapshotID,
                          this.name,
                          this.enableRemoteReplication,
+                         this.expirationTime,
                          this.retention,
                          this.attributes,
-                         this.snapMirrorLabel);
+                         this.snapMirrorLabel,
+                         this.ensureSerialCreation);
         }
 
         private CreateSnapshotRequest.Builder buildFrom(final CreateSnapshotRequest req) {
@@ -285,9 +366,11 @@ public class CreateSnapshotRequest implements Serializable {
             this.snapshotID = req.snapshotID;
             this.name = req.name;
             this.enableRemoteReplication = req.enableRemoteReplication;
+            this.expirationTime = req.expirationTime;
             this.retention = req.retention;
             this.attributes = req.attributes;
             this.snapMirrorLabel = req.snapMirrorLabel;
+            this.ensureSerialCreation = req.ensureSerialCreation;
 
             return this;
         }
@@ -312,6 +395,11 @@ public class CreateSnapshotRequest implements Serializable {
             return this;
         }
 
+        public CreateSnapshotRequest.Builder optionalExpirationTime(final String expirationTime) {
+            this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : Optional.of(expirationTime);
+            return this;
+        }
+
         public CreateSnapshotRequest.Builder optionalRetention(final String retention) {
             this.retention = (retention == null) ? Optional.<String>empty() : Optional.of(retention);
             return this;
@@ -324,6 +412,11 @@ public class CreateSnapshotRequest implements Serializable {
 
         public CreateSnapshotRequest.Builder optionalSnapMirrorLabel(final String snapMirrorLabel) {
             this.snapMirrorLabel = (snapMirrorLabel == null) ? Optional.<String>empty() : Optional.of(snapMirrorLabel);
+            return this;
+        }
+
+        public CreateSnapshotRequest.Builder optionalEnsureSerialCreation(final Boolean ensureSerialCreation) {
+            this.ensureSerialCreation = (ensureSerialCreation == null) ? Optional.<Boolean>empty() : Optional.of(ensureSerialCreation);
             return this;
         }
 

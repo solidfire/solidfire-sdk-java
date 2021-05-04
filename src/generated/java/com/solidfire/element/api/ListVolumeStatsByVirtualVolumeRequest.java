@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 2645929148873758298L;
+    public static final long serialVersionUID = -8793900451203554041L;
     @SerializedName("virtualVolumeIDs") private Optional<java.util.UUID[]> virtualVolumeIDs;
     // empty constructor
     @Since("7.0")

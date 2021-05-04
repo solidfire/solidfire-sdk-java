@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class ProtectionSchemeTolerance implements Serializable {
 
-    public static final long serialVersionUID = 6445756038086148832L;
+    public static final long serialVersionUID = -8816411074182388291L;
     @SerializedName("protectionScheme") private String protectionScheme;
     @SerializedName("sustainableFailuresForBlockData") private Long sustainableFailuresForBlockData;
     @SerializedName("sustainableFailuresForMetadata") private Long sustainableFailuresForMetadata;

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SetSnmpTrapInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -7952722460386461927L;
+    public static final long serialVersionUID = -2004030973575034075L;
     // empty constructor
     @Since("7.0")
     public SetSnmpTrapInfoResult() {}

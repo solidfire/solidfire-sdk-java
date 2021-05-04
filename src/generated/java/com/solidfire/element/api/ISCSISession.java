@@ -30,32 +30,34 @@ import java.util.Objects;
 
 /**
  * ISCSISession  
+ * Information about an iSCSI session.
  **/
 
 public class ISCSISession implements Serializable {
 
-    public static final long serialVersionUID = -553164094587156794L;
-    @SerializedName("driveIDs") private Optional<Long[]> driveIDs;
+    public static final long serialVersionUID = -3449300008711067548L;
     @SerializedName("accountID") private Long accountID;
-    @SerializedName("initiator") private Optional<Initiator> initiator;
     @SerializedName("accountName") private String accountName;
+    @SerializedName("authentication") private ISCSIAuthentication authentication;
+    @SerializedName("createTime") private String createTime;
     @SerializedName("driveID") private Long driveID;
+    @SerializedName("driveIDs") private Optional<Long[]> driveIDs;
+    @SerializedName("initiator") private Optional<Initiator> initiator;
     @SerializedName("initiatorIP") private String initiatorIP;
-    @SerializedName("initiatorPortName") private String initiatorPortName;
-    @SerializedName("targetPortName") private String targetPortName;
     @SerializedName("initiatorName") private String initiatorName;
+    @SerializedName("initiatorPortName") private String initiatorPortName;
+    @SerializedName("initiatorSessionID") private Long initiatorSessionID;
+    @SerializedName("msSinceLastIscsiPDU") private Long msSinceLastIscsiPDU;
+    @SerializedName("msSinceLastScsiCommand") private Long msSinceLastScsiCommand;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("sessionID") private Long sessionID;
-    @SerializedName("targetName") private String targetName;
     @SerializedName("targetIP") private String targetIP;
+    @SerializedName("targetName") private String targetName;
+    @SerializedName("targetPortName") private String targetPortName;
     @SerializedName("virtualNetworkID") private Long virtualNetworkID;
     @SerializedName("volumeID") private Long volumeID;
-    @SerializedName("createTime") private String createTime;
     @SerializedName("volumeInstance") private Long volumeInstance;
-    @SerializedName("initiatorSessionID") private Long initiatorSessionID;
-    @SerializedName("msSinceLastScsiCommand") private Optional<Long> msSinceLastScsiCommand;
-    @SerializedName("msSinceLastIscsiPDU") private Optional<Long> msSinceLastIscsiPDU;
     // empty constructor
     @Since("7.0")
     public ISCSISession() {}
@@ -64,62 +66,104 @@ public class ISCSISession implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ISCSISession(
-        Optional<Long[]> driveIDs,
         Long accountID,
-        Optional<Initiator> initiator,
         String accountName,
+        String createTime,
         Long driveID,
+        Optional<Long[]> driveIDs,
+        Optional<Initiator> initiator,
         String initiatorIP,
-        String initiatorPortName,
-        String targetPortName,
         String initiatorName,
+        String initiatorPortName,
+        Long initiatorSessionID,
+        Long msSinceLastIscsiPDU,
+        Long msSinceLastScsiCommand,
         Long nodeID,
         Long serviceID,
         Long sessionID,
-        String targetName,
         String targetIP,
+        String targetName,
+        String targetPortName,
         Long virtualNetworkID,
         Long volumeID,
-        String createTime,
-        Long volumeInstance,
-        Long initiatorSessionID,
-        Optional<Long> msSinceLastScsiCommand,
-        Optional<Long> msSinceLastIscsiPDU
+        Long volumeInstance
     )
     {
-        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
         this.accountID = accountID;
-        this.initiator = (initiator == null) ? Optional.<Initiator>empty() : initiator;
         this.accountName = accountName;
+        this.createTime = createTime;
         this.driveID = driveID;
+        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
+        this.initiator = (initiator == null) ? Optional.<Initiator>empty() : initiator;
         this.initiatorIP = initiatorIP;
-        this.initiatorPortName = initiatorPortName;
-        this.targetPortName = targetPortName;
         this.initiatorName = initiatorName;
+        this.initiatorPortName = initiatorPortName;
+        this.initiatorSessionID = initiatorSessionID;
+        this.msSinceLastIscsiPDU = msSinceLastIscsiPDU;
+        this.msSinceLastScsiCommand = msSinceLastScsiCommand;
         this.nodeID = nodeID;
         this.serviceID = serviceID;
         this.sessionID = sessionID;
-        this.targetName = targetName;
         this.targetIP = targetIP;
+        this.targetName = targetName;
+        this.targetPortName = targetPortName;
         this.virtualNetworkID = virtualNetworkID;
         this.volumeID = volumeID;
-        this.createTime = createTime;
         this.volumeInstance = volumeInstance;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public ISCSISession(
+        Long accountID,
+        String accountName,
+        ISCSIAuthentication authentication,
+        String createTime,
+        Long driveID,
+        Optional<Long[]> driveIDs,
+        Optional<Initiator> initiator,
+        String initiatorIP,
+        String initiatorName,
+        String initiatorPortName,
+        Long initiatorSessionID,
+        Long msSinceLastIscsiPDU,
+        Long msSinceLastScsiCommand,
+        Long nodeID,
+        Long serviceID,
+        Long sessionID,
+        String targetIP,
+        String targetName,
+        String targetPortName,
+        Long virtualNetworkID,
+        Long volumeID,
+        Long volumeInstance
+    )
+    {
+        this.accountID = accountID;
+        this.accountName = accountName;
+        this.authentication = authentication;
+        this.createTime = createTime;
+        this.driveID = driveID;
+        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
+        this.initiator = (initiator == null) ? Optional.<Initiator>empty() : initiator;
+        this.initiatorIP = initiatorIP;
+        this.initiatorName = initiatorName;
+        this.initiatorPortName = initiatorPortName;
         this.initiatorSessionID = initiatorSessionID;
-        this.msSinceLastScsiCommand = (msSinceLastScsiCommand == null) ? Optional.<Long>empty() : msSinceLastScsiCommand;
-        this.msSinceLastIscsiPDU = (msSinceLastIscsiPDU == null) ? Optional.<Long>empty() : msSinceLastIscsiPDU;
+        this.msSinceLastIscsiPDU = msSinceLastIscsiPDU;
+        this.msSinceLastScsiCommand = msSinceLastScsiCommand;
+        this.nodeID = nodeID;
+        this.serviceID = serviceID;
+        this.sessionID = sessionID;
+        this.targetIP = targetIP;
+        this.targetName = targetName;
+        this.targetPortName = targetPortName;
+        this.virtualNetworkID = virtualNetworkID;
+        this.volumeID = volumeID;
+        this.volumeInstance = volumeInstance;
     }
 
     /** 
-     * 
-     **/
-    public Optional<Long[]> getDriveIDs() { return this.driveIDs; }
-   
-    public void setDriveIDs(Optional<Long[]> driveIDs) { 
-        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
-    }
-    /** 
-     * 
+     * The numeric ID of the account object used for authentication (if any).
      **/
     public Long getAccountID() { return this.accountID; }
    
@@ -127,15 +171,7 @@ public class ISCSISession implements Serializable {
         this.accountID = accountID;
     }
     /** 
-     * 
-     **/
-    public Optional<Initiator> getInitiator() { return this.initiator; }
-   
-    public void setInitiator(Optional<Initiator> initiator) { 
-        this.initiator = (initiator == null) ? Optional.<Initiator>empty() : initiator;
-    }
-    /** 
-     * 
+     * The name of the account object used for authentication (if any).
      **/
     public String getAccountName() { return this.accountName; }
    
@@ -143,103 +179,15 @@ public class ISCSISession implements Serializable {
         this.accountName = accountName;
     }
     /** 
-     * 
+     * Authentication information for this session.
      **/
-    public Long getDriveID() { return this.driveID; }
+    public ISCSIAuthentication getAuthentication() { return this.authentication; }
    
-    public void setDriveID(Long driveID) { 
-        this.driveID = driveID;
+    public void setAuthentication(ISCSIAuthentication authentication) { 
+        this.authentication = authentication;
     }
     /** 
-     * 
-     **/
-    public String getInitiatorIP() { return this.initiatorIP; }
-   
-    public void setInitiatorIP(String initiatorIP) { 
-        this.initiatorIP = initiatorIP;
-    }
-    /** 
-     * 
-     **/
-    public String getInitiatorPortName() { return this.initiatorPortName; }
-   
-    public void setInitiatorPortName(String initiatorPortName) { 
-        this.initiatorPortName = initiatorPortName;
-    }
-    /** 
-     * 
-     **/
-    public String getTargetPortName() { return this.targetPortName; }
-   
-    public void setTargetPortName(String targetPortName) { 
-        this.targetPortName = targetPortName;
-    }
-    /** 
-     * 
-     **/
-    public String getInitiatorName() { return this.initiatorName; }
-   
-    public void setInitiatorName(String initiatorName) { 
-        this.initiatorName = initiatorName;
-    }
-    /** 
-     * 
-     **/
-    public Long getNodeID() { return this.nodeID; }
-   
-    public void setNodeID(Long nodeID) { 
-        this.nodeID = nodeID;
-    }
-    /** 
-     * 
-     **/
-    public Long getServiceID() { return this.serviceID; }
-   
-    public void setServiceID(Long serviceID) { 
-        this.serviceID = serviceID;
-    }
-    /** 
-     * 
-     **/
-    public Long getSessionID() { return this.sessionID; }
-   
-    public void setSessionID(Long sessionID) { 
-        this.sessionID = sessionID;
-    }
-    /** 
-     * 
-     **/
-    public String getTargetName() { return this.targetName; }
-   
-    public void setTargetName(String targetName) { 
-        this.targetName = targetName;
-    }
-    /** 
-     * 
-     **/
-    public String getTargetIP() { return this.targetIP; }
-   
-    public void setTargetIP(String targetIP) { 
-        this.targetIP = targetIP;
-    }
-    /** 
-     * 
-     **/
-    public Long getVirtualNetworkID() { return this.virtualNetworkID; }
-   
-    public void setVirtualNetworkID(Long virtualNetworkID) { 
-        this.virtualNetworkID = virtualNetworkID;
-    }
-    /** 
-     * 
-     **/
-    public Long getVolumeID() { return this.volumeID; }
-   
-    public void setVolumeID(Long volumeID) { 
-        this.volumeID = volumeID;
-    }
-    /** 
-     * 
+     * The time when this session was created.
      **/
     public String getCreateTime() { return this.createTime; }
    
@@ -247,15 +195,55 @@ public class ISCSISession implements Serializable {
         this.createTime = createTime;
     }
     /** 
-     * 
+     * The numeric drive ID associated with this session.
      **/
-    public Long getVolumeInstance() { return this.volumeInstance; }
+    public Long getDriveID() { return this.driveID; }
    
-    public void setVolumeInstance(Long volumeInstance) { 
-        this.volumeInstance = volumeInstance;
+    public void setDriveID(Long driveID) { 
+        this.driveID = driveID;
     }
     /** 
-     * 
+     * A list of numeric drive IDs associated with this session.
+     **/
+    public Optional<Long[]> getDriveIDs() { return this.driveIDs; }
+   
+    public void setDriveIDs(Optional<Long[]> driveIDs) { 
+        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
+    }
+    /** 
+     * The initiator object (if any) associated with this session.
+     **/
+    public Optional<Initiator> getInitiator() { return this.initiator; }
+   
+    public void setInitiator(Optional<Initiator> initiator) { 
+        this.initiator = (initiator == null) ? Optional.<Initiator>empty() : initiator;
+    }
+    /** 
+     * The initiator's socket IP address and TCP port number.
+     **/
+    public String getInitiatorIP() { return this.initiatorIP; }
+   
+    public void setInitiatorIP(String initiatorIP) { 
+        this.initiatorIP = initiatorIP;
+    }
+    /** 
+     * The initiator's iSCSI qualified name (IQN) string.
+     **/
+    public String getInitiatorName() { return this.initiatorName; }
+   
+    public void setInitiatorName(String initiatorName) { 
+        this.initiatorName = initiatorName;
+    }
+    /** 
+     * The iSCSI initiator port name string.
+     **/
+    public String getInitiatorPortName() { return this.initiatorPortName; }
+   
+    public void setInitiatorPortName(String initiatorPortName) { 
+        this.initiatorPortName = initiatorPortName;
+    }
+    /** 
+     * The iSCSI initiator session ID (ISID) for this session.
      **/
     public Long getInitiatorSessionID() { return this.initiatorSessionID; }
    
@@ -263,20 +251,92 @@ public class ISCSISession implements Serializable {
         this.initiatorSessionID = initiatorSessionID;
     }
     /** 
-     * 
+     * Number of milliseconds since this session received an iSCSI PDU.
      **/
-    public Optional<Long> getMsSinceLastScsiCommand() { return this.msSinceLastScsiCommand; }
+    public Long getMsSinceLastIscsiPDU() { return this.msSinceLastIscsiPDU; }
    
-    public void setMsSinceLastScsiCommand(Optional<Long> msSinceLastScsiCommand) { 
-        this.msSinceLastScsiCommand = (msSinceLastScsiCommand == null) ? Optional.<Long>empty() : msSinceLastScsiCommand;
+    public void setMsSinceLastIscsiPDU(Long msSinceLastIscsiPDU) { 
+        this.msSinceLastIscsiPDU = msSinceLastIscsiPDU;
     }
     /** 
-     * 
+     * Number of milliseconds since this session received a SCSI command.
      **/
-    public Optional<Long> getMsSinceLastIscsiPDU() { return this.msSinceLastIscsiPDU; }
+    public Long getMsSinceLastScsiCommand() { return this.msSinceLastScsiCommand; }
    
-    public void setMsSinceLastIscsiPDU(Optional<Long> msSinceLastIscsiPDU) { 
-        this.msSinceLastIscsiPDU = (msSinceLastIscsiPDU == null) ? Optional.<Long>empty() : msSinceLastIscsiPDU;
+    public void setMsSinceLastScsiCommand(Long msSinceLastScsiCommand) { 
+        this.msSinceLastScsiCommand = msSinceLastScsiCommand;
+    }
+    /** 
+     * The numeric node ID associated with this session.
+     **/
+    public Long getNodeID() { return this.nodeID; }
+   
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
+    }
+    /** 
+     * The numeric service ID associated with this session.
+     **/
+    public Long getServiceID() { return this.serviceID; }
+   
+    public void setServiceID(Long serviceID) { 
+        this.serviceID = serviceID;
+    }
+    /** 
+     * The numeric ID associated with this session.
+     **/
+    public Long getSessionID() { return this.sessionID; }
+   
+    public void setSessionID(Long sessionID) { 
+        this.sessionID = sessionID;
+    }
+    /** 
+     * The target's socket IP address and TCP port number.
+     **/
+    public String getTargetIP() { return this.targetIP; }
+   
+    public void setTargetIP(String targetIP) { 
+        this.targetIP = targetIP;
+    }
+    /** 
+     * The target's iSCSI qualified name (IQN) string.
+     **/
+    public String getTargetName() { return this.targetName; }
+   
+    public void setTargetName(String targetName) { 
+        this.targetName = targetName;
+    }
+    /** 
+     * The iSCSI target port name string.
+     **/
+    public String getTargetPortName() { return this.targetPortName; }
+   
+    public void setTargetPortName(String targetPortName) { 
+        this.targetPortName = targetPortName;
+    }
+    /** 
+     * The numeric ID of the virtual network (if any) used to create the session.
+     **/
+    public Long getVirtualNetworkID() { return this.virtualNetworkID; }
+   
+    public void setVirtualNetworkID(Long virtualNetworkID) { 
+        this.virtualNetworkID = virtualNetworkID;
+    }
+    /** 
+     * The numeric ID of the volume (if any) associated with the target name.
+     **/
+    public Long getVolumeID() { return this.volumeID; }
+   
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
+    }
+    /** 
+     * The instance of the volume (if any) associated with this session.
+     **/
+    public Long getVolumeInstance() { return this.volumeInstance; }
+   
+    public void setVolumeInstance(Long volumeInstance) { 
+        this.volumeInstance = volumeInstance;
     }
 
     @Override
@@ -287,58 +347,60 @@ public class ISCSISession implements Serializable {
         ISCSISession that = (ISCSISession) o;
 
         return 
-            Objects.equals(driveIDs, that.driveIDs) && 
             Objects.equals(accountID, that.accountID) && 
-            Objects.equals(initiator, that.initiator) && 
             Objects.equals(accountName, that.accountName) && 
+            Objects.equals(authentication, that.authentication) && 
+            Objects.equals(createTime, that.createTime) && 
             Objects.equals(driveID, that.driveID) && 
+            Objects.equals(driveIDs, that.driveIDs) && 
+            Objects.equals(initiator, that.initiator) && 
             Objects.equals(initiatorIP, that.initiatorIP) && 
-            Objects.equals(initiatorPortName, that.initiatorPortName) && 
-            Objects.equals(targetPortName, that.targetPortName) && 
             Objects.equals(initiatorName, that.initiatorName) && 
+            Objects.equals(initiatorPortName, that.initiatorPortName) && 
+            Objects.equals(initiatorSessionID, that.initiatorSessionID) && 
+            Objects.equals(msSinceLastIscsiPDU, that.msSinceLastIscsiPDU) && 
+            Objects.equals(msSinceLastScsiCommand, that.msSinceLastScsiCommand) && 
             Objects.equals(nodeID, that.nodeID) && 
             Objects.equals(serviceID, that.serviceID) && 
             Objects.equals(sessionID, that.sessionID) && 
-            Objects.equals(targetName, that.targetName) && 
             Objects.equals(targetIP, that.targetIP) && 
+            Objects.equals(targetName, that.targetName) && 
+            Objects.equals(targetPortName, that.targetPortName) && 
             Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
             Objects.equals(volumeID, that.volumeID) && 
-            Objects.equals(createTime, that.createTime) && 
-            Objects.equals(volumeInstance, that.volumeInstance) && 
-            Objects.equals(initiatorSessionID, that.initiatorSessionID) && 
-            Objects.equals(msSinceLastScsiCommand, that.msSinceLastScsiCommand) && 
-            Objects.equals(msSinceLastIscsiPDU, that.msSinceLastIscsiPDU);
+            Objects.equals(volumeInstance, that.volumeInstance);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( driveIDs,accountID,initiator,accountName,driveID,initiatorIP,initiatorPortName,targetPortName,initiatorName,nodeID,serviceID,sessionID,targetName,targetIP,virtualNetworkID,volumeID,createTime,volumeInstance,initiatorSessionID,msSinceLastScsiCommand,msSinceLastIscsiPDU );
+        return Objects.hash( accountID,accountName,authentication,createTime,driveID,driveIDs,initiator,initiatorIP,initiatorName,initiatorPortName,initiatorSessionID,msSinceLastIscsiPDU,msSinceLastScsiCommand,nodeID,serviceID,sessionID,targetIP,targetName,targetPortName,virtualNetworkID,volumeID,volumeInstance );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("driveIDs", driveIDs);
         map.put("accountID", accountID);
-        map.put("initiator", initiator);
         map.put("accountName", accountName);
+        map.put("authentication", authentication);
+        map.put("createTime", createTime);
         map.put("driveID", driveID);
+        map.put("driveIDs", driveIDs);
+        map.put("initiator", initiator);
         map.put("initiatorIP", initiatorIP);
-        map.put("initiatorPortName", initiatorPortName);
-        map.put("targetPortName", targetPortName);
         map.put("initiatorName", initiatorName);
+        map.put("initiatorPortName", initiatorPortName);
+        map.put("initiatorSessionID", initiatorSessionID);
+        map.put("msSinceLastIscsiPDU", msSinceLastIscsiPDU);
+        map.put("msSinceLastScsiCommand", msSinceLastScsiCommand);
         map.put("nodeID", nodeID);
         map.put("serviceID", serviceID);
         map.put("sessionID", sessionID);
-        map.put("targetName", targetName);
         map.put("targetIP", targetIP);
+        map.put("targetName", targetName);
+        map.put("targetPortName", targetPortName);
         map.put("virtualNetworkID", virtualNetworkID);
         map.put("volumeID", volumeID);
-        map.put("createTime", createTime);
         map.put("volumeInstance", volumeInstance);
-        map.put("initiatorSessionID", initiatorSessionID);
-        map.put("msSinceLastScsiCommand", msSinceLastScsiCommand);
-        map.put("msSinceLastIscsiPDU", msSinceLastIscsiPDU);
         return map;
     }
 
@@ -348,47 +410,38 @@ public class ISCSISession implements Serializable {
         Gson gson = new Gson();
         sb.append( "{ " );
 
+        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
+        sb.append(" accountName : ").append(gson.toJson(accountName)).append(",");
+        sb.append(" authentication : ").append(gson.toJson(authentication)).append(",");
+        sb.append(" createTime : ").append(gson.toJson(createTime)).append(",");
+        sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
         if(null != driveIDs && driveIDs.isPresent()){
             sb.append(" driveIDs : ").append(gson.toJson(driveIDs)).append(",");
         }
         else{
             sb.append(" driveIDs : ").append("null").append(",");
         }
-        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
         if(null != initiator && initiator.isPresent()){
             sb.append(" initiator : ").append(gson.toJson(initiator)).append(",");
         }
         else{
             sb.append(" initiator : ").append("null").append(",");
         }
-        sb.append(" accountName : ").append(gson.toJson(accountName)).append(",");
-        sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
         sb.append(" initiatorIP : ").append(gson.toJson(initiatorIP)).append(",");
-        sb.append(" initiatorPortName : ").append(gson.toJson(initiatorPortName)).append(",");
-        sb.append(" targetPortName : ").append(gson.toJson(targetPortName)).append(",");
         sb.append(" initiatorName : ").append(gson.toJson(initiatorName)).append(",");
+        sb.append(" initiatorPortName : ").append(gson.toJson(initiatorPortName)).append(",");
+        sb.append(" initiatorSessionID : ").append(gson.toJson(initiatorSessionID)).append(",");
+        sb.append(" msSinceLastIscsiPDU : ").append(gson.toJson(msSinceLastIscsiPDU)).append(",");
+        sb.append(" msSinceLastScsiCommand : ").append(gson.toJson(msSinceLastScsiCommand)).append(",");
         sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
         sb.append(" serviceID : ").append(gson.toJson(serviceID)).append(",");
         sb.append(" sessionID : ").append(gson.toJson(sessionID)).append(",");
-        sb.append(" targetName : ").append(gson.toJson(targetName)).append(",");
         sb.append(" targetIP : ").append(gson.toJson(targetIP)).append(",");
+        sb.append(" targetName : ").append(gson.toJson(targetName)).append(",");
+        sb.append(" targetPortName : ").append(gson.toJson(targetPortName)).append(",");
         sb.append(" virtualNetworkID : ").append(gson.toJson(virtualNetworkID)).append(",");
         sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
-        sb.append(" createTime : ").append(gson.toJson(createTime)).append(",");
         sb.append(" volumeInstance : ").append(gson.toJson(volumeInstance)).append(",");
-        sb.append(" initiatorSessionID : ").append(gson.toJson(initiatorSessionID)).append(",");
-        if(null != msSinceLastScsiCommand && msSinceLastScsiCommand.isPresent()){
-            sb.append(" msSinceLastScsiCommand : ").append(gson.toJson(msSinceLastScsiCommand)).append(",");
-        }
-        else{
-            sb.append(" msSinceLastScsiCommand : ").append("null").append(",");
-        }
-        if(null != msSinceLastIscsiPDU && msSinceLastIscsiPDU.isPresent()){
-            sb.append(" msSinceLastIscsiPDU : ").append(gson.toJson(msSinceLastIscsiPDU)).append(",");
-        }
-        else{
-            sb.append(" msSinceLastIscsiPDU : ").append("null").append(",");
-        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -406,83 +459,81 @@ public class ISCSISession implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Long[]> driveIDs;
         private Long accountID;
-        private Optional<Initiator> initiator;
         private String accountName;
+        private ISCSIAuthentication authentication;
+        private String createTime;
         private Long driveID;
+        private Optional<Long[]> driveIDs;
+        private Optional<Initiator> initiator;
         private String initiatorIP;
-        private String initiatorPortName;
-        private String targetPortName;
         private String initiatorName;
+        private String initiatorPortName;
+        private Long initiatorSessionID;
+        private Long msSinceLastIscsiPDU;
+        private Long msSinceLastScsiCommand;
         private Long nodeID;
         private Long serviceID;
         private Long sessionID;
-        private String targetName;
         private String targetIP;
+        private String targetName;
+        private String targetPortName;
         private Long virtualNetworkID;
         private Long volumeID;
-        private String createTime;
         private Long volumeInstance;
-        private Long initiatorSessionID;
-        private Optional<Long> msSinceLastScsiCommand;
-        private Optional<Long> msSinceLastIscsiPDU;
 
         private Builder() { }
 
         public ISCSISession build() {
             return new ISCSISession (
-                         this.driveIDs,
                          this.accountID,
-                         this.initiator,
                          this.accountName,
+                         this.authentication,
+                         this.createTime,
                          this.driveID,
+                         this.driveIDs,
+                         this.initiator,
                          this.initiatorIP,
-                         this.initiatorPortName,
-                         this.targetPortName,
                          this.initiatorName,
+                         this.initiatorPortName,
+                         this.initiatorSessionID,
+                         this.msSinceLastIscsiPDU,
+                         this.msSinceLastScsiCommand,
                          this.nodeID,
                          this.serviceID,
                          this.sessionID,
-                         this.targetName,
                          this.targetIP,
+                         this.targetName,
+                         this.targetPortName,
                          this.virtualNetworkID,
                          this.volumeID,
-                         this.createTime,
-                         this.volumeInstance,
-                         this.initiatorSessionID,
-                         this.msSinceLastScsiCommand,
-                         this.msSinceLastIscsiPDU);
+                         this.volumeInstance);
         }
 
         private ISCSISession.Builder buildFrom(final ISCSISession req) {
-            this.driveIDs = req.driveIDs;
             this.accountID = req.accountID;
-            this.initiator = req.initiator;
             this.accountName = req.accountName;
+            this.authentication = req.authentication;
+            this.createTime = req.createTime;
             this.driveID = req.driveID;
+            this.driveIDs = req.driveIDs;
+            this.initiator = req.initiator;
             this.initiatorIP = req.initiatorIP;
-            this.initiatorPortName = req.initiatorPortName;
-            this.targetPortName = req.targetPortName;
             this.initiatorName = req.initiatorName;
+            this.initiatorPortName = req.initiatorPortName;
+            this.initiatorSessionID = req.initiatorSessionID;
+            this.msSinceLastIscsiPDU = req.msSinceLastIscsiPDU;
+            this.msSinceLastScsiCommand = req.msSinceLastScsiCommand;
             this.nodeID = req.nodeID;
             this.serviceID = req.serviceID;
             this.sessionID = req.sessionID;
-            this.targetName = req.targetName;
             this.targetIP = req.targetIP;
+            this.targetName = req.targetName;
+            this.targetPortName = req.targetPortName;
             this.virtualNetworkID = req.virtualNetworkID;
             this.volumeID = req.volumeID;
-            this.createTime = req.createTime;
             this.volumeInstance = req.volumeInstance;
-            this.initiatorSessionID = req.initiatorSessionID;
-            this.msSinceLastScsiCommand = req.msSinceLastScsiCommand;
-            this.msSinceLastIscsiPDU = req.msSinceLastIscsiPDU;
 
-            return this;
-        }
-
-        public ISCSISession.Builder optionalDriveIDs(final Long[] driveIDs) {
-            this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : Optional.of(driveIDs);
             return this;
         }
 
@@ -491,13 +542,18 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
-        public ISCSISession.Builder optionalInitiator(final Initiator initiator) {
-            this.initiator = (initiator == null) ? Optional.<Initiator>empty() : Optional.of(initiator);
+        public ISCSISession.Builder accountName(final String accountName) {
+            this.accountName = accountName;
             return this;
         }
 
-        public ISCSISession.Builder accountName(final String accountName) {
-            this.accountName = accountName;
+        public ISCSISession.Builder authentication(final ISCSIAuthentication authentication) {
+            this.authentication = authentication;
+            return this;
+        }
+
+        public ISCSISession.Builder createTime(final String createTime) {
+            this.createTime = createTime;
             return this;
         }
 
@@ -506,8 +562,23 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
+        public ISCSISession.Builder optionalDriveIDs(final Long[] driveIDs) {
+            this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : Optional.of(driveIDs);
+            return this;
+        }
+
+        public ISCSISession.Builder optionalInitiator(final Initiator initiator) {
+            this.initiator = (initiator == null) ? Optional.<Initiator>empty() : Optional.of(initiator);
+            return this;
+        }
+
         public ISCSISession.Builder initiatorIP(final String initiatorIP) {
             this.initiatorIP = initiatorIP;
+            return this;
+        }
+
+        public ISCSISession.Builder initiatorName(final String initiatorName) {
+            this.initiatorName = initiatorName;
             return this;
         }
 
@@ -516,13 +587,18 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
-        public ISCSISession.Builder targetPortName(final String targetPortName) {
-            this.targetPortName = targetPortName;
+        public ISCSISession.Builder initiatorSessionID(final Long initiatorSessionID) {
+            this.initiatorSessionID = initiatorSessionID;
             return this;
         }
 
-        public ISCSISession.Builder initiatorName(final String initiatorName) {
-            this.initiatorName = initiatorName;
+        public ISCSISession.Builder msSinceLastIscsiPDU(final Long msSinceLastIscsiPDU) {
+            this.msSinceLastIscsiPDU = msSinceLastIscsiPDU;
+            return this;
+        }
+
+        public ISCSISession.Builder msSinceLastScsiCommand(final Long msSinceLastScsiCommand) {
+            this.msSinceLastScsiCommand = msSinceLastScsiCommand;
             return this;
         }
 
@@ -541,13 +617,18 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
+        public ISCSISession.Builder targetIP(final String targetIP) {
+            this.targetIP = targetIP;
+            return this;
+        }
+
         public ISCSISession.Builder targetName(final String targetName) {
             this.targetName = targetName;
             return this;
         }
 
-        public ISCSISession.Builder targetIP(final String targetIP) {
-            this.targetIP = targetIP;
+        public ISCSISession.Builder targetPortName(final String targetPortName) {
+            this.targetPortName = targetPortName;
             return this;
         }
 
@@ -561,28 +642,8 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
-        public ISCSISession.Builder createTime(final String createTime) {
-            this.createTime = createTime;
-            return this;
-        }
-
         public ISCSISession.Builder volumeInstance(final Long volumeInstance) {
             this.volumeInstance = volumeInstance;
-            return this;
-        }
-
-        public ISCSISession.Builder initiatorSessionID(final Long initiatorSessionID) {
-            this.initiatorSessionID = initiatorSessionID;
-            return this;
-        }
-
-        public ISCSISession.Builder optionalMsSinceLastScsiCommand(final Long msSinceLastScsiCommand) {
-            this.msSinceLastScsiCommand = (msSinceLastScsiCommand == null) ? Optional.<Long>empty() : Optional.of(msSinceLastScsiCommand);
-            return this;
-        }
-
-        public ISCSISession.Builder optionalMsSinceLastIscsiPDU(final Long msSinceLastIscsiPDU) {
-            this.msSinceLastIscsiPDU = (msSinceLastIscsiPDU == null) ? Optional.<Long>empty() : Optional.of(msSinceLastIscsiPDU);
             return this;
         }
 

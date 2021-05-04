@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class GetAccountByNameRequest implements Serializable {
 
-    public static final long serialVersionUID = 2085896987892862109L;
+    public static final long serialVersionUID = -6691410129964944903L;
     @SerializedName("username") private String username;
     // empty constructor
     @Since("7.0")

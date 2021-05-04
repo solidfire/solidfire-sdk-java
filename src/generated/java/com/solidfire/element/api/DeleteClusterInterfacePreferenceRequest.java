@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class DeleteClusterInterfacePreferenceRequest implements Serializable {
 
-    public static final long serialVersionUID = -6199788140467652649L;
+    public static final long serialVersionUID = -4366790897979665987L;
     @SerializedName("name") private String name;
     // empty constructor
     @Since("7.0")

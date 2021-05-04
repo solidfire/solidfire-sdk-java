@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ResetSupplementalTlsCiphersResult implements Serializable {
 
-    public static final long serialVersionUID = -203147436763908372L;
+    public static final long serialVersionUID = 6033101302761686788L;
     @SerializedName("mandatoryCiphers") private String[] mandatoryCiphers;
     @SerializedName("supplementalCiphers") private String[] supplementalCiphers;
     // empty constructor

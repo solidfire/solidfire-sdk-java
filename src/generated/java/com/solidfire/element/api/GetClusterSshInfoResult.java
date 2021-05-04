@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetClusterSshInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -8067763167858891506L;
+    public static final long serialVersionUID = -5760944074713437824L;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("timeRemaining") private String timeRemaining;
     @SerializedName("nodes") private NodeSshInfo[] nodes;

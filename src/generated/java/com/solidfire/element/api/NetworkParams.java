@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class NetworkParams implements Serializable {
 
-    public static final long serialVersionUID = -2646608874836128936L;
+    public static final long serialVersionUID = 4323240853233971664L;
     @SerializedName("Bond1G") private Optional<NetworkConfigParams> bond1G;
     @SerializedName("Bond10G") private Optional<NetworkConfigParams> bond10G;
     @SerializedName("net0") private Optional<NetworkConfigParams> net0;

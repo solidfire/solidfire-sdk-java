@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class NodeStatsInfo implements Serializable {
 
-    public static final long serialVersionUID = -6825704105612754618L;
+    public static final long serialVersionUID = -746464577488285323L;
     @SerializedName("cBytesIn") private Long cBytesIn;
     @SerializedName("cBytesOut") private Long cBytesOut;
     @SerializedName("count") private Long count;

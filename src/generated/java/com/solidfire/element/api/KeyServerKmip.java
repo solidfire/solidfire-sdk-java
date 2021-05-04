@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class KeyServerKmip implements Serializable {
 
-    public static final long serialVersionUID = 3927494247543145929L;
+    public static final long serialVersionUID = 5953502434508144171L;
     @SerializedName("keyProviderID") private Optional<Long> keyProviderID;
     @SerializedName("kmipAssignedProviderIsActive") private Optional<Boolean> kmipAssignedProviderIsActive;
     @SerializedName("kmipCaCertificate") private String kmipCaCertificate;

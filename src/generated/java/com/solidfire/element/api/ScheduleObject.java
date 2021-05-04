@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ScheduleObject implements Serializable {
 
-    public static final long serialVersionUID = -5417102458558914590L;
+    public static final long serialVersionUID = -4349050879430998530L;
     @SerializedName("scheduleName") private String scheduleName;
     @SerializedName("monthdays") private Optional<Long[]> monthdays;
     @SerializedName("weekdays") private Optional<DayOfWeek[]> weekdays;

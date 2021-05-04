@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class AbortSnapMirrorRelationshipRequest implements Serializable {
 
-    public static final long serialVersionUID = 3100917634746542939L;
+    public static final long serialVersionUID = -3227669877372300726L;
     @SerializedName("snapMirrorEndpointID") private Long snapMirrorEndpointID;
     @SerializedName("destinationVolume") private SnapMirrorVolumeInfo destinationVolume;
     @SerializedName("clearCheckpoint") private Optional<Boolean> clearCheckpoint;

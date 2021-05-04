@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class DeleteSnapMirrorRelationshipsResult implements Serializable {
 
-    public static final long serialVersionUID = 794043075758401397L;
+    public static final long serialVersionUID = -7863841941857152004L;
     @SerializedName("result") private String result;
 
     

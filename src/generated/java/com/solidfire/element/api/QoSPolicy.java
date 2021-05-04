@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class QoSPolicy implements Serializable {
 
-    public static final long serialVersionUID = 4756775153267147590L;
+    public static final long serialVersionUID = -5673679631415460876L;
     @SerializedName("qosPolicyID") private Long qosPolicyID;
     @SerializedName("name") private String name;
     @SerializedName("volumeIDs") private Long[] volumeIDs;

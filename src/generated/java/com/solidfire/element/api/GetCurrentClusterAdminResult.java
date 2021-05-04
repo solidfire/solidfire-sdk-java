@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetCurrentClusterAdminResult implements Serializable {
 
-    public static final long serialVersionUID = 6567210511299293183L;
+    public static final long serialVersionUID = -4184634859010412437L;
     @SerializedName("clusterAdmin") private ClusterAdmin clusterAdmin;
     // empty constructor
     @Since("7.0")

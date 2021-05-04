@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CancelGroupCloneResult implements Serializable {
 
-    public static final long serialVersionUID = -3861748466993423859L;
+    public static final long serialVersionUID = -3757546981700230838L;
     // empty constructor
     @Since("7.0")
     public CancelGroupCloneResult() {}

@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ModifyKeyServerKmipRequest implements Serializable {
 
-    public static final long serialVersionUID = 9000193726892327532L;
+    public static final long serialVersionUID = -107161143311723698L;
     @SerializedName("kmipCaCertificate") private Optional<String> kmipCaCertificate;
     @SerializedName("kmipClientCertificate") private Optional<String> kmipClientCertificate;
     @SerializedName("kmipKeyServerHostnames") private Optional<String[]> kmipKeyServerHostnames;

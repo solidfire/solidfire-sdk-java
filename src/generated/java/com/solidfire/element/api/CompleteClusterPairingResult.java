@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CompleteClusterPairingResult implements Serializable {
 
-    public static final long serialVersionUID = 6075534279705274583L;
+    public static final long serialVersionUID = -516182557078118822L;
     @SerializedName("clusterPairID") private Long clusterPairID;
     // empty constructor
     @Since("7.0")

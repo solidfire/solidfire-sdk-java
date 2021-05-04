@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SetNodeSSLCertificateRequest implements Serializable {
 
-    public static final long serialVersionUID = 6525633053370441957L;
+    public static final long serialVersionUID = 2538066499224674210L;
     @SerializedName("certificate") private String certificate;
     @SerializedName("privateKey") private String privateKey;
     // empty constructor

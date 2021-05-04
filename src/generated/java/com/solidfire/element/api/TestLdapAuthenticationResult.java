@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class TestLdapAuthenticationResult implements Serializable {
 
-    public static final long serialVersionUID = -8304467299186590833L;
+    public static final long serialVersionUID = -4171111822968405963L;
     @SerializedName("groups") private String[] groups;
     @SerializedName("userDN") private String userDN;
     // empty constructor

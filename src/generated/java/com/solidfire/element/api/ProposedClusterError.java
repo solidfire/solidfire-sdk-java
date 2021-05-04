@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ProposedClusterError implements Serializable {
 
-    public static final long serialVersionUID = 6601678009370265028L;
+    public static final long serialVersionUID = 7858841388305670425L;
     @SerializedName("description") private String description;
     @SerializedName("errorCode") private String errorCode;
     @SerializedName("nodeIPs") private String[] nodeIPs;

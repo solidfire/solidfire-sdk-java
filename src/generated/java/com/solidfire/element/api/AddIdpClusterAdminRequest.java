@@ -1,5 +1,5 @@
 /*
- * Copyright &copy 2014, 2016 NetApp, Inc. All Rights Reserved.
+ * Copyright &copy 2014-2016 NetApp, Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import java.util.Objects;
 
 public class AddIdpClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 1432381717266563601L;
+    public static final long serialVersionUID = 6490652768695719220L;
     @SerializedName("username") private String username;
     @SerializedName("access") private String[] access;
     @SerializedName("acceptEula") private Boolean acceptEula;

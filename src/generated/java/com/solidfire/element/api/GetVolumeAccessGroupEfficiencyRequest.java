@@ -39,7 +39,7 @@ import java.util.Objects;
 
 public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = 180942448925508660L;
+    public static final long serialVersionUID = 8435589121935607682L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     // empty constructor
     @Since("7.0")

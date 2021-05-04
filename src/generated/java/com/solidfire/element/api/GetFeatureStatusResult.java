@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetFeatureStatusResult implements Serializable {
 
-    public static final long serialVersionUID = -5365283821122843634L;
+    public static final long serialVersionUID = -6394453698311757412L;
     @SerializedName("features") private FeatureObject[] features;
     // empty constructor
     @Since("7.0")

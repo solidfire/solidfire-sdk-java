@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class BackupTarget implements Serializable {
 
-    public static final long serialVersionUID = -5135095096126078144L;
+    public static final long serialVersionUID = -5770439632398817485L;
     @SerializedName("name") private String name;
     @SerializedName("backupTargetID") private Long backupTargetID;
     @SerializedName("attributes") private Optional<Attributes> attributes;

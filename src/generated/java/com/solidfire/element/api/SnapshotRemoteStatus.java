@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SnapshotRemoteStatus implements Serializable {
 
-    public static final long serialVersionUID = -4990635423113042060L;
+    public static final long serialVersionUID = 1157920102463987663L;
     @SerializedName("remoteStatus") private String remoteStatus;
     @SerializedName("volumePairUUID") private java.util.UUID volumePairUUID;
     // empty constructor

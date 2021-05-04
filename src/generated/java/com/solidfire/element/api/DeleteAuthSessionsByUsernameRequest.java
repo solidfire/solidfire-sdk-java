@@ -38,7 +38,7 @@ import java.util.Objects;
 
 public class DeleteAuthSessionsByUsernameRequest implements Serializable {
 
-    public static final long serialVersionUID = -523457340919315169L;
+    public static final long serialVersionUID = 5572315853242121158L;
     @SerializedName("username") private Optional<String> username;
     @SerializedName("authMethod") private Optional<String> authMethod;
     // empty constructor

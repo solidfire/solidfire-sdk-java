@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SnapMirrorJobScheduleCronInfo implements Serializable {
 
-    public static final long serialVersionUID = -2571837597511454677L;
+    public static final long serialVersionUID = -7750321656153607960L;
     @SerializedName("snapMirrorEndpointID") private Long snapMirrorEndpointID;
     @SerializedName("jobScheduleName") private String jobScheduleName;
     @SerializedName("jobScheduleDescription") private String jobScheduleDescription;

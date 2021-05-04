@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListDeletedVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -467295895774103016L;
+    public static final long serialVersionUID = -172279511883962250L;
     @SerializedName("includeVirtualVolumes") private Optional<Boolean> includeVirtualVolumes;
 
     

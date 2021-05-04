@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SetNodeSupplementalTlsCiphersResult implements Serializable {
 
-    public static final long serialVersionUID = -7789383643940738920L;
+    public static final long serialVersionUID = -4717472628371437669L;
     @SerializedName("mandatoryCiphers") private String[] mandatoryCiphers;
     @SerializedName("supplementalCiphers") private String[] supplementalCiphers;
     // empty constructor

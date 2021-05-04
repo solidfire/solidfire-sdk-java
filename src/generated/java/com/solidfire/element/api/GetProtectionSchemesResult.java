@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetProtectionSchemesResult implements Serializable {
 
-    public static final long serialVersionUID = -763182427068437981L;
+    public static final long serialVersionUID = 4927729219440499587L;
     @SerializedName("protectionSchemes") private java.util.Map<String,ProtectionSchemeInfo> protectionSchemes;
     // empty constructor
     @Since("7.0")

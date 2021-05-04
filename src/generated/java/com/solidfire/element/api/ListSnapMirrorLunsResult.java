@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListSnapMirrorLunsResult implements Serializable {
 
-    public static final long serialVersionUID = -8052654603575072613L;
+    public static final long serialVersionUID = -3269238451242066851L;
     @SerializedName("snapMirrorLunInfos") private SnapMirrorLunInfo[] snapMirrorLunInfos;
 
     

@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class ModifySnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 8355605441290960766L;
+    public static final long serialVersionUID = -6880414752949101904L;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
@@ -82,8 +82,15 @@ public class ModifySnapshotRequest implements Serializable {
         this.snapshotID = snapshotID;
     }
     /** 
-     * Sets the time when the snapshot should be
-     * removed.
+     * Specify the time after which the snapshot can be removed.
+     * If neither 'expirationTime' nor 'retention' is specified for the original snapshot, the snapshot
+     * will be retained until manually deleted.
+     * The format is: 
+     *   ISO 8601 date string for time based expiration, otherwise it will not expire.
+     *   'null', or not specified, the snapshot is to be retained permanently.
+     *   'fifo' causes the snapshot to be preserved on a First-In-First-Out basis, relative to other FIFO
+     *        snapshots on the volume. The API will fail if no FIFO space is available.
+     * Note: The 'retention' option is not supported by ModifySnapshot.
      **/
     public Optional<String> getExpirationTime() { return this.expirationTime; }
    

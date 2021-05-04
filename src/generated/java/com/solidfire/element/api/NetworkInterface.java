@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class NetworkInterface implements Serializable {
 
-    public static final long serialVersionUID = -4385830083157374078L;
+    public static final long serialVersionUID = 6426242014154598190L;
     @SerializedName("address") private String address;
     @SerializedName("broadcast") private String broadcast;
     @SerializedName("macAddress") private String macAddress;

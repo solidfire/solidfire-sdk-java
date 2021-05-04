@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SyncJob implements Serializable {
 
-    public static final long serialVersionUID = 4824212650855022569L;
+    public static final long serialVersionUID = 3623611509302376888L;
     @SerializedName("bytesPerSecond") private Double bytesPerSecond;
     @SerializedName("currentBytes") private Long currentBytes;
     @SerializedName("dstServiceID") private Long dstServiceID;

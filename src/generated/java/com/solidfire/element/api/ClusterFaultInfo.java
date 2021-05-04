@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ClusterFaultInfo implements Serializable {
 
-    public static final long serialVersionUID = 9081587400798078557L;
+    public static final long serialVersionUID = 8671459861121318368L;
     @SerializedName("driveIDs") private Optional<Long[]> driveIDs;
     @SerializedName("networkInterface") private Optional<String> networkInterface;
     @SerializedName("severity") private String severity;

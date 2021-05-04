@@ -43,7 +43,7 @@ import java.util.Objects;
 
 public class QoS implements Serializable {
 
-    public static final long serialVersionUID = -6562989425637054633L;
+    public static final long serialVersionUID = 1651154100712193840L;
     @SerializedName("minIOPS") private Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
     @SerializedName("burstIOPS") private Optional<Long> burstIOPS;

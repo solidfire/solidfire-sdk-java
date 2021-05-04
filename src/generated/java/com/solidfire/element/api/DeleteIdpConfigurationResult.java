@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class DeleteIdpConfigurationResult implements Serializable {
 
-    public static final long serialVersionUID = -8572267887873942236L;
+    public static final long serialVersionUID = 1789961228498343217L;
     // empty constructor
     @Since("7.0")
     public DeleteIdpConfigurationResult() {}

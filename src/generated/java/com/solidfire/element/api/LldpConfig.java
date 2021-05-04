@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class LldpConfig implements Serializable {
 
-    public static final long serialVersionUID = -5854894670303090655L;
+    public static final long serialVersionUID = -6511892565283913904L;
     @SerializedName("enableLldp") private Optional<Boolean> enableLldp;
     @SerializedName("enableMed") private Optional<Boolean> enableMed;
     @SerializedName("enableOtherProtocols") private Optional<Boolean> enableOtherProtocols;

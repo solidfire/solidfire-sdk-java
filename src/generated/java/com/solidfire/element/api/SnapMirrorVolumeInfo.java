@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SnapMirrorVolumeInfo implements Serializable {
 
-    public static final long serialVersionUID = 6966816465359866868L;
+    public static final long serialVersionUID = 1293944744178099640L;
     @SerializedName("type") private String type;
     @SerializedName("volumeID") private Optional<Long> volumeID;
     @SerializedName("vserver") private Optional<String> vserver;

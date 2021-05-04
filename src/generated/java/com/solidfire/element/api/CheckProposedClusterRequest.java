@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class CheckProposedClusterRequest implements Serializable {
 
-    public static final long serialVersionUID = -1114971846560586528L;
+    public static final long serialVersionUID = 1943851611380268634L;
     @SerializedName("nodes") private String[] nodes;
     // empty constructor
     @Since("7.0")

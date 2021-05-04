@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class MetadataHosts implements Serializable {
 
-    public static final long serialVersionUID = -1540954867441766961L;
+    public static final long serialVersionUID = -5280601705196957351L;
     @SerializedName("deadSecondaries") private Long[] deadSecondaries;
     @SerializedName("liveSecondaries") private Long[] liveSecondaries;
     @SerializedName("primary") private Long primary;

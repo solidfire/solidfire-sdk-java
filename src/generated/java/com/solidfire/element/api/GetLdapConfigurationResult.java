@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetLdapConfigurationResult implements Serializable {
 
-    public static final long serialVersionUID = 6323384400644717042L;
+    public static final long serialVersionUID = -851485655633848884L;
     @SerializedName("ldapConfiguration") private LdapConfiguration ldapConfiguration;
     // empty constructor
     @Since("7.0")

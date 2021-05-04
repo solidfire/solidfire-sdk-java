@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class DayOfWeek implements Serializable {
 
-    public static final long serialVersionUID = -9181485517869215515L;
+    public static final long serialVersionUID = -3176653568217671256L;
     @SerializedName("day") private Long day;
     @SerializedName("offset") private Long offset;
     // empty constructor

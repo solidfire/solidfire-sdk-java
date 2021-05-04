@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetSystemStatusResult implements Serializable {
 
-    public static final long serialVersionUID = -7642361104834473722L;
+    public static final long serialVersionUID = 7758959354589030633L;
     @SerializedName("rebootRequired") private Boolean rebootRequired;
     // empty constructor
     @Since("7.0")

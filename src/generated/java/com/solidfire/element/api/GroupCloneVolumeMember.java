@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class GroupCloneVolumeMember implements Serializable {
 
-    public static final long serialVersionUID = -3793713171831688213L;
+    public static final long serialVersionUID = -1699192668746204988L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("srcVolumeID") private Long srcVolumeID;
     // empty constructor

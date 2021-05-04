@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class KeyProviderKmip implements Serializable {
 
-    public static final long serialVersionUID = 5227216235332024046L;
+    public static final long serialVersionUID = -4829359360075555512L;
     @SerializedName("keyProviderName") private String keyProviderName;
     @SerializedName("keyProviderID") private Long keyProviderID;
     @SerializedName("keyProviderIsActive") private Boolean keyProviderIsActive;

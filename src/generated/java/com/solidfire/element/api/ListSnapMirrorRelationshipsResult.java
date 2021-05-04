@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListSnapMirrorRelationshipsResult implements Serializable {
 
-    public static final long serialVersionUID = 8985409375317166424L;
+    public static final long serialVersionUID = 1715325150858121616L;
     @SerializedName("snapMirrorRelationships") private SnapMirrorRelationship[] snapMirrorRelationships;
 
     

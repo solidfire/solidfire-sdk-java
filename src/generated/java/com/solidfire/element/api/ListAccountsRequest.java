@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListAccountsRequest implements Serializable {
 
-    public static final long serialVersionUID = -1222637381069449944L;
+    public static final long serialVersionUID = -3582088036001097271L;
     @SerializedName("startAccountID") private Optional<Long> startAccountID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("includeStorageContainers") private Optional<Boolean> includeStorageContainers;

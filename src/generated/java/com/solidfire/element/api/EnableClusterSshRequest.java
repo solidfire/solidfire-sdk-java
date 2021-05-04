@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class EnableClusterSshRequest implements Serializable {
 
-    public static final long serialVersionUID = -2692695142647861129L;
+    public static final long serialVersionUID = 189389526033822992L;
     @SerializedName("duration") private String duration;
 
     

@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListVolumesForAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = -8511248449380657715L;
+    public static final long serialVersionUID = 1116235882734239902L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SnapshotReplication implements Serializable {
 
-    public static final long serialVersionUID = 5006855597107546132L;
+    public static final long serialVersionUID = 3428100413806961636L;
     @SerializedName("state") private String state;
     @SerializedName("stateDetails") private String stateDetails;
     // empty constructor

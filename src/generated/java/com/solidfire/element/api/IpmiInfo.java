@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class IpmiInfo implements Serializable {
 
-    public static final long serialVersionUID = 6146438567447605075L;
+    public static final long serialVersionUID = 2521421710751029473L;
     @SerializedName("sensors") private Attributes[] sensors;
     // empty constructor
     @Since("7.0")

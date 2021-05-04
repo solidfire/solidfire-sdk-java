@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListAuthSessionsResult implements Serializable {
 
-    public static final long serialVersionUID = 8236223567676101159L;
+    public static final long serialVersionUID = -1237880771084027513L;
     @SerializedName("sessions") private AuthSessionInfo[] sessions;
     // empty constructor
     @Since("7.0")

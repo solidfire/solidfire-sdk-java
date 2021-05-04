@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class RollbackToSnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = 1509387855432575238L;
+    public static final long serialVersionUID = 3131845873518378664L;
     @SerializedName("snapshot") private Optional<Snapshot> snapshot;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("checksum") private Optional<String> checksum;

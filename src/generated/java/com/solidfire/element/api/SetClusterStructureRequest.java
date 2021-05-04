@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SetClusterStructureRequest implements Serializable {
 
-    public static final long serialVersionUID = 8238565385047826478L;
+    public static final long serialVersionUID = -2324362754057174332L;
     @SerializedName("accounts") private Optional<Account[]> accounts;
     @SerializedName("defaultQoS") private Optional<VolumeQOS> defaultQoS;
     @SerializedName("features") private Optional<FeatureObject[]> features;
