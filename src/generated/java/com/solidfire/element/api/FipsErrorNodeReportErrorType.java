@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class FipsErrorNodeReportErrorType implements Serializable {
 
-    public static final long serialVersionUID = 1554896078110629160L;
+    public static final long serialVersionUID = 6545975013135431974L;
     @SerializedName("message") private String message;
     @SerializedName("name") private String name;
     // empty constructor

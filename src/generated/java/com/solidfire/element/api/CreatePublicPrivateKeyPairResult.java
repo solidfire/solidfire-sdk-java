@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class CreatePublicPrivateKeyPairResult implements Serializable {
 
-    public static final long serialVersionUID = 2675146651668993846L;
+    public static final long serialVersionUID = 951080034882668602L;
     // empty constructor
     @Since("7.0")
     public CreatePublicPrivateKeyPairResult() {}

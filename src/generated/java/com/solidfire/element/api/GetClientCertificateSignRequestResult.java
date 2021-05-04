@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetClientCertificateSignRequestResult implements Serializable {
 
-    public static final long serialVersionUID = -6663215120640391098L;
+    public static final long serialVersionUID = -4447120950541575132L;
     @SerializedName("clientCertificateSignRequest") private String clientCertificateSignRequest;
     // empty constructor
     @Since("7.0")

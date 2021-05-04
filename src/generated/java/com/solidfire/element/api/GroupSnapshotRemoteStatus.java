@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GroupSnapshotRemoteStatus implements Serializable {
 
-    public static final long serialVersionUID = 2409208967922490657L;
+    public static final long serialVersionUID = 9043780627454567574L;
     @SerializedName("remoteStatus") private String remoteStatus;
     // empty constructor
     @Since("7.0")

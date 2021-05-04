@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListIdpConfigurationsRequest implements Serializable {
 
-    public static final long serialVersionUID = 2673789348450744316L;
+    public static final long serialVersionUID = -7149009286023934106L;
     @SerializedName("idpConfigurationID") private Optional<java.util.UUID> idpConfigurationID;
     @SerializedName("idpName") private Optional<String> idpName;
     @SerializedName("enabledOnly") private Optional<Boolean> enabledOnly = Optional.of(false);

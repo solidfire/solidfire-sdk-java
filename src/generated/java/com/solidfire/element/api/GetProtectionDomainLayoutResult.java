@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetProtectionDomainLayoutResult implements Serializable {
 
-    public static final long serialVersionUID = -6118026937403045170L;
+    public static final long serialVersionUID = 4124296422813379606L;
     @SerializedName("protectionDomainLayout") private NodeProtectionDomains[] protectionDomainLayout;
     // empty constructor
     @Since("7.0")

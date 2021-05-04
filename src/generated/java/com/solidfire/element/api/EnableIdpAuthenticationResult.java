@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class EnableIdpAuthenticationResult implements Serializable {
 
-    public static final long serialVersionUID = -2076939395870470768L;
+    public static final long serialVersionUID = -7361774991875180608L;
     // empty constructor
     @Since("7.0")
     public EnableIdpAuthenticationResult() {}

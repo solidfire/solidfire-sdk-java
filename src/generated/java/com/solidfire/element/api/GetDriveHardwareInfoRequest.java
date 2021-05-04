@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class GetDriveHardwareInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -6851574593388833773L;
+    public static final long serialVersionUID = -3519055695272216555L;
     @SerializedName("driveID") private Long driveID;
     // empty constructor
     @Since("7.0")

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetNodeSSLCertificateResult implements Serializable {
 
-    public static final long serialVersionUID = -4012059706322961121L;
+    public static final long serialVersionUID = -4789567314908537996L;
     @SerializedName("certificate") private String certificate;
     @SerializedName("details") private Attributes details;
 

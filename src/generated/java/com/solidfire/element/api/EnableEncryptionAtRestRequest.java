@@ -39,7 +39,7 @@ import java.util.Objects;
 
 public class EnableEncryptionAtRestRequest implements Serializable {
 
-    public static final long serialVersionUID = -8962536496054813874L;
+    public static final long serialVersionUID = 8039963184485346612L;
     @SerializedName("keyProviderID") private Optional<Long> keyProviderID = Optional.of(0L);
 
     

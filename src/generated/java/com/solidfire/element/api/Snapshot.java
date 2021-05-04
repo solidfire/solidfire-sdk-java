@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class Snapshot implements Serializable {
 
-    public static final long serialVersionUID = 2428104660025438959L;
+    public static final long serialVersionUID = -33121434792587887L;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
@@ -156,6 +156,8 @@ public class Snapshot implements Serializable {
      * api: expiration time was set by using the API.
      * none: there is no expiration time set.
      * test: expiration time was set for testing.
+     * fifo: expiration occurs on first in first out basis.
+     * Warning: This member is returned but may have an incorrect value. Do not use.
      **/
     public String getExpirationReason() { return this.expirationReason; }
    

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetClusterStructureResult implements Serializable {
 
-    public static final long serialVersionUID = -319355645801966921L;
+    public static final long serialVersionUID = -6067192358064850326L;
     @SerializedName("accounts") private Account[] accounts;
     @SerializedName("clusterAdmins") private ClusterAdmin[] clusterAdmins;
     @SerializedName("clusterInfo") private ClusterInfo clusterInfo;

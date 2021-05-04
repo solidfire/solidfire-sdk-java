@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SetClusterStructureResult implements Serializable {
 
-    public static final long serialVersionUID = -8655272903843874244L;
+    public static final long serialVersionUID = -2231475631010950442L;
     @SerializedName("asyncHandle") private Long asyncHandle;
     // empty constructor
     @Since("7.0")

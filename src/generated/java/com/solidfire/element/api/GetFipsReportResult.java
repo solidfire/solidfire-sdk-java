@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class GetFipsReportResult implements Serializable {
 
-    public static final long serialVersionUID = 7495110696879557902L;
+    public static final long serialVersionUID = 984331466659462312L;
     @SerializedName("nodes") private FipsNodeReportType[] nodes;
     @SerializedName("errorNodes") private FipsErrorNodeReportType[] errorNodes;
     // empty constructor

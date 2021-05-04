@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class EnableBmcColdResetRequest implements Serializable {
 
-    public static final long serialVersionUID = -9134223846892355188L;
+    public static final long serialVersionUID = 6938874316676019694L;
     @SerializedName("timeout") private Optional<Long> timeout;
     // empty constructor
     @Since("7.0")

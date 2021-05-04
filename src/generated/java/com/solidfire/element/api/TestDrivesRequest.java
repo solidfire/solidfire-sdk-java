@@ -39,7 +39,7 @@ import java.util.Objects;
 
 public class TestDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 2203956291459143361L;
+    public static final long serialVersionUID = 4826585168560667721L;
     @SerializedName("minutes") private Optional<Long> minutes;
     @SerializedName("force") private Optional<Boolean> force;
     // empty constructor

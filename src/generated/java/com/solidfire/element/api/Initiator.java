@@ -30,12 +30,12 @@ import java.util.Objects;
 
 /**
  * Initiator  
- * Object containing characteristics of each initiator
+ * Object containing the characteristics of an iSCSI or Fibre Channel initiator.
  **/
 
 public class Initiator implements Serializable {
 
-    public static final long serialVersionUID = 587103886562021696L;
+    public static final long serialVersionUID = 1620235834622318691L;
     @SerializedName("alias") private String alias;
     @SerializedName("initiatorID") private Long initiatorID;
     @SerializedName("initiatorName") private String initiatorName;
@@ -53,6 +53,22 @@ public class Initiator implements Serializable {
     
     // parameterized constructor
     @Since("7.0")
+    public Initiator(
+        String alias,
+        Long initiatorID,
+        String initiatorName,
+        Long[] volumeAccessGroups,
+        Attributes attributes
+    )
+    {
+        this.alias = alias;
+        this.initiatorID = initiatorID;
+        this.initiatorName = initiatorName;
+        this.volumeAccessGroups = volumeAccessGroups;
+        this.attributes = attributes;
+    }
+    // parameterized constructor
+    @Since("11.0")
     public Initiator(
         String alias,
         Long initiatorID,
@@ -103,7 +119,7 @@ public class Initiator implements Serializable {
     }
 
     /** 
-     * The friendly name assigned to this initiator.
+     * The initiator's friendly name.
      **/
     public String getAlias() { return this.alias; }
    
@@ -111,7 +127,7 @@ public class Initiator implements Serializable {
         this.alias = alias;
     }
     /** 
-     * The numeric ID of the initiator that has been created.
+     * The initiator object's numeric ID.
      **/
     public Long getInitiatorID() { return this.initiatorID; }
    
@@ -119,7 +135,7 @@ public class Initiator implements Serializable {
         this.initiatorID = initiatorID;
     }
     /** 
-     * The name of the initiator that has been created.
+     * The initiator's unique iSCSI or FC storage protocol name
      **/
     public String getInitiatorName() { return this.initiatorName; }
    
@@ -127,7 +143,7 @@ public class Initiator implements Serializable {
         this.initiatorName = initiatorName;
     }
     /** 
-     * A list of volumeAccessGroupIDs to which this initiator belongs.
+     * A list of volumeAccessGroupIDs the initiator is a member of.
      **/
     public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
    
@@ -143,7 +159,7 @@ public class Initiator implements Serializable {
         this.attributes = attributes;
     }
     /** 
-     * True if CHAP is required for this Initiator.
+     * True if CHAP authentication is required for this initiator.
      **/
     public Boolean getRequireChap() { return this.requireChap; }
    
@@ -151,7 +167,7 @@ public class Initiator implements Serializable {
         this.requireChap = requireChap;
     }
     /** 
-     * The unique CHAP username for this initiator.
+     * The unique CHAP username associated with this initiator.
      **/
     public Optional<String> getChapUsername() { return this.chapUsername; }
    
@@ -175,9 +191,9 @@ public class Initiator implements Serializable {
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
     /** 
-     * The list of virtual network identifiers associated with this initiator.
-     * If one or more are defined, this initiator will only be able to login to the specified virtual networks.
-     * If no virtual networks are defined this initiator can login to all networks.
+     * A list of virtual network identifiers associated with this initiator.
+     * The initiator is restricted to use the virtual networks specified.
+     * The initiator can use any network if no virtual networks are specified.
      **/
     public Long[] getVirtualNetworkIDs() { return this.virtualNetworkIDs; }
    

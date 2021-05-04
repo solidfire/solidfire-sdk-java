@@ -40,7 +40,7 @@ import java.util.Objects;
 
 public class ProtectionSchemeResiliency implements Serializable {
 
-    public static final long serialVersionUID = 5862379227506253911L;
+    public static final long serialVersionUID = 179915272016174231L;
     @SerializedName("protectionScheme") private String protectionScheme;
     @SerializedName("sustainableFailuresForBlockData") private Long sustainableFailuresForBlockData;
     @SerializedName("sustainableFailuresForMetadata") private Long sustainableFailuresForMetadata;

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetLicenseKeyResult implements Serializable {
 
-    public static final long serialVersionUID = -6261687427827972547L;
+    public static final long serialVersionUID = 199290396990202727L;
     @SerializedName("serialNumber") private String serialNumber;
     @SerializedName("orderNumber") private String orderNumber;
     // empty constructor

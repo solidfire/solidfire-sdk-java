@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ProtectionDomainServiceReplicaBudget implements Serializable {
 
-    public static final long serialVersionUID = -4901537701957575279L;
+    public static final long serialVersionUID = -2296738286233851215L;
     @SerializedName("protectonDomainName") private String protectonDomainName;
     @SerializedName("services") private ServiceReplicaBudget[] services;
     // empty constructor

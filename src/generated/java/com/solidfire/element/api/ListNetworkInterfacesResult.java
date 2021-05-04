@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListNetworkInterfacesResult implements Serializable {
 
-    public static final long serialVersionUID = 2468937922187854667L;
+    public static final long serialVersionUID = -6359705742968409622L;
     @SerializedName("interfaces") private NetworkInterface[] interfaces;
     // empty constructor
     @Since("7.0")

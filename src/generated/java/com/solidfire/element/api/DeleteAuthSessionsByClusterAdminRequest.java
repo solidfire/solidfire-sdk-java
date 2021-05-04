@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class DeleteAuthSessionsByClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 4916584357419495446L;
+    public static final long serialVersionUID = 1047796976942167867L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     // empty constructor
     @Since("7.0")

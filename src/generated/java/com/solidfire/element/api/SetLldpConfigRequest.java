@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SetLldpConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = 2935483748371676727L;
+    public static final long serialVersionUID = 1724952247423377374L;
     @SerializedName("lldpConfig") private LldpConfig lldpConfig;
 
     

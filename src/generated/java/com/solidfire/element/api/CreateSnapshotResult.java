@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CreateSnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = -7570944232129417239L;
+    public static final long serialVersionUID = -3368571590412557258L;
     @SerializedName("snapshot") private Snapshot snapshot;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("checksum") private String checksum;

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class VirtualVolumeHost implements Serializable {
 
-    public static final long serialVersionUID = 3388453493580999423L;
+    public static final long serialVersionUID = -2641730607285908067L;
     @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
     @SerializedName("clusterID") private Optional<java.util.UUID> clusterID;
     @SerializedName("visibleProtocolEndpointIDs") private java.util.UUID[] visibleProtocolEndpointIDs;

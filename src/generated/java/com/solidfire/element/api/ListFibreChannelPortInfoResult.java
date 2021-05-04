@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListFibreChannelPortInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 1612754275169821687L;
+    public static final long serialVersionUID = 6979594470862218069L;
     @SerializedName("fibreChannelPortInfo") private java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
     // empty constructor
     @Since("7.0")

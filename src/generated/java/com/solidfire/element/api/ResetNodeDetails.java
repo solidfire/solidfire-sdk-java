@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ResetNodeDetails implements Serializable {
 
-    public static final long serialVersionUID = 949357053707461884L;
+    public static final long serialVersionUID = -1915588983327371212L;
     @SerializedName("rtfiInfo") private RtfiInfo rtfiInfo;
     // empty constructor
     @Since("7.0")

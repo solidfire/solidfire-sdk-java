@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class Platform implements Serializable {
 
-    public static final long serialVersionUID = -3330001958338224238L;
+    public static final long serialVersionUID = -6341906535361145265L;
     @SerializedName("nodeType") private String nodeType;
     @SerializedName("chassisType") private String chassisType;
     @SerializedName("cpuModel") private String cpuModel;

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetOntapVersionInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -5362486907432056452L;
+    public static final long serialVersionUID = 699551956025100415L;
     @SerializedName("ontapVersionInfo") private OntapVersionInfo[] ontapVersionInfo;
 
     

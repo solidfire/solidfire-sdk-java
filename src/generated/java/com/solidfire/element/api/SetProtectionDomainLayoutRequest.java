@@ -40,7 +40,7 @@ import java.util.Objects;
 
 public class SetProtectionDomainLayoutRequest implements Serializable {
 
-    public static final long serialVersionUID = 6977896923557557802L;
+    public static final long serialVersionUID = -2623034800068893458L;
     @SerializedName("protectionDomainLayout") private NodeProtectionDomains[] protectionDomainLayout;
     // empty constructor
     @Since("7.0")

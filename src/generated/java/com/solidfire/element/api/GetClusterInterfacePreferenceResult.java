@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetClusterInterfacePreferenceResult implements Serializable {
 
-    public static final long serialVersionUID = -8349245021150500901L;
+    public static final long serialVersionUID = -4535631242920932918L;
     @SerializedName("preference") private ClusterInterfacePreference preference;
     // empty constructor
     @Since("7.0")

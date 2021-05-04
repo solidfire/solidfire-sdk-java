@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class BinAssignmentProperties implements Serializable {
 
-    public static final long serialVersionUID = 602998532790380428L;
+    public static final long serialVersionUID = 1917671423369816206L;
     @SerializedName("algorithmRuntimeMS") private Long algorithmRuntimeMS;
     @SerializedName("areReplicasValid") private Boolean areReplicasValid;
     @SerializedName("binCount") private Long binCount;

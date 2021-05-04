@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class EnableBmcColdResetResult implements Serializable {
 
-    public static final long serialVersionUID = -3909509718043182046L;
+    public static final long serialVersionUID = -6034199449398157749L;
     @SerializedName("cBmcResetDurationMinutes") private Long cBmcResetDurationMinutes;
     // empty constructor
     @Since("7.0")

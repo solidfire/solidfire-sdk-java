@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class BlockSizeHistogram implements Serializable {
 
-    public static final long serialVersionUID = 5194308614406399074L;
+    public static final long serialVersionUID = -9213469374967484148L;
     @SerializedName("Bucket512To4095") private Long bucket512To4095;
     @SerializedName("bucket4096to8191") private Long bucket4096to8191;
     @SerializedName("Bucket8192To16383") private Long bucket8192To16383;

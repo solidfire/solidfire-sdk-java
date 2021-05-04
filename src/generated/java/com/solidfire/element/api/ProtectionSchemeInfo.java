@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ProtectionSchemeInfo implements Serializable {
 
-    public static final long serialVersionUID = -5172658612221780688L;
+    public static final long serialVersionUID = 8291638811592111407L;
     @SerializedName("category") private String category;
     @SerializedName("repCount") private Long repCount;
     @SerializedName("visibility") private String visibility;

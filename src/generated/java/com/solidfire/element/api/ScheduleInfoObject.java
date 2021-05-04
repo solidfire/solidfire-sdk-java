@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ScheduleInfoObject implements Serializable {
 
-    public static final long serialVersionUID = 8712871946735705L;
+    public static final long serialVersionUID = -2771603978337928970L;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("volumeID") private Optional<Long> volumeID;
     @SerializedName("volumes") private Optional<Long[]> volumes;

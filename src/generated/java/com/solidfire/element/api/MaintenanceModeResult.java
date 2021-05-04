@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class MaintenanceModeResult implements Serializable {
 
-    public static final long serialVersionUID = 3868636358252923063L;
+    public static final long serialVersionUID = -7107861362732184434L;
     @SerializedName("asyncHandle") private Long asyncHandle;
     @SerializedName("currentMode") private String currentMode;
     @SerializedName("requestedMode") private String requestedMode;

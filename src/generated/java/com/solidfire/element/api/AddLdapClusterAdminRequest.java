@@ -38,7 +38,7 @@ import java.util.Objects;
 
 public class AddLdapClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 3120541712941406885L;
+    public static final long serialVersionUID = -6931129844811753972L;
     @SerializedName("username") private String username;
     @SerializedName("access") private String[] access;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;

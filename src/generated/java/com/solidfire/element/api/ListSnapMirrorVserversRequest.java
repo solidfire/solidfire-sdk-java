@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListSnapMirrorVserversRequest implements Serializable {
 
-    public static final long serialVersionUID = -58677770072474775L;
+    public static final long serialVersionUID = 26166463314323589L;
     @SerializedName("snapMirrorEndpointID") private Optional<Long> snapMirrorEndpointID;
     @SerializedName("vserverType") private Optional<String> vserverType;
     @SerializedName("vserverName") private Optional<String> vserverName;

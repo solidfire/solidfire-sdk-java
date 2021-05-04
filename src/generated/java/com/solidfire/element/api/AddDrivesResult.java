@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class AddDrivesResult implements Serializable {
 
-    public static final long serialVersionUID = -4039937959145321557L;
+    public static final long serialVersionUID = 8900078747831190328L;
     @SerializedName("asyncHandle") private Optional<Long> asyncHandle;
     // empty constructor
     @Since("7.0")

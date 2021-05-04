@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ModifyKeyServerKmipResult implements Serializable {
 
-    public static final long serialVersionUID = -8852746071318134096L;
+    public static final long serialVersionUID = -7477184104835150005L;
     @SerializedName("kmipKeyServer") private KeyServerKmip kmipKeyServer;
     // empty constructor
     @Since("7.0")

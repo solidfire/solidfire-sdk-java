@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ScheduleInfo implements Serializable {
 
-    public static final long serialVersionUID = -6937652621816596775L;
+    public static final long serialVersionUID = 3773411824438754154L;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
     @SerializedName("retention") private Optional<String> retention;
     @SerializedName("snapshotName") private Optional<String> snapshotName;

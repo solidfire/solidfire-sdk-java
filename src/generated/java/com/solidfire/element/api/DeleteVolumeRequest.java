@@ -44,7 +44,7 @@ import java.util.Objects;
 
 public class DeleteVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -1552497789638771344L;
+    public static final long serialVersionUID = 3954495561762490939L;
     @SerializedName("volumeID") private Long volumeID;
     // empty constructor
     @Since("7.0")

@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListSnapMirrorLunsRequest implements Serializable {
 
-    public static final long serialVersionUID = -3096908260987587814L;
+    public static final long serialVersionUID = 8212591500435335398L;
     @SerializedName("snapMirrorEndpointID") private Long snapMirrorEndpointID;
     @SerializedName("destinationVolume") private SnapMirrorVolumeInfo destinationVolume;
 

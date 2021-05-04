@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SupportBundleDetails implements Serializable {
 
-    public static final long serialVersionUID = -8583281841884606916L;
+    public static final long serialVersionUID = 7216132637327601728L;
     @SerializedName("bundleName") private String bundleName;
     @SerializedName("extraArgs") private String extraArgs;
     @SerializedName("files") private String[] files;

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ModifyInitiatorsResult implements Serializable {
 
-    public static final long serialVersionUID = -4744693526161088205L;
+    public static final long serialVersionUID = 3912911760263301375L;
     @SerializedName("initiators") private Initiator[] initiators;
     // empty constructor
     @Since("7.0")

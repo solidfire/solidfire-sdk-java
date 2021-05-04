@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class NewDrive implements Serializable {
 
-    public static final long serialVersionUID = 7424271196730690871L;
+    public static final long serialVersionUID = 9187801558231682716L;
     @SerializedName("driveID") private Long driveID;
     @SerializedName("type") private Optional<String> type;
     // empty constructor

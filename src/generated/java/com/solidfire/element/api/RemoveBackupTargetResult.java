@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class RemoveBackupTargetResult implements Serializable {
 
-    public static final long serialVersionUID = -274782193559377752L;
+    public static final long serialVersionUID = 8077660951034194058L;
     // empty constructor
     @Since("7.0")
     public RemoveBackupTargetResult() {}

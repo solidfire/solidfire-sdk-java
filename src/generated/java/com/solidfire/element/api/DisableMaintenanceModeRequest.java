@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class DisableMaintenanceModeRequest implements Serializable {
 
-    public static final long serialVersionUID = 8690576869185195042L;
+    public static final long serialVersionUID = -4007864210698167899L;
     @SerializedName("nodes") private Long[] nodes;
     // empty constructor
     @Since("7.0")

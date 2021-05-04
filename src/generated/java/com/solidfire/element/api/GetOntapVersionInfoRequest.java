@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class GetOntapVersionInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 1779445459516324551L;
+    public static final long serialVersionUID = -2107693154877153650L;
     @SerializedName("snapMirrorEndpointID") private Optional<Long> snapMirrorEndpointID;
 
     

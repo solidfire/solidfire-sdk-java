@@ -40,7 +40,7 @@ import java.util.Objects;
 
 public class RemoveNodesRequest implements Serializable {
 
-    public static final long serialVersionUID = -386993213044315411L;
+    public static final long serialVersionUID = 8871715698611659872L;
     @SerializedName("nodes") private Long[] nodes;
     @SerializedName("ignoreEnsembleToleranceChange") private Optional<Boolean> ignoreEnsembleToleranceChange = Optional.of(false);
     // empty constructor

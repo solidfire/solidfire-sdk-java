@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class DeleteSnapMirrorRelationshipsRequest implements Serializable {
 
-    public static final long serialVersionUID = -8741175875450520493L;
+    public static final long serialVersionUID = -8362456003710757776L;
     @SerializedName("snapMirrorEndpointID") private Long snapMirrorEndpointID;
     @SerializedName("destinationVolumes") private SnapMirrorVolumeInfo[] destinationVolumes;
 

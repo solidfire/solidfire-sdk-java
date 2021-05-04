@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetEfficiencyResult implements Serializable {
 
-    public static final long serialVersionUID = 7783128228704326433L;
+    public static final long serialVersionUID = 3176428064819165696L;
     @SerializedName("compression") private Optional<Double> compression;
     @SerializedName("deduplication") private Optional<Double> deduplication;
     @SerializedName("thinProvisioning") private Optional<Double> thinProvisioning;

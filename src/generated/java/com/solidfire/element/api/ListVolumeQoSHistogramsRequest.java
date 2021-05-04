@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class ListVolumeQoSHistogramsRequest implements Serializable {
 
-    public static final long serialVersionUID = -112144626236917776L;
+    public static final long serialVersionUID = 4476389519550333234L;
     @SerializedName("volumeIDs") private Optional<Long> volumeIDs;
     // empty constructor
     @Since("7.0")

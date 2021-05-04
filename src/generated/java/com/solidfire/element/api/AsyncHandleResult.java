@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class AsyncHandleResult implements Serializable {
 
-    public static final long serialVersionUID = 7639858944824779726L;
+    public static final long serialVersionUID = -8375586251189720591L;
     @SerializedName("asyncHandle") private Long asyncHandle;
     // empty constructor
     @Since("7.0")

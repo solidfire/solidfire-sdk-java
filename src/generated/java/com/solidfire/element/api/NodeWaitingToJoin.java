@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class NodeWaitingToJoin implements Serializable {
 
-    public static final long serialVersionUID = -7792400641129179502L;
+    public static final long serialVersionUID = -6031445378723559855L;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("version") private String version;
     @SerializedName("nodeID") private Optional<Long> nodeID;

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ControlPowerResult implements Serializable {
 
-    public static final long serialVersionUID = -1450793353462971228L;
+    public static final long serialVersionUID = 7306544988883409755L;
     @SerializedName("details") private Attributes details;
     @SerializedName("duration") private String duration;
     @SerializedName("result") private String result;

@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class DeleteAuthSessionsResult implements Serializable {
 
-    public static final long serialVersionUID = -1344079953548005212L;
+    public static final long serialVersionUID = -2861650093244745068L;
     @SerializedName("sessions") private AuthSessionInfo[] sessions;
     // empty constructor
     @Since("7.0")

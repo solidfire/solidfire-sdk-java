@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class DeleteKeyServerKmipRequest implements Serializable {
 
-    public static final long serialVersionUID = 5705089004006171930L;
+    public static final long serialVersionUID = -5827907530658533552L;
     @SerializedName("keyServerID") private Long keyServerID;
     // empty constructor
     @Since("7.0")

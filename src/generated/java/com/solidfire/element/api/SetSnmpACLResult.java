@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SetSnmpACLResult implements Serializable {
 
-    public static final long serialVersionUID = 5857333503912817240L;
+    public static final long serialVersionUID = 3956576336406617400L;
     // empty constructor
     @Since("7.0")
     public SetSnmpACLResult() {}

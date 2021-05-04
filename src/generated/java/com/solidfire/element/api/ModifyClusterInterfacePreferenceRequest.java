@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ModifyClusterInterfacePreferenceRequest implements Serializable {
 
-    public static final long serialVersionUID = 3556666921450714027L;
+    public static final long serialVersionUID = -7363158147437899336L;
     @SerializedName("name") private String name;
     @SerializedName("value") private String value;
 

@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class Volume implements Serializable {
 
-    public static final long serialVersionUID = -2186369715018079297L;
+    public static final long serialVersionUID = 6199638379297939240L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
@@ -66,6 +66,8 @@ public class Volume implements Serializable {
     @SerializedName("attributes") private Attributes attributes;
     @SerializedName("currentProtectionScheme") private String currentProtectionScheme;
     @SerializedName("previousProtectionScheme") private Optional<String> previousProtectionScheme;
+    @SerializedName("fifoSize") private Optional<Long> fifoSize;
+    @SerializedName("minFifoSize") private Optional<Long> minFifoSize;
     // empty constructor
     @Since("7.0")
     public Volume() {}
@@ -132,6 +134,72 @@ public class Volume implements Serializable {
         this.attributes = attributes;
         this.currentProtectionScheme = currentProtectionScheme;
         this.previousProtectionScheme = (previousProtectionScheme == null) ? Optional.<String>empty() : previousProtectionScheme;
+    }
+    // parameterized constructor
+    @Since("12.0")
+    public Volume(
+        Long volumeID,
+        String name,
+        Long accountID,
+        String createTime,
+        java.util.UUID volumeConsistencyGroupUUID,
+        java.util.UUID volumeUUID,
+        Boolean enableSnapMirrorReplication,
+        String status,
+        String access,
+        Boolean enable512e,
+        Optional<String> iqn,
+        String scsiEUIDeviceID,
+        String scsiNAADeviceID,
+        VolumeQOS qos,
+        Optional<Long> qosPolicyID,
+        Long[] volumeAccessGroups,
+        VolumePair[] volumePairs,
+        Optional<String> deleteTime,
+        Optional<String> purgeTime,
+        Optional<String> lastAccessTime,
+        Optional<String> lastAccessTimeIO,
+        Long sliceCount,
+        Long totalSize,
+        Long blockSize,
+        Optional<java.util.UUID> virtualVolumeID,
+        Attributes attributes,
+        String currentProtectionScheme,
+        Optional<String> previousProtectionScheme,
+        Optional<Long> fifoSize,
+        Optional<Long> minFifoSize
+    )
+    {
+        this.volumeID = volumeID;
+        this.name = name;
+        this.accountID = accountID;
+        this.createTime = createTime;
+        this.volumeConsistencyGroupUUID = volumeConsistencyGroupUUID;
+        this.volumeUUID = volumeUUID;
+        this.enableSnapMirrorReplication = enableSnapMirrorReplication;
+        this.status = status;
+        this.access = access;
+        this.enable512e = enable512e;
+        this.iqn = (iqn == null) ? Optional.<String>empty() : iqn;
+        this.scsiEUIDeviceID = scsiEUIDeviceID;
+        this.scsiNAADeviceID = scsiNAADeviceID;
+        this.qos = qos;
+        this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
+        this.volumeAccessGroups = volumeAccessGroups;
+        this.volumePairs = volumePairs;
+        this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : deleteTime;
+        this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
+        this.lastAccessTime = (lastAccessTime == null) ? Optional.<String>empty() : lastAccessTime;
+        this.lastAccessTimeIO = (lastAccessTimeIO == null) ? Optional.<String>empty() : lastAccessTimeIO;
+        this.sliceCount = sliceCount;
+        this.totalSize = totalSize;
+        this.blockSize = blockSize;
+        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
+        this.attributes = attributes;
+        this.currentProtectionScheme = currentProtectionScheme;
+        this.previousProtectionScheme = (previousProtectionScheme == null) ? Optional.<String>empty() : previousProtectionScheme;
+        this.fifoSize = (fifoSize == null) ? Optional.<Long>empty() : fifoSize;
+        this.minFifoSize = (minFifoSize == null) ? Optional.<Long>empty() : minFifoSize;
     }
 
     /** 
@@ -373,6 +441,26 @@ public class Volume implements Serializable {
     public void setPreviousProtectionScheme(Optional<String> previousProtectionScheme) { 
         this.previousProtectionScheme = (previousProtectionScheme == null) ? Optional.<String>empty() : previousProtectionScheme;
     }
+    /** 
+     * Specify the maximum number of snapshots of the volume to be maintained at a time
+     * if using first in first out snapshot retention mode.
+     * If unspecified a default value will be used.
+     **/
+    public Optional<Long> getFifoSize() { return this.fifoSize; }
+   
+    public void setFifoSize(Optional<Long> fifoSize) { 
+        this.fifoSize = (fifoSize == null) ? Optional.<Long>empty() : fifoSize;
+    }
+    /** 
+     * Specify the number of snapshots of the volume to be maintained at a time
+     * if using first in first out snapshot retention mode.
+     * If unspecified a default value will be used.
+     **/
+    public Optional<Long> getMinFifoSize() { return this.minFifoSize; }
+   
+    public void setMinFifoSize(Optional<Long> minFifoSize) { 
+        this.minFifoSize = (minFifoSize == null) ? Optional.<Long>empty() : minFifoSize;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -409,12 +497,14 @@ public class Volume implements Serializable {
             Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
             Objects.equals(attributes, that.attributes) && 
             Objects.equals(currentProtectionScheme, that.currentProtectionScheme) && 
-            Objects.equals(previousProtectionScheme, that.previousProtectionScheme);
+            Objects.equals(previousProtectionScheme, that.previousProtectionScheme) && 
+            Objects.equals(fifoSize, that.fifoSize) && 
+            Objects.equals(minFifoSize, that.minFifoSize);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,name,accountID,createTime,volumeConsistencyGroupUUID,volumeUUID,enableSnapMirrorReplication,status,access,enable512e,iqn,scsiEUIDeviceID,scsiNAADeviceID,qos,qosPolicyID,(Object[])volumeAccessGroups,(Object[])volumePairs,deleteTime,purgeTime,lastAccessTime,lastAccessTimeIO,sliceCount,totalSize,blockSize,virtualVolumeID,attributes,currentProtectionScheme,previousProtectionScheme );
+        return Objects.hash( volumeID,name,accountID,createTime,volumeConsistencyGroupUUID,volumeUUID,enableSnapMirrorReplication,status,access,enable512e,iqn,scsiEUIDeviceID,scsiNAADeviceID,qos,qosPolicyID,(Object[])volumeAccessGroups,(Object[])volumePairs,deleteTime,purgeTime,lastAccessTime,lastAccessTimeIO,sliceCount,totalSize,blockSize,virtualVolumeID,attributes,currentProtectionScheme,previousProtectionScheme,fifoSize,minFifoSize );
     }
 
 
@@ -448,6 +538,8 @@ public class Volume implements Serializable {
         map.put("attributes", attributes);
         map.put("currentProtectionScheme", currentProtectionScheme);
         map.put("previousProtectionScheme", previousProtectionScheme);
+        map.put("fifoSize", fifoSize);
+        map.put("minFifoSize", minFifoSize);
         return map;
     }
 
@@ -525,6 +617,18 @@ public class Volume implements Serializable {
         else{
             sb.append(" previousProtectionScheme : ").append("null").append(",");
         }
+        if(null != fifoSize && fifoSize.isPresent()){
+            sb.append(" fifoSize : ").append(gson.toJson(fifoSize)).append(",");
+        }
+        else{
+            sb.append(" fifoSize : ").append("null").append(",");
+        }
+        if(null != minFifoSize && minFifoSize.isPresent()){
+            sb.append(" minFifoSize : ").append(gson.toJson(minFifoSize)).append(",");
+        }
+        else{
+            sb.append(" minFifoSize : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -570,6 +674,8 @@ public class Volume implements Serializable {
         private Attributes attributes;
         private String currentProtectionScheme;
         private Optional<String> previousProtectionScheme;
+        private Optional<Long> fifoSize;
+        private Optional<Long> minFifoSize;
 
         private Builder() { }
 
@@ -602,7 +708,9 @@ public class Volume implements Serializable {
                          this.virtualVolumeID,
                          this.attributes,
                          this.currentProtectionScheme,
-                         this.previousProtectionScheme);
+                         this.previousProtectionScheme,
+                         this.fifoSize,
+                         this.minFifoSize);
         }
 
         private Volume.Builder buildFrom(final Volume req) {
@@ -634,6 +742,8 @@ public class Volume implements Serializable {
             this.attributes = req.attributes;
             this.currentProtectionScheme = req.currentProtectionScheme;
             this.previousProtectionScheme = req.previousProtectionScheme;
+            this.fifoSize = req.fifoSize;
+            this.minFifoSize = req.minFifoSize;
 
             return this;
         }
@@ -775,6 +885,16 @@ public class Volume implements Serializable {
 
         public Volume.Builder optionalPreviousProtectionScheme(final String previousProtectionScheme) {
             this.previousProtectionScheme = (previousProtectionScheme == null) ? Optional.<String>empty() : Optional.of(previousProtectionScheme);
+            return this;
+        }
+
+        public Volume.Builder optionalFifoSize(final Long fifoSize) {
+            this.fifoSize = (fifoSize == null) ? Optional.<Long>empty() : Optional.of(fifoSize);
+            return this;
+        }
+
+        public Volume.Builder optionalMinFifoSize(final Long minFifoSize) {
+            this.minFifoSize = (minFifoSize == null) ? Optional.<Long>empty() : Optional.of(minFifoSize);
             return this;
         }
 

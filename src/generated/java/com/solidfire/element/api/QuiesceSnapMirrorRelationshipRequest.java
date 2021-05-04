@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class QuiesceSnapMirrorRelationshipRequest implements Serializable {
 
-    public static final long serialVersionUID = 5467467278349430718L;
+    public static final long serialVersionUID = 3179374775752169649L;
     @SerializedName("snapMirrorEndpointID") private Long snapMirrorEndpointID;
     @SerializedName("destinationVolume") private SnapMirrorVolumeInfo destinationVolume;
 

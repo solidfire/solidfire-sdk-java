@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class CreateSnapMirrorEndpointUnmanagedRequest implements Serializable {
 
-    public static final long serialVersionUID = -8323494225102522457L;
+    public static final long serialVersionUID = -754380917108895959L;
     @SerializedName("clusterName") private String clusterName;
     @SerializedName("ipAddresses") private String[] ipAddresses;
 

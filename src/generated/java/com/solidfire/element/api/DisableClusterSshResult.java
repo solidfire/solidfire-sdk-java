@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class DisableClusterSshResult implements Serializable {
 
-    public static final long serialVersionUID = -6217535581472531277L;
+    public static final long serialVersionUID = 3412369733502823896L;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("timeRemaining") private String timeRemaining;
     @SerializedName("nodes") private NodeSshInfo[] nodes;

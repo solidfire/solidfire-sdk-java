@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ControlPowerRequest implements Serializable {
 
-    public static final long serialVersionUID = -2767271627915744177L;
+    public static final long serialVersionUID = -793398862225821861L;
     @SerializedName("action") private String action;
     @SerializedName("wakeupDelay") private Optional<String> wakeupDelay;
     @SerializedName("force") private Boolean force;

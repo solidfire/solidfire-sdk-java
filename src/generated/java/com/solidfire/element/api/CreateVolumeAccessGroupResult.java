@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class CreateVolumeAccessGroupResult implements Serializable {
 
-    public static final long serialVersionUID = 3013934335654160811L;
+    public static final long serialVersionUID = -4109789060552621065L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("volumeAccessGroup") private Optional<VolumeAccessGroup> volumeAccessGroup;
     // empty constructor

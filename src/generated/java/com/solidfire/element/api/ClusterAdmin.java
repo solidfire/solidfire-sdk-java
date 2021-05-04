@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ClusterAdmin implements Serializable {
 
-    public static final long serialVersionUID = 1414885579893568425L;
+    public static final long serialVersionUID = 7237496562909622134L;
     @SerializedName("authMethod") private String authMethod;
     @SerializedName("access") private String[] access;
     @SerializedName("clusterAdminID") private Long clusterAdminID;

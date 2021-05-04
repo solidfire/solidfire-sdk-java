@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ResetDrivesResult implements Serializable {
 
-    public static final long serialVersionUID = 1101495753148647150L;
+    public static final long serialVersionUID = 8754509892796384226L;
     @SerializedName("details") private ResetDrivesDetails details;
     @SerializedName("duration") private Optional<String> duration;
     @SerializedName("result") private Optional<String> result;

@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ClusterInfo implements Serializable {
 
-    public static final long serialVersionUID = -7475416716545306140L;
+    public static final long serialVersionUID = 1936776320618833199L;
     @SerializedName("mvipInterface") private Optional<String> mvipInterface;
     @SerializedName("mvipVlanTag") private Optional<String> mvipVlanTag;
     @SerializedName("svipInterface") private Optional<String> svipInterface;

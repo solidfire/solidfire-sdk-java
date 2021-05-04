@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class RemoveSSLCertificateResult implements Serializable {
 
-    public static final long serialVersionUID = 8859406694081167969L;
+    public static final long serialVersionUID = -2364827641905527178L;
     // empty constructor
     @Since("7.0")
     public RemoveSSLCertificateResult() {}

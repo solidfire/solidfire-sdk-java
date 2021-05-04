@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class CreateClusterRequest implements Serializable {
 
-    public static final long serialVersionUID = -7399083057729155838L;
+    public static final long serialVersionUID = 7702417218072577040L;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
     @SerializedName("serialNumber") private Optional<String> serialNumber;
     @SerializedName("orderNumber") private Optional<String> orderNumber;

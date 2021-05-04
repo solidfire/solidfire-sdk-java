@@ -15,7 +15,6 @@
  */
 
 package com.solidfire.client;
-
 import com.solidfire.core.client.ApiConnectionException;
 import com.solidfire.core.javautil.Optional;
 import com.solidfire.element.api.GetAPIResult;

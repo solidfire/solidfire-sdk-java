@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class CreateStorageContainerRequest implements Serializable {
 
-    public static final long serialVersionUID = -7708191945524347616L;
+    public static final long serialVersionUID = -3687987023421914245L;
     @SerializedName("name") private String name;
     @SerializedName("initiatorSecret") private Optional<String> initiatorSecret;
     @SerializedName("targetSecret") private Optional<String> targetSecret;

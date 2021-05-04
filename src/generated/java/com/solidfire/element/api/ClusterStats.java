@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ClusterStats implements Serializable {
 
-    public static final long serialVersionUID = 1350933100470880071L;
+    public static final long serialVersionUID = -6085221001395335608L;
     @SerializedName("clusterUtilization") private Double clusterUtilization;
     @SerializedName("clientQueueDepth") private Long clientQueueDepth;
     @SerializedName("normalizedIOPS") private Long normalizedIOPS;

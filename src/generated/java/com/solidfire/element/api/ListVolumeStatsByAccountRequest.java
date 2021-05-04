@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListVolumeStatsByAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = -1366053370343032338L;
+    public static final long serialVersionUID = -8608213759660189306L;
     @SerializedName("accounts") private Optional<Long[]> accounts;
     @SerializedName("includeVirtualVolumes") private Optional<Boolean> includeVirtualVolumes;
     // empty constructor

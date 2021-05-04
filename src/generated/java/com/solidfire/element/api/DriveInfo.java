@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class DriveInfo implements Serializable {
 
-    public static final long serialVersionUID = 1095234922319013004L;
+    public static final long serialVersionUID = -3414215038889344580L;
     @SerializedName("capacity") private Long capacity;
     @SerializedName("usableCapacity") private Long usableCapacity;
     @SerializedName("segmentFileSize") private Long segmentFileSize;

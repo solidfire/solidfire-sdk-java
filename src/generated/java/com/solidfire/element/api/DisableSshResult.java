@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class DisableSshResult implements Serializable {
 
-    public static final long serialVersionUID = -8439049511113791200L;
+    public static final long serialVersionUID = 3981653639385478058L;
     @SerializedName("enabled") private Boolean enabled;
 
     

@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class NodeSshInfo implements Serializable {
 
-    public static final long serialVersionUID = -837045026123545800L;
+    public static final long serialVersionUID = -6502741983999010490L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("enabled") private Boolean enabled;
 

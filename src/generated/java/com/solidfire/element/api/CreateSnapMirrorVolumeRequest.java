@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class CreateSnapMirrorVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 8239871756309998429L;
+    public static final long serialVersionUID = -5379720864573890116L;
     @SerializedName("snapMirrorEndpointID") private Long snapMirrorEndpointID;
     @SerializedName("vserver") private String vserver;
     @SerializedName("name") private String name;

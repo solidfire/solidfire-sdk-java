@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListSchedulesResult implements Serializable {
 
-    public static final long serialVersionUID = 4207835985989253339L;
+    public static final long serialVersionUID = -3124287316050045216L;
     @SerializedName("schedules") private Schedule[] schedules;
     // empty constructor
     @Since("7.0")

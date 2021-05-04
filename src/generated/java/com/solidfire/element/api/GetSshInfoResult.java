@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetSshInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 685502197660250327L;
+    public static final long serialVersionUID = -9010863769555169375L;
     @SerializedName("enabled") private Boolean enabled;
 
     

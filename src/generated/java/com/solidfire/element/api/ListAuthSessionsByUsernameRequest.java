@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class ListAuthSessionsByUsernameRequest implements Serializable {
 
-    public static final long serialVersionUID = -2183298945627992114L;
+    public static final long serialVersionUID = -3660768353468139323L;
     @SerializedName("username") private Optional<String> username;
     @SerializedName("authMethod") private Optional<String> authMethod;
     // empty constructor

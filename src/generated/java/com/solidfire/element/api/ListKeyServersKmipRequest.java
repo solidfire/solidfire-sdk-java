@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListKeyServersKmipRequest implements Serializable {
 
-    public static final long serialVersionUID = -632220924420418909L;
+    public static final long serialVersionUID = -3048387590635848717L;
     @SerializedName("keyProviderID") private Optional<Long> keyProviderID;
     @SerializedName("kmipAssignedProviderIsActive") private Optional<Boolean> kmipAssignedProviderIsActive;
     @SerializedName("kmipHasProviderAssigned") private Optional<Boolean> kmipHasProviderAssigned;

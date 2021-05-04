@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ServiceStrandedCapacity implements Serializable {
 
-    public static final long serialVersionUID = -2743297895646902156L;
+    public static final long serialVersionUID = -5478276335815305123L;
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("strandedCapacity") private Long strandedCapacity;
     // empty constructor

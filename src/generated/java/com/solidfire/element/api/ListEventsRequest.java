@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class ListEventsRequest implements Serializable {
 
-    public static final long serialVersionUID = -6665586010120501386L;
+    public static final long serialVersionUID = 829864358201180124L;
     @SerializedName("maxEvents") private Optional<Long> maxEvents;
     @SerializedName("startEventID") private Optional<Long> startEventID;
     @SerializedName("endEventID") private Optional<Long> endEventID;

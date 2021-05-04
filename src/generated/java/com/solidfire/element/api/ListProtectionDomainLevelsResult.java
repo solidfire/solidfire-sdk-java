@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListProtectionDomainLevelsResult implements Serializable {
 
-    public static final long serialVersionUID = -3266579975441127444L;
+    public static final long serialVersionUID = 1095048515533403059L;
     @SerializedName("protectionDomainLevels") private ProtectionDomainLevel[] protectionDomainLevels;
     // empty constructor
     @Since("7.0")

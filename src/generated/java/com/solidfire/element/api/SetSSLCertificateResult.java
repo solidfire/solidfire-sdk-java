@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class SetSSLCertificateResult implements Serializable {
 
-    public static final long serialVersionUID = -8141745444753069437L;
+    public static final long serialVersionUID = 3712053029579990786L;
     // empty constructor
     @Since("7.0")
     public SetSSLCertificateResult() {}

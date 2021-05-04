@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class TestConnectEnsembleDetails implements Serializable {
 
-    public static final long serialVersionUID = -3781178679216875327L;
+    public static final long serialVersionUID = -2611913874445579834L;
     @SerializedName("nodes") private Attributes nodes;
     // empty constructor
     @Since("7.0")

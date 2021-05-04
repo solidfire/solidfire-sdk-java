@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetBinAssignmentPropertiesResult implements Serializable {
 
-    public static final long serialVersionUID = 2733669800857940247L;
+    public static final long serialVersionUID = 2777899219792635874L;
     @SerializedName("properties") private BinAssignmentProperties properties;
     // empty constructor
     @Since("7.0")

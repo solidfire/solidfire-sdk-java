@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class TestConnectSvipResult implements Serializable {
 
-    public static final long serialVersionUID = 9033383455833909004L;
+    public static final long serialVersionUID = 1889471380602194129L;
     @SerializedName("details") private TestConnectSvipDetails details;
     @SerializedName("duration") private String duration;
     @SerializedName("result") private String result;

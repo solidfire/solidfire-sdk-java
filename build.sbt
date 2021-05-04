@@ -2,9 +2,9 @@ import de.johoop.jacoco4sbt.XMLReport
 
 name := "solidFire-sdk-java"
 
-val major_version = "1"
+val major_version = "12"
 
-val minor_version = "7"
+val minor_version = "3"
 
 val patch_version = "0"
 

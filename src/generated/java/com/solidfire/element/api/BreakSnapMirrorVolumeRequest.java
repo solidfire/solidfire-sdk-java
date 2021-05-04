@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class BreakSnapMirrorVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -1648429649572714315L;
+    public static final long serialVersionUID = -3371923131892540115L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("preserve") private Optional<Boolean> preserve;

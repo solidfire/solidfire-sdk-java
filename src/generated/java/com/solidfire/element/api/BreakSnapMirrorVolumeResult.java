@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class BreakSnapMirrorVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = -1383766371723439044L;
+    public static final long serialVersionUID = -4187155240995673652L;
     // empty constructor
     @Since("7.0")
     public BreakSnapMirrorVolumeResult() {}

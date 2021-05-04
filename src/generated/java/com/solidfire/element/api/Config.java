@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class Config implements Serializable {
 
-    public static final long serialVersionUID = 7222153266323018468L;
+    public static final long serialVersionUID = 321019109121869824L;
     @SerializedName("cluster") private ClusterConfig cluster;
     @SerializedName("network") private Network network;
     // empty constructor

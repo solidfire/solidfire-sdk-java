@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetClusterStateResult implements Serializable {
 
-    public static final long serialVersionUID = 4535059977135751175L;
+    public static final long serialVersionUID = -4712613795089818801L;
     @SerializedName("nodes") private Optional<NodeStateResult[]> nodes;
     @SerializedName("cluster") private Optional<String> cluster;
     @SerializedName("state") private Optional<String> state;

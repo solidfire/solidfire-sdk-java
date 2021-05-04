@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class ListSnapMirrorSchedulesResult implements Serializable {
 
-    public static final long serialVersionUID = 436835789233339535L;
+    public static final long serialVersionUID = 125982440034489118L;
     @SerializedName("snapMirrorSchedules") private SnapMirrorJobScheduleCronInfo[] snapMirrorSchedules;
 
     

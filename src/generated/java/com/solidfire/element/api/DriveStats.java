@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class DriveStats implements Serializable {
 
-    public static final long serialVersionUID = 1766679947145036831L;
+    public static final long serialVersionUID = -7934400888090609919L;
     @SerializedName("activeSessions") private Optional<Long> activeSessions;
     @SerializedName("driveID") private Optional<Long> driveID;
     @SerializedName("failedDieCount") private Long failedDieCount;

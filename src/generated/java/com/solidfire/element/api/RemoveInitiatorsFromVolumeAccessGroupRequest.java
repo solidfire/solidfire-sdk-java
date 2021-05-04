@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 3860118585740244525L;
+    public static final long serialVersionUID = -2730673756923075972L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("initiators") private String[] initiators;
     @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators = Optional.of(true);

@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class BreakSnapMirrorRelationshipRequest implements Serializable {
 
-    public static final long serialVersionUID = 7755950762845870821L;
+    public static final long serialVersionUID = 2016390778441756019L;
     @SerializedName("snapMirrorEndpointID") private Long snapMirrorEndpointID;
     @SerializedName("destinationVolume") private SnapMirrorVolumeInfo destinationVolume;
 

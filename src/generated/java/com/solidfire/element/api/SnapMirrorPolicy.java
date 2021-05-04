@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class SnapMirrorPolicy implements Serializable {
 
-    public static final long serialVersionUID = -1021790842788298805L;
+    public static final long serialVersionUID = -5203438975312766495L;
     @SerializedName("snapMirrorEndpointID") private Long snapMirrorEndpointID;
     @SerializedName("policyName") private String policyName;
     @SerializedName("policyType") private String policyType;

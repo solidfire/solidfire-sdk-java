@@ -42,7 +42,7 @@ import java.util.Objects;
 
 public class AddVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = -4244265170367033912L;
+    public static final long serialVersionUID = -7091986693160406708L;
     @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
     @SerializedName("name") private String name;
     @SerializedName("addressBlocks") private AddressBlockParams[] addressBlocks;

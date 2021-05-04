@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class GetDriveConfigResult implements Serializable {
 
-    public static final long serialVersionUID = 1080554704462379958L;
+    public static final long serialVersionUID = 7844509085170269122L;
     @SerializedName("driveConfig") private DrivesConfigInfo driveConfig;
     // empty constructor
     @Since("7.0")
