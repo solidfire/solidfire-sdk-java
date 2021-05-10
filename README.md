@@ -11,7 +11,7 @@ The SolidFire Java SDK is a collection of software modules and libraries that fa
 | Component    | Version             |
 | ------------ | ------------------- |
 | Java         | 7.0 & 8.0           |
-| SolidFire OS | Element 11.8 - 12.3 |
+| SolidFire OS | Element 11.0 - 12.3 |
 
 ## Getting Help
 
