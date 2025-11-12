@@ -206,7 +206,7 @@ public class ServiceBase {
 
             return result;
         } catch (ClassCastException e) {
-            final Pattern pattern = Pattern.compile("<p> (.*?)</p>");
+            final Pattern pattern = Pattern.compile("<p>(?:(?!</p>).)*</p>");
             final Matcher matcher = pattern.matcher(response);
             if (matcher.find()) {
                 throw new ApiServerException("Not Found", "404", matcher.group(1));
