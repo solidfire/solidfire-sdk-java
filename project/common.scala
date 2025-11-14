@@ -90,7 +90,8 @@ object Config {
       Dependencies.mockito,
       Dependencies.scalatest,
       Dependencies.scalacheck,
-      Dependencies.junit
+      Dependencies.junit,
+      Dependencies.jsoup
     )
   )
 
@@ -125,6 +126,7 @@ object Version {
   val jodaConvert     = "1.8.1"
   val jodaTime        = "2.9.3"
   val base64          = "2.3.9"
+  val jsoup         = "1.17.2"
 }
 
 object Dependencies {
@@ -138,6 +140,7 @@ object Dependencies {
   lazy val mockito        = "org.mockito" % "mockito-all" % Version.mockito % "test"
   lazy val scalacheck     = "org.scalacheck" %% "scalacheck" % Version.scalacheck % "test"
   lazy val junit          = "com.novocode" % "junit-interface" % Version.junit % "test"
+  lazy val jsoup          = "org.jsoup" % "jsoup" % Version.jsoup
 }
 
 

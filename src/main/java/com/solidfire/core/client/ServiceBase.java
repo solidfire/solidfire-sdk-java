@@ -32,8 +32,10 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import static java.lang.String.format;
 
@@ -206,14 +208,14 @@ public class ServiceBase {
 
             return result;
         } catch (ClassCastException e) {
-            final Pattern pattern = Pattern.compile("<p>(?:(?!</p>).)*</p>");
-            final Matcher matcher = pattern.matcher(response);
-            if (matcher.find()) {
-                throw new ApiServerException("Not Found", "404", matcher.group(1));
+            Document parsedResponse = Jsoup.parse(response);
+            Element pTag = parsedResponse.selectFirst("p");
+            if(pTag != null) {
+                throw new ApiServerException("Not Found", "404", pTag.text());
             }
             // Removes the html tags from the response.
-            response.replaceAll("<[^>]*>", "");
-            throw new ApiException(format("There was a problem parsing the response from the server. ( response=%s )", response), e);
+            String responseText = parsedResponse.text();
+            throw new ApiException(format("There was a problem parsing the response from the server. ( response=%s )", responseText), e);
         } catch (NullPointerException | JsonParseException e) {
             log.debug(response);
             throw new ApiException(format("There was a problem parsing the response from the server. ( response=%s )", response), e);
